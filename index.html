@@ -14,13 +14,14 @@
     <meta name="description" content="Repertorio para ensayar el miércoles 30 de octubre de 2026 con Uranthia y su Corazón Latino. Canciones, tonalidades y notas para la orquesta." />
     <meta property="og:site_name" content="Uranthia · Corazón Latino" />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://saoentertainment.github.io/URANTHIA/" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Uranthia y su Corazón Latino · Canciones para Ensayar" />
     <meta name="twitter:description" content="Repertorio para ensayar el miércoles 30 de octubre de 2026." />
     <meta name="twitter:image" content="https://saoentertainment.github.io/URANTHIA/preview-whatsapp.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -194,6 +195,118 @@
             background: linear-gradient(90deg, transparent 0%, #d4af37 50%, transparent 100%);
             border-radius: 10px;
             opacity: 0.6;
+        }
+
+        /* ══════════════════════════════════════════════════
+           GUÍA RÁPIDA
+           ══════════════════════════════════════════════════ */
+        .guide-section {
+            margin: 10px 0 22px 0;
+        }
+
+        .guide-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #0d2818;
+            letter-spacing: 0.3px;
+        }
+        .guide-title .guide-line {
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, #d4af37 0%, transparent 100%);
+            border-radius: 10px;
+            opacity: 0.6;
+        }
+
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .guide-card {
+            background: linear-gradient(135deg, #faf3e0 0%, #f5e6c8 100%);
+            border: 1px solid rgba(212, 175, 55, 0.40);
+            border-radius: 18px;
+            padding: 16px 14px;
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .guide-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.25);
+        }
+
+        .guide-card .guide-icon {
+            font-size: 1.8rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
+            border-radius: 50%;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 10px rgba(13, 40, 24, 0.25);
+        }
+
+        .guide-card h4 {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: #0d2818;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .guide-card p {
+            font-size: 0.8rem;
+            color: #3d2d36;
+            line-height: 1.4;
+            margin: 0;
+        }
+        .guide-card p strong {
+            color: #b8860b;
+            font-weight: 700;
+        }
+
+        /* ── TARJETA DESTACADA DORADA ── */
+        .guide-highlight {
+            background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+            border: 2px solid #0d2818;
+            border-radius: 18px;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            box-shadow: 0 6px 18px rgba(212, 175, 55, 0.35);
+            color: #0d2818;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+        .guide-highlight .guide-highlight-icon {
+            font-size: 1.6rem;
+            flex-shrink: 0;
+            background: #0d2818;
+            color: #d4af37;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 8px rgba(13, 40, 24, 0.30);
+        }
+        .guide-highlight strong {
+            font-weight: 800;
+            letter-spacing: 0.2px;
         }
 
         /* ── LISTA DE CANCIONES ── */
@@ -511,6 +624,11 @@
             .main-title h1 { font-size: 1.4rem; }
             .main-title .date-badge { font-size: 0.8rem; padding: 6px 18px; }
             .playlist-btn { font-size: 0.85rem; padding: 12px 24px; }
+            .guide-grid { grid-template-columns: 1fr; gap: 10px; }
+            .guide-card { padding: 14px 12px; }
+            .guide-card .guide-icon { width: 42px; height: 42px; font-size: 1.5rem; }
+            .guide-highlight { padding: 12px 16px; font-size: 0.8rem; gap: 10px; }
+            .guide-highlight .guide-highlight-icon { width: 38px; height: 38px; font-size: 1.3rem; }
             .song { flex-wrap: wrap; gap: 10px; }
             .song-info .links { width: 100%; }
             .yt-btn { font-size: 0.7rem; padding: 5px 12px; }
@@ -553,6 +671,43 @@
             <span class="yt-icon">▶</span>
             Ver Playlist Completa
         </a>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ══════════════════════════════════════════════════
+         GUÍA RÁPIDA
+         ══════════════════════════════════════════════════ -->
+    <div class="guide-section">
+        <div class="guide-title">
+            💡 Guía Rápida
+            <span class="guide-line"></span>
+        </div>
+
+        <div class="guide-grid">
+            <div class="guide-card">
+                <div class="guide-icon">🎵</div>
+                <h4>Escucha</h4>
+                <p>Toca el botón <strong>▶</strong> para abrir cada canción en YouTube.</p>
+            </div>
+
+            <div class="guide-card">
+                <div class="guide-icon">🎼</div>
+                <h4>Tonalidad</h4>
+                <p>Escribe la tonalidad de cada canción (ej: <strong>C, Am, G</strong>).</p>
+            </div>
+
+            <div class="guide-card">
+                <div class="guide-icon">📝</div>
+                <h4>Notas</h4>
+                <p>Anota lo que necesites recordar para el ensayo.</p>
+            </div>
+        </div>
+
+        <div class="guide-highlight">
+            <span class="guide-highlight-icon">💾</span>
+            <span><strong>Tus notas se guardan SOLO en tu dispositivo.</strong><br>Cada quien anota sus indicaciones.</span>
+        </div>
     </div>
 
     <div class="divider"></div>
@@ -841,7 +996,7 @@
     // Cargar al inicio
     cargarDatos();
 
-    // Guardado automático al escribir (opcional, se guarda cada 1.5 segundos sin pulsar)
+    // Guardado automático al escribir
     let timeoutAuto = null;
     document.querySelectorAll('input[data-key], textarea[data-key]').forEach(el => {
         el.addEventListener('input', () => {

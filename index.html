@@ -40,6 +40,7 @@
             border: 1px solid rgba(212, 175, 55, 0.30);
         }
 
+        /* ── HEADER CON LOGO ── */
         .header {
             background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
             border-radius: 28px;
@@ -117,6 +118,7 @@
             box-shadow: 0 3px 10px rgba(212, 175, 55, 0.30);
         }
 
+        /* ── TÍTULO PRINCIPAL ── */
         .main-title { text-align: center; margin: 8px 0 6px 0; }
         .main-title h1 {
             font-family: 'Georgia', 'Times New Roman', serif;
@@ -146,6 +148,7 @@
             box-shadow: 0 4px 12px rgba(13, 40, 24, 0.25);
         }
 
+        /* ── BOTÓN PLAYLIST ── */
         .playlist-section { margin: 22px 0 6px 0; text-align: center; }
         .playlist-btn {
             display: inline-flex;
@@ -180,6 +183,7 @@
             font-size: 0.75rem;
         }
 
+        /* ── DIVISOR ── */
         .divider {
             margin: 26px 0 22px 0;
             height: 2px;
@@ -188,21 +192,21 @@
             opacity: 0.6;
         }
 
-        .song-list { display: flex; flex-direction: column; gap: 10px; }
+        /* ── LISTA DE CANCIONES ── */
+        .song-list { display: flex; flex-direction: column; gap: 12px; }
 
         .song {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 14px;
             background: #f6f8f6;
             border-radius: 18px;
-            padding: 14px 16px;
+            padding: 16px 18px;
             transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
             border: 1px solid #e2e8e2;
             border-left: 4px solid #d4af37;
         }
         .song:hover {
-            transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(13, 40, 24, 0.10);
             background: #ffffff;
             border-left-color: #0d2818;
@@ -223,6 +227,23 @@
             flex-shrink: 0;
             box-shadow: 0 3px 8px rgba(13, 40, 24, 0.25);
             border: 1px solid rgba(212, 175, 55, 0.30);
+            margin-top: 2px;
+        }
+
+        .song-body {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .song-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
         }
 
         .song-info { flex: 1; min-width: 0; }
@@ -278,6 +299,144 @@
         }
         .yt-btn .play { font-size: 0.65rem; }
 
+        /* ── CAMPOS EDITABLES: TONALIDAD Y NOTAS ── */
+        .song-fields {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .field label {
+            font-size: 0.65rem;
+            font-weight: 800;
+            color: #b8860b;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .field input,
+        .field textarea {
+            background: #ffffff;
+            border: 1.5px solid #d4af37;
+            border-radius: 12px;
+            padding: 8px 12px;
+            font-family: inherit;
+            font-size: 0.85rem;
+            color: #0d2818;
+            outline: none;
+            transition: all 0.2s ease;
+            resize: none;
+            width: 100%;
+        }
+        .field input:focus,
+        .field textarea:focus {
+            border-color: #0d2818;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.20);
+            background: #fffdf5;
+        }
+        .field input::placeholder,
+        .field textarea::placeholder {
+            color: #b8b8a8;
+            font-style: italic;
+        }
+
+        .field input.tonalidad {
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #b8860b;
+        }
+
+        .field textarea.notas {
+            min-height: 42px;
+            line-height: 1.4;
+        }
+
+        /* ── BARRA DE ACCIONES (guardar) ── */
+        .actions-bar {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .save-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
+            color: #d4af37;
+            border: 2px solid #d4af37;
+            font-family: inherit;
+            font-size: 0.85rem;
+            font-weight: 800;
+            padding: 10px 26px;
+            border-radius: 30px;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(13, 40, 24, 0.20);
+        }
+        .save-btn:hover {
+            background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+            color: #0d2818;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.40);
+        }
+        .save-btn:active {
+            transform: translateY(0);
+        }
+
+        .clear-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #ffffff;
+            color: #6b7a6b;
+            border: 2px solid #e2e8e2;
+            font-family: inherit;
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 10px 22px;
+            border-radius: 30px;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.2s ease;
+        }
+        .clear-btn:hover {
+            border-color: #c1121f;
+            color: #c1121f;
+            background: #fff5f5;
+        }
+
+        .saved-msg {
+            text-align: center;
+            margin-top: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #97d239;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            height: 18px;
+        }
+        .saved-msg.show {
+            opacity: 1;
+        }
+
+        /* ── FOOTER ── */
         .footer {
             margin-top: 28px;
             padding-top: 20px;
@@ -338,6 +497,7 @@
             border: 1px solid rgba(212, 175, 55, 0.30);
         }
 
+        /* ── RESPONSIVE ── */
         @media (max-width: 650px) {
             .card { padding: 24px 16px; }
             .header { flex-direction: column; align-items: center; text-align: center; padding: 22px 20px; gap: 16px; }
@@ -350,6 +510,7 @@
             .song { flex-wrap: wrap; gap: 10px; }
             .song-info .links { width: 100%; }
             .yt-btn { font-size: 0.7rem; padding: 5px 12px; }
+            .song-fields { grid-template-columns: 1fr; }
             .footer-credits { font-size: 0.75rem; padding: 6px 16px; }
         }
         @media (max-width: 400px) {
@@ -366,6 +527,7 @@
 
 <div class="card">
 
+    <!-- HEADER CON LOGO -->
     <div class="header">
         <img src="logo-uranthia.png" alt="Uranthia y su Corazón Latino" class="logo-img" />
         <div class="header-text">
@@ -375,14 +537,13 @@
         </div>
     </div>
 
+    <!-- TÍTULO PRINCIPAL -->
     <div class="main-title">
         <h1>Canciones <span class="gold">para Ensayar</span></h1>
         <div class="date-badge">📅 Miércoles 30 de Octubre de 2026</div>
     </div>
 
-    <!-- ══════════════════════════════════════════════════════
-         BOTÓN PLAYLIST COMPLETA — ENLACE YA CONFIGURADO ✅
-         ══════════════════════════════════════════════════════ -->
+    <!-- BOTÓN PLAYLIST -->
     <div class="playlist-section">
         <a class="playlist-btn" href="https://www.youtube.com/@CORAZON-LATINO-MUSIC/playlists" target="_blank" rel="noopener">
             <span class="yt-icon">▶</span>
@@ -392,97 +553,211 @@
 
     <div class="divider"></div>
 
-    <div class="song-list">
+    <!-- LISTA DE CANCIONES -->
+    <div class="song-list" id="songList">
 
+        <!-- 1 -->
         <div class="song">
             <div class="song-number">1</div>
-            <div class="song-info">
-                <div class="title">La Fuerza del Destino <span class="artist">· MECANO</span></div>
-                <div class="links">
-                    <a class="yt-btn" href="https://youtu.be/_mAmEKNqg1g?si=Ym2iRskQjNmKjN78" target="_blank" rel="noopener">
-                        <span class="play">▶</span> Ver en YouTube
-                    </a>
+            <div class="song-body">
+                <div class="song-header">
+                    <div class="song-info">
+                        <div class="title">La Fuerza del Destino <span class="artist">· MECANO</span></div>
+                        <div class="links">
+                            <a class="yt-btn" href="https://youtu.be/_mAmEKNqg1g?si=Ym2iRskQjNmKjN78" target="_blank" rel="noopener">
+                                <span class="play">▶</span> Ver en YouTube
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="song-fields">
+                    <div class="field">
+                        <label>🎼 Tonalidad</label>
+                        <input type="text" class="tonalidad" placeholder="Ej: C, Am, G" data-key="1-tono" />
+                    </div>
+                    <div class="field">
+                        <label>📝 Notas</label>
+                        <textarea class="notas" placeholder="Notas para el ensayo..." data-key="1-notas"></textarea>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <!-- 2 -->
         <div class="song">
             <div class="song-number">2</div>
-            <div class="song-info">
-                <div class="title">Total Rock en tu idioma <span class="artist">· MATUTE</span></div>
-                <div class="links">
-                    <a class="yt-btn" href="https://youtu.be/uHd9r0LHli8?si=RIR486-nYLHirFjR" target="_blank" rel="noopener">
-                        <span class="play">▶</span> Ver en YouTube
-                    </a>
+            <div class="song-body">
+                <div class="song-header">
+                    <div class="song-info">
+                        <div class="title">Total Rock en tu idioma <span class="artist">· MATUTE</span></div>
+                        <div class="links">
+                            <a class="yt-btn" href="https://youtu.be/uHd9r0LHli8?si=RIR486-nYLHirFjR" target="_blank" rel="noopener">
+                                <span class="play">▶</span> Ver en YouTube
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="song-fields">
+                    <div class="field">
+                        <label>🎼 Tonalidad</label>
+                        <input type="text" class="tonalidad" placeholder="Ej: D, Bm, A" data-key="2-tono" />
+                    </div>
+                    <div class="field">
+                        <label>📝 Notas</label>
+                        <textarea class="notas" placeholder="Notas para el ensayo..." data-key="2-notas"></textarea>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <!-- 3 -->
         <div class="song">
             <div class="song-number">3</div>
-            <div class="song-info">
-                <div class="title">Te Besé <span class="artist">· RAGAZZI</span></div>
-                <div class="links">
-                    <a class="yt-btn" href="https://youtu.be/h1r3GhIjjiA?si=hEVaqIQ1vXHWZDCm" target="_blank" rel="noopener">
-                        <span class="play">▶</span> Ver en YouTube
-                    </a>
+            <div class="song-body">
+                <div class="song-header">
+                    <div class="song-info">
+                        <div class="title">Te Besé <span class="artist">· RAGAZZI</span></div>
+                        <div class="links">
+                            <a class="yt-btn" href="https://youtu.be/h1r3GhIjjiA?si=hEVaqIQ1vXHWZDCm" target="_blank" rel="noopener">
+                                <span class="play">▶</span> Ver en YouTube
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="song-fields">
+                    <div class="field">
+                        <label>🎼 Tonalidad</label>
+                        <input type="text" class="tonalidad" placeholder="Ej: E, C#m" data-key="3-tono" />
+                    </div>
+                    <div class="field">
+                        <label>📝 Notas</label>
+                        <textarea class="notas" placeholder="Notas para el ensayo..." data-key="3-notas"></textarea>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <!-- 4 -->
         <div class="song">
             <div class="song-number">4</div>
-            <div class="song-info">
-                <div class="title">Vuela Vuela <span class="artist">· MAGNETO</span></div>
-                <div class="links">
-                    <a class="yt-btn" href="https://youtu.be/WVJGsY6CSHo?si=Hze7-g1VfNA87GCf" target="_blank" rel="noopener">
-                        <span class="play">▶</span> Ver en YouTube
-                    </a>
+            <div class="song-body">
+                <div class="song-header">
+                    <div class="song-info">
+                        <div class="title">Vuela Vuela <span class="artist">· MAGNETO</span></div>
+                        <div class="links">
+                            <a class="yt-btn" href="https://youtu.be/WVJGsY6CSHo?si=Hze7-g1VfNA87GCf" target="_blank" rel="noopener">
+                                <span class="play">▶</span> Ver en YouTube
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="song-fields">
+                    <div class="field">
+                        <label>🎼 Tonalidad</label>
+                        <input type="text" class="tonalidad" placeholder="Ej: F, Dm" data-key="4-tono" />
+                    </div>
+                    <div class="field">
+                        <label>📝 Notas</label>
+                        <textarea class="notas" placeholder="Notas para el ensayo..." data-key="4-notas"></textarea>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <!-- 5 -->
         <div class="song">
             <div class="song-number">5</div>
-            <div class="song-info">
-                <div class="title">Bella Señora <span class="artist">· EMMANUEL</span></div>
-                <div class="links">
-                    <a class="yt-btn" href="https://youtu.be/v_e1Yr7f6B0?si=m_a94qcsooUkT1D7" target="_blank" rel="noopener">
-                        <span class="play">▶</span> Ver en YouTube
-                    </a>
+            <div class="song-body">
+                <div class="song-header">
+                    <div class="song-info">
+                        <div class="title">Bella Señora <span class="artist">· EMMANUEL</span></div>
+                        <div class="links">
+                            <a class="yt-btn" href="https://youtu.be/v_e1Yr7f6B0?si=m_a94qcsooUkT1D7" target="_blank" rel="noopener">
+                                <span class="play">▶</span> Ver en YouTube
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="song-fields">
+                    <div class="field">
+                        <label>🎼 Tonalidad</label>
+                        <input type="text" class="tonalidad" placeholder="Ej: G, Em" data-key="5-tono" />
+                    </div>
+                    <div class="field">
+                        <label>📝 Notas</label>
+                        <textarea class="notas" placeholder="Notas para el ensayo..." data-key="5-notas"></textarea>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <!-- 6 -->
         <div class="song">
             <div class="song-number">6</div>
-            <div class="song-info">
-                <div class="title">No Puedo Estar Sin Ti <span class="artist">· MOENIA</span></div>
-                <div class="links">
-                    <a class="yt-btn" href="https://youtu.be/lJe-5JXgQco?si=9meY7FMzVRLzmItd" target="_blank" rel="noopener">
-                        <span class="play">▶</span> Ver en YouTube
-                    </a>
+            <div class="song-body">
+                <div class="song-header">
+                    <div class="song-info">
+                        <div class="title">No Puedo Estar Sin Ti <span class="artist">· MOENIA</span></div>
+                        <div class="links">
+                            <a class="yt-btn" href="https://youtu.be/lJe-5JXgQco?si=9meY7FMzVRLzmItd" target="_blank" rel="noopener">
+                                <span class="play">▶</span> Ver en YouTube
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="song-fields">
+                    <div class="field">
+                        <label>🎼 Tonalidad</label>
+                        <input type="text" class="tonalidad" placeholder="Ej: A, F#m" data-key="6-tono" />
+                    </div>
+                    <div class="field">
+                        <label>📝 Notas</label>
+                        <textarea class="notas" placeholder="Notas para el ensayo..." data-key="6-notas"></textarea>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <!-- 7 -->
         <div class="song">
             <div class="song-number">7</div>
-            <div class="song-info">
-                <div class="title">Chica de Humo <span class="artist">· EMMANUEL</span></div>
-                <div class="links">
-                    <a class="yt-btn" href="https://youtu.be/mgkV9fUeVo8?si=trNpTZGmMwYZz5zO" target="_blank" rel="noopener">
-                        <span class="play">▶</span> Estudio
-                    </a>
-                    <a class="yt-btn live" href="https://youtu.be/6-63jqrUYvk?si=6JZnBx9lx3vTe93" target="_blank" rel="noopener">
-                        <span class="play">🎤</span> En Vivo
-                    </a>
+            <div class="song-body">
+                <div class="song-header">
+                    <div class="song-info">
+                        <div class="title">Chica de Humo <span class="artist">· EMMANUEL</span></div>
+                        <div class="links">
+                            <a class="yt-btn" href="https://youtu.be/mgkV9fUeVo8?si=trNpTZGmMwYZz5zO" target="_blank" rel="noopener">
+                                <span class="play">▶</span> Estudio
+                            </a>
+                            <a class="yt-btn live" href="https://youtu.be/6-63jqrUYvk?si=6JZnBx9lx3vTe93" target="_blank" rel="noopener">
+                                <span class="play">🎤</span> En Vivo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="song-fields">
+                    <div class="field">
+                        <label>🎼 Tonalidad</label>
+                        <input type="text" class="tonalidad" placeholder="Ej: Bb, Gm" data-key="7-tono" />
+                    </div>
+                    <div class="field">
+                        <label>📝 Notas</label>
+                        <textarea class="notas" placeholder="Notas para el ensayo..." data-key="7-notas"></textarea>
+                    </div>
                 </div>
             </div>
         </div>
 
     </div>
 
+    <!-- BARRA DE ACCIONES -->
+    <div class="actions-bar">
+        <button class="save-btn" id="saveBtn" type="button">💾 Guardar cambios</button>
+        <button class="clear-btn" id="clearBtn" type="button">🗑️ Borrar todo</button>
+    </div>
+    <div class="saved-msg" id="savedMsg">✅ ¡Cambios guardados!</div>
+
+    <!-- FOOTER -->
     <div class="footer">
         <div class="footer-note">🎼 Toca cada botón para abrir el video en YouTube</div>
 
@@ -496,6 +771,81 @@
     </div>
 
 </div>
+
+<script>
+    // ══════════════════════════════════════════════════════
+    // GUARDAR / CARGAR TONALIDAD Y NOTAS EN EL NAVEGADOR
+    // ══════════════════════════════════════════════════════
+
+    const STORAGE_KEY = 'uranthia-ensayo-datos';
+
+    // Cargar datos guardados al abrir la página
+    function cargarDatos() {
+        const datos = localStorage.getItem(STORAGE_KEY);
+        if (!datos) return;
+
+        try {
+            const obj = JSON.parse(datos);
+            document.querySelectorAll('input[data-key], textarea[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (obj[key] !== undefined) {
+                    el.value = obj[key];
+                }
+            });
+        } catch (e) {
+            console.warn('No se pudieron cargar los datos guardados:', e);
+        }
+    }
+
+    // Guardar datos al hacer clic en el botón
+    function guardarDatos() {
+        const obj = {};
+        document.querySelectorAll('input[data-key], textarea[data-key]').forEach(el => {
+            const key = el.getAttribute('data-key');
+            obj[key] = el.value;
+        });
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(obj));
+
+        // Mostrar mensaje
+        const msg = document.getElementById('savedMsg');
+        msg.classList.add('show');
+        setTimeout(() => msg.classList.remove('show'), 2000);
+    }
+
+    // Borrar todos los datos
+    function borrarDatos() {
+        if (!confirm('¿Seguro que quieres borrar todas las notas y tonalidades?')) return;
+
+        document.querySelectorAll('input[data-key], textarea[data-key]').forEach(el => {
+            el.value = '';
+        });
+        localStorage.removeItem(STORAGE_KEY);
+
+        const msg = document.getElementById('savedMsg');
+        msg.textContent = '🗑️ Datos borrados';
+        msg.classList.add('show');
+        setTimeout(() => {
+            msg.classList.remove('show');
+            msg.textContent = '✅ ¡Cambios guardados!';
+        }, 2000);
+    }
+
+    // Conectar botones
+    document.getElementById('saveBtn').addEventListener('click', guardarDatos);
+    document.getElementById('clearBtn').addEventListener('click', borrarDatos);
+
+    // Cargar al inicio
+    cargarDatos();
+
+    // Guardado automático al escribir (opcional, se guarda cada 1.5 segundos sin pulsar)
+    let timeoutAuto = null;
+    document.querySelectorAll('input[data-key], textarea[data-key]').forEach(el => {
+        el.addEventListener('input', () => {
+            clearTimeout(timeoutAuto);
+            timeoutAuto = setTimeout(guardarDatos, 1500);
+        });
+    });
+</script>
 
 </body>
 </html>

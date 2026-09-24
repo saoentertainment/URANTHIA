@@ -5,30 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Uranthia y su Corazón Latino · Canciones para Ensayar</title>
 
-    <!-- ══════════════════════════════════════════════════════
-         FAVICON Y PREVISUALIZACIÓN AL COMPARTIR
-         ══════════════════════════════════════════════════════ -->
+    <!-- FAVICON Y PREVISUALIZACIÓN -->
     <link rel="icon" type="image/png" href="logo-uranthia.png" />
     <link rel="apple-touch-icon" href="logo-uranthia.png" />
-
-    <!-- Open Graph (WhatsApp, Facebook, etc.) -->
     <meta property="og:title" content="Uranthia y su Corazón Latino · Canciones para Ensayar" />
     <meta property="og:description" content="Repertorio para ensayar el miércoles 30 de octubre de 2026. ¡A darle!" />
     <meta property="og:image" content="logo-uranthia.png" />
     <meta property="og:type" content="website" />
-
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Uranthia y su Corazón Latino · Canciones para Ensayar" />
     <meta name="twitter:description" content="Repertorio para ensayar el miércoles 30 de octubre de 2026." />
     <meta name="twitter:image" content="logo-uranthia.png" />
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 50%, #0d2818 100%);
@@ -50,7 +40,6 @@
             border: 1px solid rgba(212, 175, 55, 0.30);
         }
 
-        /* ── HEADER CON LOGO ── */
         .header {
             background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
             border-radius: 28px;
@@ -128,11 +117,7 @@
             box-shadow: 0 3px 10px rgba(212, 175, 55, 0.30);
         }
 
-        /* ── TÍTULO PRINCIPAL ── */
-        .main-title {
-            text-align: center;
-            margin: 8px 0 6px 0;
-        }
+        .main-title { text-align: center; margin: 8px 0 6px 0; }
         .main-title h1 {
             font-family: 'Georgia', 'Times New Roman', serif;
             font-size: 2.1rem;
@@ -160,11 +145,41 @@
             border: 1px solid rgba(212, 175, 55, 0.40);
             box-shadow: 0 4px 12px rgba(13, 40, 24, 0.25);
         }
-        .main-title .date-badge .emoji {
-            margin-right: 6px;
+
+        .playlist-section { margin: 22px 0 6px 0; text-align: center; }
+        .playlist-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+            color: #0d2818;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 800;
+            padding: 14px 34px;
+            border-radius: 50px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.40), inset 0 1px 0 rgba(255,255,255,0.40);
+            transition: all 0.25s ease;
+            border: 2px solid #0d2818;
+            text-transform: uppercase;
+        }
+        .playlist-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 12px 32px rgba(212, 175, 55, 0.55), inset 0 1px 0 rgba(255,255,255,0.40);
+        }
+        .playlist-btn .yt-icon {
+            background: #0d2818;
+            color: #d4af37;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
         }
 
-        /* ── DIVISOR ── */
         .divider {
             margin: 26px 0 22px 0;
             height: 2px;
@@ -173,12 +188,7 @@
             opacity: 0.6;
         }
 
-        /* ── LISTA DE CANCIONES ── */
-        .song-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+        .song-list { display: flex; flex-direction: column; gap: 10px; }
 
         .song {
             display: flex;
@@ -215,10 +225,7 @@
             border: 1px solid rgba(212, 175, 55, 0.30);
         }
 
-        .song-info {
-            flex: 1;
-            min-width: 0;
-        }
+        .song-info { flex: 1; min-width: 0; }
 
         .song-info .title {
             font-weight: 700;
@@ -269,20 +276,17 @@
             background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
             box-shadow: 0 4px 12px rgba(212, 175, 55, 0.50);
         }
-        .yt-btn .play {
-            font-size: 0.65rem;
-        }
+        .yt-btn .play { font-size: 0.65rem; }
 
-        /* ── FOOTER ── */
         .footer {
             margin-top: 28px;
             padding-top: 20px;
             border-top: 2px solid #e8ece8;
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
             align-items: center;
-            justify-content: space-between;
             gap: 12px;
+            text-align: center;
         }
 
         .footer-note {
@@ -291,6 +295,35 @@
             display: flex;
             align-items: center;
             gap: 6px;
+        }
+
+        .footer-credits {
+            font-size: 0.85rem;
+            color: #0d2818;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            background: linear-gradient(135deg, #f5e6c8 0%, #faf3e0 100%);
+            padding: 8px 22px;
+            border-radius: 30px;
+            border: 1px solid rgba(212, 175, 55, 0.40);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .footer-credits .whale {
+            font-size: 1.1rem;
+            animation: swim 3s ease-in-out infinite;
+        }
+        @keyframes swim {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(4px); }
+        }
+        .footer-credits .names {
+            font-weight: 800;
+            color: #b8860b;
+            letter-spacing: 0.8px;
         }
 
         .footer-tag {
@@ -305,7 +338,6 @@
             border: 1px solid rgba(212, 175, 55, 0.30);
         }
 
-        /* ── RESPONSIVE ── */
         @media (max-width: 650px) {
             .card { padding: 24px 16px; }
             .header { flex-direction: column; align-items: center; text-align: center; padding: 22px 20px; gap: 16px; }
@@ -314,16 +346,19 @@
             .header-text .band-sub { font-size: 0.95rem; }
             .main-title h1 { font-size: 1.4rem; }
             .main-title .date-badge { font-size: 0.8rem; padding: 6px 18px; }
+            .playlist-btn { font-size: 0.85rem; padding: 12px 24px; }
             .song { flex-wrap: wrap; gap: 10px; }
             .song-info .links { width: 100%; }
             .yt-btn { font-size: 0.7rem; padding: 5px 12px; }
-            .footer { flex-direction: column; align-items: flex-start; }
+            .footer-credits { font-size: 0.75rem; padding: 6px 16px; }
         }
         @media (max-width: 400px) {
             .logo-img { width: 75px; height: 75px; }
             .song-number { min-width: 32px; height: 32px; font-size: 0.85rem; border-radius: 10px; }
             .song-info .title { font-size: 0.9rem; }
             .yt-btn { font-size: 0.65rem; padding: 4px 10px; }
+            .playlist-btn { font-size: 0.75rem; padding: 10px 18px; }
+            .footer-credits { font-size: 0.7rem; padding: 5px 12px; }
         }
     </style>
 </head>
@@ -331,7 +366,6 @@
 
 <div class="card">
 
-    <!-- HEADER CON LOGO -->
     <div class="header">
         <img src="logo-uranthia.png" alt="Uranthia y su Corazón Latino" class="logo-img" />
         <div class="header-text">
@@ -341,22 +375,25 @@
         </div>
     </div>
 
-    <!-- TÍTULO PRINCIPAL -->
     <div class="main-title">
-        <h1>
-            Canciones <span class="gold">para Ensayar</span>
-        </h1>
-        <div class="date-badge">
-            <span class="emoji">📅</span> Miércoles 30 de Octubre de 2026
-        </div>
+        <h1>Canciones <span class="gold">para Ensayar</span></h1>
+        <div class="date-badge">📅 Miércoles 30 de Octubre de 2026</div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         BOTÓN PLAYLIST COMPLETA — ENLACE YA CONFIGURADO ✅
+         ══════════════════════════════════════════════════════ -->
+    <div class="playlist-section">
+        <a class="playlist-btn" href="https://www.youtube.com/@CORAZON-LATINO-MUSIC/playlists" target="_blank" rel="noopener">
+            <span class="yt-icon">▶</span>
+            Ver Playlist Completa
+        </a>
     </div>
 
     <div class="divider"></div>
 
-    <!-- LISTA DE CANCIONES -->
     <div class="song-list">
 
-        <!-- 1 -->
         <div class="song">
             <div class="song-number">1</div>
             <div class="song-info">
@@ -369,7 +406,6 @@
             </div>
         </div>
 
-        <!-- 2 -->
         <div class="song">
             <div class="song-number">2</div>
             <div class="song-info">
@@ -382,7 +418,6 @@
             </div>
         </div>
 
-        <!-- 3 -->
         <div class="song">
             <div class="song-number">3</div>
             <div class="song-info">
@@ -395,7 +430,6 @@
             </div>
         </div>
 
-        <!-- 4 -->
         <div class="song">
             <div class="song-number">4</div>
             <div class="song-info">
@@ -408,7 +442,6 @@
             </div>
         </div>
 
-        <!-- 5 -->
         <div class="song">
             <div class="song-number">5</div>
             <div class="song-info">
@@ -421,7 +454,6 @@
             </div>
         </div>
 
-        <!-- 6 -->
         <div class="song">
             <div class="song-number">6</div>
             <div class="song-info">
@@ -434,7 +466,6 @@
             </div>
         </div>
 
-        <!-- 7 -->
         <div class="song">
             <div class="song-number">7</div>
             <div class="song-info">
@@ -443,7 +474,7 @@
                     <a class="yt-btn" href="https://youtu.be/mgkV9fUeVo8?si=trNpTZGmMwYZz5zO" target="_blank" rel="noopener">
                         <span class="play">▶</span> Estudio
                     </a>
-                    <a class="yt-btn live" href="https://youtu.be/6-63jqrUYvk?si=6J5ZnBx9lx3vTe93" target="_blank" rel="noopener">
+                    <a class="yt-btn live" href="https://youtu.be/6-63jqrUYvk?si=6JZnBx9lx3vTe93" target="_blank" rel="noopener">
                         <span class="play">🎤</span> En Vivo
                     </a>
                 </div>
@@ -452,11 +483,15 @@
 
     </div>
 
-    <!-- FOOTER -->
     <div class="footer">
-        <div class="footer-note">
-            🎼 Toca cada botón para abrir el video en YouTube
+        <div class="footer-note">🎼 Toca cada botón para abrir el video en YouTube</div>
+
+        <div class="footer-credits">
+            <span>✨ Creado por</span>
+            <span class="names">SAO &amp; DS</span>
+            <span class="whale" title="DeepSeek">🐋</span>
         </div>
+
         <span class="footer-tag">Uranthia · Corazón Latino</span>
     </div>
 

@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Repertorio · Uranthia y su Corazón Latino</title>
+
+  <link rel="icon" type="image/png" href="logo-uranthia.png" />
+  <link rel="apple-touch-icon" href="logo-uranthia.png" />
+  <meta name="description" content="Repertorio completo de Uranthia y su Corazón Latino, organizado por estilos musicales." />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 50%, #0d2818 100%);
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      padding: 30px 20px;
+      color: #0d2818;
+    }
+
+    .card {
+      max-width: 1000px;
+      width: 100%;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 36px;
+      padding: 38px 38px 32px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55), 0 0 0 2px rgba(212, 175, 55, 0.25);
+      border: 1px solid rgba(212, 175, 55, 0.30);
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
+      border-radius: 28px;
+      padding: 26px 32px;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+      box-shadow: 0 8px 30px rgba(13, 40, 24, 0.40), inset 0 1px 0 rgba(212, 175, 55, 0.15);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .logo-img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #d4af37;
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35), 0 0 0 4px rgba(212, 175, 55, 0.10);
+      flex-shrink: 0;
+      background: #0d2818;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-text { flex: 1; min-width: 200px; position: relative; z-index: 1; }
+
+    .header-text .band-name {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: #d4af37;
+      letter-spacing: 1.5px;
+      line-height: 1.1;
+      text-transform: uppercase;
+      text-shadow: 0 2px 8px rgba(212, 175, 55, 0.30);
+    }
+
+    .header-text .band-sub {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      font-style: italic;
+      color: #f5e6c8;
+      letter-spacing: 0.5px;
+      margin-top: 2px;
+    }
+
+    .header-text .tagline {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #0d2818;
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      padding: 5px 18px;
+      border-radius: 30px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      box-shadow: 0 3px 10px rgba(212, 175, 55, 0.30);
+    }
+
+    /* ── TÍTULO ── */
+    .main-title { text-align: center; margin: 8px 0 22px 0; }
+    .main-title h1 {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 2.1rem;
+      font-weight: 900;
+      color: #0d2818;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+    }
+    .main-title h1 .gold {
+      background: linear-gradient(135deg, #b8860b 0%, #d4af37 50%, #f5d76e 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .main-title .subtitle {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #6b7a6b;
+      font-style: italic;
+    }
+
+    /* ── BUSCADOR ── */
+    .search-box {
+      position: relative;
+      margin-bottom: 18px;
+    }
+    .search-box input {
+      width: 100%;
+      padding: 14px 20px 14px 48px;
+      border-radius: 50px;
+      border: 2px solid #d4af37;
+      background: #fffdf5;
+      font-size: 1rem;
+      font-family: inherit;
+      color: #0d2818;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    .search-box input:focus {
+      border-color: #0d2818;
+      box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.20);
+    }
+    .search-box .icon {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.1rem;
+      pointer-events: none;
+    }
+
+    /* ── FILTROS ── */
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 26px;
+      justify-content: center;
+    }
+    .filter-btn {
+      background: #ffffff;
+      border: 2px solid #e2e8e2;
+      color: #0d2818;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      letter-spacing: 0.3px;
+    }
+    .filter-btn:hover {
+      border-color: #d4af37;
+      background: #faf3e0;
+    }
+    .filter-btn.active {
+      background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
+      color: #d4af37;
+      border-color: #d4af37;
+      box-shadow: 0 4px 12px rgba(13, 40, 24, 0.25);
+    }
+
+    /* ── DIVISOR ── */
+    .divider {
+      margin: 26px 0 22px 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent 0%, #d4af37 50%, transparent 100%);
+      border-radius: 10px;
+      opacity: 0.6;
+    }
+
+    /* ── ESTILO / BLOQUE ── */
+    .estilo {
+      margin-bottom: 26px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(212, 175, 55, 0.30);
+      background: #fafdfa;
+      transition: all 0.2s ease;
+    }
+
+    .estilo-header {
+      background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
+      color: #d4af37;
+      padding: 16px 22px;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .estilo-header .estilo-nombre {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .estilo-header .estilo-icono { font-size: 1.4rem; }
+    .estilo-header .estilo-count {
+      font-size: 0.75rem;
+      background: rgba(212, 175, 55, 0.20);
+      color: #f5e6c8;
+      padding: 4px 12px;
+      border-radius: 30px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .estilo-header .toggle-icon {
+      font-size: 1rem;
+      transition: transform 0.3s ease;
+    }
+    .estilo-header.collapsed .toggle-icon {
+      transform: rotate(-90deg);
+    }
+
+    .estilo-body {
+      padding: 18px 22px 22px;
+      transition: all 0.3s ease;
+    }
+
+    /* ── SUBGRUPO ── */
+    .subgrupo {
+      margin-top: 14px;
+      padding: 12px 18px;
+      background: #ffffff;
+      border-radius: 12px;
+      border-left: 4px solid #d4af37;
+    }
+    .subgrupo:first-child { margin-top: 0; }
+
+    .subgrupo-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 1rem;
+      font-weight: 800;
+      color: #0d2818;
+      margin-bottom: 10px;
+      letter-spacing: 0.5px;
+    }
+    .subgrupo-header .subgrupo-icono { font-size: 1.1rem; }
+    .subgrupo-header .subgrupo-count {
+      font-size: 0.7rem;
+      background: #f5e6c8;
+      color: #b8860b;
+      padding: 2px 10px;
+      border-radius: 30px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-left: auto;
+    }
+
+    /* ── LISTA DE CANCIONES VACÍA ── */
+    .empty-msg {
+      font-size: 0.85rem;
+      color: #97a897;
+      font-style: italic;
+      padding: 10px 0;
+      text-align: center;
+      background: #f6f8f6;
+      border-radius: 8px;
+      border: 1px dashed #d4dcd4;
+    }
+
+    /* ── BARRA DE ACCIONES ── */
+    .actions-bar {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 2px solid #d4af37;
+      background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
+      color: #d4af37;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 800;
+      padding: 12px 24px;
+      border-radius: 30px;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(13, 40, 24, 0.20);
+      text-decoration: none;
+    }
+    .action-btn:hover {
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      color: #0d2818;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.40);
+    }
+
+    .action-btn.secondary {
+      background: #ffffff;
+      color: #6b7a6b;
+      border-color: #e2e8e2;
+    }
+    .action-btn.secondary:hover {
+      border-color: #d4af37;
+      color: #0d2818;
+      background: #faf3e0;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 2px solid #e8ece8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      text-align: center;
+    }
+    .footer-credits {
+      font-size: 0.85rem;
+      color: #0d2818;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      background: linear-gradient(135deg, #f5e6c8 0%, #faf3e0 100%);
+      padding: 8px 22px;
+      border-radius: 30px;
+      border: 1px solid rgba(212, 175, 55, 0.40);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .footer-credits .names { font-weight: 800; color: #b8860b; letter-spacing: 0.8px; }
+    .footer-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #d4af37;
+      background: #0d2818;
+      padding: 5px 18px;
+      border-radius: 30px;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      border: 1px solid rgba(212, 175, 55, 0.30);
+    }
+
+    /* ── AVISO PRÓXIMAMENTE ── */
+    .aviso {
+      display: none;
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
+      color: #d4af37;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.50);
+      border: 2px solid #d4af37;
+      z-index: 1000;
+    }
+    .aviso.show { display: block; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translate(-50%, -20px); }
+      to { opacity: 1; transform: translate(-50%, 0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 650px) {
+      body { padding: 16px 10px; }
+      .card { padding: 20px 14px; border-radius: 24px; }
+      .header { flex-direction: column; text-align: center; padding: 20px; gap: 14px; }
+      .logo-img { width: 90px; height: 90px; }
+      .header-text .band-name { font-size: 1.5rem; }
+      .header-text .band-sub { font-size: 0.95rem; }
+      .main-title h1 { font-size: 1.5rem; }
+      .filter-btn { font-size: 0.7rem; padding: 6px 12px; }
+      .estilo-header { font-size: 1rem; padding: 14px 16px; }
+      .estilo-body { padding: 14px 14px 18px; }
+      .subgrupo { padding: 10px 14px; }
+      .action-btn { font-size: 0.75rem; padding: 10px 18px; }
+    }
+
+    @media (max-width: 400px) {
+      .logo-img { width: 75px; height: 75px; }
+      .main-title h1 { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- AVISO FLOTANTE -->
+  <div class="aviso" id="aviso">🚧 Próximamente: esta función se activará cuando agreguemos canciones.</div>
+
+  <div class="card">
+
+    <!-- HEADER -->
+    <div class="header">
+      <img src="logo-uranthia.png" alt="Uranthia y su Corazón Latino" class="logo-img" />
+      <div class="header-text">
+        <div class="band-name">Uranthia</div>
+        <div class="band-sub">y su Corazón Latino</div>
+        <span class="tagline">📚 Repertorio Completo</span>
+      </div>
+    </div>
+
+    <!-- TÍTULO -->
+    <div class="main-title">
+      <h1>Nuestro <span class="gold">Repertorio</span></h1>
+      <div class="subtitle">Organizado por estilos musicales</div>
+    </div>
+
+    <!-- BUSCADOR -->
+    <div class="search-box">
+      <span class="icon">🔍</span>
+      <input type="text" id="buscador" placeholder="Buscar canción..." />
+    </div>
+
+    <!-- FILTROS -->
+    <div class="filters" id="filtros">
+      <button class="filter-btn active" data-estilo="todos">Todas</button>
+      <button class="filter-btn" data-estilo="grupero">🎺 Grupero</button>
+      <button class="filter-btn" data-estilo="cumbia">🥁 Cumbia</button>
+      <button class="filter-btn" data-estilo="fiesta">🎉 Fiesta</button>
+      <button class="filter-btn" data-estilo="batucada">🥁 Batucada</button>
+      <button class="filter-btn" data-estilo="salsa">🎺 Salsa</button>
+      <button class="filter-btn" data-estilo="ska">🎷 Ska</button>
+      <button class="filter-btn" data-estilo="rock-idioma">🎸 Rock en tu idioma</button>
+      <button class="filter-btn" data-estilo="disco-pop">🕺 Disco and Pop</button>
+      <button class="filter-btn" data-estilo="pop-espanol">🎤 Pop Español</button>
+      <button class="filter-btn" data-estilo="baladas">💔 Baladas clásicas</button>
+      <button class="filter-btn" data-estilo="rock-ingles">🎸 Rock en Inglés</button>
+      <button class="filter-btn" data-estilo="pop-ingles">🎤 Pop Inglés</button>
+      <button class="filter-btn" data-estilo="rock-roll">🕺 Rock and Roll 60s</button>
+      <button class="filter-btn" data-estilo="instrumentales">🎹 Instrumentales</button>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- ESTILOS Y SUBGRUPOS                         -->
+    <!-- ═══════════════════════════════════════════ -->
+
+    <div id="repertorio">
+
+      <!-- 1. GRUPERO -->
+      <div class="estilo" data-estilo="grupero">
+        <div class="estilo-header">
+          <div class="estilo-nombre">
+            <span class="estilo-icono">🎺</span>
+            <span>Grupero</span>
+          </div>
+          <div>
+            <span class="estilo-count">0 canciones</span>
+            <span class="toggle-icon">▼</span>
+          </div>
+        </div>
+        <div class="estilo-body">
+          <div class="subgrupo">
+            <div class="subgrupo-header">
+              <span class="subgrupo-icono">📁</span>
+              <span>Sin subgrupo</span>
+              <span class="subgrupo-count">0</span>
+            </div>
+            <div class="empty-msg">Sin canciones aún · Muy pronto</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. CUMBIA -->
+      <div class="estilo" data-estilo="cumbia">
+        <div class="estilo-header">
+          <div class="estilo-nombre">
+            <span class="estilo-icono">🥁</span>
+            <span>Cumbia</span>
+          </div>
+          <div>
+            <span class="estilo-count">0 canciones</span>
+            <span class="toggle-icon">▼</span>
+          </div>
+        </div>
+        <div class="estilo-body">
+          <div class="subgrupo">
+            <div class="subgrupo-header">
+              <span class="subgrupo-icono">🎺</span>
+              <span>Sonidero</span>
+              <span class="subgrupo-count">0</span>
+            </div>
+            <div class="empty-msg">Sin canciones aún · Muy pronto</div>
+          </div>
+          <div class="subgrupo">
+            <div class="subgrupo-header">
+              <span class="subgrupo-icono">🎺</span>
+              <span>Ángeles Azules</span>
+              <span class="subgrupo-count">0</span>
+            </div>
+            <div class="empty-msg">Sin canciones aún · Muy pronto</div>
+          </div>
+          <div class="subgrupo">
+            <div class="subgrupo-header">
+              <span class="subgrupo-icono">💥</span>
+              <span>Dinamita</span>
+              <span class="subgrupo-count">0</span>
+            </div>
+            <div class="empty-msg">Sin canciones aún · Muy pronto</div>
+          </div>
+          <div class="subgrupo">
+            <div class="subgrupo-header">
+              <span class="subgrupo-icono">📁</span>
+              <span>Sin subgrupo</span>
+              <span class="subgrupo-count">0</span>
+            </div>
+            <div class="empty-msg">Sin canciones aún · Muy pronto</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. FIESTA -->
+      <div class="estilo" data-estilo="fiesta">
+        <div class="estilo-header">
+          <div class="estilo-nombre">
+            <span class="estilo-icono">🎉</span>
+            <span>Fiesta</span>
+          </div>
+          <div>
+            <span class="estilo-count">0 canciones</span>
+            <span class="toggle-icon">▼</span>
+          </div>
+        </div>
+        <div class="estilo-body">
+          <div class="subgrupo">
+            <div class="subgrupo-header">
+              <span class="subgrupo-icono">📁</span>
+              <span>Sin subgrupo</span>
+              <span class="subgrupo-count">0</span>
+            </div>
+            <div class="empty-msg">Sin canciones aún · Muy pronto</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. BATUCADA -->
+      <div class="estilo" data-estilo="batucada">
+        <div class="estilo-header">
+          <div class="estilo-nombre">
+            <span class="estilo-icono">🥁</span>
+            <span>Batucada</span>
+          </div>
+          <div>
+            <span class="estilo-count">0 canciones</span>
+            <span class="toggle-icon">▼</span>
+          </div>
+        </div>
+        <div class="estilo-body">
+          <div class="subgrupo">
+            <div class="subgrupo-header">
+              <span class="subgrupo-icono">📁</span>
+              <span>Sin subgrupo</span>
+              <span class="subgrupo-count">0</span>
+            </div>
+            <div class="empty-msg">Sin canciones aún · Muy pronto</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. SALSA -->
+      <div class="estilo" data-estilo="salsa">
+        <div class="estilo-header">
+          <div class="estilo-nombre">
+            <span class="estilo-icono">🎺</span>
+            <span>Salsa</span>
+          </div>
+          <div>
+            <span class="estilo-count">0 canciones</span>
+            <span class="toggle-icon">▼</span>
+          </div>
+        </div>
+        <div class="estilo-body">
+          <div class="subgrupo">
+            <div class="subgrupo-header">
+              <span class="subgrupo-icono">📁</span>
+              <span>Sin subgrupo</span>
+              <span class="subgrupo-count">0</span>
+            </div>
+            <div class="empty-msg">Sin canciones aún · Muy pronto</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. SKA -->
+      <div class="estilo" data-estilo="ska">
+        <div class="estilo-header">
+          <div class="estilo-nombre">
+            <span class="estilo-icono">🎷</span>
+            <span>Ska</span>
+          </div>
+          <div>
+            <span class="estilo-count">0 canciones</span>
+            <span class="toggle-icon">▼</span>
+          </div>
+        </div>
+        <div class="estilo-body">
+          <div class="subgrupo">
+            <div class="subgrupo-header">
+              <span class="subgrupo-icono">📁</span>
+              <span>Sin subgrupo</span>
+              <span class="subgrupo-count">0</span>
+            </div>
+            <div class="empty-msg">Sin canciones aún · Muy pronto</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. ROCK EN TU IDIOMA -->
+      <div class="estilo" data-estilo="rock-idioma">
+        <div class="estilo-header">
+          <div class="estilo-nombre">
+            <span class="estilo-icono">🎸</span>
+            <span>Rock en tu idioma</span>
+          </div>
+          <div>
+            <span class="estilo-count">0 canciones</span>
+            <span class="toggle-icon">▼</span>
+          </div>
+        </div>
+        <div class="estilo-body">
+          <div class="subgrupo">
+            <div class="subgrupo-header">
+              <span class="subgrupo-icono">🎸</span>
+              <span>Medley Matute</span>
+              <span class="subgrupo-count">0</span>
+            </div>
+            <div class="empty-msg">Sin canciones aún · Muy pronto</div>
+          </div>
+          <div class="subgrupo">
+            <div class="subgrupo-header">
+              <span class="subgrupo-icono">📁</span>
+              <span>Sin subgrupo</span>
+              <span class="subgrupo-count">0</span>
+            </div>
+            <div class="empty-msg">Sin canciones aún · Muy pronto</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. DISCO AND POP -->
+      <div class="estilo" data-estilo="disco-pop">
+        <div class="estilo-header">
+          <div class="estilo-nombre">
+            <span class="estilo-icono">🕺</span>
+            <span>Disco and Pop</span>
+          </div>
+          <div>
+            <span class="estilo-count">0 canciones</span>
+            <span class="toggle-icon">▼</span>
+          </div>
+        </div>
+        <div class="estilo-body">
+          <div class="subgrupo">
+            <div class="subgrupo-header">
+              <span class="subgrupo-icono">📁</span>
+              <span>Sin subgrupo</span>
+              <span class="subgrupo-count">0</span>
+            </div>
+            <div class="empty-msg">Sin canciones aún · Muy pronto</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. POP ESPAÑOL -->
+      <div class="estilo" data-estilo="pop-espanol">
+        <div class="estilo-header">
+          <div class="estilo-nombre">
+            <span class="estilo-icono">🎤</span>
+            <span>Pop Español</span>
+          </div>
+          <div>
+            <span class="estilo-count">0 canciones</span>
+            <span class="toggle-icon">▼</span>
+          </div>
+        </div>
+        <div class="estilo-body">
+          <div class="subgrupo">
+            <div class="subgrupo-header">
+              <span class="subgrupo-icono">👩</span>
+              <span>Pop Mujeres</span>
+              <span class="subgrupo-count">0</span>
+            </div>
+            <div class="empty-msg">Sin canciones aún · Muy pronto</div>
+          </div>
+          <div class="subgrupo">
+            <div class="subgrupo-header">
+              <span class="subgrupo-icono">👨</span>
+              <span>Pop Hombres</span>
+              <span class="subgrupo-count">0</span>
+            </div>
+            <div class="empty-msg">Sin canciones aún · Muy pronto</div>
+          </div>
+          <div class="subgrupo">
+            <div class="subgrupo-header">
+              <span class="subgrupo-icono">🎤</span>
+              <span>Timbiriche</span>
+              <span class="subgrupo-count">0</span>
+            </div>
+            <div class="empty-msg">Sin canciones aún · Muy pronto</div>
+          </div>
+          <div class="subgrupo">
+            <div class="subgrupo-header">
+              <span class="subgrupo-icono">📁</span>
+              <span>Sin subgrupo</span>
+              <span class="subgrupo-count">0</span>
+            </div>
+            <div class="empty-msg">Sin canciones aún · Muy pronto</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. BALADAS CLÁSICAS -->
+      <div class="estilo" data-estilo="baladas">
+        <div class="estilo-header">
+          <div class="estilo-nombre">
+            <span class="estilo-icono">💔</span>
+            <span>Baladas clásicas atemporales</span>
+          </div>
+          <div>
+            <span class="estilo-count">0 canciones</span>
+            <span class="toggle-icon">▼</span>
+          </div>
+        </div>
+        <div class="estilo-body">
+          <div class="subgrupo">
+            <div class="subgrupo-header">
+              <span class="subgrupo-icono">🎤</span>
+              <span>Camilo Sesto</span>
+              <span class="subgrupo-count">0</span>
+            </div>
+            <div class="empty-msg">Sin canciones aún · Muy pronto</div>
+          </div>
+          <div class="subgrupo">
+            <div class="subgrupo-header">
+              <span class="subgrupo-icono">🎤</span>
+              <span>José José</span>
+              <span class="subgrupo-count">0</span>
+            </div>
+            <div class="empty-msg">Sin canciones aún · Muy pronto</div>
+          </div>
+          <div class="subgrupo">
+            <div class="subgrupo-header">
+              <span class="subgrupo-icono">📁</span>
+              <span>Sin subgrupo</span>
+              <span class="subgrupo-count">0</span>
+            </div>
+            <div class="empty-msg">Sin canciones aún · Muy pronto</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11. ROCK EN INGLÉS -->
+      <div class="estilo" data-estilo="rock-ingles">
+        <div class="estilo-header">
+          <div class="estilo-nombre">
+            <span class="estilo-icono">🎸</span>
+            <span>Rock en Inglés</span>
+          </div>
+          <div>
+            <span class="estilo-count">0 canciones</span>
+            <span class="toggle-icon">▼</span>
+          </div>
+        </div>
+        <div class="estilo-body">
+          <div class="subgrupo">
+            <div class="subgrupo-header">
+              <span class="subgrupo-icono">📁</span>
+              <span>Sin subgrupo</span>
+              <span class="subgrupo-count">0</span>
+            </div>
+            <div class="empty-msg">Sin canciones aún · Muy pronto</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12. POP INGLÉS -->
+      <div class="estilo" data-estilo="pop-ingles">
+        <div class="estilo-header">
+          <div class="estilo-nombre">
+            <span class="estilo-icono">🎤</span>
+            <span>Pop Inglés</span>
+          </div>
+          <div>
+            <span class="estilo-count">0 canciones</span>
+            <span class="toggle-icon">▼</span>
+          </div>
+        </div>
+        <div class="estilo-body">
+          <div class="subgrupo">
+            <div class="subgrupo-header">
+              <span class="subgrupo-icono">📁</span>
+              <span>Sin subgrupo</span>
+              <span class="subgrupo-count">0</span>
+            </div>
+            <div class="empty-msg">Sin canciones aún · Muy pronto</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 13. ROCK AND ROLL 60s -->
+      <div class="estilo" data-estilo="rock-roll">
+        <div class="estilo-header">
+          <div class="estilo-nombre">
+            <span class="estilo-icono">🕺</span>
+            <span>Rock and Roll 60s</span>
+          </div>
+          <div>
+            <span class="estilo-count">0 canciones</span>
+            <span class="toggle-icon">▼</span>
+          </div>
+        </div>
+        <div class="estilo-body">
+          <div class="subgrupo">
+            <div class="subgrupo-header">
+              <span class="subgrupo-icono">📁</span>
+              <span>Sin subgrupo</span>
+              <span class="subgrupo-count">0</span>
+            </div>
+            <div class="empty-msg">Sin canciones aún · Muy pronto</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14. INSTRUMENTALES -->
+      <div class="estilo" data-estilo="instrumentales">
+        <div class="estilo-header">
+          <div class="estilo-nombre">
+            <span class="estilo-icono">🎹</span>
+            <span>Instrumentales</span>
+          </div>
+          <div>
+            <span class="estilo-count">0 canciones</span>
+            <span class="toggle-icon">▼</span>
+          </div>
+        </div>
+        <div class="estilo-body">
+          <div class="subgrupo">
+            <div class="subgrupo-header">
+              <span class="subgrupo-icono">📁</span>
+              <span>Sin subgrupo</span>
+              <span class="subgrupo-count">0</span>
+            </div>
+            <div class="empty-msg">Sin canciones aún · Muy pronto</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BARRA DE ACCIONES -->
+    <div class="actions-bar">
+      <button class="action-btn" onclick="avisoProximamente()">➕ Agregar canción</button>
+      <a class="action-btn secondary" href="index.html">🏠 Ir al Setlist</a>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <div class="footer-credits">
+        <span>✨ Creado por</span>
+        <span class="names">SAO &amp; DS</span>
+        <span>🐋</span>
+      </div>
+      <span class="footer-tag">Uranthia · Corazón Latino</span>
+    </div>
+
+  </div>
+
+  <script>
+    // ══════════════════════════════════════════════════════
+    // FILTROS POR ESTILO
+    // ══════════════════════════════════════════════════════
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const estilos = document.querySelectorAll('.estilo');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filtro = btn.dataset.estilo;
+
+        estilos.forEach(estilo => {
+          if (filtro === 'todos') {
+            estilo.style.display = '';
+          } else if (estilo.dataset.estilo === filtro) {
+            estilo.style.display = '';
+          } else {
+            estilo.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // ══════════════════════════════════════════════════════
+    // COLAPSAR / EXPANDIR ESTILOS
+    // ══════════════════════════════════════════════════════
+    document.querySelectorAll('.estilo-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const body = header.nextElementSibling;
+        header.classList.toggle('collapsed');
+        if (body.style.display === 'none') {
+          body.style.display = '';
+        } else {
+          body.style.display = 'none';
+        }
+      });
+    });
+
+    // ══════════════════════════════════════════════════════
+    // BUSCADOR (por ahora solo escribe, no filtra)
+    // ══════════════════════════════════════════════════════
+    document.getElementById('buscador').addEventListener('input', (e) => {
+      const texto = e.target.value.toLowerCase().trim();
+      // Cuando haya canciones, aquí se filtra
+      console.log('Buscando:', texto);
+    });
+
+    // ══════════════════════════════════════════════════════
+    // AVISO PRÓXIMAMENTE
+    // ══════════════════════════════════════════════════════
+    function avisoProximamente() {
+      const aviso = document.getElementById('aviso');
+      aviso.classList.add('show');
+      setTimeout(() => aviso.classList.remove('show'), 2500);
+    }
+  </script>
+
+</body>
+</html>

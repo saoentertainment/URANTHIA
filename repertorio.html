@@ -134,7 +134,6 @@
       box-shadow: 0 3px 10px rgba(212, 175, 55, 0.30);
     }
 
-    /* ── MODO SELECTOR ── */
     .modo-selector {
       display: flex;
       justify-content: center;
@@ -167,7 +166,6 @@
       box-shadow: 0 4px 12px rgba(212, 175, 55, 0.40);
     }
 
-    /* ── TOGGLE TODO ── */
     .toggle-todo-container {
       display: flex;
       justify-content: center;
@@ -195,11 +193,9 @@
       color: #0d2818;
       border-color: #0d2818;
       transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(212, 175, 55, 0.40);
     }
     .toggle-todo-btn .icono { font-size: 1rem; }
 
-    /* ── TÍTULO ── */
     .main-title { text-align: center; margin: 8px 0 22px 0; }
     .main-title h1 {
       font-family: 'Georgia', 'Times New Roman', serif;
@@ -223,7 +219,6 @@
       font-style: italic;
     }
 
-    /* ── BUSCADOR ── */
     .search-box {
       position: relative;
       margin-bottom: 18px;
@@ -279,7 +274,6 @@
     }
     .search-box .clear-btn.visible { display: flex; }
 
-    /* ── SIN RESULTADOS ── */
     .sin-resultados {
       text-align: center;
       padding: 40px 20px;
@@ -297,12 +291,8 @@
       margin-bottom: 10px;
       opacity: 0.6;
     }
-    .sin-resultados strong {
-      color: var(--dorado);
-      font-style: normal;
-    }
+    .sin-resultados strong { color: var(--dorado); font-style: normal; }
 
-    /* ── FILTROS ── */
     .filters {
       display: flex;
       flex-wrap: wrap;
@@ -332,17 +322,14 @@
       background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
       color: #d4af37;
       border-color: #d4af37;
-      box-shadow: 0 4px 12px rgba(13, 40, 24, 0.25);
     }
 
-    /* ── ESTILO ── */
     .estilo {
       margin-bottom: 26px;
       border-radius: 18px;
       overflow: hidden;
       border: 1px solid var(--borde);
       background: var(--card-bg);
-      transition: all 0.2s ease;
     }
 
     .estilo-header {
@@ -370,22 +357,12 @@
       padding: 4px 12px;
       border-radius: 30px;
       font-weight: 700;
-      letter-spacing: 0.5px;
     }
-    .estilo-header .toggle-icon {
-      font-size: 1rem;
-      transition: transform 0.3s ease;
-    }
-    .estilo-header.collapsed .toggle-icon {
-      transform: rotate(-90deg);
-    }
+    .estilo-header .toggle-icon { font-size: 1rem; transition: transform 0.3s ease; }
+    .estilo-header.collapsed .toggle-icon { transform: rotate(-90deg); }
 
-    .estilo-body {
-      padding: 18px 22px 22px;
-      transition: all 0.3s ease;
-    }
+    .estilo-body { padding: 18px 22px 22px; }
 
-    /* ── SUBGRUPO ── */
     .subgrupo {
       margin-top: 14px;
       padding: 12px 18px;
@@ -414,11 +391,9 @@
       padding: 2px 10px;
       border-radius: 30px;
       font-weight: 700;
-      letter-spacing: 0.5px;
       margin-left: auto;
     }
 
-    /* ── CANCIONES ── */
     .cancion {
       display: flex;
       align-items: center;
@@ -460,9 +435,7 @@
       background: rgba(212, 175, 55, 0.15);
       color: var(--dorado);
     }
-    .cancion-info .artista.vacio {
-      color: #b8c0b8;
-    }
+    .cancion-info .artista.vacio { color: #b8c0b8; }
     .cancion-info .artista-input {
       font-size: 0.8rem;
       font-style: italic;
@@ -498,21 +471,9 @@
       color: #b8c0b8;
       cursor: not-allowed;
       letter-spacing: 0.3px;
-      transition: all 0.2s ease;
       white-space: nowrap;
     }
-    .btn-mini.activo {
-      border-color: var(--dorado);
-      color: var(--card-texto);
-      background: #faf3e0;
-      cursor: pointer;
-    }
-    .btn-mini.activo:hover {
-      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
-      border-color: #0d2818;
-    }
 
-    /* ── EMPTY ── */
     .empty-msg {
       font-size: 0.85rem;
       color: var(--card-sub);
@@ -524,7 +485,6 @@
       border: 1px dashed var(--borde);
     }
 
-    /* ── INDICADOR PENDIENTE ── */
     .indicador-pendiente {
       display: inline-block;
       font-size: 0.65rem;
@@ -540,7 +500,6 @@
       vertical-align: middle;
     }
 
-    /* ── ACCIONES ── */
     .actions-bar {
       margin-top: 30px;
       display: flex;
@@ -564,7 +523,6 @@
       letter-spacing: 0.5px;
       text-transform: uppercase;
       transition: all 0.2s ease;
-      box-shadow: 0 4px 12px rgba(13, 40, 24, 0.20);
       text-decoration: none;
     }
     .action-btn:hover {
@@ -584,7 +542,6 @@
       background: #faf3e0;
     }
 
-    /* ── FOOTER ── */
     .footer {
       margin-top: 28px;
       padding-top: 20px;
@@ -609,7 +566,7 @@
       flex-wrap: wrap;
       justify-content: center;
     }
-    .footer-credits .names { font-weight: 800; color: #b8860b; letter-spacing: 0.8px; }
+    .footer-credits .names { font-weight: 800; color: #b8860b; }
     .footer-tag {
       font-size: 0.7rem;
       font-weight: 700;
@@ -617,12 +574,10 @@
       background: #0d2818;
       padding: 5px 18px;
       border-radius: 30px;
-      letter-spacing: 0.6px;
       text-transform: uppercase;
       border: 1px solid var(--borde);
     }
 
-    /* ── AVISO ── */
     .aviso {
       display: none;
       position: fixed;
@@ -641,7 +596,6 @@
     }
     .aviso.show { display: block; animation: fadeIn 0.3s ease; }
 
-    /* ── BOTÓN TOP ── */
     .btn-top {
       position: fixed;
       bottom: 30px;
@@ -658,7 +612,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.50), 0 0 0 4px rgba(212, 175, 55, 0.15);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.50);
       opacity: 0;
       visibility: hidden;
       transform: translateY(20px);
@@ -666,16 +620,8 @@
       z-index: 999;
       padding: 0;
     }
-    .btn-top.visible {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-    .btn-top:hover {
-      background: #0d2818;
-      color: #d4af37;
-      transform: translateY(-4px) scale(1.08);
-    }
+    .btn-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+    .btn-top:hover { background: #0d2818; color: #d4af37; transform: translateY(-4px) scale(1.08); }
 
     /* ── MODAL ── */
     .modal-overlay {
@@ -689,10 +635,7 @@
       justify-content: center;
       padding: 20px;
     }
-    .modal-overlay.visible {
-      display: flex;
-      animation: fadeIn 0.25s ease;
-    }
+    .modal-overlay.visible { display: flex; animation: fadeIn 0.25s ease; }
 
     .modal {
       background: var(--card-bg);
@@ -724,7 +667,6 @@
       font-size: 1.4rem;
       font-weight: 900;
       color: var(--card-texto);
-      letter-spacing: 0.5px;
     }
     .modal-close {
       width: 36px;
@@ -741,11 +683,7 @@
       justify-content: center;
       transition: all 0.2s ease;
     }
-    .modal-close:hover {
-      background: #d4af37;
-      color: #0d2818;
-      border-color: #0d2818;
-    }
+    .modal-close:hover { background: #d4af37; color: #0d2818; }
 
     .modal-campo { margin-bottom: 18px; }
     .modal-campo label {
@@ -774,10 +712,6 @@
     .modal-campo select:focus {
       border-color: var(--dorado);
       box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.20);
-    }
-    .modal-campo input::placeholder {
-      color: #b8c0b8;
-      font-style: italic;
     }
 
     .modal-acciones {
@@ -837,15 +771,73 @@
       transition: all 0.2s ease;
       margin-top: 6px;
     }
-    .btn-nuevo:hover {
-      background: #faf3e0;
-      border-style: solid;
+    .btn-nuevo:hover { background: #faf3e0; border-style: solid; }
+
+    /* ── BIBLIOTECA DE ICONOS ── */
+    .icono-preview {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 8px;
+      padding: 8px 12px;
+      background: rgba(212, 175, 55, 0.10);
+      border-radius: 10px;
+      border: 1.5px dashed var(--dorado);
+    }
+    .icono-preview .icono-grande {
+      font-size: 1.8rem;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--card-bg);
+      border-radius: 10px;
+      border: 1px solid var(--borde);
+    }
+    .icono-preview .icono-texto {
+      font-size: 0.75rem;
+      color: var(--card-sub);
+      font-style: italic;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    .iconos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(55px, 1fr));
+      gap: 8px;
+      max-height: 300px;
+      overflow-y: auto;
+      padding: 8px;
+      background: rgba(212, 175, 55, 0.05);
+      border-radius: 12px;
+      border: 1px solid var(--borde);
+      margin-top: 8px;
     }
+    .icono-item {
+      font-size: 1.6rem;
+      width: 100%;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--card-bg);
+      border: 2px solid var(--borde);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .icono-item:hover {
+      border-color: var(--dorado);
+      background: #faf3e0;
+      transform: scale(1.10);
+    }
+    .icono-item.seleccionado {
+      border-color: var(--dorado);
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.40);
+    }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
     @media (max-width: 650px) {
       body { padding: 16px 10px; }
@@ -859,12 +851,12 @@
       .estilo-body { padding: 14px 14px 18px; }
       .subgrupo { padding: 10px 14px; }
       .cancion { flex-direction: column; align-items: flex-start; gap: 8px; }
-      .cancion-botones { width: 100%; }
       .btn-mini { font-size: 0.65rem; padding: 4px 8px; }
       .action-btn { font-size: 0.75rem; padding: 10px 18px; }
       .btn-top { width: 48px; height: 48px; bottom: 20px; right: 20px; font-size: 1.2rem; }
-      .toggle-todo-btn { font-size: 0.75rem; padding: 8px 16px; }
       .modal { padding: 22px 18px; }
+      .iconos-grid { grid-template-columns: repeat(auto-fill, minmax(48px, 1fr)); }
+      .icono-item { font-size: 1.3rem; }
     }
   </style>
 </head>
@@ -874,7 +866,6 @@
 
   <div class="card">
 
-    <!-- HEADER -->
     <div class="header">
       <img src="logo-uranthia.png" alt="Uranthia y su Corazón Latino" class="logo-img" />
       <div class="header-text">
@@ -884,14 +875,12 @@
       </div>
     </div>
 
-    <!-- SELECTOR DE MODO -->
     <div class="modo-selector">
       <button class="modo-btn" data-modo="dia" onclick="cambiarModo('dia')">☀️ Día</button>
       <button class="modo-btn active" data-modo="noche" onclick="cambiarModo('noche')">🌙 Noche</button>
       <button class="modo-btn" data-modo="show" onclick="cambiarModo('show')">🎤 Show</button>
     </div>
 
-    <!-- BOTÓN DESPLEGAR / REPLEGAR TODO -->
     <div class="toggle-todo-container">
       <button class="toggle-todo-btn" id="toggleTodoBtn" onclick="toggleTodo()">
         <span class="icono" id="toggleTodoIcon">⬇️</span>
@@ -899,26 +888,22 @@
       </button>
     </div>
 
-    <!-- TÍTULO -->
     <div class="main-title">
       <h1>Nuestro <span class="gold">Repertorio</span></h1>
-      <div class="subtitle">Organizado por estilos musicales · Haz clic en el artista para editarlo</div>
+      <div class="subtitle">Organizado por estilos musicales</div>
     </div>
 
-    <!-- BUSCADOR -->
     <div class="search-box">
       <span class="icon">🔍</span>
       <input type="text" id="buscador" placeholder="Buscar canción o artista..." />
       <button class="clear-btn" id="clearBuscador" onclick="borrarBuscador()" title="Borrar búsqueda">✕</button>
     </div>
 
-    <!-- SIN RESULTADOS -->
     <div id="sinResultados" class="sin-resultados" style="display:none;">
       <span class="icono">🔍</span>
       No se encontraron canciones para "<strong id="textoBuscado"></strong>"
     </div>
 
-    <!-- FILTROS -->
     <div class="filters" id="filtros">
       <button class="filter-btn active" data-estilo="todos">Todas</button>
       <button class="filter-btn" data-estilo="grupero">🎺 Grupero</button>
@@ -939,13 +924,11 @@
 
     <div id="repertorio"></div>
 
-    <!-- ACCIONES -->
     <div class="actions-bar">
       <button class="action-btn" onclick="abrirModal()">➕ Agregar canción</button>
       <a class="action-btn secondary" href="index.html">🏠 Ir al Setlist</a>
     </div>
 
-    <!-- FOOTER -->
     <div class="footer">
       <div class="footer-credits">
         <span>✨ Creado por</span>
@@ -957,7 +940,6 @@
 
   </div>
 
-  <!-- BOTÓN TOP -->
   <button class="btn-top" id="btnTop" onclick="irArriba()" title="Volver arriba">⬆</button>
 
   <!-- MODAL AGREGAR CANCIÓN -->
@@ -1001,7 +983,84 @@
     </div>
   </div>
 
+  <!-- MODAL BIBLIOTECA DE ICONOS -->
+  <div class="modal-overlay" id="modalIconos">
+    <div class="modal" style="max-width: 480px;">
+      <div class="modal-header">
+        <h2 id="tituloIconos">🎨 Elige un icono</h2>
+        <button class="modal-close" onclick="cerrarModalIconos()">✕</button>
+      </div>
+
+      <div class="modal-campo">
+        <label id="labelIconoActual">Icono actual</label>
+        <div class="icono-preview">
+          <span class="icono-grande" id="iconoActualPreview">🎵</span>
+          <span class="icono-texto">Haz clic en un icono para seleccionarlo</span>
+        </div>
+      </div>
+
+      <div class="modal-campo">
+        <label>Biblioteca de iconos</label>
+        <div class="iconos-grid" id="iconosGrid"></div>
+      </div>
+
+      <div class="modal-acciones">
+        <button class="modal-btn secondary" onclick="cerrarModalIconos()">Cancelar</button>
+        <button class="modal-btn primary" onclick="confirmarIcono()">✅ Confirmar</button>
+      </div>
+    </div>
+  </div>
+
   <script>
+    // ══════════════════════════════════════════════════════
+    // BIBLIOTECA DE ICONOS
+    // ══════════════════════════════════════════════════════
+    const BIBLIOTECA_ICONOS = [
+      '🎵', '🎶', '🎸', '🎹', '🎺', '🎷', '🎤', '🥁',
+      '🎻', '🪗', '🪘', '🎼', '💥', '🔊', '🎉', '💔',
+      '🕺', '💃', '🌴', '🎧', '🔥', '⚡', '🌙', '⭐',
+      '💫', '🎭', '📀', '💿', '🎬', '📁'
+    ];
+
+    let iconoSeleccionado = '🎵';
+    let callbackIcono = null;
+
+    function abrirBibliotecaIconos(iconoActual, callback) {
+      iconoSeleccionado = iconoActual || '🎵';
+      callbackIcono = callback;
+
+      document.getElementById('iconoActualPreview').textContent = iconoSeleccionado;
+      renderizarIconos();
+      document.getElementById('modalIconos').classList.add('visible');
+    }
+
+    function renderizarIconos() {
+      const grid = document.getElementById('iconosGrid');
+      grid.innerHTML = '';
+
+      BIBLIOTECA_ICONOS.forEach(icono => {
+        const div = document.createElement('div');
+        div.className = 'icono-item' + (icono === iconoSeleccionado ? ' seleccionado' : '');
+        div.textContent = icono;
+        div.onclick = () => {
+          iconoSeleccionado = icono;
+          document.getElementById('iconoActualPreview').textContent = icono;
+          renderizarIconos();
+        };
+        grid.appendChild(div);
+      });
+    }
+
+    function cerrarModalIconos() {
+      document.getElementById('modalIconos').classList.remove('visible');
+      callbackIcono = null;
+    }
+
+    function confirmarIcono() {
+      if (callbackIcono) callbackIcono(iconoSeleccionado);
+      cerrarModalIconos();
+    }
+
     // ══════════════════════════════════════════════════════
     // DATOS DEL REPERTORIO
     // ══════════════════════════════════════════════════════
@@ -1112,7 +1171,8 @@
           { titulo: 'LAMENTO BOLIVIANO', artista: '' },
           { titulo: 'ETERNA SOLEDAD', artista: '' },
           { titulo: 'MARIA', artista: '' },
-          { titulo: 'AQUI NO ES ASI', artista: '' }
+          { titulo: 'AQUI NO ES ASI', artista: '' },
+          { titulo: 'AUN', artista: 'Coda' }
         ]},
         { nombre: 'Alejandra Guzmán', icono: '🎤', canciones: [
           { titulo: 'LOCA', artista: 'Alejandra Guzmán' },
@@ -1178,7 +1238,9 @@
           { titulo: 'A UN MINUTO DE TI', artista: '' },
           { titulo: 'OTRA COMO TU', artista: '' },
           { titulo: 'UN ANGEL COMO EL SOL TU ERES', artista: '' },
-          { titulo: 'IMBRANATO', artista: '' }
+          { titulo: 'IMBRANATO', artista: '' },
+          { titulo: 'NO PODRAS', artista: 'Cristian Castro' },
+          { titulo: 'DEJAME ENTRAR', artista: 'Moenia' }
         ]},
         { nombre: 'Timbiriche', icono: '🎤', canciones: [
           { titulo: 'NO SE SI ES AMOR', artista: 'Timbiriche' },
@@ -1259,13 +1321,16 @@
     ];
 
     // ══════════════════════════════════════════════════════
-    // RENDERIZAR
+    // CONSTANTES
     // ══════════════════════════════════════════════════════
     const STORAGE_KEY = 'uranthia-artistas';
     const STORAGE_NUEVAS = 'uranthia-canciones-nuevas';
     const STORAGE_ESTILOS_NUEVOS = 'uranthia-estilos-nuevos';
     const datosGuardados = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
 
+    // ══════════════════════════════════════════════════════
+    // RENDERIZAR
+    // ══════════════════════════════════════════════════════
     function renderizarRepertorio() {
       const contenedor = document.getElementById('repertorio');
       contenedor.innerHTML = '';
@@ -1393,9 +1458,7 @@
       conectarEventos();
     }
 
-    // ══════════════════════════════════════════════════════
     // EDITAR ARTISTA
-    // ══════════════════════════════════════════════════════
     function editarArtista(el) {
       const key = el.dataset.key;
       const valorActual = el.textContent === '— sin artista —' ? '' : el.textContent;
@@ -1428,9 +1491,7 @@
       });
     }
 
-    // ══════════════════════════════════════════════════════
     // EVENTOS
-    // ══════════════════════════════════════════════════════
     function conectarEventos() {
       document.querySelectorAll('.estilo-header').forEach(header => {
         header.onclick = () => {
@@ -1546,23 +1607,14 @@
 
     // BOTÓN TOP
     window.addEventListener('scroll', () => {
-      const btnTop = document.getElementById('btnTop');
-      btnTop.classList.toggle('visible', window.scrollY > 300);
+      document.getElementById('btnTop').classList.toggle('visible', window.scrollY > 300);
     });
     function irArriba() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // AVISO
-    function avisoProximamente() {
-      const aviso = document.getElementById('aviso');
-      aviso.textContent = '🚧 Próximamente: esta función se activará cuando tengamos más datos.';
-      aviso.classList.add('show');
-      setTimeout(() => aviso.classList.remove('show'), 2500);
-    }
-
     // ══════════════════════════════════════════════════════
-    // MODAL
+    // MODAL AGREGAR CANCIÓN
     // ══════════════════════════════════════════════════════
     function abrirModal() {
       document.getElementById('modalOverlay').classList.add('visible');
@@ -1583,7 +1635,10 @@
     });
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') cerrarModal();
+      if (e.key === 'Escape') {
+        cerrarModal();
+        cerrarModalIconos();
+      }
     });
 
     function cargarEstilosEnSelect() {
@@ -1637,22 +1692,31 @@
       }
     }
 
+    // CREAR NUEVO ESTILO (con biblioteca de iconos)
     function crearNuevoEstilo() {
       const nombre = prompt('Nombre del nuevo estilo:');
       if (!nombre || !nombre.trim()) return;
 
       const id = nombre.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-      const icono = prompt('Icono (ej: 🎸, 🎺, 🎤):', '🎵') || '🎵';
 
-      const estilosNuevos = JSON.parse(localStorage.getItem(STORAGE_ESTILOS_NUEVOS) || '{}');
-      estilosNuevos[id] = { id, nombre: nombre.trim(), icono, subgrupos: [] };
-      localStorage.setItem(STORAGE_ESTILOS_NUEVOS, JSON.stringify(estilosNuevos));
+      // Abrir biblioteca de iconos
+      abrirBibliotecaIconos('🎵', (icono) => {
+        const estilosNuevos = JSON.parse(localStorage.getItem(STORAGE_ESTILOS_NUEVOS) || '{}');
+        estilosNuevos[id] = { id, nombre: nombre.trim(), icono, subgrupos: [] };
+        localStorage.setItem(STORAGE_ESTILOS_NUEVOS, JSON.stringify(estilosNuevos));
 
-      cargarEstilosEnSelect();
-      document.getElementById('nuevoEstilo').value = id;
-      actualizarSubgrupos();
+        cargarEstilosEnSelect();
+        document.getElementById('nuevoEstilo').value = id;
+        actualizarSubgrupos();
+
+        const aviso = document.getElementById('aviso');
+        aviso.textContent = `✅ Estilo "${nombre.trim()}" creado (pendiente de fijar)`;
+        aviso.classList.add('show');
+        setTimeout(() => aviso.classList.remove('show'), 2500);
+      });
     }
 
+    // CREAR NUEVO SUBGRUPO (con biblioteca de iconos)
     function crearNuevoSubgrupo() {
       const estiloId = document.getElementById('nuevoEstilo').value;
       if (!estiloId) {
@@ -1663,23 +1727,28 @@
       const nombre = prompt('Nombre del nuevo subgrupo:');
       if (!nombre || !nombre.trim()) return;
 
-      const icono = prompt('Icono (ej: 📁, 🎤, 👩):', '📁') || '📁';
+      abrirBibliotecaIconos('📁', (icono) => {
+        const estilosNuevos = JSON.parse(localStorage.getItem(STORAGE_ESTILOS_NUEVOS) || '{}');
+        if (!estilosNuevos[estiloId]) {
+          const estiloBase = REPERTORIO.find(e => e.id === estiloId);
+          estilosNuevos[estiloId] = {
+            id: estiloId,
+            nombre: estiloBase ? estiloBase.nombre : estiloId,
+            icono: estiloBase ? estiloBase.icono : '🎵',
+            subgrupos: []
+          };
+        }
+        estilosNuevos[estiloId].subgrupos.push({ nombre: nombre.trim(), icono });
+        localStorage.setItem(STORAGE_ESTILOS_NUEVOS, JSON.stringify(estilosNuevos));
 
-      const estilosNuevos = JSON.parse(localStorage.getItem(STORAGE_ESTILOS_NUEVOS) || '{}');
-      if (!estilosNuevos[estiloId]) {
-        const estiloBase = REPERTORIO.find(e => e.id === estiloId);
-        estilosNuevos[estiloId] = {
-          id: estiloId,
-          nombre: estiloBase ? estiloBase.nombre : estiloId,
-          icono: estiloBase ? estiloBase.icono : '🎵',
-          subgrupos: []
-        };
-      }
-      estilosNuevos[estiloId].subgrupos.push({ nombre: nombre.trim(), icono });
-      localStorage.setItem(STORAGE_ESTILOS_NUEVOS, JSON.stringify(estilosNuevos));
+        actualizarSubgrupos();
+        document.getElementById('nuevoSubgrupo').value = nombre.trim();
 
-      actualizarSubgrupos();
-      document.getElementById('nuevoSubgrupo').value = nombre.trim();
+        const aviso = document.getElementById('aviso');
+        aviso.textContent = `✅ Subgrupo "${nombre.trim()}" creado (pendiente de fijar)`;
+        aviso.classList.add('show');
+        setTimeout(() => aviso.classList.remove('show'), 2500);
+      });
     }
 
     function guardarCancion() {

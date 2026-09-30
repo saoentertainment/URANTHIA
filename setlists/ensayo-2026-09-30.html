@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1ER ENSAYO EVENTO NOVIEMBRE 28 2026 · Uranthia</title>
+
+  <link rel="icon" type="image/png" href="../logo-uranthia.png" />
+  <link rel="apple-touch-icon" href="../logo-uranthia.png" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --fondo: linear-gradient(135deg, #0d2818 0%, #1a3d2a 50%, #0d2818 100%);
+      --card-bg: #ffffff;
+      --card-texto: #0d2818;
+      --card-sub: #6b7a6b;
+      --borde: rgba(212, 175, 55, 0.30);
+      --dorado: #d4af37;
+      --dorado-suave: #f5d76e;
+      --sombra: rgba(0, 0, 0, 0.55);
+    }
+
+    body.modo-show {
+      --fondo: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%);
+      --card-bg: #0a0a0a;
+      --card-texto: #f5d76e;
+      --card-sub: #d4af37;
+      --borde: rgba(212, 175, 55, 0.55);
+      --sombra: rgba(212, 175, 55, 0.20);
+    }
+
+    body.modo-dia {
+      --fondo: linear-gradient(135deg, #e8f0e8 0%, #f0f5f0 50%, #e8f0e8 100%);
+      --card-bg: #ffffff;
+      --card-texto: #0d2818;
+      --card-sub: #6b7a6b;
+      --borde: rgba(212, 175, 55, 0.40);
+      --sombra: rgba(0, 0, 0, 0.15);
+    }
+
+    body {
+      background: var(--fondo);
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      padding: 30px 20px;
+      color: var(--card-texto);
+      transition: background 0.4s ease;
+    }
+
+    .card {
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border-radius: 36px;
+      padding: 38px 38px 32px;
+      box-shadow: 0 25px 60px var(--sombra), 0 0 0 2px var(--borde);
+      border: 1px solid var(--borde);
+    }
+
+    .header {
+      background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
+      border-radius: 28px;
+      padding: 26px 32px;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+      box-shadow: 0 8px 30px rgba(13, 40, 24, 0.40), inset 0 1px 0 rgba(212, 175, 55, 0.15);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .logo-img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #d4af37;
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35), 0 0 0 4px rgba(212, 175, 55, 0.10);
+      flex-shrink: 0;
+      background: #0d2818;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-text { flex: 1; min-width: 200px; position: relative; z-index: 1; }
+    .header-text .band-name {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: #d4af37;
+      letter-spacing: 1.5px;
+      line-height: 1.1;
+      text-transform: uppercase;
+      text-shadow: 0 2px 8px rgba(212, 175, 55, 0.30);
+    }
+    .header-text .band-sub {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      font-style: italic;
+      color: #f5e6c8;
+      letter-spacing: 0.5px;
+      margin-top: 2px;
+    }
+
+    .modo-selector {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
+    .modo-btn {
+      background: var(--card-bg);
+      border: 2px solid var(--borde);
+      color: var(--card-texto);
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 8px 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .modo-btn:hover {
+      border-color: var(--dorado);
+      background: #faf3e0;
+      color: #0d2818;
+    }
+    .modo-btn.active {
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      color: #0d2818;
+      border-color: #0d2818;
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.40);
+    }
+
+    .setlist-header {
+      background: linear-gradient(135deg, #faf3e0 0%, #f5e6c8 100%);
+      border-radius: 20px;
+      padding: 24px 28px;
+      border: 2px solid var(--borde);
+      border-left: 6px solid var(--dorado);
+      margin-bottom: 26px;
+      text-align: center;
+    }
+    .setlist-tipo-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 5px 16px;
+      border-radius: 30px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .setlist-tipo-badge.ensayo {
+      background: linear-gradient(135deg, #b19cd9 0%, #d4b5e8 100%);
+      color: #4a2c6b;
+      border: 1px solid #8b6ba8;
+    }
+    .setlist-tipo-badge.show {
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      color: #0d2818;
+      border: 1px solid #b8860b;
+    }
+
+    .setlist-titulo {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #0d2818;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .setlist-detalles {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      font-size: 0.9rem;
+      color: #4a4a4a;
+      font-style: italic;
+    }
+    .setlist-detalles .detalle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .canciones-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--borde);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .canciones-titulo {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--card-texto);
+    }
+    .canciones-contador {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--dorado);
+      background: rgba(212, 175, 55, 0.12);
+      padding: 6px 14px;
+      border-radius: 30px;
+      border: 1px solid var(--borde);
+    }
+
+    .cancion-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--card-bg);
+      border-radius: 14px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+      border: 1px solid var(--borde);
+      border-left: 5px solid var(--dorado);
+      transition: all 0.25s ease;
+    }
+    .cancion-item:hover {
+      border-left-color: #0d2818;
+      box-shadow: 0 4px 12px rgba(13, 40, 24, 0.08);
+    }
+    .cancion-item.tocada {
+      opacity: 0.55;
+      background: rgba(212, 175, 55, 0.08);
+    }
+    .cancion-item.tocada .cancion-titulo {
+      text-decoration: line-through;
+      text-decoration-thickness: 2px;
+      text-decoration-color: var(--dorado);
+    }
+
+    .cancion-numero {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: var(--dorado);
+      background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: 2px solid var(--dorado);
+    }
+
+    .cancion-check-setlist {
+      width: 32px;
+      height: 32px;
+      border: 2px solid var(--dorado);
+      border-radius: 8px;
+      background: var(--card-bg);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: transparent;
+    }
+    .cancion-check-setlist:hover {
+      border-color: #0d2818;
+      transform: scale(1.08);
+      box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.20);
+    }
+    .cancion-check-setlist.checked {
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      border-color: #0d2818;
+      color: #0d2818;
+    }
+    .cancion-check-setlist.checked::after { content: '✓'; }
+
+    .cancion-info-setlist { flex: 1; min-width: 0; }
+    .cancion-titulo {
+      font-weight: 800;
+      color: var(--card-texto);
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+    .cancion-artista-setlist {
+      font-size: 0.85rem;
+      color: var(--card-sub);
+      font-style: italic;
+      margin-top: 3px;
+    }
+
+    .cancion-botones-setlist {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .btn-mini-setlist {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 30px;
+      border: 1.5px solid var(--borde);
+      background: var(--card-bg);
+      color: #b8c0b8;
+      cursor: not-allowed;
+      white-space: nowrap;
+    }
+
+    .acciones-setlist {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn-accion {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 800;
+      padding: 12px 24px;
+      border-radius: 30px;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      border: 2px solid transparent;
+    }
+    .btn-accion.primary {
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      color: #0d2818;
+      border-color: #0d2818;
+    }
+    .btn-accion.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.60);
+    }
+    .btn-accion.secondary {
+      background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
+      color: #d4af37;
+      border-color: #d4af37;
+    }
+    .btn-accion.secondary:hover {
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      color: #0d2818;
+      border-color: #0d2818;
+    }
+
+    .footer {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 2px solid var(--borde);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      text-align: center;
+    }
+    .footer-credits {
+      font-size: 0.85rem;
+      color: #0d2818;
+      font-weight: 600;
+      background: linear-gradient(135deg, #f5e6c8 0%, #faf3e0 100%);
+      padding: 8px 22px;
+      border-radius: 30px;
+      border: 1px solid var(--borde);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .footer-credits .names { font-weight: 800; color: #b8860b; letter-spacing: 0.8px; }
+    .footer-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #d4af37;
+      background: #0d2818;
+      padding: 5px 18px;
+      border-radius: 30px;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      border: 1px solid var(--borde);
+    }
+
+    .barra-progreso {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+      padding: 14px 20px;
+      background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
+      border-radius: 20px;
+      border: 2px solid var(--dorado);
+    }
+    .barra-progreso .progreso-texto {
+      color: #f5e6c8;
+      font-size: 0.85rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .barra-progreso .progreso-texto strong {
+      color: #d4af37;
+      font-size: 1rem;
+    }
+    .barra-progreso .progreso-barra {
+      flex: 1;
+      height: 14px;
+      background: rgba(212, 175, 55, 0.15);
+      border-radius: 30px;
+      overflow: hidden;
+      border: 1px solid rgba(212, 175, 55, 0.30);
+    }
+    .barra-progreso .progreso-lleno {
+      height: 100%;
+      background: linear-gradient(90deg, #d4af37 0%, #f5d76e 100%);
+      transition: width 0.4s ease;
+    }
+
+    @media (max-width: 650px) {
+      body { padding: 16px 10px; }
+      .card { padding: 20px 14px; border-radius: 24px; }
+      .header { flex-direction: column; text-align: center; padding: 20px; gap: 14px; }
+      .logo-img { width: 75px; height: 75px; }
+      .header-text .band-name { font-size: 1.3rem; }
+      .setlist-titulo { font-size: 1.4rem; }
+      .cancion-item { flex-wrap: wrap; gap: 10px; padding: 12px 14px; }
+      .cancion-botones-setlist { width: 100%; }
+      .btn-mini-setlist { font-size: 0.65rem; padding: 4px 8px; }
+      .btn-accion { font-size: 0.75rem; padding: 10px 18px; }
+      .barra-progreso { flex-direction: column; gap: 8px; }
+      .barra-progreso .progreso-barra { width: 100%; }
+    }
+  </style>
+</head>
+<body class="modo-noche">
+
+  <div class="card">
+
+    <div class="header">
+      <img src="../logo-uranthia.png" alt="Uranthia y su Corazón Latino" class="logo-img" />
+      <div class="header-text">
+        <div class="band-name">Uranthia</div>
+        <div class="band-sub">y su Corazón Latino</div>
+      </div>
+    </div>
+
+    <div class="modo-selector">
+      <button class="modo-btn" data-modo="dia" onclick="cambiarModo('dia')">☀️ Día</button>
+      <button class="modo-btn active" data-modo="noche" onclick="cambiarModo('noche')">🌙 Noche</button>
+      <button class="modo-btn" data-modo="show" onclick="cambiarModo('show')">🎤 Show</button>
+    </div>
+
+    <div class="setlist-header">
+      <span class="setlist-tipo-badge ensayo">🎤 Ensayo</span>
+      <h1 class="setlist-titulo">1ER ENSAYO EVENTO NOVIEMBRE 28 2026</h1>
+      <div class="setlist-detalles">
+        <span class="detalle">📅 miércoles, 30 de septiembre de 2026</span>
+        <span class="detalle">🕐 21:00</span>
+        <span class="detalle">📍 CASA ATZY-SANTI</span>
+      </div>
+    </div>
+
+    <div class="barra-progreso">
+      <span class="progreso-texto">🎵 Tocadas: <strong id="tocadasNum">0</strong> / <strong>25</strong></span>
+      <div class="progreso-barra">
+        <div class="progreso-lleno" id="progresoLleno" style="width: 0%;"></div>
+      </div>
+      <span class="progreso-texto"><strong id="porcentaje">0%</strong></span>
+    </div>
+
+    <div class="canciones-header">
+      <span class="canciones-titulo">🎵 Canciones</span>
+      <span class="canciones-contador">25 canciones</span>
+    </div>
+
+    <div id="listaCanciones"></div>
+
+    <div class="acciones-setlist">
+      <a class="btn-accion secondary" href="../index.html">🏠 Volver al portal</a>
+      <button class="btn-accion primary" onclick="reiniciarCheck()">🔄 Reiniciar check</button>
+    </div>
+
+    <div class="footer">
+      <div class="footer-credits">
+        <span>✨ Creado por</span>
+        <span class="names">SAO &amp; DS</span>
+        <span>🐋</span>
+      </div>
+      <span class="footer-tag">Uranthia · Corazón Latino</span>
+    </div>
+
+  </div>
+
+  <script>
+    // ══════════════════════════════════════════════════════
+    // DATOS DEL SETLIST FIJO
+    // ══════════════════════════════════════════════════════
+    const SETLIST_ID = 'ensayo-2026-09-30-fijo';
+    const CANCIONES = [
+      'VUELA VUELA',
+      'NO PODRAS',
+      'AUN',
+      'BELLA SEÑORA',
+      'CHICA DE HUMO',
+      'BAILA',
+      'LA FUERZA DEL DESTINO',
+      'CHICAS COCODRILO',
+      'NO VOY EN TREN',
+      'EN ALGUN LUGAR',
+      'VIVIENDO DE NOCHE',
+      'MURALLA',
+      'VISITA NUESTRO BAR',
+      'PERSIANA AMERICANA',
+      'NO HUYAS DE MI',
+      'NI TU NI NADIE',
+      'ES POR AMOR',
+      'TE BESE',
+      'GUITARRAS BLANCAS',
+      'CUANDO SEAS GRANDE',
+      'NO PUEDO ESTAR SIN TI',
+      'DEJAME ENTRAR',
+      'VIENTO',
+      'MIRALA MIRALO',
+      'ETERNAMENTE BELLA'
+    ];
+
+    const STORAGE_TOCADAS = 'uranthia-setlist-tocadas';
+
+    // ══════════════════════════════════════════════════════
+    // MODO
+    // ══════════════════════════════════════════════════════
+    function cambiarModo(modo) {
+      document.body.classList.remove('modo-dia', 'modo-noche', 'modo-show');
+      document.body.classList.add('modo-' + modo);
+      document.querySelectorAll('.modo-btn').forEach(b => b.classList.remove('active'));
+      document.querySelector(`.modo-btn[data-modo="${modo}"]`).classList.add('active');
+      localStorage.setItem('uranthia-modo', modo);
+    }
+    const modoGuardado = localStorage.getItem('uranthia-modo') || 'noche';
+    cambiarModo(modoGuardado);
+
+    // ══════════════════════════════════════════════════════
+    // TOCADAS
+    // ══════════════════════════════════════════════════════
+    function cargarTocadas() {
+      const todas = JSON.parse(localStorage.getItem(STORAGE_TOCADAS) || '{}');
+      return todas[SETLIST_ID] || [];
+    }
+
+    function guardarTocadas(tocadas) {
+      const todas = JSON.parse(localStorage.getItem(STORAGE_TOCADAS) || '{}');
+      todas[SETLIST_ID] = tocadas;
+      localStorage.setItem(STORAGE_TOCADAS, JSON.stringify(todas));
+    }
+
+    function toggleTocada(index) {
+      const tocadas = cargarTocadas();
+      const idx = tocadas.indexOf(index);
+
+      if (idx >= 0) {
+        tocadas.splice(idx, 1);
+      } else {
+        tocadas.push(index);
+      }
+
+      guardarTocadas(tocadas);
+      renderizar();
+    }
+
+    function reiniciarCheck() {
+      if (!confirm('¿Reiniciar el check de todas las canciones?')) return;
+      guardarTocadas([]);
+      renderizar();
+    }
+
+    // ══════════════════════════════════════════════════════
+    // RENDERIZAR
+    // ══════════════════════════════════════════════════════
+    function renderizar() {
+      const tocadas = cargarTocadas();
+      const total = CANCIONES.length;
+      const totalTocadas = tocadas.length;
+      const porcentaje = total > 0 ? Math.round((totalTocadas / total) * 100) : 0;
+
+      // Barra de progreso
+      document.getElementById('tocadasNum').textContent = totalTocadas;
+      document.getElementById('porcentaje').textContent = porcentaje + '%';
+      document.getElementById('progresoLleno').style.width = porcentaje + '%';
+
+      // Lista de canciones
+      const lista = document.getElementById('listaCanciones');
+      lista.innerHTML = CANCIONES.map((titulo, index) => {
+        const estaTocada = tocadas.includes(index);
+        const claseTocada = estaTocada ? 'tocada' : '';
+        const claseCheck = estaTocada ? 'checked' : '';
+
+        return `
+          <div class="cancion-item ${claseTocada}">
+            <div class="cancion-numero">${index + 1}</div>
+            <div class="cancion-check-setlist ${claseCheck}" onclick="toggleTocada(${index})"></div>
+            <div class="cancion-info-setlist">
+              <div class="cancion-titulo">${titulo}</div>
+            </div>
+            <div class="cancion-botones-setlist">
+              <span class="btn-mini-setlist">▶ YouTube</span>
+              <span class="btn-mini-setlist">📄 Letra</span>
+              <span class="btn-mini-setlist">🎸 Acordes</span>
+              <span class="btn-mini-setlist">🎹 Piano</span>
+              <span class="btn-mini-setlist">🎸 Bajo</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    renderizar();
+  </script>
+
+</body>
+</html>

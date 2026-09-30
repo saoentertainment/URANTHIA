@@ -139,7 +139,7 @@
       display: flex;
       justify-content: center;
       gap: 8px;
-      margin-bottom: 22px;
+      margin-bottom: 16px;
       flex-wrap: wrap;
     }
     .modo-btn {
@@ -166,6 +166,38 @@
       border-color: #0d2818;
       box-shadow: 0 4px 12px rgba(212, 175, 55, 0.40);
     }
+
+    /* ── TOGGLE TODO ── */
+    .toggle-todo-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 22px;
+    }
+    .toggle-todo-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--card-bg);
+      border: 2px solid var(--dorado);
+      color: var(--card-texto);
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 10px 22px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      letter-spacing: 0.3px;
+      box-shadow: 0 3px 10px rgba(212, 175, 55, 0.20);
+    }
+    .toggle-todo-btn:hover {
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      color: #0d2818;
+      border-color: #0d2818;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(212, 175, 55, 0.40);
+    }
+    .toggle-todo-btn .icono { font-size: 1rem; }
 
     /* ── TÍTULO ── */
     .main-title { text-align: center; margin: 8px 0 22px 0; }
@@ -245,9 +277,7 @@
       background: #b8860b;
       transform: translateY(-50%) scale(1.1);
     }
-    .search-box .clear-btn.visible {
-      display: flex;
-    }
+    .search-box .clear-btn.visible { display: flex; }
 
     /* ── SIN RESULTADOS ── */
     .sin-resultados {
@@ -494,6 +524,22 @@
       border: 1px dashed var(--borde);
     }
 
+    /* ── INDICADOR PENDIENTE ── */
+    .indicador-pendiente {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #ffd966 0%, #f5d76e 100%);
+      color: #8b6914;
+      padding: 2px 8px;
+      border-radius: 30px;
+      margin-left: 8px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border: 1px solid #b8860b;
+      vertical-align: middle;
+    }
+
     /* ── ACCIONES ── */
     .actions-bar {
       margin-top: 30px;
@@ -591,66 +637,11 @@
       font-size: 0.9rem;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.50);
       border: 2px solid #d4af37;
-      z-index: 1000;
+      z-index: 3000;
     }
     .aviso.show { display: block; animation: fadeIn 0.3s ease; }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translate(-50%, -20px); }
-      to { opacity: 1; transform: translate(-50%, 0); }
-    }
 
-    @media (max-width: 650px) {
-      body { padding: 16px 10px; }
-      .card { padding: 20px 14px; border-radius: 24px; }
-      .header { flex-direction: column; text-align: center; padding: 20px; gap: 14px; }
-      .logo-img { width: 90px; height: 90px; }
-      .header-text .band-name { font-size: 1.5rem; }
-      .main-title h1 { font-size: 1.5rem; }
-      .filter-btn { font-size: 0.7rem; padding: 6px 12px; }
-      .estilo-header { font-size: 1rem; padding: 14px 16px; }
-      .estilo-body { padding: 14px 14px 18px; }
-      .subgrupo { padding: 10px 14px; }
-      .cancion { flex-direction: column; align-items: flex-start; gap: 8px; }
-      .cancion-botones { width: 100%; }
-      .btn-mini { font-size: 0.65rem; padding: 4px 8px; }
-      .action-btn { font-size: 0.75rem; padding: 10px 18px; }
-    }
-        /* ── BOTÓN DESPLEGAR / REPLEGAR TODO ── */
-    .toggle-todo-container {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 16px;
-    }
-    .toggle-todo-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--card-bg);
-      border: 2px solid var(--dorado);
-      color: var(--card-texto);
-      font-family: inherit;
-      font-size: 0.85rem;
-      font-weight: 700;
-      padding: 10px 22px;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      letter-spacing: 0.3px;
-      box-shadow: 0 3px 10px rgba(212, 175, 55, 0.20);
-    }
-    .toggle-todo-btn:hover {
-      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
-      color: #0d2818;
-      border-color: #0d2818;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(212, 175, 55, 0.40);
-    }
-    .toggle-todo-btn .icono {
-      font-size: 1rem;
-      transition: transform 0.3s ease;
-    }
-
-    /* ── BOTÓN TOP FLOTANTE ── */
+    /* ── BOTÓN TOP ── */
     .btn-top {
       position: fixed;
       bottom: 30px;
@@ -684,30 +675,202 @@
       background: #0d2818;
       color: #d4af37;
       transform: translateY(-4px) scale(1.08);
-      box-shadow: 0 10px 25px rgba(13, 40, 24, 0.50), 0 0 0 4px rgba(212, 175, 55, 0.30);
     }
-    .btn-top:active {
-      transform: translateY(-2px) scale(1.02);
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(6px);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.visible {
+      display: flex;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .modal {
+      background: var(--card-bg);
+      border-radius: 24px;
+      padding: 32px;
+      max-width: 520px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.60), 0 0 0 2px var(--dorado);
+      border: 1px solid var(--borde);
+      animation: slideUp 0.3s ease;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 22px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--borde);
+    }
+    .modal-header h2 {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--card-texto);
+      letter-spacing: 0.5px;
+    }
+    .modal-close {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid var(--borde);
+      background: var(--card-bg);
+      color: var(--card-texto);
+      font-size: 1.1rem;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+    .modal-close:hover {
+      background: #d4af37;
+      color: #0d2818;
+      border-color: #0d2818;
+    }
+
+    .modal-campo { margin-bottom: 18px; }
+    .modal-campo label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--dorado);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .modal-campo input,
+    .modal-campo select {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 2px solid var(--borde);
+      background: var(--card-bg);
+      color: var(--card-texto);
+      font-family: inherit;
+      font-size: 0.95rem;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    .modal-campo input:focus,
+    .modal-campo select:focus {
+      border-color: var(--dorado);
+      box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.20);
+    }
+    .modal-campo input::placeholder {
+      color: #b8c0b8;
+      font-style: italic;
+    }
+
+    .modal-acciones {
+      display: flex;
+      gap: 10px;
+      margin-top: 26px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .modal-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 800;
+      padding: 12px 24px;
+      border-radius: 30px;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+      border: 2px solid transparent;
+    }
+    .modal-btn.primary {
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      color: #0d2818;
+      border-color: #0d2818;
+    }
+    .modal-btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.40);
+    }
+    .modal-btn.secondary {
+      background: var(--card-bg);
+      color: var(--card-sub);
+      border-color: var(--borde);
+    }
+    .modal-btn.secondary:hover {
+      border-color: var(--dorado);
+      color: #0d2818;
+      background: #faf3e0;
+    }
+
+    .btn-nuevo {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--dorado);
+      background: transparent;
+      border: 1.5px dashed var(--dorado);
+      padding: 6px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-top: 6px;
+    }
+    .btn-nuevo:hover {
+      background: #faf3e0;
+      border-style: solid;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     @media (max-width: 650px) {
-      .btn-top {
-        width: 48px;
-        height: 48px;
-        bottom: 20px;
-        right: 20px;
-        font-size: 1.2rem;
-      }
-      .toggle-todo-btn {
-        font-size: 0.75rem;
-        padding: 8px 16px;
-      }
+      body { padding: 16px 10px; }
+      .card { padding: 20px 14px; border-radius: 24px; }
+      .header { flex-direction: column; text-align: center; padding: 20px; gap: 14px; }
+      .logo-img { width: 90px; height: 90px; }
+      .header-text .band-name { font-size: 1.5rem; }
+      .main-title h1 { font-size: 1.5rem; }
+      .filter-btn { font-size: 0.7rem; padding: 6px 12px; }
+      .estilo-header { font-size: 1rem; padding: 14px 16px; }
+      .estilo-body { padding: 14px 14px 18px; }
+      .subgrupo { padding: 10px 14px; }
+      .cancion { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .cancion-botones { width: 100%; }
+      .btn-mini { font-size: 0.65rem; padding: 4px 8px; }
+      .action-btn { font-size: 0.75rem; padding: 10px 18px; }
+      .btn-top { width: 48px; height: 48px; bottom: 20px; right: 20px; font-size: 1.2rem; }
+      .toggle-todo-btn { font-size: 0.75rem; padding: 8px 16px; }
+      .modal { padding: 22px 18px; }
     }
   </style>
 </head>
 <body class="modo-noche">
 
-  <div class="aviso" id="aviso">🚧 Próximamente: esta función se activará cuando tengamos más datos.</div>
+  <div class="aviso" id="aviso">🚧 Próximamente</div>
 
   <div class="card">
 
@@ -727,7 +890,8 @@
       <button class="modo-btn active" data-modo="noche" onclick="cambiarModo('noche')">🌙 Noche</button>
       <button class="modo-btn" data-modo="show" onclick="cambiarModo('show')">🎤 Show</button>
     </div>
-        <!-- BOTÓN DESPLEGAR / REPLEGAR TODO -->
+
+    <!-- BOTÓN DESPLEGAR / REPLEGAR TODO -->
     <div class="toggle-todo-container">
       <button class="toggle-todo-btn" id="toggleTodoBtn" onclick="toggleTodo()">
         <span class="icono" id="toggleTodoIcon">⬇️</span>
@@ -777,7 +941,7 @@
 
     <!-- ACCIONES -->
     <div class="actions-bar">
-      <button class="action-btn" onclick="avisoProximamente()">➕ Agregar canción</button>
+      <button class="action-btn" onclick="abrirModal()">➕ Agregar canción</button>
       <a class="action-btn secondary" href="index.html">🏠 Ir al Setlist</a>
     </div>
 
@@ -793,469 +957,382 @@
 
   </div>
 
+  <!-- BOTÓN TOP -->
+  <button class="btn-top" id="btnTop" onclick="irArriba()" title="Volver arriba">⬆</button>
+
+  <!-- MODAL AGREGAR CANCIÓN -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>➕ Agregar canción</h2>
+        <button class="modal-close" onclick="cerrarModal()">✕</button>
+      </div>
+
+      <div class="modal-campo">
+        <label>🎵 Nombre de la canción *</label>
+        <input type="text" id="nuevaCancion" placeholder="Ej: La Fuerza del Destino" />
+      </div>
+
+      <div class="modal-campo">
+        <label>🎤 Artista (opcional)</label>
+        <input type="text" id="nuevoArtista" placeholder="Ej: Mecano" />
+      </div>
+
+      <div class="modal-campo">
+        <label>🎼 Estilo *</label>
+        <select id="nuevoEstilo" onchange="actualizarSubgrupos()">
+          <option value="">— Selecciona un estilo —</option>
+        </select>
+        <button class="btn-nuevo" onclick="crearNuevoEstilo()">➕ Crear nuevo estilo</button>
+      </div>
+
+      <div class="modal-campo">
+        <label>📁 Subgrupo (opcional)</label>
+        <select id="nuevoSubgrupo">
+          <option value="">— Sin subgrupo —</option>
+        </select>
+        <button class="btn-nuevo" onclick="crearNuevoSubgrupo()">➕ Crear nuevo subgrupo</button>
+      </div>
+
+      <div class="modal-acciones">
+        <button class="modal-btn secondary" onclick="cerrarModal()">Cancelar</button>
+        <button class="modal-btn primary" onclick="guardarCancion()">💾 Guardar</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     // ══════════════════════════════════════════════════════
     // DATOS DEL REPERTORIO
     // ══════════════════════════════════════════════════════
     const REPERTORIO = [
-      {
-        id: 'grupero',
-        icono: '🎺',
-        nombre: 'Grupero',
-        subgrupos: [
-          {
-            nombre: 'Medley Grupero',
-            icono: '🎺',
-            canciones: [
-              { titulo: 'MORENA', artista: 'Felinos' },
-              { titulo: 'COMO UNA NOVELA', artista: '' },
-              { titulo: 'TODO ME GUSTA DE TI', artista: '' },
-              { titulo: 'NO TE PERTENECE', artista: '' },
-              { titulo: 'AMOR PROHIBIDO', artista: '' }
-            ]
-          }
-        ]
-      },
-      {
-        id: 'cumbia',
-        icono: '🥁',
-        nombre: 'Cumbia',
-        subgrupos: [
-          {
-            nombre: 'Sonidero',
-            icono: '🔊',
-            canciones: [
-              { titulo: 'TUS JEFES NO ME QUIEREN', artista: '' },
-              { titulo: 'EL PASO DEL GIGANTE', artista: '' },
-              { titulo: 'OYE MUJER', artista: '' },
-              { titulo: 'BONITA MENTIROSA', artista: '' },
-              { titulo: 'SUAVECITO', artista: '' },
-              { titulo: 'CADENITA', artista: '' }
-            ]
-          },
-          {
-            nombre: 'Ángeles Azules',
-            icono: '🎺',
-            canciones: [
-              { titulo: 'NEGRA TOMASA', artista: '' },
-              { titulo: 'NUNCA ES SUFICIENTE', artista: '' },
-              { titulo: '17 AÑOS', artista: '' },
-              { titulo: 'BAILA ESTA CUMBIA', artista: '' },
-              { titulo: 'AMOR A PRIMERA VISTA', artista: '' }
-            ]
-          },
-          {
-            nombre: 'Dinamita',
-            icono: '💥',
-            canciones: [
-              { titulo: 'CARCACHA', artista: '' },
-              { titulo: 'MIL HORAS', artista: '' },
-              { titulo: 'QUE NADIE SEPA MI SUFRIR', artista: '' },
-              { titulo: 'QUE BELLO', artista: '' },
-              { titulo: 'OYE', artista: '' }
-            ]
-          },
-          {
-            nombre: 'Sin subgrupo',
-            icono: '📁',
-            canciones: [
-              { titulo: 'DESVELADO', artista: '' },
-              { titulo: 'AMANDA BAILA CON LA BANDA', artista: '' },
-              { titulo: 'BANDIDO', artista: '' },
-              { titulo: 'CABALLO VIEJO', artista: '' },
-              { titulo: 'COMO LA FLOR', artista: '' },
-              { titulo: 'EL DIARIO DE UN BORRACHO', artista: '' },
-              { titulo: 'HE CREIDO', artista: 'Yairas' },
-              { titulo: 'LLORAR Y LLORAR', artista: 'Los Socios del Ritmo' },
-              { titulo: 'MOLIENDO CAFÉ', artista: '' },
-              { titulo: 'NEGRO JOSÉ', artista: '' },
-              { titulo: 'PAGARÁS', artista: 'Pastor López' },
-              { titulo: 'REGRESA AMOR', artista: 'Los Askis' },
-              { titulo: 'VIENES Y TE VAS', artista: '' }
-            ]
-          }
-        ]
-      },
-      {
-        id: 'fiesta',
-        icono: '🎉',
-        nombre: 'Fiesta',
-        subgrupos: [
-          {
-            nombre: 'Sin subgrupo',
-            icono: '📁',
-            canciones: [
-              { titulo: 'BULE BULE', artista: '' },
-              { titulo: 'BLUE SUEDE SHOES', artista: 'Carl Perkins' },
-              { titulo: 'LA PLAGA', artista: 'Los Teen Tops' },
-              { titulo: 'NO ROMPAS MAS', artista: '' },
-              { titulo: 'PAYASO DE RODEO', artista: '' },
-              { titulo: 'LA CHONA', artista: '' },
-              { titulo: 'SAPITO', artista: '' },
-              { titulo: 'EL FINAL', artista: 'Rostros Ocultos' },
-              { titulo: 'CUANDO SEAS GRANDE', artista: 'Miguel Mateos' },
-              { titulo: 'YO QUIERO CHUPAR', artista: '' }
-            ]
-          }
-        ]
-      },
-      {
-        id: 'batucada',
-        icono: '🥁',
-        nombre: 'Batucada',
-        subgrupos: [
-          {
-            nombre: 'Sin subgrupo',
-            icono: '📁',
-            canciones: [
-              { titulo: 'VIVIR MI VIDA', artista: '' },
-              { titulo: 'CARNAVAL', artista: '' },
-              { titulo: 'SPANISH GIRL', artista: '' },
-              { titulo: 'REINA DEL SWING', artista: '' }
-            ]
-          }
-        ]
-      },
-      {
-        id: 'salsa',
-        icono: '🎺',
-        nombre: 'Salsa',
-        subgrupos: [
-          {
-            nombre: 'Sin subgrupo',
-            icono: '📁',
-            canciones: [
-              { titulo: 'YO NO SE MAÑANA', artista: '' },
-              { titulo: 'LA CITA', artista: '' },
-              { titulo: 'IDILIO', artista: '' },
-              { titulo: 'ASI FUE', artista: '' }
-            ]
-          }
-        ]
-      },
-      {
-        id: 'ska',
-        icono: '🎷',
-        nombre: 'Ska',
-        subgrupos: [
-          {
-            nombre: 'Sin subgrupo',
-            icono: '📁',
-            canciones: [
-              { titulo: 'AMARGO ADIOS', artista: '' },
-              { titulo: 'LA DOSIS PERFECTA', artista: '' },
-              { titulo: 'ONE STEP BEYOND', artista: '' },
-              { titulo: 'ESQUELETO', artista: '' },
-              { titulo: 'POBRE DE TI (Desde Pte Rápida)', artista: '' },
-              { titulo: 'POR QUE TE VAS', artista: '' },
-              { titulo: 'CONTRABANDO Y TRAICION', artista: '' },
-              { titulo: 'ARREGLAME EL ALMA', artista: '' },
-              { titulo: 'PACHUCO', artista: '' },
-              { titulo: 'KUMBALA', artista: '' },
-              { titulo: 'PAQUITA DISCO', artista: '' },
-              { titulo: 'ASI FUE', artista: 'Dread Mar I' }
-            ]
-          }
-        ]
-      },
-      {
-        id: 'rock-idioma',
-        icono: '🎸',
-        nombre: 'Rock en tu idioma',
-        subgrupos: [
-          {
-            nombre: 'Sin subgrupo',
-            icono: '📁',
-            canciones: [
-              { titulo: 'VIENTO', artista: 'Caifanes' },
-              { titulo: 'CUANDO SEAS GRANDE', artista: 'Miguel Mateos' },
-              { titulo: 'GUITARRAS BLANCAS', artista: 'Enanitos Verdes' },
-              { titulo: 'SON DEL DOLOR', artista: '' },
-              { titulo: 'NI TU NI NADIE', artista: 'Alaska y Dinarama' },
-              { titulo: 'EL FINAL', artista: '' },
-              { titulo: 'KUMBALA', artista: '' },
-              { titulo: 'LAMENTO BOLIVIANO', artista: '' },
-              { titulo: 'ETERNA SOLEDAD', artista: '' },
-              { titulo: 'MARIA', artista: '' },
-              { titulo: 'AQUI NO ES ASI', artista: '' }
-            ]
-          },
-          {
-            nombre: 'Alejandra Guzmán',
-            icono: '🎤',
-            canciones: [
-              { titulo: 'LOCA', artista: 'Alejandra Guzmán' },
-              { titulo: 'HACER EL AMOR', artista: 'Alejandra Guzmán' },
-              { titulo: 'MIRALA MIRALO', artista: 'Alejandra Guzmán' },
-              { titulo: 'ETERNAMENTE BELLA', artista: 'Alejandra Guzmán' },
-              { titulo: 'MALA HIERBA', artista: 'Alejandra Guzmán' }
-            ]
-          },
-          {
-            nombre: 'Medley Matute',
-            icono: '🎸',
-            canciones: [
-              { titulo: 'LA FUERZA DEL DESTINO', artista: 'Matute' },
-              { titulo: 'CHICAS COCODRILO', artista: 'Matute' },
-              { titulo: 'NO VOY EN TREN', artista: 'Matute' },
-              { titulo: 'EN ALGUN LUGAR', artista: 'Matute' },
-              { titulo: 'VIVIENDO DE NOCHE', artista: 'Matute' },
-              { titulo: 'MURALLA', artista: 'Matute' },
-              { titulo: 'VISITA NUESTRO BAR', artista: 'Matute' },
-              { titulo: 'PERSIANA AMERICANA', artista: 'Matute' },
-              { titulo: 'NO HUYAS DE MI', artista: 'Matute' }
-            ]
-          }
-        ]
-      },
-      {
-        id: 'disco-pop',
-        icono: '🕺',
-        nombre: 'Disco and Pop',
-        subgrupos: [
-          {
-            nombre: 'Sin subgrupo',
-            icono: '📁',
-            canciones: [
-              { titulo: 'LADIE', artista: '' },
-              { titulo: 'SING IT BACK', artista: 'Moloko' },
-              { titulo: 'I FEEL LOVE', artista: 'Donna Summer' },
-              { titulo: 'FUNKY TOWN', artista: 'Lipps Inc.' },
-              { titulo: 'A LITTLE RESPECT', artista: 'Erasure' },
-              { titulo: 'SQUARE ROOMS', artista: '' },
-              { titulo: 'BEDS ARE BURNING', artista: '' },
-              { titulo: "IT'S MY LIFE", artista: 'Talk Talk' },
-              { titulo: 'ENJOY THE SILENCE', artista: 'Depeche Mode' },
-              { titulo: 'WHERE DO YOU GO', artista: 'No Mercy' }
-            ]
-          }
-        ]
-      },
-      {
-        id: 'pop-espanol',
-        icono: '🎤',
-        nombre: 'Pop Español',
-        subgrupos: [
-          {
-            nombre: 'Sin subgrupo',
-            icono: '📁',
-            canciones: [
-              { titulo: 'TE QUIERO TANTO TANTO', artista: '' },
-              { titulo: 'UN AÑO MAS', artista: 'Mecano' }
-            ]
-          },
-          {
-            nombre: 'Pop Mujeres',
-            icono: '👩',
-            canciones: [
-              { titulo: 'TODOS ME MIRAN', artista: '' },
-              { titulo: 'CON LOS OJOS CERRADOS', artista: '' },
-              { titulo: 'EL ECO DE TU VOZ', artista: '' },
-              { titulo: 'PIERDEME EL RESPETO', artista: '' },
-              { titulo: 'LAS MIL Y UNA NOCHES', artista: '' },
-              { titulo: 'ENTRE TU Y MIL MARES', artista: '' },
-              { titulo: 'DR. PSIQUIATRA', artista: '' },
-              { titulo: 'PELIGRO', artista: '' },
-              { titulo: 'DONDE ESTAN', artista: '' },
-              { titulo: 'ESCRIBEME EN EL CIELO', artista: '' },
-              { titulo: 'ROSA PASTEL', artista: '' },
-              { titulo: 'ME CUESTA TANTO', artista: '' }
-            ]
-          },
-          {
-            nombre: 'Pop Hombres',
-            icono: '👨',
-            canciones: [
-              { titulo: 'TE BESE', artista: 'Ragazzi' },
-              { titulo: 'VUELA VUELA', artista: 'Magneto' },
-              { titulo: 'DUENDE', artista: '' },
-              { titulo: 'AMANTE BANDIDO', artista: '' },
-              { titulo: 'CHICA DE HUMO', artista: 'Emmanuel' },
-              { titulo: 'BELLA SEÑORA', artista: 'Emmanuel' },
-              { titulo: 'NO PUEDO ESTAR SIN TI', artista: 'Moenia' },
-              { titulo: 'SAN MIGUEL', artista: '' },
-              { titulo: 'A UN MINUTO DE TI', artista: '' },
-              { titulo: 'OTRA COMO TU', artista: '' },
-              { titulo: 'UN ANGEL COMO EL SOL TU ERES', artista: '' },
-              { titulo: 'IMBRANATO', artista: '' }
-            ]
-          },
-          {
-            nombre: 'Timbiriche',
-            icono: '🎤',
-            canciones: [
-              { titulo: 'NO SE SI ES AMOR', artista: 'Timbiriche' },
-              { titulo: 'SOY UN DESASTRE', artista: 'Timbiriche' },
-              { titulo: 'TU Y YO SOMOS UNO MISMO', artista: 'Timbiriche' },
-              { titulo: 'CORRO VUELO ME ACELERO', artista: 'Timbiriche' },
-              { titulo: 'SI NO ES AHORA', artista: 'Timbiriche' },
-              { titulo: 'BESOS DE CENIZA', artista: 'Timbiriche' },
-              { titulo: 'AMAME HASTA CON LOS DIENTES', artista: 'Timbiriche' },
-              { titulo: 'CON TODOS MENOS CONMIGO', artista: 'Timbiriche' },
-              { titulo: 'PRINCESA TIBETANA', artista: 'Timbiriche' },
-              { titulo: 'MURIENDO LENTO', artista: 'Timbiriche' }
-            ]
-          }
-        ]
-      },
-      {
-        id: 'baladas',
-        icono: '💔',
-        nombre: 'Baladas clásicas atemporales',
-        subgrupos: [
-          {
-            nombre: 'Sin subgrupo',
-            icono: '📁',
-            canciones: [
-              { titulo: 'LA CHICA DE LA BOUTIQUE', artista: 'Heleno' }
-            ]
-          },
-          {
-            nombre: 'Camilo Sesto',
-            icono: '🎤',
-            canciones: [
-              { titulo: 'JAMAS', artista: 'Camilo Sesto' },
-              { titulo: 'SI TU TE VAS', artista: 'Camilo Sesto' },
-              { titulo: 'ALGO DE MI', artista: 'Camilo Sesto' },
-              { titulo: 'VIVIR ASI ES MORIR DE AMOR', artista: 'Camilo Sesto' }
-            ]
-          },
-          {
-            nombre: 'José José',
-            icono: '🎤',
-            canciones: [
-              { titulo: 'SERE', artista: 'José José' },
-              { titulo: 'AMOR AMOR', artista: 'José José' },
-              { titulo: 'SI ME DEJAS AHORA', artista: 'José José' },
-              { titulo: 'LA NAVE DEL OLVIDO', artista: 'José José' },
-              { titulo: 'VOLCAN', artista: 'José José' },
-              { titulo: 'EL TRISTE', artista: 'José José' }
-            ]
-          },
-          {
-            nombre: 'Juan Gabriel',
-            icono: '🎤',
-            canciones: [
-              { titulo: 'ASI FUE', artista: 'Juan Gabriel' },
-              { titulo: 'COSTUMBRES', artista: 'Juan Gabriel' }
-            ]
-          },
-          {
-            nombre: 'Alejandro Fernández',
-            icono: '🎤',
-            canciones: [
-              { titulo: 'ADIOS AMOR', artista: 'Alejandro Fernández' },
-              { titulo: 'LA DIFERENCIA', artista: 'Alejandro Fernández' }
-            ]
-          }
-        ]
-      },
-      {
-        id: 'rock-ingles',
-        icono: '🎸',
-        nombre: 'Rock en Inglés',
-        subgrupos: [
-          {
-            nombre: 'Sin subgrupo',
-            icono: '📁',
-            canciones: [
-              { titulo: 'NEW YEARS DAY', artista: 'U2' }
-            ]
-          }
-        ]
-      },
-      {
-        id: 'pop-ingles',
-        icono: '🎤',
-        nombre: 'Pop Inglés',
-        subgrupos: [
-          {
-            nombre: 'Sin subgrupo',
-            icono: '📁',
-            canciones: [
-              { titulo: 'EYES WITHOUT A FACE', artista: 'Billy Idol' },
-              { titulo: 'CARELESS WHISPER', artista: 'George Michael' }
-            ]
-          }
-        ]
-      },
-      {
-        id: 'rock-roll',
-        icono: '🕺',
-        nombre: 'Rock and Roll 60s',
-        subgrupos: [
-          {
-            nombre: 'Sin subgrupo',
-            icono: '📁',
-            canciones: [
-              { titulo: 'AGUJETAS DE COLOR DE ROSA', artista: '' },
-              { titulo: 'DESPEINADA', artista: '' },
-              { titulo: 'POPOTITOS', artista: '' },
-              { titulo: 'CHICA ALBOROTADA', artista: '' },
-              { titulo: 'STAND BY ME', artista: 'Ben E. King' },
-              { titulo: 'FUE EN UN CAFE', artista: '' },
-              { titulo: 'ROCK DE LA CARCEL', artista: '' },
-              { titulo: 'BLUE SUEDE SHOES', artista: 'Carl Perkins' },
-              { titulo: 'LA PLAGA', artista: 'Los Teen Tops' },
-              { titulo: 'BUEN ROCK', artista: '' },
-              { titulo: 'PRIMAVERA', artista: '' },
-              { titulo: 'CHICA YE YE', artista: '' }
-            ]
-          }
-        ]
-      },
-      {
-        id: 'instrumentales',
-        icono: '🎹',
-        nombre: 'Instrumentales',
-        subgrupos: [
-          {
-            nombre: 'Sin subgrupo',
-            icono: '📁',
-            canciones: [
-              { titulo: 'UNA MAÑANA', artista: '' },
-              { titulo: 'CHICA DE IPANEMA', artista: '' },
-              { titulo: 'BLUES BOSSA', artista: '' },
-              { titulo: 'SAMBA DE UNA SOLA NOTA', artista: '' },
-              { titulo: 'FLY ME TO THE MOON', artista: '' }
-            ]
-          }
-        ]
-      }
+      { id: 'grupero', icono: '🎺', nombre: 'Grupero', subgrupos: [
+        { nombre: 'Medley Grupero', icono: '🎺', canciones: [
+          { titulo: 'MORENA', artista: 'Felinos' },
+          { titulo: 'COMO UNA NOVELA', artista: '' },
+          { titulo: 'TODO ME GUSTA DE TI', artista: '' },
+          { titulo: 'NO TE PERTENECE', artista: '' },
+          { titulo: 'AMOR PROHIBIDO', artista: '' }
+        ]}
+      ]},
+      { id: 'cumbia', icono: '🥁', nombre: 'Cumbia', subgrupos: [
+        { nombre: 'Sonidero', icono: '🔊', canciones: [
+          { titulo: 'TUS JEFES NO ME QUIEREN', artista: '' },
+          { titulo: 'EL PASO DEL GIGANTE', artista: '' },
+          { titulo: 'OYE MUJER', artista: '' },
+          { titulo: 'BONITA MENTIROSA', artista: '' },
+          { titulo: 'SUAVECITO', artista: '' },
+          { titulo: 'CADENITA', artista: '' }
+        ]},
+        { nombre: 'Ángeles Azules', icono: '🎺', canciones: [
+          { titulo: 'NEGRA TOMASA', artista: '' },
+          { titulo: 'NUNCA ES SUFICIENTE', artista: '' },
+          { titulo: '17 AÑOS', artista: '' },
+          { titulo: 'BAILA ESTA CUMBIA', artista: '' },
+          { titulo: 'AMOR A PRIMERA VISTA', artista: '' }
+        ]},
+        { nombre: 'Dinamita', icono: '💥', canciones: [
+          { titulo: 'CARCACHA', artista: '' },
+          { titulo: 'MIL HORAS', artista: '' },
+          { titulo: 'QUE NADIE SEPA MI SUFRIR', artista: '' },
+          { titulo: 'QUE BELLO', artista: '' },
+          { titulo: 'OYE', artista: '' }
+        ]},
+        { nombre: 'Sin subgrupo', icono: '📁', canciones: [
+          { titulo: 'DESVELADO', artista: '' },
+          { titulo: 'AMANDA BAILA CON LA BANDA', artista: '' },
+          { titulo: 'BANDIDO', artista: '' },
+          { titulo: 'CABALLO VIEJO', artista: '' },
+          { titulo: 'COMO LA FLOR', artista: '' },
+          { titulo: 'EL DIARIO DE UN BORRACHO', artista: '' },
+          { titulo: 'HE CREIDO', artista: 'Yairas' },
+          { titulo: 'LLORAR Y LLORAR', artista: 'Los Socios del Ritmo' },
+          { titulo: 'MOLIENDO CAFÉ', artista: '' },
+          { titulo: 'NEGRO JOSÉ', artista: '' },
+          { titulo: 'PAGARÁS', artista: 'Pastor López' },
+          { titulo: 'REGRESA AMOR', artista: 'Los Askis' },
+          { titulo: 'VIENES Y TE VAS', artista: '' }
+        ]}
+      ]},
+      { id: 'fiesta', icono: '🎉', nombre: 'Fiesta', subgrupos: [
+        { nombre: 'Sin subgrupo', icono: '📁', canciones: [
+          { titulo: 'BULE BULE', artista: '' },
+          { titulo: 'BLUE SUEDE SHOES', artista: 'Carl Perkins' },
+          { titulo: 'LA PLAGA', artista: 'Los Teen Tops' },
+          { titulo: 'NO ROMPAS MAS', artista: '' },
+          { titulo: 'PAYASO DE RODEO', artista: '' },
+          { titulo: 'LA CHONA', artista: '' },
+          { titulo: 'SAPITO', artista: '' },
+          { titulo: 'EL FINAL', artista: 'Rostros Ocultos' },
+          { titulo: 'CUANDO SEAS GRANDE', artista: 'Miguel Mateos' },
+          { titulo: 'YO QUIERO CHUPAR', artista: '' }
+        ]}
+      ]},
+      { id: 'batucada', icono: '🥁', nombre: 'Batucada', subgrupos: [
+        { nombre: 'Sin subgrupo', icono: '📁', canciones: [
+          { titulo: 'VIVIR MI VIDA', artista: '' },
+          { titulo: 'CARNAVAL', artista: '' },
+          { titulo: 'SPANISH GIRL', artista: '' },
+          { titulo: 'REINA DEL SWING', artista: '' }
+        ]}
+      ]},
+      { id: 'salsa', icono: '🎺', nombre: 'Salsa', subgrupos: [
+        { nombre: 'Sin subgrupo', icono: '📁', canciones: [
+          { titulo: 'YO NO SE MAÑANA', artista: '' },
+          { titulo: 'LA CITA', artista: '' },
+          { titulo: 'IDILIO', artista: '' },
+          { titulo: 'ASI FUE', artista: '' }
+        ]}
+      ]},
+      { id: 'ska', icono: '🎷', nombre: 'Ska', subgrupos: [
+        { nombre: 'Sin subgrupo', icono: '📁', canciones: [
+          { titulo: 'AMARGO ADIOS', artista: '' },
+          { titulo: 'LA DOSIS PERFECTA', artista: '' },
+          { titulo: 'ONE STEP BEYOND', artista: '' },
+          { titulo: 'ESQUELETO', artista: '' },
+          { titulo: 'POBRE DE TI (Desde Pte Rápida)', artista: '' },
+          { titulo: 'POR QUE TE VAS', artista: '' },
+          { titulo: 'CONTRABANDO Y TRAICION', artista: '' },
+          { titulo: 'ARREGLAME EL ALMA', artista: '' },
+          { titulo: 'PACHUCO', artista: '' },
+          { titulo: 'KUMBALA', artista: '' },
+          { titulo: 'PAQUITA DISCO', artista: '' },
+          { titulo: 'ASI FUE', artista: 'Dread Mar I' }
+        ]}
+      ]},
+      { id: 'rock-idioma', icono: '🎸', nombre: 'Rock en tu idioma', subgrupos: [
+        { nombre: 'Sin subgrupo', icono: '📁', canciones: [
+          { titulo: 'VIENTO', artista: 'Caifanes' },
+          { titulo: 'CUANDO SEAS GRANDE', artista: 'Miguel Mateos' },
+          { titulo: 'GUITARRAS BLANCAS', artista: 'Enanitos Verdes' },
+          { titulo: 'SON DEL DOLOR', artista: '' },
+          { titulo: 'NI TU NI NADIE', artista: 'Alaska y Dinarama' },
+          { titulo: 'EL FINAL', artista: '' },
+          { titulo: 'KUMBALA', artista: '' },
+          { titulo: 'LAMENTO BOLIVIANO', artista: '' },
+          { titulo: 'ETERNA SOLEDAD', artista: '' },
+          { titulo: 'MARIA', artista: '' },
+          { titulo: 'AQUI NO ES ASI', artista: '' }
+        ]},
+        { nombre: 'Alejandra Guzmán', icono: '🎤', canciones: [
+          { titulo: 'LOCA', artista: 'Alejandra Guzmán' },
+          { titulo: 'HACER EL AMOR', artista: 'Alejandra Guzmán' },
+          { titulo: 'MIRALA MIRALO', artista: 'Alejandra Guzmán' },
+          { titulo: 'ETERNAMENTE BELLA', artista: 'Alejandra Guzmán' },
+          { titulo: 'MALA HIERBA', artista: 'Alejandra Guzmán' }
+        ]},
+        { nombre: 'Medley Matute', icono: '🎸', canciones: [
+          { titulo: 'LA FUERZA DEL DESTINO', artista: 'Matute' },
+          { titulo: 'CHICAS COCODRILO', artista: 'Matute' },
+          { titulo: 'NO VOY EN TREN', artista: 'Matute' },
+          { titulo: 'EN ALGUN LUGAR', artista: 'Matute' },
+          { titulo: 'VIVIENDO DE NOCHE', artista: 'Matute' },
+          { titulo: 'MURALLA', artista: 'Matute' },
+          { titulo: 'VISITA NUESTRO BAR', artista: 'Matute' },
+          { titulo: 'PERSIANA AMERICANA', artista: 'Matute' },
+          { titulo: 'NO HUYAS DE MI', artista: 'Matute' }
+        ]}
+      ]},
+      { id: 'disco-pop', icono: '🕺', nombre: 'Disco and Pop', subgrupos: [
+        { nombre: 'Sin subgrupo', icono: '📁', canciones: [
+          { titulo: 'LADIE', artista: '' },
+          { titulo: 'SING IT BACK', artista: 'Moloko' },
+          { titulo: 'I FEEL LOVE', artista: 'Donna Summer' },
+          { titulo: 'FUNKY TOWN', artista: 'Lipps Inc.' },
+          { titulo: 'A LITTLE RESPECT', artista: 'Erasure' },
+          { titulo: 'SQUARE ROOMS', artista: '' },
+          { titulo: 'BEDS ARE BURNING', artista: '' },
+          { titulo: "IT'S MY LIFE", artista: 'Talk Talk' },
+          { titulo: 'ENJOY THE SILENCE', artista: 'Depeche Mode' },
+          { titulo: 'WHERE DO YOU GO', artista: 'No Mercy' }
+        ]}
+      ]},
+      { id: 'pop-espanol', icono: '🎤', nombre: 'Pop Español', subgrupos: [
+        { nombre: 'Sin subgrupo', icono: '📁', canciones: [
+          { titulo: 'TE QUIERO TANTO TANTO', artista: '' },
+          { titulo: 'UN AÑO MAS', artista: 'Mecano' }
+        ]},
+        { nombre: 'Pop Mujeres', icono: '👩', canciones: [
+          { titulo: 'TODOS ME MIRAN', artista: '' },
+          { titulo: 'CON LOS OJOS CERRADOS', artista: '' },
+          { titulo: 'EL ECO DE TU VOZ', artista: '' },
+          { titulo: 'PIERDEME EL RESPETO', artista: '' },
+          { titulo: 'LAS MIL Y UNA NOCHES', artista: '' },
+          { titulo: 'ENTRE TU Y MIL MARES', artista: '' },
+          { titulo: 'DR. PSIQUIATRA', artista: '' },
+          { titulo: 'PELIGRO', artista: '' },
+          { titulo: 'DONDE ESTAN', artista: '' },
+          { titulo: 'ESCRIBEME EN EL CIELO', artista: '' },
+          { titulo: 'ROSA PASTEL', artista: '' },
+          { titulo: 'ME CUESTA TANTO', artista: '' }
+        ]},
+        { nombre: 'Pop Hombres', icono: '👨', canciones: [
+          { titulo: 'TE BESE', artista: 'Ragazzi' },
+          { titulo: 'VUELA VUELA', artista: 'Magneto' },
+          { titulo: 'DUENDE', artista: '' },
+          { titulo: 'AMANTE BANDIDO', artista: '' },
+          { titulo: 'CHICA DE HUMO', artista: 'Emmanuel' },
+          { titulo: 'BELLA SEÑORA', artista: 'Emmanuel' },
+          { titulo: 'NO PUEDO ESTAR SIN TI', artista: 'Moenia' },
+          { titulo: 'SAN MIGUEL', artista: '' },
+          { titulo: 'A UN MINUTO DE TI', artista: '' },
+          { titulo: 'OTRA COMO TU', artista: '' },
+          { titulo: 'UN ANGEL COMO EL SOL TU ERES', artista: '' },
+          { titulo: 'IMBRANATO', artista: '' }
+        ]},
+        { nombre: 'Timbiriche', icono: '🎤', canciones: [
+          { titulo: 'NO SE SI ES AMOR', artista: 'Timbiriche' },
+          { titulo: 'SOY UN DESASTRE', artista: 'Timbiriche' },
+          { titulo: 'TU Y YO SOMOS UNO MISMO', artista: 'Timbiriche' },
+          { titulo: 'CORRO VUELO ME ACELERO', artista: 'Timbiriche' },
+          { titulo: 'SI NO ES AHORA', artista: 'Timbiriche' },
+          { titulo: 'BESOS DE CENIZA', artista: 'Timbiriche' },
+          { titulo: 'AMAME HASTA CON LOS DIENTES', artista: 'Timbiriche' },
+          { titulo: 'CON TODOS MENOS CONMIGO', artista: 'Timbiriche' },
+          { titulo: 'PRINCESA TIBETANA', artista: 'Timbiriche' },
+          { titulo: 'MURIENDO LENTO', artista: 'Timbiriche' }
+        ]}
+      ]},
+      { id: 'baladas', icono: '💔', nombre: 'Baladas clásicas atemporales', subgrupos: [
+        { nombre: 'Sin subgrupo', icono: '📁', canciones: [
+          { titulo: 'LA CHICA DE LA BOUTIQUE', artista: 'Heleno' }
+        ]},
+        { nombre: 'Camilo Sesto', icono: '🎤', canciones: [
+          { titulo: 'JAMAS', artista: 'Camilo Sesto' },
+          { titulo: 'SI TU TE VAS', artista: 'Camilo Sesto' },
+          { titulo: 'ALGO DE MI', artista: 'Camilo Sesto' },
+          { titulo: 'VIVIR ASI ES MORIR DE AMOR', artista: 'Camilo Sesto' }
+        ]},
+        { nombre: 'José José', icono: '🎤', canciones: [
+          { titulo: 'SERE', artista: 'José José' },
+          { titulo: 'AMOR AMOR', artista: 'José José' },
+          { titulo: 'SI ME DEJAS AHORA', artista: 'José José' },
+          { titulo: 'LA NAVE DEL OLVIDO', artista: 'José José' },
+          { titulo: 'VOLCAN', artista: 'José José' },
+          { titulo: 'EL TRISTE', artista: 'José José' }
+        ]},
+        { nombre: 'Juan Gabriel', icono: '🎤', canciones: [
+          { titulo: 'ASI FUE', artista: 'Juan Gabriel' },
+          { titulo: 'COSTUMBRES', artista: 'Juan Gabriel' }
+        ]},
+        { nombre: 'Alejandro Fernández', icono: '🎤', canciones: [
+          { titulo: 'ADIOS AMOR', artista: 'Alejandro Fernández' },
+          { titulo: 'LA DIFERENCIA', artista: 'Alejandro Fernández' }
+        ]}
+      ]},
+      { id: 'rock-ingles', icono: '🎸', nombre: 'Rock en Inglés', subgrupos: [
+        { nombre: 'Sin subgrupo', icono: '📁', canciones: [
+          { titulo: 'NEW YEARS DAY', artista: 'U2' }
+        ]}
+      ]},
+      { id: 'pop-ingles', icono: '🎤', nombre: 'Pop Inglés', subgrupos: [
+        { nombre: 'Sin subgrupo', icono: '📁', canciones: [
+          { titulo: 'EYES WITHOUT A FACE', artista: 'Billy Idol' },
+          { titulo: 'CARELESS WHISPER', artista: 'George Michael' }
+        ]}
+      ]},
+      { id: 'rock-roll', icono: '🕺', nombre: 'Rock and Roll 60s', subgrupos: [
+        { nombre: 'Sin subgrupo', icono: '📁', canciones: [
+          { titulo: 'AGUJETAS DE COLOR DE ROSA', artista: '' },
+          { titulo: 'DESPEINADA', artista: '' },
+          { titulo: 'POPOTITOS', artista: '' },
+          { titulo: 'CHICA ALBOROTADA', artista: '' },
+          { titulo: 'STAND BY ME', artista: 'Ben E. King' },
+          { titulo: 'FUE EN UN CAFE', artista: '' },
+          { titulo: 'ROCK DE LA CARCEL', artista: '' },
+          { titulo: 'BLUE SUEDE SHOES', artista: 'Carl Perkins' },
+          { titulo: 'LA PLAGA', artista: 'Los Teen Tops' },
+          { titulo: 'BUEN ROCK', artista: '' },
+          { titulo: 'PRIMAVERA', artista: '' },
+          { titulo: 'CHICA YE YE', artista: '' }
+        ]}
+      ]},
+      { id: 'instrumentales', icono: '🎹', nombre: 'Instrumentales', subgrupos: [
+        { nombre: 'Sin subgrupo', icono: '📁', canciones: [
+          { titulo: 'UNA MAÑANA', artista: '' },
+          { titulo: 'CHICA DE IPANEMA', artista: '' },
+          { titulo: 'BLUES BOSSA', artista: '' },
+          { titulo: 'SAMBA DE UNA SOLA NOTA', artista: '' },
+          { titulo: 'FLY ME TO THE MOON', artista: '' }
+        ]}
+      ]}
     ];
 
     // ══════════════════════════════════════════════════════
-    // RENDERIZAR REPERTORIO
+    // RENDERIZAR
     // ══════════════════════════════════════════════════════
     const STORAGE_KEY = 'uranthia-artistas';
+    const STORAGE_NUEVAS = 'uranthia-canciones-nuevas';
+    const STORAGE_ESTILOS_NUEVOS = 'uranthia-estilos-nuevos';
     const datosGuardados = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
 
     function renderizarRepertorio() {
       const contenedor = document.getElementById('repertorio');
       contenedor.innerHTML = '';
 
-      REPERTORIO.forEach(estilo => {
-        const totalCanciones = estilo.subgrupos.reduce((sum, sg) => sum + sg.canciones.length, 0);
+      const cancionesNuevas = JSON.parse(localStorage.getItem(STORAGE_NUEVAS) || '[]');
+      const estilosNuevos = JSON.parse(localStorage.getItem(STORAGE_ESTILOS_NUEVOS) || '{}');
+
+      const todosEstilos = [...REPERTORIO];
+      Object.values(estilosNuevos).forEach(estiloNuevo => {
+        if (!todosEstilos.find(e => e.id === estiloNuevo.id)) {
+          todosEstilos.push({
+            id: estiloNuevo.id,
+            icono: estiloNuevo.icono,
+            nombre: estiloNuevo.nombre,
+            subgrupos: estiloNuevo.subgrupos.map(sg => ({
+              nombre: sg.nombre,
+              icono: sg.icono,
+              canciones: []
+            }))
+          });
+        }
+      });
+
+      todosEstilos.forEach(estilo => {
+        const cancionesNuevasEstilo = cancionesNuevas.filter(c => c.estiloId === estilo.id);
+
+        const subgruposClonados = estilo.subgrupos.map(sg => ({
+          ...sg,
+          canciones: [...sg.canciones]
+        }));
+
+        cancionesNuevasEstilo.forEach(cn => {
+          let subgrupoDestino = subgruposClonados.find(sg => sg.nombre === cn.subgrupo);
+          if (!subgrupoDestino) {
+            subgrupoDestino = { nombre: cn.subgrupo || 'Sin subgrupo', icono: '📁', canciones: [] };
+            subgruposClonados.push(subgrupoDestino);
+          }
+          subgrupoDestino.canciones.push({
+            titulo: cn.titulo,
+            artista: cn.artista,
+            pendiente: true,
+            key: `nueva-${cn.titulo}-${cn.fecha}`
+          });
+        });
+
+        const totalCanciones = subgruposClonados.reduce((sum, sg) => sum + sg.canciones.length, 0);
 
         const divEstilo = document.createElement('div');
         divEstilo.className = 'estilo';
         divEstilo.dataset.estilo = estilo.id;
 
         let htmlSubgrupos = '';
-        estilo.subgrupos.forEach(subgrupo => {
+        subgruposClonados.forEach(subgrupo => {
           if (subgrupo.canciones.length === 0) return;
 
           let htmlCanciones = '';
           subgrupo.canciones.forEach((cancion) => {
-            const key = `${estilo.id}|${subgrupo.nombre}|${cancion.titulo}`;
+            const key = cancion.key || `${estilo.id}|${subgrupo.nombre}|${cancion.titulo}`;
             const artistaGuardado = datosGuardados[key] !== undefined ? datosGuardados[key] : cancion.artista;
             const artistaMostrar = artistaGuardado || '— sin artista —';
             const claseVacio = artistaGuardado ? '' : 'vacio';
+            const indicadorPendiente = cancion.pendiente ? '<span class="indicador-pendiente">🟡 Pendiente</span>' : '';
 
             htmlCanciones += `
               <div class="cancion">
                 <div class="cancion-info">
-                  <div class="titulo">${cancion.titulo}</div>
+                  <div class="titulo">${cancion.titulo}${indicadorPendiente}</div>
                   <div class="artista ${claseVacio}" data-key="${key}" onclick="editarArtista(this)">${artistaMostrar}</div>
                 </div>
                 <div class="cancion-botones">
@@ -1280,6 +1357,19 @@
             </div>
           `;
         });
+
+        if (htmlSubgrupos === '') {
+          htmlSubgrupos = `
+            <div class="subgrupo">
+              <div class="subgrupo-header">
+                <span class="subgrupo-icono">📁</span>
+                <span>Sin canciones aún</span>
+                <span class="subgrupo-count">0</span>
+              </div>
+              <div class="empty-msg">Agrega canciones con el botón "➕ Agregar canción"</div>
+            </div>
+          `;
+        }
 
         divEstilo.innerHTML = `
           <div class="estilo-header">
@@ -1334,10 +1424,7 @@
 
       input.addEventListener('blur', guardar);
       input.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          input.blur();
-        }
+        if (e.key === 'Enter') { e.preventDefault(); input.blur(); }
       });
     }
 
@@ -1354,27 +1441,19 @@
       });
     }
 
-    // ══════════════════════════════════════════════════════
     // FILTROS
-    // ══════════════════════════════════════════════════════
     document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         const filtro = btn.dataset.estilo;
         document.querySelectorAll('.estilo').forEach(estilo => {
-          if (filtro === 'todos' || estilo.dataset.estilo === filtro) {
-            estilo.style.display = '';
-          } else {
-            estilo.style.display = 'none';
-          }
+          estilo.style.display = (filtro === 'todos' || estilo.dataset.estilo === filtro) ? '' : 'none';
         });
       });
     });
 
-    // ══════════════════════════════════════════════════════
-    // BUSCADOR CON FILTRADO COMPLETO
-    // ══════════════════════════════════════════════════════
+    // BUSCADOR
     const buscador = document.getElementById('buscador');
     const clearBtn = document.getElementById('clearBuscador');
     const sinResultados = document.getElementById('sinResultados');
@@ -1382,12 +1461,7 @@
 
     buscador.addEventListener('input', (e) => {
       const texto = e.target.value.toLowerCase().trim();
-
-      if (texto.length > 0) {
-        clearBtn.classList.add('visible');
-      } else {
-        clearBtn.classList.remove('visible');
-      }
+      clearBtn.classList.toggle('visible', texto.length > 0);
 
       let totalVisibles = 0;
 
@@ -1412,18 +1486,10 @@
             }
           });
 
-          if (cancionesVisiblesSubgrupo === 0 && texto.length > 0) {
-            subgrupo.style.display = 'none';
-          } else {
-            subgrupo.style.display = '';
-          }
+          subgrupo.style.display = (cancionesVisiblesSubgrupo === 0 && texto.length > 0) ? 'none' : '';
         });
 
-        if (cancionesVisiblesEstilo === 0 && texto.length > 0) {
-          estilo.style.display = 'none';
-        } else {
-          estilo.style.display = '';
-        }
+        estilo.style.display = (cancionesVisiblesEstilo === 0 && texto.length > 0) ? 'none' : '';
       });
 
       if (totalVisibles === 0 && texto.length > 0) {
@@ -1438,7 +1504,6 @@
       buscador.value = '';
       clearBtn.classList.remove('visible');
       sinResultados.style.display = 'none';
-
       document.querySelectorAll('.estilo').forEach(estilo => {
         estilo.style.display = '';
         estilo.querySelectorAll('.subgrupo').forEach(sg => {
@@ -1446,13 +1511,10 @@
           sg.querySelectorAll('.cancion').forEach(c => c.style.display = '');
         });
       });
-
       buscador.focus();
     }
 
-    // ══════════════════════════════════════════════════════
-    // MODO DÍA / NOCHE / SHOW
-    // ══════════════════════════════════════════════════════
+    // MODO
     function cambiarModo(modo) {
       document.body.classList.remove('modo-dia', 'modo-noche', 'modo-show');
       document.body.classList.add('modo-' + modo);
@@ -1460,35 +1522,16 @@
       document.querySelector(`.modo-btn[data-modo="${modo}"]`).classList.add('active');
       localStorage.setItem('uranthia-modo', modo);
     }
-
     const modoGuardado = localStorage.getItem('uranthia-modo') || 'noche';
     cambiarModo(modoGuardado);
 
-    // ══════════════════════════════════════════════════════
-    // AVISO
-    // ══════════════════════════════════════════════════════
-    function avisoProximamente() {
-      const aviso = document.getElementById('aviso');
-      aviso.classList.add('show');
-      setTimeout(() => aviso.classList.remove('show'), 2500);
-    }
-
-    // ══════════════════════════════════════════════════════
-    // INICIALIZAR
-    // ══════════════════════════════════════════════════════
-    renderizarRepertorio();
-        // ══════════════════════════════════════════════════════
-    // DESPLEGAR / REPLEGAR TODO
-    // ══════════════════════════════════════════════════════
+    // TOGGLE TODO
     let todoDesplegado = true;
-
     function toggleTodo() {
       todoDesplegado = !todoDesplegado;
-
       document.querySelectorAll('.estilo').forEach(estilo => {
         const header = estilo.querySelector('.estilo-header');
         const body = estilo.querySelector('.estilo-body');
-
         if (todoDesplegado) {
           header.classList.remove('collapsed');
           body.style.display = '';
@@ -1497,39 +1540,177 @@
           body.style.display = 'none';
         }
       });
-
-      // Actualizar botón
-      const icono = document.getElementById('toggleTodoIcon');
-      const texto = document.getElementById('toggleTodoText');
-
-      if (todoDesplegado) {
-        icono.textContent = '⬇️';
-        texto.textContent = 'Desplegar todo';
-      } else {
-        icono.textContent = '⬆️';
-        texto.textContent = 'Replegar todo';
-      }
+      document.getElementById('toggleTodoIcon').textContent = todoDesplegado ? '⬇️' : '⬆️';
+      document.getElementById('toggleTodoText').textContent = todoDesplegado ? 'Desplegar todo' : 'Replegar todo';
     }
 
-    // ══════════════════════════════════════════════════════
-    // BOTÓN TOP FLOTANTE
-    // ══════════════════════════════════════════════════════
+    // BOTÓN TOP
     window.addEventListener('scroll', () => {
       const btnTop = document.getElementById('btnTop');
-      if (window.scrollY > 300) {
-        btnTop.classList.add('visible');
-      } else {
-        btnTop.classList.remove('visible');
-      }
+      btnTop.classList.toggle('visible', window.scrollY > 300);
     });
-
     function irArriba() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-  </script>
 
-  <!-- BOTÓN TOP FLOTANTE -->
-  <button class="btn-top" id="btnTop" onclick="irArriba()" title="Volver arriba">⬆</button>
+    // AVISO
+    function avisoProximamente() {
+      const aviso = document.getElementById('aviso');
+      aviso.textContent = '🚧 Próximamente: esta función se activará cuando tengamos más datos.';
+      aviso.classList.add('show');
+      setTimeout(() => aviso.classList.remove('show'), 2500);
+    }
+
+    // ══════════════════════════════════════════════════════
+    // MODAL
+    // ══════════════════════════════════════════════════════
+    function abrirModal() {
+      document.getElementById('modalOverlay').classList.add('visible');
+      cargarEstilosEnSelect();
+      setTimeout(() => document.getElementById('nuevaCancion').focus(), 100);
+    }
+
+    function cerrarModal() {
+      document.getElementById('modalOverlay').classList.remove('visible');
+      document.getElementById('nuevaCancion').value = '';
+      document.getElementById('nuevoArtista').value = '';
+      document.getElementById('nuevoEstilo').value = '';
+      document.getElementById('nuevoSubgrupo').innerHTML = '<option value="">— Sin subgrupo —</option>';
+    }
+
+    document.getElementById('modalOverlay').addEventListener('click', (e) => {
+      if (e.target.id === 'modalOverlay') cerrarModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') cerrarModal();
+    });
+
+    function cargarEstilosEnSelect() {
+      const select = document.getElementById('nuevoEstilo');
+      select.innerHTML = '<option value="">— Selecciona un estilo —</option>';
+
+      REPERTORIO.forEach(estilo => {
+        const opt = document.createElement('option');
+        opt.value = estilo.id;
+        opt.textContent = `${estilo.icono} ${estilo.nombre}`;
+        select.appendChild(opt);
+      });
+
+      const estilosNuevos = JSON.parse(localStorage.getItem(STORAGE_ESTILOS_NUEVOS) || '{}');
+      Object.values(estilosNuevos).forEach(estilo => {
+        if (!REPERTORIO.find(e => e.id === estilo.id)) {
+          const opt = document.createElement('option');
+          opt.value = estilo.id;
+          opt.textContent = `${estilo.icono} ${estilo.nombre} 🟡`;
+          select.appendChild(opt);
+        }
+      });
+    }
+
+    function actualizarSubgrupos() {
+      const estiloId = document.getElementById('nuevoEstilo').value;
+      const selectSub = document.getElementById('nuevoSubgrupo');
+      selectSub.innerHTML = '<option value="">— Sin subgrupo —</option>';
+
+      if (!estiloId) return;
+
+      const estilo = REPERTORIO.find(e => e.id === estiloId);
+      if (estilo) {
+        estilo.subgrupos.forEach(sg => {
+          const opt = document.createElement('option');
+          opt.value = sg.nombre;
+          opt.textContent = `${sg.icono} ${sg.nombre}`;
+          selectSub.appendChild(opt);
+        });
+      }
+
+      const estilosNuevos = JSON.parse(localStorage.getItem(STORAGE_ESTILOS_NUEVOS) || '{}');
+      const estiloNuevo = estilosNuevos[estiloId];
+      if (estiloNuevo && estiloNuevo.subgrupos) {
+        estiloNuevo.subgrupos.forEach(sg => {
+          const opt = document.createElement('option');
+          opt.value = sg.nombre;
+          opt.textContent = `${sg.icono} ${sg.nombre} 🟡`;
+          selectSub.appendChild(opt);
+        });
+      }
+    }
+
+    function crearNuevoEstilo() {
+      const nombre = prompt('Nombre del nuevo estilo:');
+      if (!nombre || !nombre.trim()) return;
+
+      const id = nombre.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+      const icono = prompt('Icono (ej: 🎸, 🎺, 🎤):', '🎵') || '🎵';
+
+      const estilosNuevos = JSON.parse(localStorage.getItem(STORAGE_ESTILOS_NUEVOS) || '{}');
+      estilosNuevos[id] = { id, nombre: nombre.trim(), icono, subgrupos: [] };
+      localStorage.setItem(STORAGE_ESTILOS_NUEVOS, JSON.stringify(estilosNuevos));
+
+      cargarEstilosEnSelect();
+      document.getElementById('nuevoEstilo').value = id;
+      actualizarSubgrupos();
+    }
+
+    function crearNuevoSubgrupo() {
+      const estiloId = document.getElementById('nuevoEstilo').value;
+      if (!estiloId) {
+        alert('Primero selecciona un estilo.');
+        return;
+      }
+
+      const nombre = prompt('Nombre del nuevo subgrupo:');
+      if (!nombre || !nombre.trim()) return;
+
+      const icono = prompt('Icono (ej: 📁, 🎤, 👩):', '📁') || '📁';
+
+      const estilosNuevos = JSON.parse(localStorage.getItem(STORAGE_ESTILOS_NUEVOS) || '{}');
+      if (!estilosNuevos[estiloId]) {
+        const estiloBase = REPERTORIO.find(e => e.id === estiloId);
+        estilosNuevos[estiloId] = {
+          id: estiloId,
+          nombre: estiloBase ? estiloBase.nombre : estiloId,
+          icono: estiloBase ? estiloBase.icono : '🎵',
+          subgrupos: []
+        };
+      }
+      estilosNuevos[estiloId].subgrupos.push({ nombre: nombre.trim(), icono });
+      localStorage.setItem(STORAGE_ESTILOS_NUEVOS, JSON.stringify(estilosNuevos));
+
+      actualizarSubgrupos();
+      document.getElementById('nuevoSubgrupo').value = nombre.trim();
+    }
+
+    function guardarCancion() {
+      const titulo = document.getElementById('nuevaCancion').value.trim();
+      const artista = document.getElementById('nuevoArtista').value.trim();
+      const estiloId = document.getElementById('nuevoEstilo').value;
+      const subgrupo = document.getElementById('nuevoSubgrupo').value;
+
+      if (!titulo) { alert('El nombre de la canción es obligatorio.'); return; }
+      if (!estiloId) { alert('Debes seleccionar un estilo.'); return; }
+
+      const cancionesNuevas = JSON.parse(localStorage.getItem(STORAGE_NUEVAS) || '[]');
+      cancionesNuevas.push({
+        titulo, artista, estiloId, subgrupo,
+        pendiente: true,
+        fecha: new Date().toISOString()
+      });
+      localStorage.setItem(STORAGE_NUEVAS, JSON.stringify(cancionesNuevas));
+
+      cerrarModal();
+      renderizarRepertorio();
+
+      const aviso = document.getElementById('aviso');
+      aviso.textContent = '✅ Canción agregada (pendiente de fijar)';
+      aviso.classList.add('show');
+      setTimeout(() => aviso.classList.remove('show'), 2500);
+    }
+
+    // INICIALIZAR
+    renderizarRepertorio();
+  </script>
 
 </body>
 </html>

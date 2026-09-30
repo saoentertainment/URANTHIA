@@ -196,6 +196,84 @@
     }
     .toggle-todo-btn .icono { font-size: 1rem; }
 
+    /* ── BARRA SETLIST ── */
+    .barra-setlist {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+      padding: 14px 20px;
+      background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
+      border-radius: 20px;
+      border: 2px solid var(--dorado);
+      box-shadow: 0 8px 20px rgba(13, 40, 24, 0.25);
+    }
+    .barra-setlist .contador {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #f5e6c8;
+      letter-spacing: 0.5px;
+      padding: 6px 14px;
+      background: rgba(212, 175, 55, 0.15);
+      border-radius: 30px;
+      border: 1px solid rgba(212, 175, 55, 0.30);
+    }
+    .barra-setlist .contador strong {
+      color: #d4af37;
+      font-weight: 900;
+      font-size: 1rem;
+    }
+    .btn-armar-setlist {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      color: #0d2818;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 800;
+      padding: 12px 26px;
+      border-radius: 30px;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+      border: 2px solid #0d2818;
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.40);
+    }
+    .btn-armar-setlist:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.60);
+    }
+    .btn-armar-setlist:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    .btn-desmarcar-todo {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: transparent;
+      color: #f5e6c8;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 8px 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+      transition: all 0.2s ease;
+      border: 2px solid rgba(212, 175, 55, 0.40);
+    }
+    .btn-desmarcar-todo:hover {
+      background: rgba(212, 175, 55, 0.15);
+      border-color: var(--dorado);
+    }
+
     .main-title { text-align: center; margin: 8px 0 22px 0; }
     .main-title h1 {
       font-family: 'Georgia', 'Times New Roman', serif;
@@ -397,7 +475,6 @@
     .cancion {
       display: flex;
       align-items: center;
-      justify-content: space-between;
       gap: 12px;
       background: var(--card-bg);
       border-radius: 12px;
@@ -412,6 +489,68 @@
       border-left-color: #0d2818;
       box-shadow: 0 4px 12px rgba(13, 40, 24, 0.08);
     }
+
+    .cancion-check {
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--dorado);
+      border-radius: 6px;
+      background: var(--card-bg);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+    .cancion-check:hover {
+      border-color: #0d2818;
+      transform: scale(1.10);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.20);
+    }
+    .cancion-check.checked {
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      border-color: #0d2818;
+      color: #0d2818;
+      font-weight: 900;
+      font-size: 0.9rem;
+    }
+    .cancion-check.checked::after { content: '✓'; }
+
+    .subgrupo-check {
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--dorado);
+      border-radius: 6px;
+      background: var(--card-bg);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+    .subgrupo-check:hover {
+      border-color: #0d2818;
+      transform: scale(1.10);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.20);
+    }
+    .subgrupo-check.checked {
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      border-color: #0d2818;
+      color: #0d2818;
+      font-weight: 900;
+      font-size: 0.9rem;
+    }
+    .subgrupo-check.checked::after { content: '✓'; }
+    .subgrupo-check.parcial {
+      background: linear-gradient(135deg, #f5d76e 0%, #faf3e0 100%);
+      border-color: #0d2818;
+      color: #0d2818;
+      font-weight: 900;
+      font-size: 0.9rem;
+    }
+    .subgrupo-check.parcial::after { content: '−'; }
 
     .cancion-info { flex: 1; min-width: 0; }
     .cancion-info .titulo {
@@ -541,6 +680,17 @@
       color: #0d2818;
       background: #faf3e0;
     }
+    .action-btn.danger {
+      background: linear-gradient(135deg, #8b0000 0%, #c1121f 100%);
+      color: #ffffff;
+      border-color: #8b0000;
+    }
+    .action-btn.danger:hover {
+      background: linear-gradient(135deg, #c1121f 0%, #e63946 100%);
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(193, 18, 31, 0.50);
+    }
 
     .footer {
       margin-top: 28px;
@@ -593,6 +743,8 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.50);
       border: 2px solid #d4af37;
       z-index: 3000;
+      max-width: 90%;
+      text-align: center;
     }
     .aviso.show { display: block; animation: fadeIn 0.3s ease; }
 
@@ -623,7 +775,7 @@
     .btn-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
     .btn-top:hover { background: #0d2818; color: #d4af37; transform: translateY(-4px) scale(1.08); }
 
-    /* ── MODAL ── */
+    /* ── MODALES ── */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -696,7 +848,8 @@
       margin-bottom: 6px;
     }
     .modal-campo input,
-    .modal-campo select {
+    .modal-campo select,
+    .modal-campo textarea {
       width: 100%;
       padding: 12px 16px;
       border-radius: 12px;
@@ -708,8 +861,13 @@
       outline: none;
       transition: all 0.2s ease;
     }
+    .modal-campo textarea {
+      resize: vertical;
+      min-height: 60px;
+    }
     .modal-campo input:focus,
-    .modal-campo select:focus {
+    .modal-campo select:focus,
+    .modal-campo textarea:focus {
       border-color: var(--dorado);
       box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.20);
     }
@@ -772,6 +930,32 @@
       margin-top: 6px;
     }
     .btn-nuevo:hover { background: #faf3e0; border-style: solid; }
+
+    .resumen-canciones {
+      margin-top: 8px;
+      max-height: 180px;
+      overflow-y: auto;
+      background: rgba(212, 175, 55, 0.06);
+      border-radius: 12px;
+      border: 1px solid var(--borde);
+      padding: 10px 14px;
+    }
+    .resumen-canciones .cancion-resumen {
+      font-size: 0.8rem;
+      color: var(--card-texto);
+      padding: 4px 0;
+      border-bottom: 1px dashed rgba(212, 175, 55, 0.20);
+    }
+    .resumen-canciones .cancion-resumen:last-child { border-bottom: none; }
+    .resumen-canciones .cancion-resumen strong { color: var(--dorado); }
+
+    .resumen-total {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--dorado);
+      text-align: right;
+    }
 
     /* ── BIBLIOTECA DE ICONOS ── */
     .icono-preview {
@@ -850,26 +1034,16 @@
       .estilo-header { font-size: 1rem; padding: 14px 16px; }
       .estilo-body { padding: 14px 14px 18px; }
       .subgrupo { padding: 10px 14px; }
-      .cancion { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .cancion { flex-wrap: wrap; gap: 8px; }
+      .cancion-botones { width: 100%; }
       .btn-mini { font-size: 0.65rem; padding: 4px 8px; }
       .action-btn { font-size: 0.75rem; padding: 10px 18px; }
       .btn-top { width: 48px; height: 48px; bottom: 20px; right: 20px; font-size: 1.2rem; }
       .modal { padding: 22px 18px; }
       .iconos-grid { grid-template-columns: repeat(auto-fill, minmax(48px, 1fr)); }
       .icono-item { font-size: 1.3rem; }
+      .barra-setlist { flex-direction: column; gap: 8px; }
     }
-    /* ── BOTÓN BORRAR DATOS LOCALES ── */
-    .action-btn.danger {
-      background: linear-gradient(135deg, #8b0000 0%, #c1121f 100%);
-      color: #ffffff;
-      border-color: #8b0000;
-    }
-    .action-btn.danger:hover {
-      background: linear-gradient(135deg, #c1121f 0%, #e63946 100%);
-      color: #ffffff;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(193, 18, 31, 0.50);
-    }    
   </style>
 </head>
 <body class="modo-noche">
@@ -897,6 +1071,17 @@
       <button class="toggle-todo-btn" id="toggleTodoBtn" onclick="toggleTodo()">
         <span class="icono" id="toggleTodoIcon">⬇️</span>
         <span id="toggleTodoText">Desplegar todo</span>
+      </button>
+    </div>
+
+    <!-- BARRA SETLIST -->
+    <div class="barra-setlist">
+      <span class="contador">🎵 Canciones seleccionadas: <strong id="contadorSeleccionadas">0</strong></span>
+      <button class="btn-armar-setlist" id="btnArmarSetlist" onclick="abrirModalSetlist()" disabled>
+        📋 Armar setlist
+      </button>
+      <button class="btn-desmarcar-todo" onclick="desmarcarTodo()">
+        ❌ Desmarcar todo
       </button>
     </div>
 
@@ -938,7 +1123,7 @@
 
     <div class="actions-bar">
       <button class="action-btn" onclick="abrirModal()">➕ Agregar canción</button>
-      <a class="action-btn secondary" href="index.html">🏠 Ir al Setlist</a>
+      <a class="action-btn secondary" href="index.html">🏠 Ir al Portal</a>
       <button class="action-btn danger" onclick="borrarDatosLocales()">🗑️ Borrar datos locales</button>
     </div>
 
@@ -1005,7 +1190,7 @@
       </div>
 
       <div class="modal-campo">
-        <label id="labelIconoActual">Icono actual</label>
+        <label>Icono actual</label>
         <div class="icono-preview">
           <span class="icono-grande" id="iconoActualPreview">🎵</span>
           <span class="icono-texto">Haz clic en un icono para seleccionarlo</span>
@@ -1020,6 +1205,60 @@
       <div class="modal-acciones">
         <button class="modal-btn secondary" onclick="cerrarModalIconos()">Cancelar</button>
         <button class="modal-btn primary" onclick="confirmarIcono()">✅ Confirmar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL ARMAR SETLIST -->
+  <div class="modal-overlay" id="modalSetlist">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>📋 Armar setlist</h2>
+        <button class="modal-close" onclick="cerrarModalSetlist()">✕</button>
+      </div>
+
+      <div class="modal-campo">
+        <label>🎯 Tipo de setlist *</label>
+        <select id="setlistTipo">
+          <option value="ensayo">🎤 Ensayo</option>
+          <option value="show">🎉 Show</option>
+        </select>
+      </div>
+
+      <div class="modal-campo">
+        <label>📝 Nombre del setlist</label>
+        <input type="text" id="setlistNombre" placeholder="Ej: Ensayo del miércoles" />
+      </div>
+
+      <div class="modal-campo">
+        <label>📅 Fecha *</label>
+        <input type="date" id="setlistFecha" />
+      </div>
+
+      <div class="modal-campo">
+        <label>🕐 Horario</label>
+        <input type="time" id="setlistHorario" />
+      </div>
+
+      <div class="modal-campo">
+        <label>📍 Lugar</label>
+        <input type="text" id="setlistLugar" placeholder="Ej: Sala de ensayo" />
+      </div>
+
+      <div class="modal-campo">
+        <label>📝 Notas (opcional)</label>
+        <textarea id="setlistNotas" placeholder="Ej: Repasar intro de La Fuerza del Destino..."></textarea>
+      </div>
+
+      <div class="modal-campo">
+        <label>🎵 Canciones seleccionadas</label>
+        <div class="resumen-canciones" id="resumenCanciones"></div>
+        <div class="resumen-total" id="resumenTotal"></div>
+      </div>
+
+      <div class="modal-acciones">
+        <button class="modal-btn secondary" onclick="cerrarModalSetlist()">Cancelar</button>
+        <button class="modal-btn primary" onclick="guardarSetlist()">💾 Guardar setlist</button>
       </div>
     </div>
   </div>
@@ -1041,7 +1280,6 @@
     function abrirBibliotecaIconos(iconoActual, callback) {
       iconoSeleccionado = iconoActual || '🎵';
       callbackIcono = callback;
-
       document.getElementById('iconoActualPreview').textContent = iconoSeleccionado;
       renderizarIconos();
       document.getElementById('modalIconos').classList.add('visible');
@@ -1050,7 +1288,6 @@
     function renderizarIconos() {
       const grid = document.getElementById('iconosGrid');
       grid.innerHTML = '';
-
       BIBLIOTECA_ICONOS.forEach(icono => {
         const div = document.createElement('div');
         div.className = 'icono-item' + (icono === iconoSeleccionado ? ' seleccionado' : '');
@@ -1339,7 +1576,10 @@
     const STORAGE_KEY = 'uranthia-artistas';
     const STORAGE_NUEVAS = 'uranthia-canciones-nuevas';
     const STORAGE_ESTILOS_NUEVOS = 'uranthia-estilos-nuevos';
+    const STORAGE_SETLISTS = 'uranthia-setlists';
+    const STORAGE_SELECCIONADAS = 'uranthia-seleccionadas';
     const datosGuardados = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    let seleccionadas = JSON.parse(localStorage.getItem(STORAGE_SELECCIONADAS) || '[]');
 
     // ══════════════════════════════════════════════════════
     // RENDERIZAR
@@ -1396,8 +1636,10 @@
         divEstilo.dataset.estilo = estilo.id;
 
         let htmlSubgrupos = '';
-        subgruposClonados.forEach(subgrupo => {
+        subgruposClonados.forEach((subgrupo, sgIndex) => {
           if (subgrupo.canciones.length === 0) return;
+
+          const subgrupoId = `${estilo.id}--${sgIndex}`;
 
           let htmlCanciones = '';
           subgrupo.canciones.forEach((cancion) => {
@@ -1406,9 +1648,14 @@
             const artistaMostrar = artistaGuardado || '— sin artista —';
             const claseVacio = artistaGuardado ? '' : 'vacio';
             const indicadorPendiente = cancion.pendiente ? '<span class="indicador-pendiente">🟡 Pendiente</span>' : '';
+            const estaSeleccionada = seleccionadas.find(c => c.key === key);
+            const claseCheck = estaSeleccionada ? 'checked' : '';
+            const keyEscapada = key.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+            const tituloEscapado = cancion.titulo.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
 
             htmlCanciones += `
               <div class="cancion">
+                <div class="cancion-check ${claseCheck}" data-key="${key}" onclick="toggleCancion(this, '${keyEscapada}', '${tituloEscapado}')"></div>
                 <div class="cancion-info">
                   <div class="titulo">${cancion.titulo}${indicadorPendiente}</div>
                   <div class="artista ${claseVacio}" data-key="${key}" onclick="editarArtista(this)">${artistaMostrar}</div>
@@ -1425,8 +1672,9 @@
           });
 
           htmlSubgrupos += `
-            <div class="subgrupo">
+            <div class="subgrupo" data-subgrupo-id="${subgrupoId}">
               <div class="subgrupo-header">
+                <div class="subgrupo-check" onclick="toggleSubgrupo(this, '${subgrupoId}')"></div>
                 <span class="subgrupo-icono">${subgrupo.icono}</span>
                 <span>${subgrupo.nombre}</span>
                 <span class="subgrupo-count">${subgrupo.canciones.length}</span>
@@ -1469,6 +1717,8 @@
       });
 
       conectarEventos();
+      actualizarChecksSubgrupos();
+      actualizarContador();
     }
 
     // EDITAR ARTISTA
@@ -1651,6 +1901,7 @@
       if (e.key === 'Escape') {
         cerrarModal();
         cerrarModalIconos();
+        cerrarModalSetlist();
       }
     });
 
@@ -1705,14 +1956,12 @@
       }
     }
 
-    // CREAR NUEVO ESTILO (con biblioteca de iconos)
     function crearNuevoEstilo() {
       const nombre = prompt('Nombre del nuevo estilo:');
       if (!nombre || !nombre.trim()) return;
 
       const id = nombre.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
 
-      // Abrir biblioteca de iconos
       abrirBibliotecaIconos('🎵', (icono) => {
         const estilosNuevos = JSON.parse(localStorage.getItem(STORAGE_ESTILOS_NUEVOS) || '{}');
         estilosNuevos[id] = { id, nombre: nombre.trim(), icono, subgrupos: [] };
@@ -1729,7 +1978,6 @@
       });
     }
 
-    // CREAR NUEVO SUBGRUPO (con biblioteca de iconos)
     function crearNuevoSubgrupo() {
       const estiloId = document.getElementById('nuevoEstilo').value;
       if (!estiloId) {
@@ -1756,11 +2004,6 @@
 
         actualizarSubgrupos();
         document.getElementById('nuevoSubgrupo').value = nombre.trim();
-
-        const aviso = document.getElementById('aviso');
-        aviso.textContent = `✅ Subgrupo "${nombre.trim()}" creado (pendiente de fijar)`;
-        aviso.classList.add('show');
-        setTimeout(() => aviso.classList.remove('show'), 2500);
       });
     }
 
@@ -1790,8 +2033,178 @@
       setTimeout(() => aviso.classList.remove('show'), 2500);
     }
 
-    // INICIALIZAR
-    renderizarRepertorio();
+    // ══════════════════════════════════════════════════════
+    // SELECCIÓN PARA SETLIST
+    // ══════════════════════════════════════════════════════
+    function guardarSeleccion() {
+      localStorage.setItem(STORAGE_SELECCIONADAS, JSON.stringify(seleccionadas));
+      actualizarContador();
+    }
+
+    function actualizarContador() {
+      const contador = document.getElementById('contadorSeleccionadas');
+      const btn = document.getElementById('btnArmarSetlist');
+      if (contador) contador.textContent = seleccionadas.length;
+      if (btn) btn.disabled = seleccionadas.length === 0;
+    }
+
+    function toggleCancion(el, key, titulo) {
+      const yaSeleccionada = seleccionadas.find(c => c.key === key);
+
+      if (yaSeleccionada) {
+        seleccionadas = seleccionadas.filter(c => c.key !== key);
+        el.classList.remove('checked');
+      } else {
+        seleccionadas.push({ key, titulo });
+        el.classList.add('checked');
+      }
+
+      guardarSeleccion();
+      actualizarChecksSubgrupos();
+    }
+
+    function toggleSubgrupo(el, subgrupoId) {
+      const subgrupo = document.querySelector(`[data-subgrupo-id="${subgrupoId}"]`);
+      if (!subgrupo) return;
+
+      const canciones = subgrupo.querySelectorAll('.cancion');
+      const checks = subgrupo.querySelectorAll('.cancion-check');
+      const todasMarcadas = Array.from(checks).every(c => c.classList.contains('checked'));
+
+      canciones.forEach((cancion, index) => {
+        const check = checks[index];
+        const key = check.dataset.key;
+        const titulo = cancion.querySelector('.titulo').textContent.replace(/\s*🟡 Pendiente\s*/, '').trim();
+
+        if (todasMarcadas) {
+          if (check.classList.contains('checked')) {
+            check.classList.remove('checked');
+            seleccionadas = seleccionadas.filter(c => c.key !== key);
+          }
+        } else {
+          if (!check.classList.contains('checked')) {
+            check.classList.add('checked');
+            if (!seleccionadas.find(c => c.key === key)) {
+              seleccionadas.push({ key, titulo });
+            }
+          }
+        }
+      });
+
+      guardarSeleccion();
+      actualizarChecksSubgrupos();
+    }
+
+    function actualizarChecksSubgrupos() {
+      document.querySelectorAll('.subgrupo').forEach(subgrupo => {
+        const checks = subgrupo.querySelectorAll('.cancion-check');
+        const subgrupoCheck = subgrupo.querySelector('.subgrupo-check');
+        if (!subgrupoCheck || checks.length === 0) return;
+
+        const marcadas = Array.from(checks).filter(c => c.classList.contains('checked')).length;
+        const total = checks.length;
+
+        subgrupoCheck.classList.remove('checked', 'parcial');
+        if (marcadas === total) {
+          subgrupoCheck.classList.add('checked');
+        } else if (marcadas > 0) {
+          subgrupoCheck.classList.add('parcial');
+        }
+      });
+    }
+
+    function desmarcarTodo() {
+      if (seleccionadas.length === 0) return;
+      if (!confirm('¿Desmarcar todas las canciones seleccionadas?')) return;
+
+      seleccionadas = [];
+      guardarSeleccion();
+      document.querySelectorAll('.cancion-check').forEach(c => c.classList.remove('checked'));
+      document.querySelectorAll('.subgrupo-check').forEach(c => c.classList.remove('checked', 'parcial'));
+    }
+
+    // ══════════════════════════════════════════════════════
+    // MODAL ARMAR SETLIST
+    // ══════════════════════════════════════════════════════
+    function abrirModalSetlist() {
+      if (seleccionadas.length === 0) {
+        alert('Primero marca al menos una canción.');
+        return;
+      }
+
+      const hoy = new Date().toISOString().split('T')[0];
+      document.getElementById('setlistFecha').value = hoy;
+      document.getElementById('setlistNombre').value = '';
+      document.getElementById('setlistHorario').value = '';
+      document.getElementById('setlistLugar').value = '';
+      document.getElementById('setlistNotas').value = '';
+      document.getElementById('setlistTipo').value = 'ensayo';
+
+      const resumen = document.getElementById('resumenCanciones');
+      resumen.innerHTML = seleccionadas.map(c =>
+        `<div class="cancion-resumen">🎵 <strong>${c.titulo}</strong></div>`
+      ).join('');
+      document.getElementById('resumenTotal').textContent = `Total: ${seleccionadas.length} canciones`;
+
+      document.getElementById('modalSetlist').classList.add('visible');
+    }
+
+    function cerrarModalSetlist() {
+      document.getElementById('modalSetlist').classList.remove('visible');
+    }
+
+    document.getElementById('modalSetlist').addEventListener('click', (e) => {
+      if (e.target.id === 'modalSetlist') cerrarModalSetlist();
+    });
+
+    function guardarSetlist() {
+      const tipo = document.getElementById('setlistTipo').value;
+      const nombre = document.getElementById('setlistNombre').value.trim();
+      const fecha = document.getElementById('setlistFecha').value;
+      const horario = document.getElementById('setlistHorario').value;
+      const lugar = document.getElementById('setlistLugar').value.trim();
+      const notas = document.getElementById('setlistNotas').value.trim();
+
+      if (!fecha) { alert('La fecha es obligatoria.'); return; }
+      if (seleccionadas.length === 0) { alert('No hay canciones seleccionadas.'); return; }
+
+      const id = `${tipo}-${fecha}-${Date.now()}`;
+
+      const nuevoSetlist = {
+        id,
+        tipo,
+        nombre: nombre || `${tipo === 'show' ? 'Show' : 'Ensayo'} del ${fecha}`,
+        fecha,
+        horario,
+        lugar,
+        notas,
+        canciones: seleccionadas.map(c => ({ titulo: c.titulo, key: c.key })),
+        creado: new Date().toISOString()
+      };
+
+      const setlists = JSON.parse(localStorage.getItem(STORAGE_SETLISTS) || '[]');
+      setlists.push(nuevoSetlist);
+      localStorage.setItem(STORAGE_SETLISTS, JSON.stringify(setlists));
+
+      seleccionadas = [];
+      guardarSeleccion();
+      document.querySelectorAll('.cancion-check').forEach(c => c.classList.remove('checked'));
+      document.querySelectorAll('.subgrupo-check').forEach(c => c.classList.remove('checked', 'parcial'));
+
+      cerrarModalSetlist();
+
+      const aviso = document.getElementById('aviso');
+      aviso.textContent = `✅ Setlist "${nuevoSetlist.nombre}" guardado (${nuevoSetlist.canciones.length} canciones)`;
+      aviso.classList.add('show');
+      setTimeout(() => aviso.classList.remove('show'), 3500);
+
+      setTimeout(() => {
+        if (confirm('¿Quieres ir al portal para ver el setlist guardado?')) {
+          window.location.href = 'index.html';
+        }
+      }, 500);
+    }
+
     // ══════════════════════════════════════════════════════
     // BORRAR DATOS LOCALES
     // ══════════════════════════════════════════════════════
@@ -1804,14 +2217,15 @@
         'NO borrará:\n' +
         '• Canciones fijas en el HTML\n' +
         '• Artistas editados manualmente\n' +
-        '• El modo (Día/Noche/Show)\n\n' +
+        '• El modo (Día/Noche/Show)\n' +
+        '• Los setlists guardados\n\n' +
         '¿Continuar?'
       );
 
       if (!confirmar) return;
 
-      localStorage.removeItem('uranthia-canciones-nuevas');
-      localStorage.removeItem('uranthia-estilos-nuevos');
+      localStorage.removeItem(STORAGE_NUEVAS);
+      localStorage.removeItem(STORAGE_ESTILOS_NUEVOS);
 
       renderizarRepertorio();
       cargarEstilosEnSelect();
@@ -1820,7 +2234,12 @@
       aviso.textContent = '🗑️ Datos locales borrados';
       aviso.classList.add('show');
       setTimeout(() => aviso.classList.remove('show'), 2500);
-    }    
+    }
+
+    // ══════════════════════════════════════════════════════
+    // INICIALIZAR
+    // ══════════════════════════════════════════════════════
+    renderizarRepertorio();
   </script>
 
 </body>

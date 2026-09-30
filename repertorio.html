@@ -615,6 +615,94 @@
       .btn-mini { font-size: 0.65rem; padding: 4px 8px; }
       .action-btn { font-size: 0.75rem; padding: 10px 18px; }
     }
+        /* ── BOTÓN DESPLEGAR / REPLEGAR TODO ── */
+    .toggle-todo-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .toggle-todo-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--card-bg);
+      border: 2px solid var(--dorado);
+      color: var(--card-texto);
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 10px 22px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      letter-spacing: 0.3px;
+      box-shadow: 0 3px 10px rgba(212, 175, 55, 0.20);
+    }
+    .toggle-todo-btn:hover {
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      color: #0d2818;
+      border-color: #0d2818;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(212, 175, 55, 0.40);
+    }
+    .toggle-todo-btn .icono {
+      font-size: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    /* ── BOTÓN TOP FLOTANTE ── */
+    .btn-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      color: #0d2818;
+      border: 2px solid #0d2818;
+      font-size: 1.4rem;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.50), 0 0 0 4px rgba(212, 175, 55, 0.15);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      z-index: 999;
+      padding: 0;
+    }
+    .btn-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .btn-top:hover {
+      background: #0d2818;
+      color: #d4af37;
+      transform: translateY(-4px) scale(1.08);
+      box-shadow: 0 10px 25px rgba(13, 40, 24, 0.50), 0 0 0 4px rgba(212, 175, 55, 0.30);
+    }
+    .btn-top:active {
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    @media (max-width: 650px) {
+      .btn-top {
+        width: 48px;
+        height: 48px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 1.2rem;
+      }
+      .toggle-todo-btn {
+        font-size: 0.75rem;
+        padding: 8px 16px;
+      }
+    }
   </style>
 </head>
 <body class="modo-noche">
@@ -638,6 +726,13 @@
       <button class="modo-btn" data-modo="dia" onclick="cambiarModo('dia')">☀️ Día</button>
       <button class="modo-btn active" data-modo="noche" onclick="cambiarModo('noche')">🌙 Noche</button>
       <button class="modo-btn" data-modo="show" onclick="cambiarModo('show')">🎤 Show</button>
+    </div>
+        <!-- BOTÓN DESPLEGAR / REPLEGAR TODO -->
+    <div class="toggle-todo-container">
+      <button class="toggle-todo-btn" id="toggleTodoBtn" onclick="toggleTodo()">
+        <span class="icono" id="toggleTodoIcon">⬇️</span>
+        <span id="toggleTodoText">Desplegar todo</span>
+      </button>
     </div>
 
     <!-- TÍTULO -->
@@ -1382,7 +1477,59 @@
     // INICIALIZAR
     // ══════════════════════════════════════════════════════
     renderizarRepertorio();
+        // ══════════════════════════════════════════════════════
+    // DESPLEGAR / REPLEGAR TODO
+    // ══════════════════════════════════════════════════════
+    let todoDesplegado = true;
+
+    function toggleTodo() {
+      todoDesplegado = !todoDesplegado;
+
+      document.querySelectorAll('.estilo').forEach(estilo => {
+        const header = estilo.querySelector('.estilo-header');
+        const body = estilo.querySelector('.estilo-body');
+
+        if (todoDesplegado) {
+          header.classList.remove('collapsed');
+          body.style.display = '';
+        } else {
+          header.classList.add('collapsed');
+          body.style.display = 'none';
+        }
+      });
+
+      // Actualizar botón
+      const icono = document.getElementById('toggleTodoIcon');
+      const texto = document.getElementById('toggleTodoText');
+
+      if (todoDesplegado) {
+        icono.textContent = '⬇️';
+        texto.textContent = 'Desplegar todo';
+      } else {
+        icono.textContent = '⬆️';
+        texto.textContent = 'Replegar todo';
+      }
+    }
+
+    // ══════════════════════════════════════════════════════
+    // BOTÓN TOP FLOTANTE
+    // ══════════════════════════════════════════════════════
+    window.addEventListener('scroll', () => {
+      const btnTop = document.getElementById('btnTop');
+      if (window.scrollY > 300) {
+        btnTop.classList.add('visible');
+      } else {
+        btnTop.classList.remove('visible');
+      }
+    });
+
+    function irArriba() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   </script>
+
+  <!-- BOTÓN TOP FLOTANTE -->
+  <button class="btn-top" id="btnTop" onclick="irArriba()" title="Volver arriba">⬆</button>
 
 </body>
 </html>

@@ -8,7 +8,8 @@
   <link rel="icon" type="image/png" href="logo-uranthia.png" />
   <link rel="apple-touch-icon" href="logo-uranthia.png" />
   <meta name="description" content="Portal de setlists de Uranthia y su Corazón Latino. Ensayos y shows organizados." />
-  <!-- Open Graph (WhatsApp, Facebook, Telegram) -->
+
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Uranthia · Setlists de Ensayos y Shows" />
   <meta property="og:description" content="Consulta los setlists de ensayos y shows de Uranthia y su Corazón Latino." />
@@ -17,12 +18,10 @@
   <meta property="og:image:height" content="630" />
   <meta property="og:url" content="https://saoentertainment.github.io/URANTHIA/" />
   <meta property="og:site_name" content="Uranthia · Corazón Latino" />
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Uranthia · Setlists de Ensayos y Shows" />
   <meta name="twitter:description" content="Consulta los setlists de ensayos y shows de Uranthia y su Corazón Latino." />
-  <meta name="twitter:image" content="https://saoentertainment.github.io/URANTHIA/preview-whatsapp.jpg" />  
+  <meta name="twitter:image" content="https://saoentertainment.github.io/URANTHIA/preview-whatsapp.jpg" />
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,7 +33,6 @@
       --card-sub: #6b7a6b;
       --borde: rgba(212, 175, 55, 0.30);
       --dorado: #d4af37;
-      --dorado-suave: #f5d76e;
       --sombra: rgba(0, 0, 0, 0.55);
     }
 
@@ -74,7 +72,6 @@
       padding: 38px 38px 32px;
       box-shadow: 0 25px 60px var(--sombra), 0 0 0 2px var(--borde);
       border: 1px solid var(--borde);
-      transition: background 0.4s ease, color 0.4s ease;
     }
 
     .header {
@@ -113,7 +110,6 @@
     }
 
     .header-text { flex: 1; min-width: 200px; position: relative; z-index: 1; }
-
     .header-text .band-name {
       font-family: 'Georgia', 'Times New Roman', serif;
       font-size: 2rem;
@@ -124,7 +120,6 @@
       text-transform: uppercase;
       text-shadow: 0 2px 8px rgba(212, 175, 55, 0.30);
     }
-
     .header-text .band-sub {
       font-family: 'Georgia', 'Times New Roman', serif;
       font-size: 1.1rem;
@@ -134,7 +129,6 @@
       letter-spacing: 0.5px;
       margin-top: 2px;
     }
-
     .header-text .tagline {
       display: inline-block;
       margin-top: 10px;
@@ -661,7 +655,6 @@
           ? setlist.canciones
           : (setlist.canciones ? setlist.canciones.length : 0);
 
-        // Formatear fecha
         const fecha = new Date(setlist.fecha + 'T00:00:00');
         const fechaFormateada = fecha.toLocaleDateString('es-ES', {
           weekday: 'long',
@@ -670,7 +663,6 @@
           year: 'numeric'
         });
 
-        // Enlace según tipo (fijo o local)
         const enlace = setlist.esFijo
           ? setlist.id
           : `setlist.html?id=${setlist.id}`;

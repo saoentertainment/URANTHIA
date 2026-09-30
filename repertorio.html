@@ -23,7 +23,6 @@
       --sombra: rgba(0, 0, 0, 0.55);
     }
 
-    /* MODO SHOW */
     body.modo-show {
       --fondo: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%);
       --card-bg: #0a0a0a;
@@ -33,7 +32,6 @@
       --sombra: rgba(212, 175, 55, 0.20);
     }
 
-    /* MODO DÍA */
     body.modo-dia {
       --fondo: linear-gradient(135deg, #e8f0e8 0%, #f0f5f0 50%, #e8f0e8 100%);
       --card-bg: #ffffff;
@@ -64,7 +62,6 @@
       transition: background 0.4s ease, color 0.4s ease;
     }
 
-    /* ── HEADER ── */
     .header {
       background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
       border-radius: 28px;
@@ -201,7 +198,7 @@
     }
     .search-box input {
       width: 100%;
-      padding: 14px 20px 14px 48px;
+      padding: 14px 50px 14px 48px;
       border-radius: 50px;
       border: 2px solid var(--dorado);
       background: var(--card-bg);
@@ -222,6 +219,57 @@
       transform: translateY(-50%);
       font-size: 1.1rem;
       pointer-events: none;
+    }
+    .search-box .clear-btn {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: none;
+      background: #d4af37;
+      color: #0d2818;
+      font-size: 1rem;
+      font-weight: 900;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      line-height: 1;
+      padding: 0;
+    }
+    .search-box .clear-btn:hover {
+      background: #b8860b;
+      transform: translateY(-50%) scale(1.1);
+    }
+    .search-box .clear-btn.visible {
+      display: flex;
+    }
+
+    /* ── SIN RESULTADOS ── */
+    .sin-resultados {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--card-sub);
+      font-style: italic;
+      font-size: 1rem;
+      background: rgba(212, 175, 55, 0.08);
+      border-radius: 18px;
+      border: 2px dashed var(--borde);
+      margin: 20px 0;
+    }
+    .sin-resultados .icono {
+      font-size: 2.5rem;
+      display: block;
+      margin-bottom: 10px;
+      opacity: 0.6;
+    }
+    .sin-resultados strong {
+      color: var(--dorado);
+      font-style: normal;
     }
 
     /* ── FILTROS ── */
@@ -602,6 +650,13 @@
     <div class="search-box">
       <span class="icon">🔍</span>
       <input type="text" id="buscador" placeholder="Buscar canción o artista..." />
+      <button class="clear-btn" id="clearBuscador" onclick="borrarBuscador()" title="Borrar búsqueda">✕</button>
+    </div>
+
+    <!-- SIN RESULTADOS -->
+    <div id="sinResultados" class="sin-resultados" style="display:none;">
+      <span class="icono">🔍</span>
+      No se encontraron canciones para "<strong id="textoBuscado"></strong>"
     </div>
 
     <!-- FILTROS -->
@@ -1096,7 +1151,7 @@
           if (subgrupo.canciones.length === 0) return;
 
           let htmlCanciones = '';
-          subgrupo.canciones.forEach((cancion, index) => {
+          subgrupo.canciones.forEach((cancion) => {
             const key = `${estilo.id}|${subgrupo.nombre}|${cancion.titulo}`;
             const artistaGuardado = datosGuardados[key] !== undefined ? datosGuardados[key] : cancion.artista;
             const artistaMostrar = artistaGuardado || '— sin artista —';
@@ -1150,7 +1205,6 @@
         contenedor.appendChild(divEstilo);
       });
 
-      // Reconectar eventos
       conectarEventos();
     }
 
@@ -1196,7 +1250,6 @@
     // EVENTOS
     // ══════════════════════════════════════════════════════
     function conectarEventos() {
-      // Colapsar / expandir
       document.querySelectorAll('.estilo-header').forEach(header => {
         header.onclick = () => {
           const body = header.nextElementSibling;
@@ -1225,20 +1278,82 @@
     });
 
     // ══════════════════════════════════════════════════════
-    // BUSCADOR
+    // BUSCADOR CON FILTRADO COMPLETO
     // ══════════════════════════════════════════════════════
-    document.getElementById('buscador').addEventListener('input', (e) => {
+    const buscador = document.getElementById('buscador');
+    const clearBtn = document.getElementById('clearBuscador');
+    const sinResultados = document.getElementById('sinResultados');
+    const textoBuscado = document.getElementById('textoBuscado');
+
+    buscador.addEventListener('input', (e) => {
       const texto = e.target.value.toLowerCase().trim();
-      document.querySelectorAll('.cancion').forEach(cancion => {
-        const titulo = cancion.querySelector('.titulo').textContent.toLowerCase();
-        const artista = cancion.querySelector('.artista').textContent.toLowerCase();
-        if (titulo.includes(texto) || artista.includes(texto)) {
-          cancion.style.display = '';
+
+      if (texto.length > 0) {
+        clearBtn.classList.add('visible');
+      } else {
+        clearBtn.classList.remove('visible');
+      }
+
+      let totalVisibles = 0;
+
+      document.querySelectorAll('.estilo').forEach(estilo => {
+        let cancionesVisiblesEstilo = 0;
+
+        estilo.querySelectorAll('.subgrupo').forEach(subgrupo => {
+          let cancionesVisiblesSubgrupo = 0;
+
+          subgrupo.querySelectorAll('.cancion').forEach(cancion => {
+            const titulo = cancion.querySelector('.titulo').textContent.toLowerCase();
+            const artistaEl = cancion.querySelector('.artista');
+            const artista = artistaEl ? artistaEl.textContent.toLowerCase() : '';
+
+            if (titulo.includes(texto) || artista.includes(texto)) {
+              cancion.style.display = '';
+              cancionesVisiblesSubgrupo++;
+              cancionesVisiblesEstilo++;
+              totalVisibles++;
+            } else {
+              cancion.style.display = 'none';
+            }
+          });
+
+          if (cancionesVisiblesSubgrupo === 0 && texto.length > 0) {
+            subgrupo.style.display = 'none';
+          } else {
+            subgrupo.style.display = '';
+          }
+        });
+
+        if (cancionesVisiblesEstilo === 0 && texto.length > 0) {
+          estilo.style.display = 'none';
         } else {
-          cancion.style.display = 'none';
+          estilo.style.display = '';
         }
       });
+
+      if (totalVisibles === 0 && texto.length > 0) {
+        sinResultados.style.display = 'block';
+        textoBuscado.textContent = texto;
+      } else {
+        sinResultados.style.display = 'none';
+      }
     });
+
+    function borrarBuscador() {
+      buscador.value = '';
+      clearBtn.classList.remove('visible');
+      sinResultados.style.display = 'none';
+
+      document.querySelectorAll('.estilo').forEach(estilo => {
+        estilo.style.display = '';
+        estilo.querySelectorAll('.subgrupo').forEach(sg => {
+          sg.style.display = '';
+          sg.querySelectorAll('.cancion').forEach(c => c.style.display = '');
+        });
+      });
+
+      buscador.focus();
+    }
 
     // ══════════════════════════════════════════════════════
     // MODO DÍA / NOCHE / SHOW
@@ -1251,7 +1366,6 @@
       localStorage.setItem('uranthia-modo', modo);
     }
 
-    // Cargar modo guardado
     const modoGuardado = localStorage.getItem('uranthia-modo') || 'noche';
     cambiarModo(modoGuardado);
 

@@ -858,6 +858,18 @@
       .iconos-grid { grid-template-columns: repeat(auto-fill, minmax(48px, 1fr)); }
       .icono-item { font-size: 1.3rem; }
     }
+    /* ── BOTÓN BORRAR DATOS LOCALES ── */
+    .action-btn.danger {
+      background: linear-gradient(135deg, #8b0000 0%, #c1121f 100%);
+      color: #ffffff;
+      border-color: #8b0000;
+    }
+    .action-btn.danger:hover {
+      background: linear-gradient(135deg, #c1121f 0%, #e63946 100%);
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(193, 18, 31, 0.50);
+    }    
   </style>
 </head>
 <body class="modo-noche">
@@ -927,6 +939,7 @@
     <div class="actions-bar">
       <button class="action-btn" onclick="abrirModal()">➕ Agregar canción</button>
       <a class="action-btn secondary" href="index.html">🏠 Ir al Setlist</a>
+      <button class="action-btn danger" onclick="borrarDatosLocales()">🗑️ Borrar datos locales</button>
     </div>
 
     <div class="footer">
@@ -1779,6 +1792,35 @@
 
     // INICIALIZAR
     renderizarRepertorio();
+    // ══════════════════════════════════════════════════════
+    // BORRAR DATOS LOCALES
+    // ══════════════════════════════════════════════════════
+    function borrarDatosLocales() {
+      const confirmar = confirm(
+        '⚠️ ¿Seguro que quieres borrar los datos locales?\n\n' +
+        'Esto borrará:\n' +
+        '• Canciones agregadas desde la web\n' +
+        '• Estilos y subgrupos creados desde la web\n\n' +
+        'NO borrará:\n' +
+        '• Canciones fijas en el HTML\n' +
+        '• Artistas editados manualmente\n' +
+        '• El modo (Día/Noche/Show)\n\n' +
+        '¿Continuar?'
+      );
+
+      if (!confirmar) return;
+
+      localStorage.removeItem('uranthia-canciones-nuevas');
+      localStorage.removeItem('uranthia-estilos-nuevos');
+
+      renderizarRepertorio();
+      cargarEstilosEnSelect();
+
+      const aviso = document.getElementById('aviso');
+      aviso.textContent = '🗑️ Datos locales borrados';
+      aviso.classList.add('show');
+      setTimeout(() => aviso.classList.remove('show'), 2500);
+    }    
   </script>
 
 </body>

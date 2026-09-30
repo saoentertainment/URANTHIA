@@ -62,7 +62,6 @@
       transition: background 0.4s ease, color 0.4s ease;
     }
 
-    /* ── HEADER ── */
     .header {
       background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
       border-radius: 28px;
@@ -135,7 +134,6 @@
       box-shadow: 0 3px 10px rgba(212, 175, 55, 0.30);
     }
 
-    /* ── MODO SELECTOR ── */
     .modo-selector {
       display: flex;
       justify-content: center;
@@ -154,7 +152,6 @@
       border-radius: 30px;
       cursor: pointer;
       transition: all 0.2s ease;
-      letter-spacing: 0.3px;
     }
     .modo-btn:hover {
       border-color: var(--dorado);
@@ -168,7 +165,6 @@
       box-shadow: 0 4px 12px rgba(212, 175, 55, 0.40);
     }
 
-    /* ── TÍTULO ── */
     .main-title { text-align: center; margin: 8px 0 22px 0; }
     .main-title h1 {
       font-family: 'Georgia', 'Times New Roman', serif;
@@ -192,7 +188,6 @@
       font-style: italic;
     }
 
-    /* ── BOTONES PRINCIPALES ── */
     .botones-principales {
       display: flex;
       justify-content: center;
@@ -240,7 +235,6 @@
     }
     .btn-principal .icono { font-size: 1.2rem; }
 
-    /* ── DIVISOR ── */
     .divider {
       margin: 26px 0 22px 0;
       height: 2px;
@@ -249,7 +243,6 @@
       opacity: 0.6;
     }
 
-    /* ── FILTROS SETLISTS ── */
     .filtros-setlists {
       display: flex;
       justify-content: center;
@@ -281,7 +274,6 @@
       border-color: #d4af37;
     }
 
-    /* ── LISTA DE SETLISTS ── */
     .setlists-container {
       display: flex;
       flex-direction: column;
@@ -383,7 +375,6 @@
       flex-shrink: 0;
     }
 
-    /* ── SIN SETLISTS ── */
     .sin-setlists {
       text-align: center;
       padding: 50px 30px;
@@ -411,7 +402,6 @@
       margin: 0 auto 20px;
     }
 
-    /* ── FOOTER ── */
     .footer {
       margin-top: 32px;
       padding-top: 20px;
@@ -449,7 +439,6 @@
       border: 1px solid var(--borde);
     }
 
-    /* ── BOTÓN TOP ── */
     .btn-top {
       position: fixed;
       bottom: 30px;
@@ -496,7 +485,6 @@
 
   <div class="card">
 
-    <!-- HEADER -->
     <div class="header">
       <img src="logo-uranthia.png" alt="Uranthia y su Corazón Latino" class="logo-img" />
       <div class="header-text">
@@ -506,20 +494,17 @@
       </div>
     </div>
 
-    <!-- SELECTOR DE MODO -->
     <div class="modo-selector">
       <button class="modo-btn" data-modo="dia" onclick="cambiarModo('dia')">☀️ Día</button>
       <button class="modo-btn active" data-modo="noche" onclick="cambiarModo('noche')">🌙 Noche</button>
       <button class="modo-btn" data-modo="show" onclick="cambiarModo('show')">🎤 Show</button>
     </div>
 
-    <!-- TÍTULO -->
     <div class="main-title">
       <h1>Nuestros <span class="gold">Setlists</span></h1>
       <div class="subtitle">Ensayos y shows organizados</div>
     </div>
 
-    <!-- BOTONES PRINCIPALES -->
     <div class="botones-principales">
       <a class="btn-principal primary" href="repertorio.html">
         <span class="icono">➕</span>
@@ -533,17 +518,14 @@
 
     <div class="divider"></div>
 
-    <!-- FILTROS -->
     <div class="filtros-setlists">
       <button class="filtro-setlist active" data-filtro="todos">📋 Todos</button>
       <button class="filtro-setlist" data-filtro="ensayo">🎤 Ensayos</button>
       <button class="filtro-setlist" data-filtro="show">🎉 Shows</button>
     </div>
 
-    <!-- LISTA DE SETLISTS -->
     <div class="setlists-container" id="setlistsContainer"></div>
 
-    <!-- FOOTER -->
     <div class="footer">
       <div class="footer-credits">
         <span>✨ Creado por</span>
@@ -563,8 +545,22 @@
     // ══════════════════════════════════════════════════════
     const STORAGE_SETLISTS = 'uranthia-setlists';
 
+    // ── SETLISTS FIJOS (en HTML) ──
+    const SETLISTS_FIJOS = [
+      {
+        id: 'setlists/ensayo-2026-09-30.html',
+        tipo: 'ensayo',
+        nombre: '1ER ENSAYO EVENTO NOVIEMBRE 28 2026',
+        fecha: '2026-09-30',
+        horario: '21:00',
+        lugar: 'CASA ATZY-SANTI',
+        canciones: 25,
+        esFijo: true
+      }
+    ];
+
     // ══════════════════════════════════════════════════════
-    // MODO DÍA / NOCHE / SHOW
+    // MODO
     // ══════════════════════════════════════════════════════
     function cambiarModo(modo) {
       document.body.classList.remove('modo-dia', 'modo-noche', 'modo-show');
@@ -577,27 +573,36 @@
     cambiarModo(modoGuardado);
 
     // ══════════════════════════════════════════════════════
-    // CARGAR Y RENDERIZAR SETLISTS
+    // CARGAR SETLISTS LOCALES
     // ══════════════════════════════════════════════════════
     function cargarSetlists() {
       return JSON.parse(localStorage.getItem(STORAGE_SETLISTS) || '[]');
     }
 
+    // ══════════════════════════════════════════════════════
+    // RENDERIZAR
+    // ══════════════════════════════════════════════════════
     function renderizarSetlists(filtro = 'todos') {
       const container = document.getElementById('setlistsContainer');
       const setlists = cargarSetlists();
 
-      // Filtrar
+      // Combinar fijos + locales
+      const todosLosSetlists = [
+        ...SETLISTS_FIJOS,
+        ...setlists.map(s => ({ ...s, esFijo: false }))
+      ];
+
+      // Filtrar por tipo
       const setlistsFiltrados = filtro === 'todos'
-        ? setlists
-        : setlists.filter(s => s.tipo === filtro);
+        ? todosLosSetlists
+        : todosLosSetlists.filter(s => s.tipo === filtro);
 
       // Ordenar por fecha descendente
       setlistsFiltrados.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
 
       // Sin setlists
       if (setlistsFiltrados.length === 0) {
-        if (setlists.length === 0) {
+        if (todosLosSetlists.length === 0) {
           container.innerHTML = `
             <div class="sin-setlists">
               <span class="icono">📋</span>
@@ -627,7 +632,9 @@
         const tipoIcono = setlist.tipo === 'show' ? '🎉' : '🎤';
         const tipoTexto = setlist.tipo === 'show' ? 'Show' : 'Ensayo';
         const cardClase = setlist.tipo === 'show' ? 'tipo-show' : '';
-        const numCanciones = setlist.canciones ? setlist.canciones.length : 0;
+        const numCanciones = setlist.esFijo
+          ? setlist.canciones
+          : (setlist.canciones ? setlist.canciones.length : 0);
 
         // Formatear fecha
         const fecha = new Date(setlist.fecha + 'T00:00:00');
@@ -638,8 +645,13 @@
           year: 'numeric'
         });
 
+        // Enlace según tipo (fijo o local)
+        const enlace = setlist.esFijo
+          ? setlist.id
+          : `setlist.html?id=${setlist.id}`;
+
         return `
-          <a class="setlist-card ${cardClase}" href="setlists/${setlist.id}.html">          <a class="setlist-card ${cardClase}" href="setlist.html?id=${setlist.id}">
+          <a class="setlist-card ${cardClase}" href="${enlace}">
             <div class="setlist-icono">${tipoIcono}</div>
             <div class="setlist-info">
               <span class="setlist-tipo ${tipoClase}">${tipoTexto}</span>

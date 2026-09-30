@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Setlist · Uranthia y su Corazón Latino</title>
+
+  <link rel="icon" type="image/png" href="logo-uranthia.png" />
+  <link rel="apple-touch-icon" href="logo-uranthia.png" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --fondo: linear-gradient(135deg, #0d2818 0%, #1a3d2a 50%, #0d2818 100%);
+      --card-bg: #ffffff;
+      --card-texto: #0d2818;
+      --card-sub: #6b7a6b;
+      --borde: rgba(212, 175, 55, 0.30);
+      --dorado: #d4af37;
+      --dorado-suave: #f5d76e;
+      --sombra: rgba(0, 0, 0, 0.55);
+    }
+
+    body.modo-show {
+      --fondo: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%);
+      --card-bg: #0a0a0a;
+      --card-texto: #f5d76e;
+      --card-sub: #d4af37;
+      --borde: rgba(212, 175, 55, 0.55);
+      --sombra: rgba(212, 175, 55, 0.20);
+    }
+
+    body.modo-dia {
+      --fondo: linear-gradient(135deg, #e8f0e8 0%, #f0f5f0 50%, #e8f0e8 100%);
+      --card-bg: #ffffff;
+      --card-texto: #0d2818;
+      --card-sub: #6b7a6b;
+      --borde: rgba(212, 175, 55, 0.40);
+      --sombra: rgba(0, 0, 0, 0.15);
+    }
+
+    body {
+      background: var(--fondo);
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      padding: 30px 20px;
+      color: var(--card-texto);
+      transition: background 0.4s ease;
+    }
+
+    .card {
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border-radius: 36px;
+      padding: 38px 38px 32px;
+      box-shadow: 0 25px 60px var(--sombra), 0 0 0 2px var(--borde);
+      border: 1px solid var(--borde);
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
+      border-radius: 28px;
+      padding: 26px 32px;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+      box-shadow: 0 8px 30px rgba(13, 40, 24, 0.40), inset 0 1px 0 rgba(212, 175, 55, 0.15);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .logo-img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #d4af37;
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35), 0 0 0 4px rgba(212, 175, 55, 0.10);
+      flex-shrink: 0;
+      background: #0d2818;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-text { flex: 1; min-width: 200px; position: relative; z-index: 1; }
+
+    .header-text .band-name {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: #d4af37;
+      letter-spacing: 1.5px;
+      line-height: 1.1;
+      text-transform: uppercase;
+      text-shadow: 0 2px 8px rgba(212, 175, 55, 0.30);
+    }
+
+    .header-text .band-sub {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      font-style: italic;
+      color: #f5e6c8;
+      letter-spacing: 0.5px;
+      margin-top: 2px;
+    }
+
+    /* ── MODO SELECTOR ── */
+    .modo-selector {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
+    .modo-btn {
+      background: var(--card-bg);
+      border: 2px solid var(--borde);
+      color: var(--card-texto);
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 8px 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      letter-spacing: 0.3px;
+    }
+    .modo-btn:hover {
+      border-color: var(--dorado);
+      background: #faf3e0;
+      color: #0d2818;
+    }
+    .modo-btn.active {
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      color: #0d2818;
+      border-color: #0d2818;
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.40);
+    }
+
+    /* ── CABECERA DEL SETLIST ── */
+    .setlist-header {
+      background: linear-gradient(135deg, #faf3e0 0%, #f5e6c8 100%);
+      border-radius: 20px;
+      padding: 24px 28px;
+      border: 2px solid var(--borde);
+      border-left: 6px solid var(--dorado);
+      margin-bottom: 26px;
+      text-align: center;
+    }
+    .setlist-tipo-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 5px 16px;
+      border-radius: 30px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .setlist-tipo-badge.ensayo {
+      background: linear-gradient(135deg, #b19cd9 0%, #d4b5e8 100%);
+      color: #4a2c6b;
+      border: 1px solid #8b6ba8;
+    }
+    .setlist-tipo-badge.show {
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      color: #0d2818;
+      border: 1px solid #b8860b;
+    }
+
+    .setlist-titulo {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #0d2818;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .setlist-detalles {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      font-size: 0.9rem;
+      color: #4a4a4a;
+      font-style: italic;
+    }
+    .setlist-detalles .detalle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .setlist-notas {
+      margin-top: 16px;
+      padding: 12px 18px;
+      background: rgba(212, 175, 55, 0.12);
+      border-radius: 12px;
+      border-left: 4px solid var(--dorado);
+      font-size: 0.9rem;
+      color: #0d2818;
+      text-align: left;
+      line-height: 1.5;
+    }
+    .setlist-notas strong {
+      color: #b8860b;
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ── LISTA DE CANCIONES ── */
+    .canciones-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--borde);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .canciones-titulo {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--card-texto);
+      letter-spacing: 0.5px;
+    }
+    .canciones-contador {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--dorado);
+      background: rgba(212, 175, 55, 0.12);
+      padding: 6px 14px;
+      border-radius: 30px;
+      border: 1px solid var(--borde);
+    }
+
+    .cancion-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--card-bg);
+      border-radius: 14px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+      border: 1px solid var(--borde);
+      border-left: 5px solid var(--dorado);
+      transition: all 0.25s ease;
+    }
+    .cancion-item:hover {
+      border-left-color: #0d2818;
+      box-shadow: 0 4px 12px rgba(13, 40, 24, 0.08);
+    }
+    .cancion-item.tocada {
+      opacity: 0.55;
+      background: rgba(212, 175, 55, 0.08);
+    }
+    .cancion-item.tocada .cancion-titulo {
+      text-decoration: line-through;
+      text-decoration-thickness: 2px;
+      text-decoration-color: var(--dorado);
+    }
+
+    .cancion-numero {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: var(--dorado);
+      background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: 2px solid var(--dorado);
+    }
+
+    .cancion-check-setlist {
+      width: 32px;
+      height: 32px;
+      border: 2px solid var(--dorado);
+      border-radius: 8px;
+      background: var(--card-bg);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: transparent;
+    }
+    .cancion-check-setlist:hover {
+      border-color: #0d2818;
+      transform: scale(1.08);
+      box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.20);
+    }
+    .cancion-check-setlist.checked {
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      border-color: #0d2818;
+      color: #0d2818;
+    }
+    .cancion-check-setlist.checked::after { content: '✓'; }
+
+    .cancion-info-setlist { flex: 1; min-width: 0; }
+    .cancion-titulo {
+      font-weight: 800;
+      color: var(--card-texto);
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+    .cancion-artista-setlist {
+      font-size: 0.85rem;
+      color: var(--card-sub);
+      font-style: italic;
+      margin-top: 3px;
+    }
+
+    .cancion-botones-setlist {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .btn-mini-setlist {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 30px;
+      border: 1.5px solid var(--borde);
+      background: var(--card-bg);
+      color: #b8c0b8;
+      cursor: not-allowed;
+      white-space: nowrap;
+    }
+
+    /* ── ACCIONES ── */
+    .acciones-setlist {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn-accion {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 800;
+      padding: 12px 24px;
+      border-radius: 30px;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      border: 2px solid transparent;
+    }
+    .btn-accion.primary {
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      color: #0d2818;
+      border-color: #0d2818;
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.40);
+    }
+    .btn-accion.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.60);
+    }
+    .btn-accion.secondary {
+      background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
+      color: #d4af37;
+      border-color: #d4af37;
+    }
+    .btn-accion.secondary:hover {
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      color: #0d2818;
+      border-color: #0d2818;
+    }
+    .btn-accion.danger {
+      background: linear-gradient(135deg, #8b0000 0%, #c1121f 100%);
+      color: #ffffff;
+      border-color: #8b0000;
+    }
+    .btn-accion.danger:hover {
+      background: linear-gradient(135deg, #c1121f 0%, #e63946 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(193, 18, 31, 0.50);
+    }
+
+    /* ── ERROR / NO ENCONTRADO ── */
+    .no-encontrado {
+      text-align: center;
+      padding: 60px 30px;
+    }
+    .no-encontrado .icono {
+      font-size: 4rem;
+      display: block;
+      margin-bottom: 20px;
+    }
+    .no-encontrado h2 {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 1.5rem;
+      color: var(--card-texto);
+      margin-bottom: 12px;
+    }
+    .no-encontrado p {
+      color: var(--card-sub);
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 2px solid var(--borde);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      text-align: center;
+    }
+    .footer-credits {
+      font-size: 0.85rem;
+      color: #0d2818;
+      font-weight: 600;
+      background: linear-gradient(135deg, #f5e6c8 0%, #faf3e0 100%);
+      padding: 8px 22px;
+      border-radius: 30px;
+      border: 1px solid var(--borde);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .footer-credits .names { font-weight: 800; color: #b8860b; letter-spacing: 0.8px; }
+    .footer-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #d4af37;
+      background: #0d2818;
+      padding: 5px 18px;
+      border-radius: 30px;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      border: 1px solid var(--borde);
+    }
+
+    /* ── AVISO ── */
+    .aviso {
+      display: none;
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
+      color: #d4af37;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.50);
+      border: 2px solid #d4af37;
+      z-index: 3000;
+      max-width: 90%;
+      text-align: center;
+    }
+    .aviso.show { display: block; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    /* ── BARRA DE PROGRESO ── */
+    .barra-progreso {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+      padding: 14px 20px;
+      background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
+      border-radius: 20px;
+      border: 2px solid var(--dorado);
+    }
+    .barra-progreso .progreso-texto {
+      color: #f5e6c8;
+      font-size: 0.85rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .barra-progreso .progreso-texto strong {
+      color: #d4af37;
+      font-size: 1rem;
+    }
+    .barra-progreso .progreso-barra {
+      flex: 1;
+      height: 14px;
+      background: rgba(212, 175, 55, 0.15);
+      border-radius: 30px;
+      overflow: hidden;
+      border: 1px solid rgba(212, 175, 55, 0.30);
+    }
+    .barra-progreso .progreso-lleno {
+      height: 100%;
+      background: linear-gradient(90deg, #d4af37 0%, #f5d76e 100%);
+      transition: width 0.4s ease;
+    }
+
+    @media (max-width: 650px) {
+      body { padding: 16px 10px; }
+      .card { padding: 20px 14px; border-radius: 24px; }
+      .header { flex-direction: column; text-align: center; padding: 20px; gap: 14px; }
+      .logo-img { width: 75px; height: 75px; }
+      .header-text .band-name { font-size: 1.3rem; }
+      .setlist-titulo { font-size: 1.4rem; }
+      .cancion-item { flex-wrap: wrap; gap: 10px; padding: 12px 14px; }
+      .cancion-botones-setlist { width: 100%; }
+      .btn-mini-setlist { font-size: 0.65rem; padding: 4px 8px; }
+      .btn-accion { font-size: 0.75rem; padding: 10px 18px; }
+      .barra-progreso { flex-direction: column; gap: 8px; }
+      .barra-progreso .progreso-barra { width: 100%; }
+    }
+  </style>
+</head>
+<body class="modo-noche">
+
+  <div class="aviso" id="aviso">🚧 Cargando...</div>
+
+  <div class="card" id="card">
+
+    <!-- HEADER -->
+    <div class="header">
+      <img src="logo-uranthia.png" alt="Uranthia y su Corazón Latino" class="logo-img" />
+      <div class="header-text">
+        <div class="band-name">Uranthia</div>
+        <div class="band-sub">y su Corazón Latino</div>
+      </div>
+    </div>
+
+    <!-- MODO SELECTOR -->
+    <div class="modo-selector">
+      <button class="modo-btn" data-modo="dia" onclick="cambiarModo('dia')">☀️ Día</button>
+      <button class="modo-btn active" data-modo="noche" onclick="cambiarModo('noche')">🌙 Noche</button>
+      <button class="modo-btn" data-modo="show" onclick="cambiarModo('show')">🎤 Show</button>
+    </div>
+
+    <!-- CONTENIDO DINÁMICO -->
+    <div id="contenido"></div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <div class="footer-credits">
+        <span>✨ Creado por</span>
+        <span class="names">SAO &amp; DS</span>
+        <span>🐋</span>
+      </div>
+      <span class="footer-tag">Uranthia · Corazón Latino</span>
+    </div>
+
+  </div>
+
+  <script>
+    // ══════════════════════════════════════════════════════
+    // CONSTANTES
+    // ══════════════════════════════════════════════════════
+    const STORAGE_SETLISTS = 'uranthia-setlists';
+    const STORAGE_TOCADAS = 'uranthia-setlist-tocadas';
+
+    // ══════════════════════════════════════════════════════
+    // MODO
+    // ══════════════════════════════════════════════════════
+    function cambiarModo(modo) {
+      document.body.classList.remove('modo-dia', 'modo-noche', 'modo-show');
+      document.body.classList.add('modo-' + modo);
+      document.querySelectorAll('.modo-btn').forEach(b => b.classList.remove('active'));
+      document.querySelector(`.modo-btn[data-modo="${modo}"]`).classList.add('active');
+      localStorage.setItem('uranthia-modo', modo);
+    }
+    const modoGuardado = localStorage.getItem('uranthia-modo') || 'noche';
+    cambiarModo(modoGuardado);
+
+    // ══════════════════════════════════════════════════════
+    // OBTENER ID DEL SETLIST DE LA URL
+    // ══════════════════════════════════════════════════════
+    function obtenerIdURL() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('id');
+    }
+
+    // ══════════════════════════════════════════════════════
+    // CARGAR SETLIST
+    // ══════════════════════════════════════════════════════
+    function cargarSetlist(id) {
+      const setlists = JSON.parse(localStorage.getItem(STORAGE_SETLISTS) || '[]');
+      return setlists.find(s => s.id === id);
+    }
+
+    // ══════════════════════════════════════════════════════
+    // TOCADAS (check por canción en el setlist)
+    // ══════════════════════════════════════════════════════
+    function cargarTocadas(setlistId) {
+      const todas = JSON.parse(localStorage.getItem(STORAGE_TOCADAS) || '{}');
+      return todas[setlistId] || [];
+    }
+
+    function guardarTocadas(setlistId, tocadas) {
+      const todas = JSON.parse(localStorage.getItem(STORAGE_TOCADAS) || '{}');
+      todas[setlistId] = tocadas;
+      localStorage.setItem(STORAGE_TOCADAS, JSON.stringify(todas));
+    }
+
+    function toggleTocada(setlistId, key) {
+      const tocadas = cargarTocadas(setlistId);
+      const idx = tocadas.indexOf(key);
+
+      if (idx >= 0) {
+        tocadas.splice(idx, 1);
+      } else {
+        tocadas.push(key);
+      }
+
+      guardarTocadas(setlistId, tocadas);
+      renderizarSetlist(setlistId);
+    }
+
+    // ══════════════════════════════════════════════════════
+    // FORMATEAR FECHA
+    // ══════════════════════════════════════════════════════
+    function formatearFecha(fechaStr) {
+      if (!fechaStr) return '';
+      const fecha = new Date(fechaStr + 'T00:00:00');
+      return fecha.toLocaleDateString('es-ES', {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      });
+    }
+
+    // ══════════════════════════════════════════════════════
+    // RENDERIZAR
+    // ══════════════════════════════════════════════════════
+    function renderizarSetlist(setlistId) {
+      const setlist = cargarSetlist(setlistId);
+      const contenido = document.getElementById('contenido');
+
+      if (!setlist) {
+        contenido.innerHTML = `
+          <div class="no-encontrado">
+            <span class="icono">🔍</span>
+            <h2>Setlist no encontrado</h2>
+            <p>Este setlist ya no existe o fue borrado.</p>
+            <a class="btn-accion primary" href="index.html">🏠 Volver al portal</a>
+          </div>
+        `;
+        return;
+      }
+
+      const tocadas = cargarTocadas(setlist.id);
+      const tipoClase = setlist.tipo === 'show' ? 'show' : 'ensayo';
+      const tipoIcono = setlist.tipo === 'show' ? '🎉' : '🎤';
+      const tipoTexto = setlist.tipo === 'show' ? 'Show' : 'Ensayo';
+
+      const totalCanciones = setlist.canciones.length;
+      const totalTocadas = tocadas.length;
+      const porcentaje = totalCanciones > 0 ? Math.round((totalTocadas / totalCanciones) * 100) : 0;
+
+      let htmlCanciones = '';
+      setlist.canciones.forEach((cancion, index) => {
+        const estaTocada = tocadas.includes(cancion.key);
+        const claseTocada = estaTocada ? 'tocada' : '';
+        const claseCheck = estaTocada ? 'checked' : '';
+
+        htmlCanciones += `
+          <div class="cancion-item ${claseTocada}">
+            <div class="cancion-numero">${index + 1}</div>
+            <div class="cancion-check-setlist ${claseCheck}" onclick="toggleTocada('${setlist.id}', '${cancion.key.replace(/'/g, "\\'")}')"></div>
+            <div class="cancion-info-setlist">
+              <div class="cancion-titulo">${cancion.titulo}</div>
+            </div>
+            <div class="cancion-botones-setlist">
+              <span class="btn-mini-setlist">▶ YouTube</span>
+              <span class="btn-mini-setlist">📄 Letra</span>
+              <span class="btn-mini-setlist">🎸 Acordes</span>
+              <span class="btn-mini-setlist">🎹 Piano</span>
+              <span class="btn-mini-setlist">🎸 Bajo</span>
+            </div>
+          </div>
+        `;
+      });
+
+      contenido.innerHTML = `
+        <!-- CABECERA DEL SETLIST -->
+        <div class="setlist-header">
+          <span class="setlist-tipo-badge ${tipoClase}">${tipoIcono} ${tipoTexto}</span>
+          <h1 class="setlist-titulo">${setlist.nombre}</h1>
+          <div class="setlist-detalles">
+            <span class="detalle">📅 ${formatearFecha(setlist.fecha)}</span>
+            ${setlist.horario ? `<span class="detalle">🕐 ${setlist.horario}</span>` : ''}
+            ${setlist.lugar ? `<span class="detalle">📍 ${setlist.lugar}</span>` : ''}
+          </div>
+          ${setlist.notas ? `
+            <div class="setlist-notas">
+              <strong>📝 Notas</strong>
+              ${setlist.notas}
+            </div>
+          ` : ''}
+        </div>
+
+        <!-- BARRA DE PROGRESO -->
+        <div class="barra-progreso">
+          <span class="progreso-texto">🎵 Tocadas: <strong>${totalTocadas} / ${totalCanciones}</strong></span>
+          <div class="progreso-barra">
+            <div class="progreso-lleno" style="width: ${porcentaje}%;"></div>
+          </div>
+          <span class="progreso-texto"><strong>${porcentaje}%</strong></span>
+        </div>
+
+        <!-- LISTA DE CANCIONES -->
+        <div class="canciones-header">
+          <span class="canciones-titulo">🎵 Canciones</span>
+          <span class="canciones-contador">${totalCanciones} canciones</span>
+        </div>
+        ${htmlCanciones}
+
+        <!-- ACCIONES -->
+        <div class="acciones-setlist">
+          <a class="btn-accion secondary" href="index.html">🏠 Volver al portal</a>
+          <button class="btn-accion primary" onclick="desmarcarTodas('${setlist.id}')">🔄 Reiniciar check</button>
+          <button class="btn-accion danger" onclick="borrarSetlist('${setlist.id}')">🗑️ Borrar setlist</button>
+        </div>
+      `;
+    }
+
+    // ══════════════════════════════════════════════════════
+    // DESMARCAR TODAS
+    // ══════════════════════════════════════════════════════
+    function desmarcarTodas(setlistId) {
+      if (!confirm('¿Reiniciar el check de todas las canciones?')) return;
+      guardarTocadas(setlistId, []);
+      renderizarSetlist(setlistId);
+      mostrarAviso('🔄 Check reiniciado');
+    }
+
+    // ══════════════════════════════════════════════════════
+    // BORRAR SETLIST
+    // ══════════════════════════════════════════════════════
+    function borrarSetlist(setlistId) {
+      if (!confirm('⚠️ ¿Seguro que quieres borrar este setlist?\n\nEsta acción no se puede deshacer.')) return;
+
+      const setlists = JSON.parse(localStorage.getItem(STORAGE_SETLISTS) || '[]');
+      const nuevos = setlists.filter(s => s.id !== setlistId);
+      localStorage.setItem(STORAGE_SETLISTS, JSON.stringify(nuevos));
+
+      // Borrar también las tocadas
+      const todasTocadas = JSON.parse(localStorage.getItem(STORAGE_TOCADAS) || '{}');
+      delete todasTocadas[setlistId];
+      localStorage.setItem(STORAGE_TOCADAS, JSON.stringify(todasTocadas));
+
+      mostrarAviso('🗑️ Setlist borrado');
+      setTimeout(() => window.location.href = 'index.html', 1200);
+    }
+
+    // ══════════════════════════════════════════════════════
+    // AVISO
+    // ══════════════════════════════════════════════════════
+    function mostrarAviso(texto) {
+      const aviso = document.getElementById('aviso');
+      aviso.textContent = texto;
+      aviso.classList.add('show');
+      setTimeout(() => aviso.classList.remove('show'), 2500);
+    }
+
+    // ══════════════════════════════════════════════════════
+    // INICIALIZAR
+    // ══════════════════════════════════════════════════════
+    const setlistId = obtenerIdURL();
+    if (!setlistId) {
+      document.getElementById('contenido').innerHTML = `
+        <div class="no-encontrado">
+          <span class="icono">🔍</span>
+          <h2>No se especificó un setlist</h2>
+          <p>Vuelve al portal y elige un setlist.</p>
+          <a class="btn-accion primary" href="index.html">🏠 Volver al portal</a>
+        </div>
+      `;
+    } else {
+      renderizarSetlist(setlistId);
+    }
+  </script>
+
+</body>
+</html>

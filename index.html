@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uranthia · Setlists de Ensayos y Shows</title>
+
+  <link rel="icon" type="image/png" href="logo-uranthia.png" />
+  <link rel="apple-touch-icon" href="logo-uranthia.png" />
+  <meta name="description" content="Portal de setlists de Uranthia y su Corazón Latino. Ensayos y shows organizados." />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --fondo: linear-gradient(135deg, #0d2818 0%, #1a3d2a 50%, #0d2818 100%);
+      --card-bg: #ffffff;
+      --card-texto: #0d2818;
+      --card-sub: #6b7a6b;
+      --borde: rgba(212, 175, 55, 0.30);
+      --dorado: #d4af37;
+      --dorado-suave: #f5d76e;
+      --sombra: rgba(0, 0, 0, 0.55);
+    }
+
+    body.modo-show {
+      --fondo: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%);
+      --card-bg: #0a0a0a;
+      --card-texto: #f5d76e;
+      --card-sub: #d4af37;
+      --borde: rgba(212, 175, 55, 0.55);
+      --sombra: rgba(212, 175, 55, 0.20);
+    }
+
+    body.modo-dia {
+      --fondo: linear-gradient(135deg, #e8f0e8 0%, #f0f5f0 50%, #e8f0e8 100%);
+      --card-bg: #ffffff;
+      --card-texto: #0d2818;
+      --card-sub: #6b7a6b;
+      --borde: rgba(212, 175, 55, 0.40);
+      --sombra: rgba(0, 0, 0, 0.15);
+    }
+
+    body {
+      background: var(--fondo);
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      padding: 30px 20px;
+      color: var(--card-texto);
+      transition: background 0.4s ease;
+    }
+
+    .card {
+      max-width: 1000px;
+      width: 100%;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border-radius: 36px;
+      padding: 38px 38px 32px;
+      box-shadow: 0 25px 60px var(--sombra), 0 0 0 2px var(--borde);
+      border: 1px solid var(--borde);
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
+      border-radius: 28px;
+      padding: 26px 32px;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+      box-shadow: 0 8px 30px rgba(13, 40, 24, 0.40), inset 0 1px 0 rgba(212, 175, 55, 0.15);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .logo-img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #d4af37;
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35), 0 0 0 4px rgba(212, 175, 55, 0.10);
+      flex-shrink: 0;
+      background: #0d2818;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-text { flex: 1; min-width: 200px; position: relative; z-index: 1; }
+
+    .header-text .band-name {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: #d4af37;
+      letter-spacing: 1.5px;
+      line-height: 1.1;
+      text-transform: uppercase;
+      text-shadow: 0 2px 8px rgba(212, 175, 55, 0.30);
+    }
+
+    .header-text .band-sub {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      font-style: italic;
+      color: #f5e6c8;
+      letter-spacing: 0.5px;
+      margin-top: 2px;
+    }
+
+    .header-text .tagline {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #0d2818;
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      padding: 5px 18px;
+      border-radius: 30px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      box-shadow: 0 3px 10px rgba(212, 175, 55, 0.30);
+    }
+
+    /* ── MODO SELECTOR ── */
+    .modo-selector {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
+    .modo-btn {
+      background: var(--card-bg);
+      border: 2px solid var(--borde);
+      color: var(--card-texto);
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 8px 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      letter-spacing: 0.3px;
+    }
+    .modo-btn:hover {
+      border-color: var(--dorado);
+      background: #faf3e0;
+      color: #0d2818;
+    }
+    .modo-btn.active {
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      color: #0d2818;
+      border-color: #0d2818;
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.40);
+    }
+
+    /* ── TÍTULO ── */
+    .main-title { text-align: center; margin: 8px 0 22px 0; }
+    .main-title h1 {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 2.1rem;
+      font-weight: 900;
+      color: var(--card-texto);
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+    }
+    .main-title h1 .gold {
+      background: linear-gradient(135deg, #b8860b 0%, #d4af37 50%, #f5d76e 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .main-title .subtitle {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: var(--card-sub);
+      font-style: italic;
+    }
+
+    /* ── BOTONES PRINCIPALES ── */
+    .botones-principales {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 26px 0;
+    }
+    .btn-principal {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 800;
+      padding: 14px 28px;
+      border-radius: 30px;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+      border: 2px solid transparent;
+      text-decoration: none;
+    }
+    .btn-principal.primary {
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      color: #0d2818;
+      border-color: #0d2818;
+      box-shadow: 0 6px 18px rgba(212, 175, 55, 0.40);
+    }
+    .btn-principal.primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(212, 175, 55, 0.55);
+    }
+    .btn-principal.secondary {
+      background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
+      color: #d4af37;
+      border-color: #d4af37;
+    }
+    .btn-principal.secondary:hover {
+      transform: translateY(-3px);
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      color: #0d2818;
+      border-color: #0d2818;
+      box-shadow: 0 10px 25px rgba(212, 175, 55, 0.50);
+    }
+    .btn-principal .icono { font-size: 1.2rem; }
+
+    /* ── DIVISOR ── */
+    .divider {
+      margin: 26px 0 22px 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent 0%, #d4af37 50%, transparent 100%);
+      border-radius: 10px;
+      opacity: 0.6;
+    }
+
+    /* ── FILTROS SETLISTS ── */
+    .filtros-setlists {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+    .filtro-setlist {
+      background: var(--card-bg);
+      border: 2px solid var(--borde);
+      color: var(--card-texto);
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 8px 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      letter-spacing: 0.3px;
+    }
+    .filtro-setlist:hover {
+      border-color: var(--dorado);
+      background: #faf3e0;
+      color: #0d2818;
+    }
+    .filtro-setlist.active {
+      background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
+      color: #d4af37;
+      border-color: #d4af37;
+    }
+
+    /* ── LISTA DE SETLISTS ── */
+    .setlists-container {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .setlist-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--card-bg);
+      border-radius: 18px;
+      padding: 18px 22px;
+      border: 2px solid var(--borde);
+      border-left: 6px solid var(--dorado);
+      transition: all 0.25s ease;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+    }
+    .setlist-card:hover {
+      border-left-color: #0d2818;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(13, 40, 24, 0.12);
+    }
+
+    .setlist-icono {
+      font-size: 2rem;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #f5e6c8 0%, #faf3e0 100%);
+      border-radius: 14px;
+      border: 2px solid var(--borde);
+      flex-shrink: 0;
+    }
+    .setlist-card.tipo-show .setlist-icono {
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      border-color: #0d2818;
+    }
+
+    .setlist-info { flex: 1; min-width: 0; }
+
+    .setlist-tipo {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 3px 12px;
+      border-radius: 30px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .setlist-tipo.ensayo {
+      background: linear-gradient(135deg, #b19cd9 0%, #d4b5e8 100%);
+      color: #4a2c6b;
+      border: 1px solid #8b6ba8;
+    }
+    .setlist-tipo.show {
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      color: #0d2818;
+      border: 1px solid #b8860b;
+    }
+
+    .setlist-titulo {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: var(--card-texto);
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+
+    .setlist-detalles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.8rem;
+      color: var(--card-sub);
+      font-style: italic;
+    }
+    .setlist-detalles .detalle {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .setlist-canciones {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--dorado);
+      background: rgba(212, 175, 55, 0.12);
+      padding: 6px 14px;
+      border-radius: 30px;
+      border: 1px solid var(--borde);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* ── SIN SETLISTS ── */
+    .sin-setlists {
+      text-align: center;
+      padding: 50px 30px;
+      background: rgba(212, 175, 55, 0.08);
+      border-radius: 20px;
+      border: 2px dashed var(--borde);
+    }
+    .sin-setlists .icono {
+      font-size: 3.5rem;
+      display: block;
+      margin-bottom: 16px;
+    }
+    .sin-setlists h3 {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--card-texto);
+      margin-bottom: 10px;
+    }
+    .sin-setlists p {
+      font-size: 0.95rem;
+      color: var(--card-sub);
+      line-height: 1.6;
+      max-width: 500px;
+      margin: 0 auto 20px;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 2px solid var(--borde);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      text-align: center;
+    }
+    .footer-credits {
+      font-size: 0.85rem;
+      color: #0d2818;
+      font-weight: 600;
+      background: linear-gradient(135deg, #f5e6c8 0%, #faf3e0 100%);
+      padding: 8px 22px;
+      border-radius: 30px;
+      border: 1px solid var(--borde);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .footer-credits .names { font-weight: 800; color: #b8860b; letter-spacing: 0.8px; }
+    .footer-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #d4af37;
+      background: #0d2818;
+      padding: 5px 18px;
+      border-radius: 30px;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      border: 1px solid var(--borde);
+    }
+
+    /* ── BOTÓN TOP ── */
+    .btn-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      color: #0d2818;
+      border: 2px solid #0d2818;
+      font-size: 1.4rem;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.50);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      z-index: 999;
+      padding: 0;
+    }
+    .btn-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+    .btn-top:hover { background: #0d2818; color: #d4af37; transform: translateY(-4px) scale(1.08); }
+
+    @media (max-width: 650px) {
+      body { padding: 16px 10px; }
+      .card { padding: 20px 14px; border-radius: 24px; }
+      .header { flex-direction: column; text-align: center; padding: 20px; gap: 14px; }
+      .logo-img { width: 90px; height: 90px; }
+      .header-text .band-name { font-size: 1.5rem; }
+      .main-title h1 { font-size: 1.5rem; }
+      .btn-principal { font-size: 0.8rem; padding: 12px 20px; }
+      .setlist-card { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .setlist-icono { width: 50px; height: 50px; font-size: 1.6rem; }
+      .setlist-canciones { align-self: flex-end; }
+      .btn-top { width: 48px; height: 48px; bottom: 20px; right: 20px; font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body class="modo-noche">
+
+  <div class="card">
+
+    <!-- HEADER -->
+    <div class="header">
+      <img src="logo-uranthia.png" alt="Uranthia y su Corazón Latino" class="logo-img" />
+      <div class="header-text">
+        <div class="band-name">Uranthia</div>
+        <div class="band-sub">y su Corazón Latino</div>
+        <span class="tagline">📋 Setlists · Ensayos &amp; Shows</span>
+      </div>
+    </div>
+
+    <!-- SELECTOR DE MODO -->
+    <div class="modo-selector">
+      <button class="modo-btn" data-modo="dia" onclick="cambiarModo('dia')">☀️ Día</button>
+      <button class="modo-btn active" data-modo="noche" onclick="cambiarModo('noche')">🌙 Noche</button>
+      <button class="modo-btn" data-modo="show" onclick="cambiarModo('show')">🎤 Show</button>
+    </div>
+
+    <!-- TÍTULO -->
+    <div class="main-title">
+      <h1>Nuestros <span class="gold">Setlists</span></h1>
+      <div class="subtitle">Ensayos y shows organizados</div>
+    </div>
+
+    <!-- BOTONES PRINCIPALES -->
+    <div class="botones-principales">
+      <a class="btn-principal primary" href="repertorio.html">
+        <span class="icono">➕</span>
+        Armar nuevo setlist
+      </a>
+      <a class="btn-principal secondary" href="repertorio.html">
+        <span class="icono">📚</span>
+        Ver repertorio completo
+      </a>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- FILTROS -->
+    <div class="filtros-setlists">
+      <button class="filtro-setlist active" data-filtro="todos">📋 Todos</button>
+      <button class="filtro-setlist" data-filtro="ensayo">🎤 Ensayos</button>
+      <button class="filtro-setlist" data-filtro="show">🎉 Shows</button>
+    </div>
+
+    <!-- LISTA DE SETLISTS -->
+    <div class="setlists-container" id="setlistsContainer"></div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <div class="footer-credits">
+        <span>✨ Creado por</span>
+        <span class="names">SAO &amp; DS</span>
+        <span>🐋</span>
+      </div>
+      <span class="footer-tag">Uranthia · Corazón Latino</span>
+    </div>
+
+  </div>
+
+  <button class="btn-top" id="btnTop" onclick="irArriba()" title="Volver arriba">⬆</button>
+
+  <script>
+    // ══════════════════════════════════════════════════════
+    // CONSTANTES
+    // ══════════════════════════════════════════════════════
+    const STORAGE_SETLISTS = 'uranthia-setlists';
+
+    // ══════════════════════════════════════════════════════
+    // MODO DÍA / NOCHE / SHOW
+    // ══════════════════════════════════════════════════════
+    function cambiarModo(modo) {
+      document.body.classList.remove('modo-dia', 'modo-noche', 'modo-show');
+      document.body.classList.add('modo-' + modo);
+      document.querySelectorAll('.modo-btn').forEach(b => b.classList.remove('active'));
+      document.querySelector(`.modo-btn[data-modo="${modo}"]`).classList.add('active');
+      localStorage.setItem('uranthia-modo', modo);
+    }
+    const modoGuardado = localStorage.getItem('uranthia-modo') || 'noche';
+    cambiarModo(modoGuardado);
+
+    // ══════════════════════════════════════════════════════
+    // CARGAR Y RENDERIZAR SETLISTS
+    // ══════════════════════════════════════════════════════
+    function cargarSetlists() {
+      return JSON.parse(localStorage.getItem(STORAGE_SETLISTS) || '[]');
+    }
+
+    function renderizarSetlists(filtro = 'todos') {
+      const container = document.getElementById('setlistsContainer');
+      const setlists = cargarSetlists();
+
+      // Filtrar
+      const setlistsFiltrados = filtro === 'todos'
+        ? setlists
+        : setlists.filter(s => s.tipo === filtro);
+
+      // Ordenar por fecha descendente
+      setlistsFiltrados.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
+
+      // Sin setlists
+      if (setlistsFiltrados.length === 0) {
+        if (setlists.length === 0) {
+          container.innerHTML = `
+            <div class="sin-setlists">
+              <span class="icono">📋</span>
+              <h3>Aún no hay setlists</h3>
+              <p>Ve al <strong>repertorio</strong>, marca las canciones que quieras y toca <strong>"📋 Armar setlist"</strong> para crear tu primer ensayo o show.</p>
+              <a class="btn-principal primary" href="repertorio.html">
+                <span class="icono">➕</span>
+                Armar mi primer setlist
+              </a>
+            </div>
+          `;
+        } else {
+          container.innerHTML = `
+            <div class="sin-setlists">
+              <span class="icono">🔍</span>
+              <h3>No hay setlists de este tipo</h3>
+              <p>Cambia el filtro o arma un nuevo setlist desde el repertorio.</p>
+            </div>
+          `;
+        }
+        return;
+      }
+
+      // Renderizar setlists
+      container.innerHTML = setlistsFiltrados.map(setlist => {
+        const tipoClase = setlist.tipo === 'show' ? 'show' : 'ensayo';
+        const tipoIcono = setlist.tipo === 'show' ? '🎉' : '🎤';
+        const tipoTexto = setlist.tipo === 'show' ? 'Show' : 'Ensayo';
+        const cardClase = setlist.tipo === 'show' ? 'tipo-show' : '';
+        const numCanciones = setlist.canciones ? setlist.canciones.length : 0;
+
+        // Formatear fecha
+        const fecha = new Date(setlist.fecha + 'T00:00:00');
+        const fechaFormateada = fecha.toLocaleDateString('es-ES', {
+          weekday: 'long',
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        });
+
+        return `
+          <a class="setlist-card ${cardClase}" href="setlists/${setlist.id}.html">
+            <div class="setlist-icono">${tipoIcono}</div>
+            <div class="setlist-info">
+              <span class="setlist-tipo ${tipoClase}">${tipoTexto}</span>
+              <div class="setlist-titulo">${setlist.nombre || 'Setlist sin nombre'}</div>
+              <div class="setlist-detalles">
+                <span class="detalle">📅 ${fechaFormateada}</span>
+                ${setlist.horario ? `<span class="detalle">🕐 ${setlist.horario}</span>` : ''}
+                ${setlist.lugar ? `<span class="detalle">📍 ${setlist.lugar}</span>` : ''}
+              </div>
+            </div>
+            <div class="setlist-canciones">${numCanciones} 🎵</div>
+          </a>
+        `;
+      }).join('');
+    }
+
+    // ══════════════════════════════════════════════════════
+    // FILTROS
+    // ══════════════════════════════════════════════════════
+    document.querySelectorAll('.filtro-setlist').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filtro-setlist').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderizarSetlists(btn.dataset.filtro);
+      });
+    });
+
+    // ══════════════════════════════════════════════════════
+    // BOTÓN TOP
+    // ══════════════════════════════════════════════════════
+    window.addEventListener('scroll', () => {
+      document.getElementById('btnTop').classList.toggle('visible', window.scrollY > 300);
+    });
+    function irArriba() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ══════════════════════════════════════════════════════
+    // INICIALIZAR
+    // ══════════════════════════════════════════════════════
+    renderizarSetlists();
+  </script>
+
+</body>
+</html>

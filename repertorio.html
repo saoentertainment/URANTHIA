@@ -8,11 +8,12 @@
   <link rel="icon" type="image/png" href="logo-uranthia.png" />
   <link rel="apple-touch-icon" href="logo-uranthia.png" />
   <meta name="description" content="Repertorio completo de Uranthia y su Corazón Latino, organizado por estilos musicales." />
-    <!-- Open Graph -->
+
+  <!-- Open Graph (WhatsApp, Facebook, Telegram) -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Uranthia · Repertorio Completo" />
   <meta property="og:description" content="Repertorio completo de Uranthia y su Corazón Latino, organizado por estilos musicales." />
-  <meta property="og:image" content="https://saoentertainment.github.io/URANTHIA/preview-whatsapp.jpg" />
+  <meta property="og:image" content="https://saoentertainment.github.io/URANTHIA/preview-repertorio.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:url" content="https://saoentertainment.github.io/URANTHIA/repertorio.html" />
@@ -22,7 +23,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Uranthia · Repertorio Completo" />
   <meta name="twitter:description" content="Repertorio completo de Uranthia y su Corazón Latino." />
-  <meta name="twitter:image" content="https://saoentertainment.github.io/URANTHIA/preview-whatsapp.jpg" />
+  <meta name="twitter:image" content="https://saoentertainment.github.io/URANTHIA/preview-repertorio.jpg" />
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -211,7 +212,6 @@
     }
     .toggle-todo-btn .icono { font-size: 1rem; }
 
-    /* ── BARRA SETLIST ── */
     .barra-setlist {
       display: flex;
       justify-content: center;
@@ -707,6 +707,19 @@
       box-shadow: 0 8px 20px rgba(193, 18, 31, 0.50);
     }
 
+    /* ── BOTÓN YOUTUBE ── */
+    .action-btn.youtube {
+      background: linear-gradient(135deg, #c4302b 0%, #ff0000 100%);
+      color: #ffffff;
+      border-color: #ff0000;
+    }
+    .action-btn.youtube:hover {
+      background: linear-gradient(135deg, #ff0000 0%, #ff4444 100%);
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(255, 0, 0, 0.50);
+    }
+
     .footer {
       margin-top: 28px;
       padding-top: 20px;
@@ -763,6 +776,7 @@
     }
     .aviso.show { display: block; animation: fadeIn 0.3s ease; }
 
+    /* ── BOTÓN TOP ── */
     .btn-top {
       position: fixed;
       bottom: 30px;
@@ -779,7 +793,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.50);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.50), 0 0 0 4px rgba(212, 175, 55, 0.15);
       opacity: 0;
       visibility: hidden;
       transform: translateY(20px);
@@ -789,6 +803,34 @@
     }
     .btn-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
     .btn-top:hover { background: #0d2818; color: #d4af37; transform: translateY(-4px) scale(1.08); }
+
+    /* ── BOTÓN IR ABAJO ── */
+    .btn-abajo {
+      position: fixed;
+      bottom: 30px;
+      right: 100px;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
+      color: #d4af37;
+      border: 2px solid #d4af37;
+      font-size: 1.4rem;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 20px rgba(13, 40, 24, 0.50), 0 0 0 4px rgba(212, 175, 55, 0.15);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      z-index: 999;
+      padding: 0;
+    }
+    .btn-abajo.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+    .btn-abajo:hover { background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%); color: #0d2818; transform: translateY(-4px) scale(1.08); }
 
     /* ── MODALES ── */
     .modal-overlay {
@@ -876,10 +918,7 @@
       outline: none;
       transition: all 0.2s ease;
     }
-    .modal-campo textarea {
-      resize: vertical;
-      min-height: 60px;
-    }
+    .modal-campo textarea { resize: vertical; min-height: 60px; }
     .modal-campo input:focus,
     .modal-campo select:focus,
     .modal-campo textarea:focus {
@@ -1054,6 +1093,7 @@
       .btn-mini { font-size: 0.65rem; padding: 4px 8px; }
       .action-btn { font-size: 0.75rem; padding: 10px 18px; }
       .btn-top { width: 48px; height: 48px; bottom: 20px; right: 20px; font-size: 1.2rem; }
+      .btn-abajo { width: 48px; height: 48px; bottom: 20px; right: 80px; font-size: 1.2rem; }
       .modal { padding: 22px 18px; }
       .iconos-grid { grid-template-columns: repeat(auto-fill, minmax(48px, 1fr)); }
       .icono-item { font-size: 1.3rem; }
@@ -1089,7 +1129,6 @@
       </button>
     </div>
 
-    <!-- BARRA SETLIST -->
     <div class="barra-setlist">
       <span class="contador">🎵 Canciones seleccionadas: <strong id="contadorSeleccionadas">0</strong></span>
       <button class="btn-armar-setlist" id="btnArmarSetlist" onclick="abrirModalSetlist()" disabled>
@@ -1139,6 +1178,7 @@
     <div class="actions-bar">
       <button class="action-btn" onclick="abrirModal()">➕ Agregar canción</button>
       <a class="action-btn secondary" href="index.html">🏠 Ir al Portal</a>
+      <a class="action-btn youtube" href="https://www.youtube.com/@CORAZON-LATINO-MUSIC/playlists" target="_blank" rel="noopener">▶ Ver Playlists en YouTube</a>
       <button class="action-btn danger" onclick="borrarDatosLocales()">🗑️ Borrar datos locales</button>
     </div>
 
@@ -1153,6 +1193,7 @@
 
   </div>
 
+  <button class="btn-abajo" id="btnAbajo" onclick="irAbajo()" title="Ir al final">⬇</button>
   <button class="btn-top" id="btnTop" onclick="irArriba()" title="Volver arriba">⬆</button>
 
   <!-- MODAL AGREGAR CANCIÓN -->
@@ -1680,9 +1721,9 @@
                 </div>
                 <div class="cancion-botones">
                   <span class="btn-mini">▶ YouTube</span>
-                ${cancion.titulo === 'LA FUERZA DEL DESTINO'
-                  ? '<a class="btn-mini activo" href="letras/la-fuerza-del-destino.html" target="_blank" style="text-decoration:none; border-color:#d4af37; color:#0d2818; background:#faf3e0; cursor:pointer;">📄 Letra</a>'
-                  : '<span class="btn-mini">📄 Letra</span>'}
+                  ${cancion.titulo === 'LA FUERZA DEL DESTINO'
+                    ? '<a class="btn-mini activo" href="letras/la-fuerza-del-destino.html" target="_blank" style="text-decoration:none; border-color:#d4af37; color:#0d2818; background:#faf3e0; cursor:pointer;">📄 Letra</a>'
+                    : '<span class="btn-mini">📄 Letra</span>'}
                   <span class="btn-mini">🎸 Acordes</span>
                   <span class="btn-mini">🎹 Piano</span>
                   <span class="btn-mini">🎸 Bajo</span>
@@ -1741,7 +1782,6 @@
       actualizarContador();
     }
 
-    // EDITAR ARTISTA
     function editarArtista(el) {
       const key = el.dataset.key;
       const valorActual = el.textContent === '— sin artista —' ? '' : el.textContent;
@@ -1774,7 +1814,6 @@
       });
     }
 
-    // EVENTOS
     function conectarEventos() {
       document.querySelectorAll('.estilo-header').forEach(header => {
         header.onclick = () => {
@@ -1785,7 +1824,6 @@
       });
     }
 
-    // FILTROS
     document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -1797,7 +1835,6 @@
       });
     });
 
-    // BUSCADOR
     const buscador = document.getElementById('buscador');
     const clearBtn = document.getElementById('clearBuscador');
     const sinResultados = document.getElementById('sinResultados');
@@ -1858,7 +1895,6 @@
       buscador.focus();
     }
 
-    // MODO
     function cambiarModo(modo) {
       document.body.classList.remove('modo-dia', 'modo-noche', 'modo-show');
       document.body.classList.add('modo-' + modo);
@@ -1869,7 +1905,6 @@
     const modoGuardado = localStorage.getItem('uranthia-modo') || 'noche';
     cambiarModo(modoGuardado);
 
-    // TOGGLE TODO
     let todoDesplegado = true;
     function toggleTodo() {
       todoDesplegado = !todoDesplegado;
@@ -1888,12 +1923,23 @@
       document.getElementById('toggleTodoText').textContent = todoDesplegado ? 'Desplegar todo' : 'Replegar todo';
     }
 
-    // BOTÓN TOP
+    // ── BOTONES TOP Y ABAJO ──
     window.addEventListener('scroll', () => {
-      document.getElementById('btnTop').classList.toggle('visible', window.scrollY > 300);
+      const btnTop = document.getElementById('btnTop');
+      const btnAbajo = document.getElementById('btnAbajo');
+      const scrollY = window.scrollY;
+      const alturaTotal = document.body.scrollHeight - window.innerHeight;
+
+      btnTop.classList.toggle('visible', scrollY > 300);
+      btnAbajo.classList.toggle('visible', scrollY < alturaTotal - 300);
     });
+
     function irArriba() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function irAbajo() {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
 
     // ══════════════════════════════════════════════════════
@@ -2053,9 +2099,6 @@
       setTimeout(() => aviso.classList.remove('show'), 2500);
     }
 
-    // ══════════════════════════════════════════════════════
-    // SELECCIÓN PARA SETLIST
-    // ══════════════════════════════════════════════════════
     function guardarSeleccion() {
       localStorage.setItem(STORAGE_SELECCIONADAS, JSON.stringify(seleccionadas));
       actualizarContador();
@@ -2143,9 +2186,6 @@
       document.querySelectorAll('.subgrupo-check').forEach(c => c.classList.remove('checked', 'parcial'));
     }
 
-    // ══════════════════════════════════════════════════════
-    // MODAL ARMAR SETLIST
-    // ══════════════════════════════════════════════════════
     function abrirModalSetlist() {
       if (seleccionadas.length === 0) {
         alert('Primero marca al menos una canción.');
@@ -2225,9 +2265,6 @@
       }, 500);
     }
 
-    // ══════════════════════════════════════════════════════
-    // BORRAR DATOS LOCALES
-    // ══════════════════════════════════════════════════════
     function borrarDatosLocales() {
       const confirmar = confirm(
         '⚠️ ¿Seguro que quieres borrar los datos locales?\n\n' +
@@ -2256,9 +2293,6 @@
       setTimeout(() => aviso.classList.remove('show'), 2500);
     }
 
-    // ══════════════════════════════════════════════════════
-    // INICIALIZAR
-    // ══════════════════════════════════════════════════════
     renderizarRepertorio();
   </script>
 

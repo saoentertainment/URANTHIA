@@ -838,7 +838,7 @@
       <a class="btn-accion secondary" href="../index.html">🏠 Volver al portal</a>
       <button class="btn-accion primary" onclick="abrirReporte()">📤 Reporte ensayo</button>
       <button class="btn-accion personal" onclick="abrirReportePersonal()">👤 Reporte personal</button>
-      <button class="btn-accion primary" onclick="reiniciarCheck()">🔄 Reiniciar</button>
+      <button class="btn-accion primary" onclick="limpiarChecks()">🧹 Limpiar checks</button>
     </div>
 
     <div class="footer">
@@ -997,10 +997,31 @@
       renderizar();
     }
 
-    function reiniciarCheck() {
-      if (!confirm('¿Reiniciar el check del ensayo?')) return;
+    function limpiarChecks() {
+      const confirmar = confirm(
+        '🧹 ¿Limpiar TODOS los checks?\n\n' +
+        'Esto va a borrar:\n' +
+        '• El check del ensayo (dorado)\n' +
+        '• El check personal (verde)\n\n' +
+        '¿Continuar?'
+      );
+
+      if (!confirmar) return;
+
+      // Limpiar ambos checks
       guardarTocadas([]);
+      guardarPersonal([]);
+
       renderizar();
+
+      const aviso = document.getElementById('avisoCopiado');
+      if (!aviso) {
+        const nuevoAviso = document.createElement('div');
+        nuevoAviso.id = 'avisoCopiado';
+        nuevoAviso.className = 'aviso-copiado';
+        document.body.appendChild(nuevoAviso);
+      }
+      mostrarAviso('🧹 Checks limpiados');
     }
 
     // ── COLAPSAR ──

@@ -918,7 +918,21 @@
 
     function compartirWhatsApp() {
       const texto = document.getElementById('textoReporte').value;
-      const url = 'https://wa.me/?text=' + encodeURIComponent(texto);
+
+      // Codificación segura para emojis y caracteres especiales
+      const textoCodificado = encodeURIComponent(texto)
+        .replace(/%F0%9F%8E%A4/g, '🎤')
+        .replace(/%F0%9F%93%8B/g, '📋')
+        .replace(/%F0%9F%93%85/g, '📅')
+        .replace(/%F0%9F%95%90/g, '🕐')
+        .replace(/%F0%9F%93%8D/g, '📍')
+        .replace(/%E2%9C%85/g, '✅')
+        .replace(/%E2%AC%9C/g, '⬜')
+        .replace(/%F0%9F%93%8A/g, '📊')
+        .replace(/%F0%9F%8E%B8/g, '🎸')
+        .replace(/%F0%9F%93%B2/g, '📲');
+
+      const url = 'https://wa.me/?text=' + textoCodificado;
       window.open(url, '_blank');
     }
 

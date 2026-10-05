@@ -415,6 +415,32 @@
       text-decoration: none;
     }
 
+    /* ── BOTÓN INSTRUCTIVO ── */
+    .btn-instructivo {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
+      color: #d4af37;
+      border: 2px solid #d4af37;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 800;
+      padding: 10px 24px;
+      border-radius: 30px;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(13, 40, 24, 0.20);
+    }
+    .btn-instructivo:hover {
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      color: #0d2818;
+      border-color: #0d2818;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.40);
+    }    
     .acciones-setlist {
       margin-top: 30px;
       display: flex;
@@ -468,6 +494,62 @@
       box-shadow: 0 8px 20px rgba(37, 211, 102, 0.50);
     }
 
+    /* ── INSTRUCTIVO ── */
+    .instructivo {
+      margin-top: 40px;
+      padding: 28px 24px;
+      background: linear-gradient(135deg, #faf3e0 0%, #f5e6c8 100%);
+      border-radius: 20px;
+      border: 2px solid var(--borde);
+      border-left: 6px solid var(--dorado);
+    }
+    .instructivo h2 {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: #0d2818;
+      text-align: center;
+      margin-bottom: 22px;
+      letter-spacing: 0.5px;
+    }
+    .instructivo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    .instructivo-card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 16px 18px;
+      border: 1px solid var(--borde);
+      border-left: 4px solid var(--dorado);
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+    .instructivo-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(212, 175, 55, 0.20);
+    }
+    .instructivo-icono {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+    .instructivo-card h3 {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 0.95rem;
+      font-weight: 900;
+      color: #0d2818;
+      margin-bottom: 6px;
+      letter-spacing: 0.3px;
+    }
+    .instructivo-card p {
+      font-size: 0.8rem;
+      color: #4a4a4a;
+      line-height: 1.5;
+    }
+    .instructivo-card p strong {
+      color: #b8860b;
+    }    
     .footer {
       margin-top: 32px;
       padding-top: 20px;
@@ -803,6 +885,12 @@
       <button class="modo-btn active" data-modo="noche" onclick="cambiarModo('noche')">🌙 Noche</button>
       <button class="modo-btn" data-modo="show" onclick="cambiarModo('show')">🎤 Show</button>
     </div>
+    <!-- BOTÓN IR AL INSTRUCTIVO -->
+    <div style="display:flex; justify-content:center; margin-bottom:22px;">
+      <button class="btn-instructivo" onclick="irAInstructivo()">
+        📖 ¿Cómo se usa? · Instructivo
+      </button>
+    </div>    
 
     <div class="setlist-header">
       <span class="setlist-tipo-badge ensayo">🎤 Ensayo</span>
@@ -841,6 +929,48 @@
       <button class="btn-accion primary" onclick="limpiarChecks()">🧹 Limpiar checks</button>
     </div>
 
+    <!-- INSTRUCTIVO -->
+    <section class="instructivo" id="instructivo">
+      <h2>📖 ¿Cómo se usa esta página?</h2>
+
+      <div class="instructivo-grid">
+        <div class="instructivo-card">
+          <div class="instructivo-icono">✅</div>
+          <h3>Check del ensayo</h3>
+          <p>Casilla <strong>dorada</strong>. Marcala cuando la canción se toque en el ensayo.</p>
+        </div>
+
+        <div class="instructivo-card">
+          <div class="instructivo-icono">🎸</div>
+          <h3>Check personal</h3>
+          <p>Casilla <strong>verde</strong>. Marcala cuando la practiques en casa.</p>
+        </div>
+
+        <div class="instructivo-card">
+          <div class="instructivo-icono">📤</div>
+          <h3>Reporte ensayo</h3>
+          <p>Genera el reporte grupal y compártelo por WhatsApp.</p>
+        </div>
+
+        <div class="instructivo-card">
+          <div class="instructivo-icono">👤</div>
+          <h3>Reporte personal</h3>
+          <p>Genera tu reporte personal con tu nombre y compártelo.</p>
+        </div>
+
+        <div class="instructivo-card">
+          <div class="instructivo-icono">🧹</div>
+          <h3>Limpiar checks</h3>
+          <p>Borra todos los checks (ensayo + personal) de una vez.</p>
+        </div>
+
+        <div class="instructivo-card">
+          <div class="instructivo-icono">⬆️⬇️</div>
+          <h3>Navegación</h3>
+          <p>Usa los botones flotantes para ir al inicio o al final.</p>
+        </div>
+      </div>
+    </section>    
     <div class="footer">
       <div class="footer-credits">
         <span>✨ Creado por</span>
@@ -1292,6 +1422,12 @@
     function irAbajo() {
       window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
+    function irAInstructivo() {
+      const instructivo = document.getElementById('instructivo');
+      if (instructivo) {
+        instructivo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }    
 
     // ── EVENTOS MODALES ──
     document.getElementById('modalReporte').addEventListener('click', (e) => {

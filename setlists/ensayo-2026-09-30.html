@@ -31,6 +31,8 @@
       --borde: rgba(212, 175, 55, 0.30);
       --dorado: #d4af37;
       --dorado-suave: #f5d76e;
+      --verde: #25D366;
+      --verde-oscuro: #128C7E;
       --sombra: rgba(0, 0, 0, 0.55);
     }
 
@@ -249,6 +251,27 @@
       font-weight: 900;
       color: var(--card-texto);
     }
+    .btn-colapsar {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--card-bg);
+      border: 2px solid var(--borde);
+      color: var(--card-texto);
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-colapsar:hover {
+      border-color: var(--dorado);
+      background: #faf3e0;
+      color: #0d2818;
+    }
+
     .canciones-contador {
       font-size: 0.8rem;
       font-weight: 800;
@@ -262,7 +285,7 @@
     .cancion-item {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 10px;
       background: var(--card-bg);
       border-radius: 14px;
       padding: 14px 18px;
@@ -284,6 +307,9 @@
       text-decoration-thickness: 2px;
       text-decoration-color: var(--dorado);
     }
+    .cancion-item.practicada {
+      background: rgba(37, 211, 102, 0.06);
+    }
 
     .cancion-numero {
       font-family: 'Georgia', 'Times New Roman', serif;
@@ -301,9 +327,10 @@
       border: 2px solid var(--dorado);
     }
 
+    /* Check del ensayo (dorado) */
     .cancion-check-setlist {
-      width: 32px;
-      height: 32px;
+      width: 30px;
+      height: 30px;
       border: 2px solid var(--dorado);
       border-radius: 8px;
       background: var(--card-bg);
@@ -313,7 +340,7 @@
       justify-content: center;
       flex-shrink: 0;
       transition: all 0.2s ease;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 900;
       color: transparent;
     }
@@ -328,6 +355,35 @@
       color: #0d2818;
     }
     .cancion-check-setlist.checked::after { content: '✓'; }
+
+    /* Check personal (verde) */
+    .cancion-check-personal {
+      width: 30px;
+      height: 30px;
+      border: 2px solid var(--verde);
+      border-radius: 8px;
+      background: var(--card-bg);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+      font-size: 1rem;
+      font-weight: 900;
+      color: transparent;
+    }
+    .cancion-check-personal:hover {
+      border-color: var(--verde-oscuro);
+      transform: scale(1.08);
+      box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.20);
+    }
+    .cancion-check-personal.checked {
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      border-color: var(--verde-oscuro);
+      color: #ffffff;
+    }
+    .cancion-check-personal.checked::after { content: '✓'; }
 
     .cancion-info-setlist { flex: 1; min-width: 0; }
     .cancion-titulo {
@@ -401,6 +457,16 @@
       color: #0d2818;
       border-color: #0d2818;
     }
+    .btn-accion.personal {
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      color: #ffffff;
+      border-color: var(--verde-oscuro);
+    }
+    .btn-accion.personal:hover {
+      background: linear-gradient(135deg, #128C7E 0%, #25D366 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.50);
+    }
 
     .footer {
       margin-top: 32px;
@@ -448,6 +514,7 @@
       background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
       border-radius: 20px;
       border: 2px solid var(--dorado);
+      flex-wrap: wrap;
     }
     .barra-progreso .progreso-texto {
       color: #f5e6c8;
@@ -461,6 +528,7 @@
     }
     .barra-progreso .progreso-barra {
       flex: 1;
+      min-width: 100px;
       height: 14px;
       background: rgba(212, 175, 55, 0.15);
       border-radius: 30px;
@@ -472,8 +540,18 @@
       background: linear-gradient(90deg, #d4af37 0%, #f5d76e 100%);
       transition: width 0.4s ease;
     }
+    .barra-progreso .progreso-personal {
+      color: #f5e6c8;
+      font-size: 0.85rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .barra-progreso .progreso-personal strong {
+      color: #25D366;
+      font-size: 1rem;
+    }
 
-    /* ── MODAL REPORTE ── */
+    /* ── MODALES ── */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -546,6 +624,7 @@
       text-transform: uppercase;
       margin-bottom: 6px;
     }
+    .modal-campo input,
     .modal-campo textarea {
       width: 100%;
       padding: 12px 16px;
@@ -553,17 +632,28 @@
       border: 2px solid var(--borde);
       background: var(--card-bg);
       color: var(--card-texto);
-      font-family: 'Courier New', monospace;
-      font-size: 0.85rem;
+      font-family: inherit;
+      font-size: 0.95rem;
       outline: none;
       transition: all 0.2s ease;
+    }
+    .modal-campo textarea {
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
       resize: vertical;
       min-height: 300px;
       line-height: 1.5;
     }
+    .modal-campo input:focus,
     .modal-campo textarea:focus {
       border-color: var(--dorado);
       box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.20);
+    }
+    .modal-campo .ayuda {
+      font-size: 0.75rem;
+      color: var(--card-sub);
+      font-style: italic;
+      margin-top: 4px;
     }
 
     .modal-acciones {
@@ -626,6 +716,56 @@
     }
     .aviso-copiado.show { display: block; animation: fadeIn 0.3s ease; }
 
+    /* ── BOTONES FLOTANTES ── */
+    .btn-flotante {
+      position: fixed;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      font-size: 1.4rem;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      z-index: 999;
+      padding: 0;
+      bottom: 30px;
+    }
+    .btn-flotante.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .btn-top {
+      right: 30px;
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      color: #0d2818;
+      border: 2px solid #0d2818;
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.50);
+    }
+    .btn-top:hover {
+      background: #0d2818;
+      color: #d4af37;
+      transform: translateY(-4px) scale(1.08);
+    }
+    .btn-abajo {
+      right: 100px;
+      background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
+      color: #d4af37;
+      border: 2px solid #d4af37;
+      box-shadow: 0 6px 20px rgba(13, 40, 24, 0.50);
+    }
+    .btn-abajo:hover {
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      color: #0d2818;
+      transform: translateY(-4px) scale(1.08);
+    }
+
     @media (max-width: 650px) {
       body { padding: 16px 10px; }
       .card { padding: 20px 14px; border-radius: 24px; }
@@ -633,13 +773,16 @@
       .logo-img { width: 75px; height: 75px; }
       .header-text .band-name { font-size: 1.3rem; }
       .setlist-titulo { font-size: 1.4rem; }
-      .cancion-item { flex-wrap: wrap; gap: 10px; padding: 12px 14px; }
+      .cancion-item { flex-wrap: wrap; gap: 8px; padding: 12px 14px; }
       .cancion-botones-setlist { width: 100%; }
       .btn-mini-setlist { font-size: 0.65rem; padding: 4px 8px; }
       .btn-accion { font-size: 0.75rem; padding: 10px 18px; }
       .barra-progreso { flex-direction: column; gap: 8px; }
       .barra-progreso .progreso-barra { width: 100%; }
       .modal { padding: 22px 18px; }
+      .btn-flotante { width: 48px; height: 48px; bottom: 20px; font-size: 1.2rem; }
+      .btn-top { right: 20px; }
+      .btn-abajo { right: 80px; }
     }
   </style>
 </head>
@@ -672,15 +815,20 @@
     </div>
 
     <div class="barra-progreso">
-      <span class="progreso-texto">🎵 Tocadas: <strong id="tocadasNum">0</strong> / <strong>25</strong></span>
+      <span class="progreso-texto">🎵 Ensayo: <strong id="tocadasNum">0</strong> / <strong>25</strong></span>
       <div class="progreso-barra">
         <div class="progreso-lleno" id="progresoLleno" style="width: 0%;"></div>
       </div>
       <span class="progreso-texto"><strong id="porcentaje">0%</strong></span>
+      <span class="progreso-personal">🎸 Personal: <strong id="personalNum">0</strong> / <strong>25</strong></span>
     </div>
 
     <div class="canciones-header">
       <span class="canciones-titulo">🎵 Canciones</span>
+      <button class="btn-colapsar" id="btnColapsar" onclick="toggleColapsar()">
+        <span id="colapsarIcono">⬆️</span>
+        <span id="colapsarTexto">Replegar</span>
+      </button>
       <span class="canciones-contador">25 canciones</span>
     </div>
 
@@ -688,8 +836,9 @@
 
     <div class="acciones-setlist">
       <a class="btn-accion secondary" href="../index.html">🏠 Volver al portal</a>
-      <button class="btn-accion primary" onclick="abrirReporte()">📤 Generar reporte</button>
-      <button class="btn-accion primary" onclick="reiniciarCheck()">🔄 Reiniciar check</button>
+      <button class="btn-accion primary" onclick="abrirReporte()">📤 Reporte ensayo</button>
+      <button class="btn-accion personal" onclick="abrirReportePersonal()">👤 Reporte personal</button>
+      <button class="btn-accion primary" onclick="reiniciarCheck()">🔄 Reiniciar</button>
     </div>
 
     <div class="footer">
@@ -703,7 +852,11 @@
 
   </div>
 
-  <!-- MODAL REPORTE -->
+  <!-- BOTONES FLOTANTES -->
+  <button class="btn-flotante btn-abajo" id="btnAbajo" onclick="irAbajo()" title="Ir al final">⬇</button>
+  <button class="btn-flotante btn-top" id="btnTop" onclick="irArriba()" title="Volver arriba">⬆</button>
+
+  <!-- MODAL REPORTE ENSAYO -->
   <div class="modal-overlay" id="modalReporte">
     <div class="modal" style="max-width: 600px;">
       <div class="modal-header">
@@ -720,6 +873,33 @@
         <button class="modal-btn secondary" onclick="cerrarReporte()">❌ Cerrar</button>
         <button class="modal-btn secondary" onclick="copiarReporte()">📋 Copiar</button>
         <button class="modal-btn primary" onclick="compartirWhatsApp()">📱 WhatsApp</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL REPORTE PERSONAL -->
+  <div class="modal-overlay" id="modalPersonal">
+    <div class="modal" style="max-width: 600px;">
+      <div class="modal-header">
+        <h2>👤 Reporte personal</h2>
+        <button class="modal-close" onclick="cerrarReportePersonal()">✕</button>
+      </div>
+
+      <div class="modal-campo">
+        <label>👤 Tu nombre (opcional)</label>
+        <input type="text" id="nombreIntegrante" placeholder="Ej: Juan" />
+        <div class="ayuda">Si lo dejás vacío, el reporte va sin nombre.</div>
+      </div>
+
+      <div class="modal-campo">
+        <label>📄 Vista previa del reporte</label>
+        <textarea id="textoPersonal" readonly></textarea>
+      </div>
+
+      <div class="modal-acciones">
+        <button class="modal-btn secondary" onclick="cerrarReportePersonal()">❌ Cerrar</button>
+        <button class="modal-btn secondary" onclick="copiarReportePersonal()">📋 Copiar</button>
+        <button class="modal-btn primary" onclick="compartirWhatsAppPersonal()">📱 WhatsApp</button>
       </div>
     </div>
   </div>
@@ -754,7 +934,6 @@
       'ETERNAMENTE BELLA'
     ];
 
-    // Datos del setlist para el reporte
     const NOMBRE_SETLIST = '1ER ENSAYO EVENTO NOVIEMBRE 28 2026';
     const FECHA_SETLIST = '2026-09-30';
     const HORARIO_SETLIST = '21:00';
@@ -762,8 +941,12 @@
     const TIPO_SETLIST = 'ensayo';
 
     const STORAGE_TOCADAS = 'uranthia-setlist-tocadas';
+    const STORAGE_PERSONAL = 'uranthia-check-personal';
     const STORAGE_REPORTES = 'uranthia-reportes';
+    const STORAGE_NOMBRE = 'uranthia-nombre-integrante';
+    const STORAGE_COLAPSADO = 'uranthia-colapsado';
 
+    // ── MODO ──
     function cambiarModo(modo) {
       document.body.classList.remove('modo-dia', 'modo-noche', 'modo-show');
       document.body.classList.add('modo-' + modo);
@@ -774,55 +957,104 @@
     const modoGuardado = localStorage.getItem('uranthia-modo') || 'noche';
     cambiarModo(modoGuardado);
 
+    // ── CHECK ENSAYO ──
     function cargarTocadas() {
       const todas = JSON.parse(localStorage.getItem(STORAGE_TOCADAS) || '{}');
       return todas[SETLIST_ID] || [];
     }
-
     function guardarTocadas(tocadas) {
       const todas = JSON.parse(localStorage.getItem(STORAGE_TOCADAS) || '{}');
       todas[SETLIST_ID] = tocadas;
       localStorage.setItem(STORAGE_TOCADAS, JSON.stringify(todas));
     }
 
+    // ── CHECK PERSONAL ──
+    function cargarPersonal() {
+      const todas = JSON.parse(localStorage.getItem(STORAGE_PERSONAL) || '{}');
+      return todas[SETLIST_ID] || [];
+    }
+    function guardarPersonal(personal) {
+      const todas = JSON.parse(localStorage.getItem(STORAGE_PERSONAL) || '{}');
+      todas[SETLIST_ID] = personal;
+      localStorage.setItem(STORAGE_PERSONAL, JSON.stringify(todas));
+    }
+
     function toggleTocada(index) {
       const tocadas = cargarTocadas();
       const idx = tocadas.indexOf(index);
-      if (idx >= 0) {
-        tocadas.splice(idx, 1);
-      } else {
-        tocadas.push(index);
-      }
+      if (idx >= 0) tocadas.splice(idx, 1);
+      else tocadas.push(index);
       guardarTocadas(tocadas);
       renderizar();
     }
 
+    function togglePersonal(index) {
+      const personal = cargarPersonal();
+      const idx = personal.indexOf(index);
+      if (idx >= 0) personal.splice(idx, 1);
+      else personal.push(index);
+      guardarPersonal(personal);
+      renderizar();
+    }
+
     function reiniciarCheck() {
-      if (!confirm('¿Reiniciar el check de todas las canciones?')) return;
+      if (!confirm('¿Reiniciar el check del ensayo?')) return;
       guardarTocadas([]);
       renderizar();
     }
 
+    // ── COLAPSAR ──
+    let colapsado = localStorage.getItem(STORAGE_COLAPSADO) === 'true';
+
+    function toggleColapsar() {
+      colapsado = !colapsado;
+      localStorage.setItem(STORAGE_COLAPSADO, colapsado);
+      aplicarColapsado();
+    }
+
+    function aplicarColapsado() {
+      const lista = document.getElementById('listaCanciones');
+      const icono = document.getElementById('colapsarIcono');
+      const texto = document.getElementById('colapsarTexto');
+      if (colapsado) {
+        lista.style.display = 'none';
+        icono.textContent = '⬇️';
+        texto.textContent = 'Desplegar';
+      } else {
+        lista.style.display = '';
+        icono.textContent = '⬆️';
+        texto.textContent = 'Replegar';
+      }
+    }
+
+    // ── RENDERIZAR ──
     function renderizar() {
       const tocadas = cargarTocadas();
+      const personal = cargarPersonal();
       const total = CANCIONES.length;
       const totalTocadas = tocadas.length;
+      const totalPersonal = personal.length;
       const porcentaje = total > 0 ? Math.round((totalTocadas / total) * 100) : 0;
 
       document.getElementById('tocadasNum').textContent = totalTocadas;
       document.getElementById('porcentaje').textContent = porcentaje + '%';
       document.getElementById('progresoLleno').style.width = porcentaje + '%';
+      document.getElementById('personalNum').textContent = totalPersonal;
 
       const lista = document.getElementById('listaCanciones');
       lista.innerHTML = CANCIONES.map((titulo, index) => {
         const estaTocada = tocadas.includes(index);
+        const estaPersonal = personal.includes(index);
         const claseTocada = estaTocada ? 'tocada' : '';
-        const claseCheck = estaTocada ? 'checked' : '';
+        const clasePersonal = estaPersonal ? 'practicada' : '';
+        const claseCheckEnsayo = estaTocada ? 'checked' : '';
+        const claseCheckPersonal = estaPersonal ? 'checked' : '';
 
         return `
-          <div class="cancion-item ${claseTocada}">
+          <div class="cancion-item ${claseTocada} ${clasePersonal}">
             <div class="cancion-numero">${index + 1}</div>
-            <div class="cancion-check-setlist ${claseCheck}" onclick="toggleTocada(${index})"></div>
+            <div class="cancion-check-setlist ${claseCheckEnsayo}" onclick="toggleTocada(${index})" title="Check del ensayo"></div>
+            <div class="cancion-check-personal ${claseCheckPersonal}" onclick="togglePersonal(${index})" title="Check personal"></div>
             <div class="cancion-info-setlist">
               <div class="cancion-titulo">${titulo}</div>
             </div>
@@ -838,18 +1070,15 @@
           </div>
         `;
       }).join('');
+
+      aplicarColapsado();
     }
 
-    // ══════════════════════════════════════════════════════
-    // REPORTE
-    // ══════════════════════════════════════════════════════
+    // ── REPORTE ENSAYO ──
     function formatearFechaReporte(fechaStr) {
       const fecha = new Date(fechaStr + 'T00:00:00');
       return fecha.toLocaleDateString('es-ES', {
-        weekday: 'long',
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric'
+        weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
       });
     }
 
@@ -889,7 +1118,6 @@
       const texto = generarTextoReporte();
       document.getElementById('textoReporte').value = texto;
       document.getElementById('modalReporte').classList.add('visible');
-      guardarReporte(texto);
     }
 
     function cerrarReporte() {
@@ -898,28 +1126,103 @@
 
     function copiarReporte() {
       const texto = document.getElementById('textoReporte').value;
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(texto).then(() => {
-          mostrarAvisoCopiado('✅ Reporte copiado');
-        }).catch(() => {
-          fallbackCopiar(texto);
-        });
-      } else {
-        fallbackCopiar(texto);
-      }
-    }
-
-    function fallbackCopiar(texto) {
-      const textarea = document.getElementById('textoReporte');
-      textarea.select();
-      document.execCommand('copy');
-      mostrarAvisoCopiado('✅ Reporte copiado');
+      copiarTexto(texto, '✅ Reporte copiado');
     }
 
     function compartirWhatsApp() {
       const texto = document.getElementById('textoReporte').value;
+      compartirWhatsAppTexto(texto);
+    }
 
-      // Codificación segura para emojis y caracteres especiales
+    // ── REPORTE PERSONAL ──
+    function generarTextoPersonal(nombre) {
+      const personal = cargarPersonal();
+      const total = CANCIONES.length;
+      const totalPersonal = personal.length;
+      const porcentaje = Math.round((totalPersonal / total) * 100);
+
+      const practicadasLista = CANCIONES.filter((_, i) => personal.includes(i));
+      const pendientesLista = CANCIONES.filter((_, i) => !personal.includes(i));
+
+      let texto = '';
+      texto += `🎸 REPORTE PERSONAL DE ENSAYO\n`;
+      texto += `Uranthia y su Corazón Latino\n\n`;
+      if (nombre && nombre.trim()) {
+        texto += `👤 Integrante: ${nombre.trim()}\n`;
+      }
+      texto += `📋 ${NOMBRE_SETLIST}\n`;
+      texto += `📅 ${formatearFechaReporte(FECHA_SETLIST)}\n`;
+      if (LUGAR_SETLIST) texto += `📍 ${LUGAR_SETLIST}\n`;
+      texto += `\n───────────────────────\n`;
+      texto += `✅ PRACTICADAS (${totalPersonal}/${total})\n`;
+      practicadasLista.forEach((c, i) => { texto += `${i + 1}. ${c}\n`; });
+      texto += `\n───────────────────────\n`;
+      texto += `⬜ PENDIENTES (${total - totalPersonal}/${total})\n`;
+      pendientesLista.forEach((c, i) => { texto += `${i + 1}. ${c}\n`; });
+      texto += `\n───────────────────────\n`;
+      texto += `📊 Avance personal: ${porcentaje}%\n\n`;
+      texto += `🎸 ¡A practicar!\n\n`;
+      texto += `───────────────────────\n`;
+      texto += `Uranthia y su Corazón Latino\n`;
+      texto += `📲 saoentertainment.github.io/URANTHIA`;
+
+      return texto;
+    }
+
+    function abrirReportePersonal() {
+      const nombreGuardado = localStorage.getItem(STORAGE_NOMBRE) || '';
+      document.getElementById('nombreIntegrante').value = nombreGuardado;
+      actualizarPreviewPersonal();
+      document.getElementById('modalPersonal').classList.add('visible');
+    }
+
+    function actualizarPreviewPersonal() {
+      const nombre = document.getElementById('nombreIntegrante').value;
+      const texto = generarTextoPersonal(nombre);
+      document.getElementById('textoPersonal').value = texto;
+    }
+
+    function cerrarReportePersonal() {
+      const nombre = document.getElementById('nombreIntegrante').value.trim();
+      if (nombre) localStorage.setItem(STORAGE_NOMBRE, nombre);
+      document.getElementById('modalPersonal').classList.remove('visible');
+    }
+
+    function copiarReportePersonal() {
+      const texto = document.getElementById('textoPersonal').value;
+      copiarTexto(texto, '✅ Reporte personal copiado');
+    }
+
+    function compartirWhatsAppPersonal() {
+      const texto = document.getElementById('textoPersonal').value;
+      compartirWhatsAppTexto(texto);
+    }
+
+    // ── UTILS ──
+    function copiarTexto(texto, mensaje) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(texto).then(() => {
+          mostrarAviso(mensaje);
+        }).catch(() => {
+          fallbackCopiar(texto, mensaje);
+        });
+      } else {
+        fallbackCopiar(texto, mensaje);
+      }
+    }
+
+    function fallbackCopiar(texto, mensaje) {
+      const textarea = document.createElement('textarea');
+      textarea.value = texto;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+      mostrarAviso(mensaje);
+    }
+
+    function compartirWhatsAppTexto(texto) {
+      // Codificación segura para emojis
       const textoCodificado = encodeURIComponent(texto)
         .replace(/%F0%9F%8E%A4/g, '🎤')
         .replace(/%F0%9F%93%8B/g, '📋')
@@ -930,13 +1233,14 @@
         .replace(/%E2%AC%9C/g, '⬜')
         .replace(/%F0%9F%93%8A/g, '📊')
         .replace(/%F0%9F%8E%B8/g, '🎸')
-        .replace(/%F0%9F%93%B2/g, '📲');
+        .replace(/%F0%9F%93%B2/g, '📲')
+        .replace(/%F0%9F%91%A4/g, '👤');
 
       const url = 'https://wa.me/?text=' + textoCodificado;
       window.open(url, '_blank');
     }
 
-    function mostrarAvisoCopiado(mensaje) {
+    function mostrarAviso(mensaje) {
       let aviso = document.getElementById('avisoCopiado');
       if (!aviso) {
         aviso = document.createElement('div');
@@ -949,35 +1253,42 @@
       setTimeout(() => aviso.classList.remove('show'), 2000);
     }
 
-    function guardarReporte(texto) {
-      const reportes = JSON.parse(localStorage.getItem(STORAGE_REPORTES) || '[]');
-      // Evitar duplicados por ID
-      const idReporte = SETLIST_ID + '-' + Date.now();
-      reportes.push({
-        id: idReporte,
-        setlistId: SETLIST_ID,
-        tipo: TIPO_SETLIST,
-        nombre: NOMBRE_SETLIST,
-        fecha: FECHA_SETLIST,
-        horario: HORARIO_SETLIST,
-        lugar: LUGAR_SETLIST,
-        totalCanciones: CANCIONES.length,
-        tocadas: cargarTocadas(),
-        pendientes: CANCIONES.map((_, i) => i).filter(i => !cargarTocadas().includes(i)),
-        texto: texto,
-        creado: new Date().toISOString()
-      });
-      localStorage.setItem(STORAGE_REPORTES, JSON.stringify(reportes));
+    // ── SCROLL ──
+    window.addEventListener('scroll', () => {
+      const btnTop = document.getElementById('btnTop');
+      const btnAbajo = document.getElementById('btnAbajo');
+      const scrollY = window.scrollY;
+      const alturaTotal = document.body.scrollHeight - window.innerHeight;
+
+      btnTop.classList.toggle('visible', scrollY > 300);
+      btnAbajo.classList.toggle('visible', scrollY < alturaTotal - 300);
+    });
+
+    function irArriba() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    function irAbajo() {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+
+    // ── EVENTOS MODALES ──
     document.getElementById('modalReporte').addEventListener('click', (e) => {
       if (e.target.id === 'modalReporte') cerrarReporte();
     });
+    document.getElementById('modalPersonal').addEventListener('click', (e) => {
+      if (e.target.id === 'modalPersonal') cerrarReportePersonal();
+    });
+    document.getElementById('nombreIntegrante').addEventListener('input', actualizarPreviewPersonal);
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') cerrarReporte();
+      if (e.key === 'Escape') {
+        cerrarReporte();
+        cerrarReportePersonal();
+      }
     });
 
+    // ── INICIALIZAR ──
     renderizar();
   </script>
 

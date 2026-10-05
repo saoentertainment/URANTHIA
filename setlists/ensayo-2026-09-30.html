@@ -7,20 +7,18 @@
 
   <link rel="icon" type="image/png" href="../logo-uranthia.png" />
   <link rel="apple-touch-icon" href="../logo-uranthia.png" />
-  <!-- Open Graph -->
+
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Uranthia · Ensayo del 30 de septiembre" />
+  <meta property="og:title" content="Uranthia · Ensayo del 30 de Septiembre 2026" />
   <meta property="og:description" content="1ER ENSAYO EVENTO NOVIEMBRE 28 2026 · 25 canciones." />
   <meta property="og:image" content="https://saoentertainment.github.io/URANTHIA/preview-whatsapp.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:site_name" content="Uranthia · Corazón Latino" />
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Uranthia · Ensayo del 30 de septiembre" />
+  <meta name="twitter:title" content="Uranthia · Ensayo del 30 de Septiembre 2026" />
   <meta name="twitter:description" content="1ER ENSAYO EVENTO NOVIEMBRE 28 2026 · 25 canciones." />
-  <meta name="twitter:image" content="https://saoentertainment.github.io/URANTHIA/preview-whatsapp.jpg" />  
+  <meta name="twitter:image" content="https://saoentertainment.github.io/URANTHIA/preview-whatsapp.jpg" />
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -215,6 +213,26 @@
       gap: 6px;
     }
 
+    .setlist-notas {
+      margin-top: 16px;
+      padding: 12px 18px;
+      background: rgba(212, 175, 55, 0.12);
+      border-radius: 12px;
+      border-left: 4px solid var(--dorado);
+      font-size: 0.9rem;
+      color: #0d2818;
+      text-align: left;
+      line-height: 1.5;
+    }
+    .setlist-notas strong {
+      color: #b8860b;
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
     .canciones-header {
       display: flex;
       align-items: center;
@@ -318,12 +336,6 @@
       font-size: 1rem;
       line-height: 1.3;
     }
-    .cancion-artista-setlist {
-      font-size: 0.85rem;
-      color: var(--card-sub);
-      font-style: italic;
-      margin-top: 3px;
-    }
 
     .cancion-botones-setlist {
       display: flex;
@@ -344,6 +356,7 @@
       color: #b8c0b8;
       cursor: not-allowed;
       white-space: nowrap;
+      text-decoration: none;
     }
 
     .acciones-setlist {
@@ -460,6 +473,159 @@
       transition: width 0.4s ease;
     }
 
+    /* ── MODAL REPORTE ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(6px);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.visible { display: flex; animation: fadeIn 0.25s ease; }
+
+    .modal {
+      background: var(--card-bg);
+      border-radius: 24px;
+      padding: 32px;
+      max-width: 520px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.60), 0 0 0 2px var(--dorado);
+      border: 1px solid var(--borde);
+      animation: slideUp 0.3s ease;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 22px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--borde);
+    }
+    .modal-header h2 {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--card-texto);
+    }
+    .modal-close {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid var(--borde);
+      background: var(--card-bg);
+      color: var(--card-texto);
+      font-size: 1.1rem;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+    .modal-close:hover { background: #d4af37; color: #0d2818; }
+
+    .modal-campo { margin-bottom: 18px; }
+    .modal-campo label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--dorado);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .modal-campo textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 2px solid var(--borde);
+      background: var(--card-bg);
+      color: var(--card-texto);
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      outline: none;
+      transition: all 0.2s ease;
+      resize: vertical;
+      min-height: 300px;
+      line-height: 1.5;
+    }
+    .modal-campo textarea:focus {
+      border-color: var(--dorado);
+      box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.20);
+    }
+
+    .modal-acciones {
+      display: flex;
+      gap: 10px;
+      margin-top: 26px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .modal-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 800;
+      padding: 12px 24px;
+      border-radius: 30px;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+      border: 2px solid transparent;
+    }
+    .modal-btn.primary {
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      color: #ffffff;
+      border-color: #128C7E;
+    }
+    .modal-btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.40);
+    }
+    .modal-btn.secondary {
+      background: var(--card-bg);
+      color: var(--card-sub);
+      border-color: var(--borde);
+    }
+    .modal-btn.secondary:hover {
+      border-color: var(--dorado);
+      color: #0d2818;
+      background: #faf3e0;
+    }
+
+    .aviso-copiado {
+      display: none;
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
+      color: #d4af37;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.50);
+      border: 2px solid #d4af37;
+      z-index: 3000;
+    }
+    .aviso-copiado.show { display: block; animation: fadeIn 0.3s ease; }
+
     @media (max-width: 650px) {
       body { padding: 16px 10px; }
       .card { padding: 20px 14px; border-radius: 24px; }
@@ -473,6 +639,7 @@
       .btn-accion { font-size: 0.75rem; padding: 10px 18px; }
       .barra-progreso { flex-direction: column; gap: 8px; }
       .barra-progreso .progreso-barra { width: 100%; }
+      .modal { padding: 22px 18px; }
     }
   </style>
 </head>
@@ -521,6 +688,7 @@
 
     <div class="acciones-setlist">
       <a class="btn-accion secondary" href="../index.html">🏠 Volver al portal</a>
+      <button class="btn-accion primary" onclick="abrirReporte()">📤 Generar reporte</button>
       <button class="btn-accion primary" onclick="reiniciarCheck()">🔄 Reiniciar check</button>
     </div>
 
@@ -535,10 +703,28 @@
 
   </div>
 
+  <!-- MODAL REPORTE -->
+  <div class="modal-overlay" id="modalReporte">
+    <div class="modal" style="max-width: 600px;">
+      <div class="modal-header">
+        <h2>📤 Reporte del ensayo</h2>
+        <button class="modal-close" onclick="cerrarReporte()">✕</button>
+      </div>
+
+      <div class="modal-campo">
+        <label>📄 Vista previa del reporte</label>
+        <textarea id="textoReporte" readonly></textarea>
+      </div>
+
+      <div class="modal-acciones">
+        <button class="modal-btn secondary" onclick="cerrarReporte()">❌ Cerrar</button>
+        <button class="modal-btn secondary" onclick="copiarReporte()">📋 Copiar</button>
+        <button class="modal-btn primary" onclick="compartirWhatsApp()">📱 WhatsApp</button>
+      </div>
+    </div>
+  </div>
+
   <script>
-    // ══════════════════════════════════════════════════════
-    // DATOS DEL SETLIST FIJO
-    // ══════════════════════════════════════════════════════
     const SETLIST_ID = 'ensayo-2026-09-30-fijo';
     const CANCIONES = [
       'VUELA VUELA',
@@ -568,11 +754,16 @@
       'ETERNAMENTE BELLA'
     ];
 
-    const STORAGE_TOCADAS = 'uranthia-setlist-tocadas';
+    // Datos del setlist para el reporte
+    const NOMBRE_SETLIST = '1ER ENSAYO EVENTO NOVIEMBRE 28 2026';
+    const FECHA_SETLIST = '2026-09-30';
+    const HORARIO_SETLIST = '21:00';
+    const LUGAR_SETLIST = 'CASA ATZY-SANTI';
+    const TIPO_SETLIST = 'ensayo';
 
-    // ══════════════════════════════════════════════════════
-    // MODO
-    // ══════════════════════════════════════════════════════
+    const STORAGE_TOCADAS = 'uranthia-setlist-tocadas';
+    const STORAGE_REPORTES = 'uranthia-reportes';
+
     function cambiarModo(modo) {
       document.body.classList.remove('modo-dia', 'modo-noche', 'modo-show');
       document.body.classList.add('modo-' + modo);
@@ -583,9 +774,6 @@
     const modoGuardado = localStorage.getItem('uranthia-modo') || 'noche';
     cambiarModo(modoGuardado);
 
-    // ══════════════════════════════════════════════════════
-    // TOCADAS
-    // ══════════════════════════════════════════════════════
     function cargarTocadas() {
       const todas = JSON.parse(localStorage.getItem(STORAGE_TOCADAS) || '{}');
       return todas[SETLIST_ID] || [];
@@ -600,13 +788,11 @@
     function toggleTocada(index) {
       const tocadas = cargarTocadas();
       const idx = tocadas.indexOf(index);
-
       if (idx >= 0) {
         tocadas.splice(idx, 1);
       } else {
         tocadas.push(index);
       }
-
       guardarTocadas(tocadas);
       renderizar();
     }
@@ -617,21 +803,16 @@
       renderizar();
     }
 
-    // ══════════════════════════════════════════════════════
-    // RENDERIZAR
-    // ══════════════════════════════════════════════════════
     function renderizar() {
       const tocadas = cargarTocadas();
       const total = CANCIONES.length;
       const totalTocadas = tocadas.length;
       const porcentaje = total > 0 ? Math.round((totalTocadas / total) * 100) : 0;
 
-      // Barra de progreso
       document.getElementById('tocadasNum').textContent = totalTocadas;
       document.getElementById('porcentaje').textContent = porcentaje + '%';
       document.getElementById('progresoLleno').style.width = porcentaje + '%';
 
-      // Lista de canciones
       const lista = document.getElementById('listaCanciones');
       lista.innerHTML = CANCIONES.map((titulo, index) => {
         const estaTocada = tocadas.includes(index);
@@ -647,7 +828,9 @@
             </div>
             <div class="cancion-botones-setlist">
               <span class="btn-mini-setlist">▶ YouTube</span>
-              ${titulo === 'LA FUERZA DEL DESTINO'                 ? `<a class="btn-mini-setlist" href="../letras/la-fuerza-del-destino.html" target="_blank" style="text-decoration:none; border-color:#d4af37; color:#0d2818; background:#faf3e0; cursor:pointer;">📄 Letra</a>`                 : '<span class="btn-mini-setlist">📄 Letra</span>'}
+              ${titulo === 'LA FUERZA DEL DESTINO'
+                ? '<a class="btn-mini-setlist" href="../letras/la-fuerza-del-destino.html" target="_blank" style="text-decoration:none; border-color:#d4af37; color:#0d2818; background:#faf3e0; cursor:pointer;">📄 Letra</a>'
+                : '<span class="btn-mini-setlist">📄 Letra</span>'}
               <span class="btn-mini-setlist">🎸 Acordes</span>
               <span class="btn-mini-setlist">🎹 Piano</span>
               <span class="btn-mini-setlist">🎸 Bajo</span>
@@ -656,6 +839,130 @@
         `;
       }).join('');
     }
+
+    // ══════════════════════════════════════════════════════
+    // REPORTE
+    // ══════════════════════════════════════════════════════
+    function formatearFechaReporte(fechaStr) {
+      const fecha = new Date(fechaStr + 'T00:00:00');
+      return fecha.toLocaleDateString('es-ES', {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      });
+    }
+
+    function generarTextoReporte() {
+      const tocadas = cargarTocadas();
+      const total = CANCIONES.length;
+      const totalTocadas = tocadas.length;
+      const porcentaje = Math.round((totalTocadas / total) * 100);
+
+      const tocadasLista = CANCIONES.filter((_, i) => tocadas.includes(i));
+      const pendientesLista = CANCIONES.filter((_, i) => !tocadas.includes(i));
+
+      let texto = '';
+      texto += `🎤 REPORTE DE ${TIPO_SETLIST.toUpperCase()}\n`;
+      texto += `Uranthia y su Corazón Latino\n\n`;
+      texto += `📋 ${NOMBRE_SETLIST}\n`;
+      texto += `📅 ${formatearFechaReporte(FECHA_SETLIST)}\n`;
+      if (HORARIO_SETLIST) texto += `🕐 ${HORARIO_SETLIST}\n`;
+      if (LUGAR_SETLIST) texto += `📍 ${LUGAR_SETLIST}\n`;
+      texto += `\n───────────────────────\n`;
+      texto += `✅ TOCADAS (${totalTocadas}/${total})\n`;
+      tocadasLista.forEach((c, i) => { texto += `${i + 1}. ${c}\n`; });
+      texto += `\n───────────────────────\n`;
+      texto += `⬜ PENDIENTES (${total - totalTocadas}/${total})\n`;
+      pendientesLista.forEach((c, i) => { texto += `${i + 1}. ${c}\n`; });
+      texto += `\n───────────────────────\n`;
+      texto += `📊 Avance: ${porcentaje}%\n\n`;
+      texto += `🎸 ¡Buen ${TIPO_SETLIST}!\n\n`;
+      texto += `───────────────────────\n`;
+      texto += `Uranthia y su Corazón Latino\n`;
+      texto += `📲 saoentertainment.github.io/URANTHIA`;
+
+      return texto;
+    }
+
+    function abrirReporte() {
+      const texto = generarTextoReporte();
+      document.getElementById('textoReporte').value = texto;
+      document.getElementById('modalReporte').classList.add('visible');
+      guardarReporte(texto);
+    }
+
+    function cerrarReporte() {
+      document.getElementById('modalReporte').classList.remove('visible');
+    }
+
+    function copiarReporte() {
+      const texto = document.getElementById('textoReporte').value;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(texto).then(() => {
+          mostrarAvisoCopiado('✅ Reporte copiado');
+        }).catch(() => {
+          fallbackCopiar(texto);
+        });
+      } else {
+        fallbackCopiar(texto);
+      }
+    }
+
+    function fallbackCopiar(texto) {
+      const textarea = document.getElementById('textoReporte');
+      textarea.select();
+      document.execCommand('copy');
+      mostrarAvisoCopiado('✅ Reporte copiado');
+    }
+
+    function compartirWhatsApp() {
+      const texto = document.getElementById('textoReporte').value;
+      const url = 'https://wa.me/?text=' + encodeURIComponent(texto);
+      window.open(url, '_blank');
+    }
+
+    function mostrarAvisoCopiado(mensaje) {
+      let aviso = document.getElementById('avisoCopiado');
+      if (!aviso) {
+        aviso = document.createElement('div');
+        aviso.id = 'avisoCopiado';
+        aviso.className = 'aviso-copiado';
+        document.body.appendChild(aviso);
+      }
+      aviso.textContent = mensaje;
+      aviso.classList.add('show');
+      setTimeout(() => aviso.classList.remove('show'), 2000);
+    }
+
+    function guardarReporte(texto) {
+      const reportes = JSON.parse(localStorage.getItem(STORAGE_REPORTES) || '[]');
+      // Evitar duplicados por ID
+      const idReporte = SETLIST_ID + '-' + Date.now();
+      reportes.push({
+        id: idReporte,
+        setlistId: SETLIST_ID,
+        tipo: TIPO_SETLIST,
+        nombre: NOMBRE_SETLIST,
+        fecha: FECHA_SETLIST,
+        horario: HORARIO_SETLIST,
+        lugar: LUGAR_SETLIST,
+        totalCanciones: CANCIONES.length,
+        tocadas: cargarTocadas(),
+        pendientes: CANCIONES.map((_, i) => i).filter(i => !cargarTocadas().includes(i)),
+        texto: texto,
+        creado: new Date().toISOString()
+      });
+      localStorage.setItem(STORAGE_REPORTES, JSON.stringify(reportes));
+    }
+
+    document.getElementById('modalReporte').addEventListener('click', (e) => {
+      if (e.target.id === 'modalReporte') cerrarReporte();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') cerrarReporte();
+    });
 
     renderizar();
   </script>

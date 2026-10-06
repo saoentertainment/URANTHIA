@@ -289,6 +289,71 @@
       border-color: var(--dorado);
     }
 
+    /* ── TARJETA DE ESTADÍSTICAS ── */
+    .stats-card {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
+      border-radius: 22px;
+      padding: 22px 28px;
+      margin-bottom: 22px;
+      border: 2px solid var(--dorado);
+      box-shadow: 0 10px 25px rgba(13, 40, 24, 0.30);
+      position: relative;
+      overflow: hidden;
+    }
+    .stats-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      position: relative;
+      z-index: 1;
+      min-width: 100px;
+    }
+    .stat-item .stat-icono {
+      font-size: 1.5rem;
+      margin-bottom: 2px;
+    }
+    .stat-item .stat-numero {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #d4af37;
+      line-height: 1;
+      text-shadow: 0 2px 10px rgba(212, 175, 55, 0.40);
+    }
+    .stat-item .stat-label {
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: #f5e6c8;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
+    .stat-divider {
+      width: 1px;
+      height: 40px;
+      background: rgba(212, 175, 55, 0.30);
+    }
+    @media (max-width: 650px) {
+      .stats-card { gap: 14px; padding: 16px 14px; }
+      .stat-item { min-width: 70px; }
+      .stat-item .stat-numero { font-size: 1.4rem; }
+      .stat-item .stat-label { font-size: 0.6rem; }
+      .stat-divider { display: none; }
+    }
+
     .main-title { text-align: center; margin: 8px 0 22px 0; }
     .main-title h1 {
       font-family: 'Georgia', 'Times New Roman', serif;
@@ -310,6 +375,11 @@
       font-size: 0.9rem;
       color: var(--card-sub);
       font-style: italic;
+    }
+    .main-title .subtitle strong {
+      color: var(--dorado);
+      font-weight: 800;
+      font-style: normal;
     }
 
     .search-box {
@@ -720,6 +790,30 @@
       box-shadow: 0 8px 20px rgba(255, 0, 0, 0.50);
     }
 
+    /* ── BOTÓN COMPARTIR ── */
+    .action-btn.compartir {
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      color: #ffffff;
+      border-color: #128C7E;
+    }
+    .action-btn.compartir:hover {
+      background: linear-gradient(135deg, #128C7E 0%, #25D366 100%);
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.50);
+    }
+    .action-btn.compartir-copiar {
+      background: linear-gradient(135deg, #6a4fbf 0%, #8b6bc7 100%);
+      color: #ffffff;
+      border-color: #6a4fbf;
+    }
+    .action-btn.compartir-copiar:hover {
+      background: linear-gradient(135deg, #8b6bc7 0%, #a789d8 100%);
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(106, 79, 191, 0.50);
+    }
+
     .footer {
       margin-top: 28px;
       padding-top: 20px;
@@ -926,6 +1020,14 @@
       box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.20);
     }
 
+    .modal-campo textarea.reporte {
+      font-family: 'Courier New', monospace;
+      font-size: 0.82rem;
+      min-height: 400px;
+      line-height: 1.5;
+      resize: vertical;
+    }
+
     .modal-acciones {
       display: flex;
       gap: 10px;
@@ -956,6 +1058,24 @@
     .modal-btn.primary:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 20px rgba(212, 175, 55, 0.40);
+    }
+    .modal-btn.whatsapp {
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      color: #ffffff;
+      border-color: #128C7E;
+    }
+    .modal-btn.whatsapp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.40);
+    }
+    .modal-btn.copiar {
+      background: linear-gradient(135deg, #6a4fbf 0%, #8b6bc7 100%);
+      color: #ffffff;
+      border-color: #6a4fbf;
+    }
+    .modal-btn.copiar:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(106, 79, 191, 0.40);
     }
     .modal-btn.secondary {
       background: var(--card-bg);
@@ -1139,9 +1259,30 @@
       </button>
     </div>
 
+    <!-- TARJETA DE ESTADÍSTICAS -->
+    <div class="stats-card" id="statsCard">
+      <div class="stat-item">
+        <span class="stat-icono">🎵</span>
+        <span class="stat-numero" id="statTotalCanciones">0</span>
+        <span class="stat-label">Canciones</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-icono">🎼</span>
+        <span class="stat-numero" id="statTotalEstilos">0</span>
+        <span class="stat-label">Estilos</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-icono">📁</span>
+        <span class="stat-numero" id="statTotalSubgrupos">0</span>
+        <span class="stat-label">Subgrupos</span>
+      </div>
+    </div>
+
     <div class="main-title">
       <h1>Nuestro <span class="gold">Repertorio</span></h1>
-      <div class="subtitle">Organizado por estilos musicales</div>
+      <div class="subtitle">Organizado por estilos · <strong id="subtitleTotal">0 canciones</strong></div>
     </div>
 
     <div class="search-box">
@@ -1178,6 +1319,8 @@
     <div class="actions-bar">
       <button class="action-btn" onclick="abrirModal()">➕ Agregar canción</button>
       <a class="action-btn secondary" href="index.html">🏠 Ir al Portal</a>
+      <button class="action-btn compartir" onclick="compartirWhatsAppRepertorio()">📱 Compartir por WhatsApp</button>
+      <button class="action-btn compartir-copiar" onclick="copiarRepertorio()">📋 Copiar repertorio</button>
       <a class="action-btn youtube" href="https://www.youtube.com/@CORAZON-LATINO-MUSIC/playlists" target="_blank" rel="noopener">▶ Ver Playlists en YouTube</a>
       <button class="action-btn danger" onclick="borrarDatosLocales()">🗑️ Borrar datos locales</button>
     </div>
@@ -1319,21 +1462,37 @@
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════════════════════ -->
-  <!-- YOUTUBE.JS — Enlaces centralizados de YouTube          -->
-  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- MODAL COMPARTIR REPERTORIO -->
+  <div class="modal-overlay" id="modalCompartir">
+    <div class="modal" style="max-width: 700px;">
+      <div class="modal-header">
+        <h2>📤 Compartir Repertorio</h2>
+        <button class="modal-close" onclick="cerrarModalCompartir()">✕</button>
+      </div>
+
+      <div class="modal-campo">
+        <label>📄 Vista previa del mensaje</label>
+        <textarea id="textoRepertorio" class="reporte" readonly></textarea>
+      </div>
+
+      <div class="modal-acciones">
+        <button class="modal-btn secondary" onclick="cerrarModalCompartir()">❌ Cerrar</button>
+        <button class="modal-btn copiar" onclick="copiarTextoRepertorio()">📋 Copiar</button>
+        <button class="modal-btn whatsapp" onclick="enviarWhatsAppRepertorio()">📱 WhatsApp</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- YOUTUBE.JS — Enlaces centralizados de YouTube -->
   <script src="youtube.js"></script>
 
   <script>
     // ══════════════════════════════════════════════════════
     // HELPERS: LETRA + YOUTUBE
     // ══════════════════════════════════════════════════════
-
-    // Mapa de títulos (tal cual figuran en REPERTORIO) → slug del archivo de letra
     const MAPA_LETRAS = {
       'LA FUERZA DEL DESTINO': 'la-fuerza-del-destino',
       'MIRALA MIRALO': 'mirala-miralo'
-      // Acá vas agregando: 'TITULO EN MAYUSCULAS': 'slug-del-archivo'
     };
 
     function renderBotonLetra(titulo) {
@@ -1679,6 +1838,213 @@
     let seleccionadas = JSON.parse(localStorage.getItem(STORAGE_SELECCIONADAS) || '[]');
 
     // ══════════════════════════════════════════════════════
+    // ESTADÍSTICAS
+    // ══════════════════════════════════════════════════════
+    function calcularEstadisticas() {
+      const cancionesNuevas = JSON.parse(localStorage.getItem(STORAGE_NUEVAS) || '[]');
+      const estilosNuevos = JSON.parse(localStorage.getItem(STORAGE_ESTILOS_NUEVOS) || '{}');
+
+      let totalCanciones = 0;
+      let totalSubgrupos = 0;
+
+      REPERTORIO.forEach(estilo => {
+        estilo.subgrupos.forEach(sg => {
+          totalCanciones += sg.canciones.length;
+          if (sg.canciones.length > 0) totalSubgrupos++;
+        });
+      });
+
+      Object.values(estilosNuevos).forEach(estilo => {
+        if (!REPERTORIO.find(e => e.id === estilo.id)) {
+          estilo.subgrupos.forEach(sg => {
+            if (sg.canciones && sg.canciones.length > 0) totalSubgrupos++;
+          });
+        }
+      });
+
+      totalCanciones += cancionesNuevas.length;
+
+      const totalEstilos = REPERTORIO.length + Object.values(estilosNuevos).filter(
+        e => !REPERTORIO.find(r => r.id === e.id)
+      ).length;
+
+      return { totalCanciones, totalEstilos, totalSubgrupos };
+    }
+
+    function actualizarEstadisticas() {
+      const stats = calcularEstadisticas();
+      document.getElementById('statTotalCanciones').textContent = stats.totalCanciones;
+      document.getElementById('statTotalEstilos').textContent = stats.totalEstilos;
+      document.getElementById('statTotalSubgrupos').textContent = stats.totalSubgrupos;
+      document.getElementById('subtitleTotal').textContent = stats.totalCanciones + ' canciones';
+    }
+
+    // ══════════════════════════════════════════════════════
+    // GENERAR TEXTO DEL REPERTORIO (para compartir)
+    // ══════════════════════════════════════════════════════
+    function generarTextoRepertorio() {
+      const cancionesNuevas = JSON.parse(localStorage.getItem(STORAGE_NUEVAS) || '[]');
+      const estilosNuevos = JSON.parse(localStorage.getItem(STORAGE_ESTILOS_NUEVOS) || '{}');
+
+      const todosEstilos = [...REPERTORIO];
+      Object.values(estilosNuevos).forEach(estiloNuevo => {
+        if (!todosEstilos.find(e => e.id === estiloNuevo.id)) {
+          todosEstilos.push({
+            id: estiloNuevo.id,
+            icono: estiloNuevo.icono,
+            nombre: estiloNuevo.nombre,
+            subgrupos: estiloNuevo.subgrupos.map(sg => ({
+              nombre: sg.nombre,
+              icono: sg.icono,
+              canciones: []
+            }))
+          });
+        }
+      });
+
+      const stats = calcularEstadisticas();
+
+      let texto = '';
+      texto += `🎼 REPERTORIO\n`;
+      texto += `Uranthia y su Corazón Latino\n`;
+      texto += `\n`;
+      texto += `📊 ${stats.totalCanciones} canciones · ${stats.totalEstilos} estilos\n`;
+      texto += `\n`;
+
+      todosEstilos.forEach(estilo => {
+        const subgruposClonados = estilo.subgrupos.map(sg => ({
+          ...sg,
+          canciones: [...sg.canciones]
+        }));
+
+        cancionesNuevas
+          .filter(cn => cn.estiloId === estilo.id)
+          .forEach(cn => {
+            let subgrupoDestino = subgruposClonados.find(sg => sg.nombre === cn.subgrupo);
+            if (!subgrupoDestino) {
+              subgrupoDestino = { nombre: cn.subgrupo || 'Sin subgrupo', icono: '📁', canciones: [] };
+              subgruposClonados.push(subgrupoDestino);
+            }
+            subgrupoDestino.canciones.push({
+              titulo: cn.titulo,
+              artista: cn.artista
+            });
+          });
+
+        const totalEstilo = subgruposClonados.reduce((sum, sg) => sum + sg.canciones.length, 0);
+        if (totalEstilo === 0) return;
+
+        texto += `━━━━━━━━━━━━━━━━━━━━━━━\n`;
+        texto += `${estilo.icono} ${estilo.nombre.toUpperCase()} (${totalEstilo})\n`;
+        texto += `━━━━━━━━━━━━━━━━━━━━━━━\n`;
+
+        subgruposClonados.forEach(subgrupo => {
+          if (subgrupo.canciones.length === 0) return;
+
+          const esSubgrupoGenerico = subgrupo.nombre === 'Sin subgrupo';
+
+          if (!esSubgrupoGenerico) {
+            texto += `\n▸ ${subgrupo.nombre}:\n`;
+          }
+
+          subgrupo.canciones.forEach(cancion => {
+            const artista = datosGuardados[`${estilo.id}|${subgrupo.nombre}|${cancion.titulo}`] !== undefined
+              ? datosGuardados[`${estilo.id}|${subgrupo.nombre}|${cancion.titulo}`]
+              : cancion.artista;
+
+            if (artista && artista.trim()) {
+              texto += `• ${cancion.titulo} — ${artista}\n`;
+            } else {
+              texto += `• ${cancion.titulo}\n`;
+            }
+          });
+        });
+
+        texto += `\n`;
+      });
+
+      return texto.trim();
+    }
+
+    // ══════════════════════════════════════════════════════
+    // MODAL COMPARTIR
+    // ══════════════════════════════════════════════════════
+    function compartirWhatsAppRepertorio() {
+      const texto = generarTextoRepertorio();
+      document.getElementById('textoRepertorio').value = texto;
+      document.getElementById('modalCompartir').classList.add('visible');
+      setTimeout(() => {
+        document.getElementById('textoRepertorio').scrollTop = 0;
+      }, 100);
+    }
+
+    function cerrarModalCompartir() {
+      document.getElementById('modalCompartir').classList.remove('visible');
+    }
+
+    document.getElementById('modalCompartir').addEventListener('click', (e) => {
+      if (e.target.id === 'modalCompartir') cerrarModalCompartir();
+    });
+
+    function copiarTextoRepertorio() {
+      const texto = document.getElementById('textoRepertorio').value;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(texto).then(() => {
+          mostrarAviso('✅ Repertorio copiado al portapapeles');
+        }).catch(() => {
+          fallbackCopiarRepertorio(texto);
+        });
+      } else {
+        fallbackCopiarRepertorio(texto);
+      }
+    }
+
+    function fallbackCopiarRepertorio(texto) {
+      const textarea = document.getElementById('textoRepertorio');
+      textarea.select();
+      textarea.setSelectionRange(0, 99999);
+      document.execCommand('copy');
+      mostrarAviso('✅ Repertorio copiado');
+    }
+
+    function enviarWhatsAppRepertorio() {
+      const texto = document.getElementById('textoRepertorio').value;
+      const textoCodificado = encodeURIComponent(texto)
+        .replace(/%F0%9F%8E%BC/g, '🎼')
+        .replace(/%F0%9F%93%8A/g, '📊')
+        .replace(/%E2%94%81/g, '━')
+        .replace(/%E2%96%B8/g, '▸')
+        .replace(/%E2%80%A2/g, '•');
+      const url = 'https://wa.me/?text=' + textoCodificado;
+      window.open(url, '_blank');
+    }
+
+    function copiarRepertorio() {
+      const texto = generarTextoRepertorio();
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(texto).then(() => {
+          mostrarAviso('✅ Repertorio copiado al portapapeles');
+        }).catch(() => {
+          copiarConTextareaOculto(texto);
+        });
+      } else {
+        copiarConTextareaOculto(texto);
+      }
+    }
+
+    function copiarConTextareaOculto(texto) {
+      const textarea = document.createElement('textarea');
+      textarea.value = texto;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+      mostrarAviso('✅ Repertorio copiado');
+    }
+
+    // ══════════════════════════════════════════════════════
     // RENDERIZAR
     // ══════════════════════════════════════════════════════
     function renderizarRepertorio() {
@@ -1759,7 +2125,7 @@
                 </div>
                 <div class="cancion-botones">
                   ${renderBotonYouTube(cancion.titulo)}
-                  ${renderBotonLetra(cancion.titulo, '')}
+                  ${renderBotonLetra(cancion.titulo)}
                   <span class="btn-mini">🎸 Acordes</span>
                   <span class="btn-mini">🎹 Piano</span>
                   <span class="btn-mini">🎸 Bajo</span>
@@ -1816,6 +2182,7 @@
       conectarEventos();
       actualizarChecksSubgrupos();
       actualizarContador();
+      actualizarEstadisticas();
     }
 
     function editarArtista(el) {
@@ -1959,7 +2326,6 @@
       document.getElementById('toggleTodoText').textContent = todoDesplegado ? 'Desplegar todo' : 'Replegar todo';
     }
 
-    // ── BOTONES TOP Y ABAJO ──
     window.addEventListener('scroll', () => {
       const btnTop = document.getElementById('btnTop');
       const btnAbajo = document.getElementById('btnAbajo');
@@ -1978,9 +2344,6 @@
       window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
 
-    // ══════════════════════════════════════════════════════
-    // MODAL AGREGAR CANCIÓN
-    // ══════════════════════════════════════════════════════
     function abrirModal() {
       document.getElementById('modalOverlay').classList.add('visible');
       cargarEstilosEnSelect();
@@ -2004,6 +2367,7 @@
         cerrarModal();
         cerrarModalIconos();
         cerrarModalSetlist();
+        cerrarModalCompartir();
       }
     });
 
@@ -2325,6 +2689,13 @@
 
       const aviso = document.getElementById('aviso');
       aviso.textContent = '🗑️ Datos locales borrados';
+      aviso.classList.add('show');
+      setTimeout(() => aviso.classList.remove('show'), 2500);
+    }
+
+    function mostrarAviso(mensaje) {
+      const aviso = document.getElementById('aviso');
+      aviso.textContent = mensaje;
       aviso.classList.add('show');
       setTimeout(() => aviso.classList.remove('show'), 2500);
     }

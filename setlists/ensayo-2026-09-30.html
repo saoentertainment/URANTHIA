@@ -1217,6 +1217,7 @@
     const HORARIO_SETLIST = '21:00';
     const LUGAR_SETLIST = 'CASA ATZY-SANTI';
     const TIPO_SETLIST = 'ensayo';
+    const URL_SETLIST = 'https://saoentertainment.github.io/URANTHIA/setlists/ensayo-2026-09-30.html';    
 
     const STORAGE_TOCADAS = 'uranthia-setlist-tocadas';
     const STORAGE_PERSONAL = 'uranthia-check-personal';
@@ -1514,8 +1515,22 @@
       const totalTocadas = tocadas.length;
       const porcentaje = Math.round((totalTocadas / total) * 100);
 
-      const tocadasLista = todasLasCanciones.filter((_, i) => tocadas.includes(i));
-      const pendientesLista = todasLasCanciones.filter((_, i) => !tocadas.includes(i));
+      const manuales = cargarManuales();
+      const totalBase = CANCIONES_BASE.length;
+
+      const tocadasLista = todasLasCanciones
+        .map((titulo, i) => {
+          const esManual = i >= totalBase;
+          return { titulo, esManual, index: i };
+        })
+        .filter(c => tocadas.includes(c.index));
+
+      const pendientesLista = todasLasCanciones
+        .map((titulo, i) => {
+          const esManual = i >= totalBase;
+          return { titulo, esManual, index: i };
+        })
+        .filter(c => !tocadas.includes(c.index));
       const observaciones = cargarObservaciones();
 
       let texto = '';
@@ -1527,10 +1542,16 @@
       if (LUGAR_SETLIST) texto += `📍 ${LUGAR_SETLIST}\n`;
       texto += `\n───────────────────────\n`;
       texto += `✅ TOCADAS (${totalTocadas}/${total})\n`;
-      tocadasLista.forEach((c, i) => { texto += `${i + 1}. ${c}\n`; });
+      tocadasLista.forEach((c, i) => {
+        const emoji = c.esManual ? '🔥 ' : '';
+        texto += `${i + 1}. ${emoji}${c.titulo}\n`;
+      });
       texto += `\n───────────────────────\n`;
       texto += `⬜ PENDIENTES (${total - totalTocadas}/${total})\n`;
-      pendientesLista.forEach((c, i) => { texto += `${i + 1}. ${c}\n`; });
+      pendientesLista.forEach((c, i) => {
+        const emoji = c.esManual ? '🔥 ' : '';
+        texto += `${i + 1}. ${emoji}${c.titulo}\n`;
+      });
       texto += `\n───────────────────────\n`;
       texto += `📊 Avance: ${porcentaje}%\n`;
 
@@ -1544,7 +1565,7 @@
       texto += `🎸 ¡Buen ${TIPO_SETLIST}!\n\n`;
       texto += `───────────────────────\n`;
       texto += `Uranthia y su Corazón Latino\n`;
-      texto += `📲 saoentertainment.github.io/URANTHIA`;
+      texto += `🔗 ${URL_SETLIST}`;
 
       return texto;
     }
@@ -1576,8 +1597,15 @@
       const totalPersonal = personal.length;
       const porcentaje = Math.round((totalPersonal / total) * 100);
 
-      const practicadasLista = todasLasCanciones.filter((_, i) => personal.includes(i));
-      const pendientesLista = todasLasCanciones.filter((_, i) => !personal.includes(i));
+      const totalBase = CANCIONES_BASE.length;
+
+      const practicadasLista = todasLasCanciones
+        .map((titulo, i) => ({ titulo, esManual: i >= totalBase, index: i }))
+        .filter(c => personal.includes(c.index));
+
+      const pendientesLista = todasLasCanciones
+        .map((titulo, i) => ({ titulo, esManual: i >= totalBase, index: i }))
+        .filter(c => !personal.includes(c.index));
       const observaciones = cargarObservaciones();
 
       let texto = '';
@@ -1591,10 +1619,16 @@
       if (LUGAR_SETLIST) texto += `📍 ${LUGAR_SETLIST}\n`;
       texto += `\n───────────────────────\n`;
       texto += `✅ PRACTICADAS (${totalPersonal}/${total})\n`;
-      practicadasLista.forEach((c, i) => { texto += `${i + 1}. ${c}\n`; });
+      practicadasLista.forEach((c, i) => {
+        const emoji = c.esManual ? '🔥 ' : '';
+        texto += `${i + 1}. ${emoji}${c.titulo}\n`;
+      });
       texto += `\n───────────────────────\n`;
       texto += `⬜ PENDIENTES (${total - totalPersonal}/${total})\n`;
-      pendientesLista.forEach((c, i) => { texto += `${i + 1}. ${c}\n`; });
+      pendientesLista.forEach((c, i) => {
+        const emoji = c.esManual ? '🔥 ' : '';
+        texto += `${i + 1}. ${emoji}${c.titulo}\n`;
+      });
       texto += `\n───────────────────────\n`;
       texto += `📊 Avance personal: ${porcentaje}%\n`;
 
@@ -1608,7 +1642,7 @@
       texto += `🎸 ¡A practicar!\n\n`;
       texto += `───────────────────────\n`;
       texto += `Uranthia y su Corazón Latino\n`;
-      texto += `📲 saoentertainment.github.io/URANTHIA`;
+      texto += `🔗 ${URL_SETLIST}`;
 
       return texto;
     }

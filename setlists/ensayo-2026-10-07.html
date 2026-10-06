@@ -1172,6 +1172,10 @@
     </div>
   </div>
 
+  <script src="../youtube.js"></script>
+  <script src="../letras.js"></script>
+  <script>
+    const SETLIST_ID = 'ensayo-2026-09-30-fijo';  
   <script>
     const SETLIST_ID = 'ensayo-2026-10-07-fijo';
     const CANCIONES_BASE = [
@@ -1364,15 +1368,13 @@
               <div class="cancion-titulo">${titulo}${indicadorManual}</div>
             </div>
             ${botonEliminar}
-            <div class="cancion-botones-setlist">
-              <span class="btn-mini-setlist">▶ YouTube</span>
-              ${titulo === 'LA FUERZA DEL DESTINO'
-                ? '<a class="btn-mini-setlist" href="../letras/la-fuerza-del-destino.html" target="_blank" style="text-decoration:none; border-color:#d4af37; color:#0d2818; background:#faf3e0; cursor:pointer;">📄 Letra</a>'
-                : '<span class="btn-mini-setlist">📄 Letra</span>'}
-              <span class="btn-mini-setlist">🎸 Acordes</span>
-              <span class="btn-mini-setlist">🎹 Piano</span>
-              <span class="btn-mini-setlist">🎸 Bajo</span>
-            </div>
+<div class="cancion-botones-setlist">
+  ${renderBotonYouTube(titulo)}
+  ${renderBotonLetra(titulo, '../')}
+  <span class="btn-mini-setlist">🎸 Acordes</span>
+  <span class="btn-mini-setlist">🎹 Piano</span>
+  <span class="btn-mini-setlist">🎸 Bajo</span>
+</div>
           </div>
         `;
       }).join('');

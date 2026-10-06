@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EVENTO 28 DE NOVIEMBRE 2026 · Uranthia</title>
+  <title>SHOW EVENTO 28 NOVIEMBRE 2026 · Uranthia</title>
 
   <link rel="icon" type="image/png" href="../logo-uranthia.png" />
   <link rel="apple-touch-icon" href="../logo-uranthia.png" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Uranthia · Evento 28 de Noviembre 2026" />
-  <meta property="og:description" content="Evento del 28 de noviembre 2026 · Repertorio Rock + Pop · 41 canciones." />
-  <meta property="og:image" content="https://saoentertainment.github.io/URANTHIA/setlists/preview-show-28nov.jpg" />
+  <meta property="og:title" content="Uranthia · Show del 28 de Noviembre 2026" />
+  <meta property="og:description" content="SHOW EVENTO 28 NOVIEMBRE 2026 · 43 canciones." />
+  <meta property="og:image" content="https://saoentertainment.github.io/URANTHIA/preview-whatsapp.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:site_name" content="Uranthia · Corazón Latino" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Uranthia · Evento 28 de Noviembre 2026" />
-  <meta name="twitter:description" content="Evento del 28 de noviembre 2026 · Repertorio Rock + Pop · 41 canciones." />
-  <meta name="twitter:image" content="https://saoentertainment.github.io/URANTHIA/setlists/preview-show-28nov.jpg" />
+  <meta name="twitter:title" content="Uranthia · Show del 28 de Noviembre 2026" />
+  <meta name="twitter:description" content="SHOW EVENTO 28 NOVIEMBRE 2026 · 43 canciones." />
+  <meta name="twitter:image" content="https://saoentertainment.github.io/URANTHIA/preview-whatsapp.jpg" />
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -33,6 +33,8 @@
       --dorado-suave: #f5d76e;
       --verde: #25D366;
       --verde-oscuro: #128C7E;
+      --rojo: #e63946;
+      --rojo-oscuro: #8b0000;
       --sombra: rgba(0, 0, 0, 0.55);
     }
 
@@ -161,7 +163,6 @@
       box-shadow: 0 4px 12px rgba(212, 175, 55, 0.40);
     }
 
-    /* ── BOTÓN INSTRUCTIVO ── */
     .btn-instructivo {
       display: inline-flex;
       align-items: center;
@@ -242,26 +243,6 @@
       gap: 6px;
     }
 
-    .setlist-notas {
-      margin-top: 16px;
-      padding: 12px 18px;
-      background: rgba(212, 175, 55, 0.12);
-      border-radius: 12px;
-      border-left: 4px solid var(--dorado);
-      font-size: 0.9rem;
-      color: #0d2818;
-      text-align: left;
-      line-height: 1.5;
-    }
-    .setlist-notas strong {
-      color: #b8860b;
-      display: block;
-      margin-bottom: 4px;
-      font-size: 0.75rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
     .canciones-header {
       display: flex;
       align-items: center;
@@ -336,6 +317,10 @@
     }
     .cancion-item.practicada {
       background: rgba(37, 211, 102, 0.06);
+    }
+    .cancion-item.manual {
+      border-left-color: var(--rojo);
+      background: rgba(230, 57, 70, 0.04);
     }
 
     .cancion-numero {
@@ -418,6 +403,48 @@
       line-height: 1.3;
     }
 
+    .indicador-manual {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #e63946 0%, #8b0000 100%);
+      color: #ffffff;
+      padding: 3px 10px;
+      border-radius: 30px;
+      margin-left: 8px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      border: 1px solid #8b0000;
+      vertical-align: middle;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    .btn-eliminar-manual {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #8b0000 0%, #c1121f 100%);
+      color: #ffffff;
+      border: 2px solid #8b0000;
+      font-size: 0.9rem;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+    .btn-eliminar-manual:hover {
+      background: linear-gradient(135deg, #c1121f 0%, #e63946 100%);
+      transform: scale(1.15);
+      box-shadow: 0 4px 10px rgba(139, 0, 0, 0.40);
+    }
+
     .cancion-botones-setlist {
       display: flex;
       flex-wrap: wrap;
@@ -491,6 +518,16 @@
       background: linear-gradient(135deg, #128C7E 0%, #25D366 100%);
       transform: translateY(-2px);
       box-shadow: 0 8px 20px rgba(37, 211, 102, 0.50);
+    }
+    .btn-accion.agregar {
+      background: linear-gradient(135deg, #e63946 0%, #8b0000 100%);
+      color: #ffffff;
+      border-color: #8b0000;
+    }
+    .btn-accion.agregar:hover {
+      background: linear-gradient(135deg, #8b0000 0%, #e63946 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(230, 57, 70, 0.50);
     }
 
     .footer {
@@ -576,7 +613,61 @@
       font-size: 1rem;
     }
 
-    /* ── INSTRUCTIVO ── */
+    .observaciones {
+      margin-top: 36px;
+      padding: 24px 28px;
+      background: linear-gradient(135deg, #faf3e0 0%, #f5e6c8 100%);
+      border-radius: 20px;
+      border: 2px solid var(--borde);
+      border-left: 6px solid var(--dorado);
+    }
+    .observaciones h2 {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: #0d2818;
+      margin-bottom: 14px;
+      letter-spacing: 0.5px;
+    }
+    .observaciones textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 14px;
+      border: 2px solid var(--borde);
+      background: #ffffff;
+      color: #0d2818;
+      font-family: inherit;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      outline: none;
+      transition: all 0.2s ease;
+      resize: vertical;
+      min-height: 100px;
+    }
+    .observaciones textarea:focus {
+      border-color: var(--dorado);
+      box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.20);
+    }
+    .observaciones .ayuda {
+      font-size: 0.75rem;
+      color: #6b7a6b;
+      font-style: italic;
+      margin-top: 8px;
+      text-align: right;
+    }
+    .observaciones .estado {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #25D366;
+      margin-left: 8px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .observaciones .estado.visible {
+      opacity: 1;
+    }
+
     .instructivo {
       margin-top: 40px;
       padding: 28px 24px;
@@ -633,7 +724,6 @@
       color: #b8860b;
     }
 
-    /* ── MODALES ── */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -769,6 +859,15 @@
       transform: translateY(-2px);
       box-shadow: 0 8px 20px rgba(37, 211, 102, 0.40);
     }
+    .modal-btn.agregar {
+      background: linear-gradient(135deg, #e63946 0%, #8b0000 100%);
+      color: #ffffff;
+      border-color: #8b0000;
+    }
+    .modal-btn.agregar:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(230, 57, 70, 0.40);
+    }
     .modal-btn.secondary {
       background: var(--card-bg);
       color: var(--card-sub);
@@ -798,7 +897,6 @@
     }
     .aviso-copiado.show { display: block; animation: fadeIn 0.3s ease; }
 
-    /* ── BOTONES FLOTANTES ── */
     .btn-flotante {
       position: fixed;
       width: 55px;
@@ -894,24 +992,21 @@
 
     <div class="setlist-header">
       <span class="setlist-tipo-badge show">🎉 Show</span>
-      <h1 class="setlist-titulo">EVENTO 28 DE NOVIEMBRE 2026</h1>
+      <h1 class="setlist-titulo">SHOW EVENTO 28 NOVIEMBRE 2026</h1>
       <div class="setlist-detalles">
         <span class="detalle">📅 sábado, 28 de noviembre de 2026</span>
-        <span class="detalle">📍 CASA ATZY-SANTI</span>
-      </div>
-      <div class="setlist-notas">
-        <strong>📝 Notas</strong>
-        REPERTORIO ROCK + POP.
+        <span class="detalle">🕐 22:00</span>
+        <span class="detalle">📍 SALÓN POR CONFIRMAR</span>
       </div>
     </div>
 
     <div class="barra-progreso">
-      <span class="progreso-texto">🎵 Show: <strong id="tocadasNum">0</strong> / <strong>41</strong></span>
+      <span class="progreso-texto">🎤 Show: <strong id="tocadasNum">0</strong> / <strong id="totalNum">43</strong></span>
       <div class="progreso-barra">
         <div class="progreso-lleno" id="progresoLleno" style="width: 0%;"></div>
       </div>
       <span class="progreso-texto"><strong id="porcentaje">0%</strong></span>
-      <span class="progreso-personal">🎸 Personal: <strong id="personalNum">0</strong> / <strong>41</strong></span>
+      <span class="progreso-personal">🎸 Personal: <strong id="personalNum">0</strong> / <strong id="totalPersonal">43</strong></span>
     </div>
 
     <div class="canciones-header">
@@ -920,7 +1015,7 @@
         <span id="colapsarIcono">⬆️</span>
         <span id="colapsarTexto">Replegar</span>
       </button>
-      <span class="canciones-contador">41 canciones</span>
+      <span class="canciones-contador" id="contadorCanciones">43 canciones</span>
     </div>
 
     <div id="listaCanciones"></div>
@@ -929,10 +1024,16 @@
       <a class="btn-accion secondary" href="../index.html">🏠 Volver al portal</a>
       <button class="btn-accion primary" onclick="abrirReporte()">📤 Reporte show</button>
       <button class="btn-accion personal" onclick="abrirReportePersonal()">👤 Reporte personal</button>
+      <button class="btn-accion agregar" onclick="abrirModalAgregar()">➕ Agregar canción</button>
       <button class="btn-accion primary" onclick="limpiarChecks()">🧹 Limpiar checks</button>
     </div>
 
-    <!-- INSTRUCTIVO -->
+    <section class="observaciones">
+      <h2>📝 Observaciones del show <span class="estado" id="estadoObservaciones">✅ Guardado</span></h2>
+      <textarea id="observaciones" placeholder="Escribí acá tus observaciones, ideas, recordatorios..."></textarea>
+      <div class="ayuda">Se guarda automáticamente mientras escribís.</div>
+    </section>
+
     <section class="instructivo" id="instructivo">
       <h2>📖 ¿Cómo se usa esta página?</h2>
 
@@ -952,13 +1053,25 @@
         <div class="instructivo-card">
           <div class="instructivo-icono">📤</div>
           <h3>Reporte show</h3>
-          <p>Genera el reporte grupal del show y compártelo por WhatsApp.</p>
+          <p>Genera el reporte grupal y compártelo por WhatsApp.</p>
         </div>
 
         <div class="instructivo-card">
           <div class="instructivo-icono">👤</div>
           <h3>Reporte personal</h3>
           <p>Genera tu reporte personal con tu nombre y compártelo.</p>
+        </div>
+
+        <div class="instructivo-card">
+          <div class="instructivo-icono">➕</div>
+          <h3>Agregar canción</h3>
+          <p>Si una canción no está en la lista, agregala con el botón rojo.</p>
+        </div>
+
+        <div class="instructivo-card">
+          <div class="instructivo-icono">📝</div>
+          <h3>Observaciones</h3>
+          <p>Escribí tus notas del show. Se guardan solas.</p>
         </div>
 
         <div class="instructivo-card">
@@ -986,11 +1099,33 @@
 
   </div>
 
-  <!-- BOTONES FLOTANTES -->
   <button class="btn-flotante btn-abajo" id="btnAbajo" onclick="irAbajo()" title="Ir al final">⬇</button>
   <button class="btn-flotante btn-top" id="btnTop" onclick="irArriba()" title="Volver arriba">⬆</button>
 
-  <!-- MODAL REPORTE SHOW -->
+  <div class="modal-overlay" id="modalAgregar">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>➕ Agregar canción manual</h2>
+        <button class="modal-close" onclick="cerrarModalAgregar()">✕</button>
+      </div>
+
+      <div class="modal-campo">
+        <label>🎵 Nombre de la canción *</label>
+        <input type="text" id="nuevaCancionTitulo" placeholder="Ej: De Música Ligera" />
+      </div>
+
+      <div class="modal-campo">
+        <label>🎤 Artista (opcional)</label>
+        <input type="text" id="nuevaCancionArtista" placeholder="Ej: Soda Stereo" />
+      </div>
+
+      <div class="modal-acciones">
+        <button class="modal-btn secondary" onclick="cerrarModalAgregar()">Cancelar</button>
+        <button class="modal-btn agregar" onclick="guardarCancionManual()">➕ Agregar</button>
+      </div>
+    </div>
+  </div>
+
   <div class="modal-overlay" id="modalReporte">
     <div class="modal" style="max-width: 600px;">
       <div class="modal-header">
@@ -1011,7 +1146,6 @@
     </div>
   </div>
 
-  <!-- MODAL REPORTE PERSONAL -->
   <div class="modal-overlay" id="modalPersonal">
     <div class="modal" style="max-width: 600px;">
       <div class="modal-header">
@@ -1038,9 +1172,11 @@
     </div>
   </div>
 
+  <script src="../youtube.js"></script>
+  <script src="../letras.js"></script>
   <script>
     const SETLIST_ID = 'show-2026-11-28-fijo';
-    const CANCIONES = [
+    const CANCIONES_BASE = [
       'CON LOS OJOS CERRADOS',
       'TODOS ME MIRAN',
       'DR. PSIQUIATRA',
@@ -1081,18 +1217,22 @@
       'DEJAME ENTRAR',
       'VIENTO',
       'MIRALA MIRALO',
-      'ETERNAMENTE BELLA'
+      'ETERNAMENTE BELLA',
+      'ADO',
+      'TRISTE CANCION DE AMOR'
     ];
 
-    const NOMBRE_SETLIST = 'EVENTO 28 DE NOVIEMBRE 2026';
+    const NOMBRE_SETLIST = 'SHOW EVENTO 28 NOVIEMBRE 2026';
     const FECHA_SETLIST = '2026-11-28';
-    const HORARIO_SETLIST = '';
-    const LUGAR_SETLIST = 'CASA ATZY-SANTI';
+    const HORARIO_SETLIST = '22:00';
+    const LUGAR_SETLIST = 'SALÓN POR CONFIRMAR';
     const TIPO_SETLIST = 'show';
+    const URL_SETLIST = 'https://saoentertainment.github.io/URANTHIA/setlists/show-2026-11-28.html';
 
     const STORAGE_TOCADAS = 'uranthia-setlist-tocadas';
     const STORAGE_PERSONAL = 'uranthia-check-personal';
-    const STORAGE_REPORTES = 'uranthia-reportes';
+    const STORAGE_MANUALES = 'uranthia-canciones-manuales';
+    const STORAGE_OBSERVACIONES = 'uranthia-observaciones';
     const STORAGE_NOMBRE = 'uranthia-nombre-integrante';
     const STORAGE_COLAPSADO = 'uranthia-colapsado';
 
@@ -1124,6 +1264,21 @@
       const todas = JSON.parse(localStorage.getItem(STORAGE_PERSONAL) || '{}');
       todas[SETLIST_ID] = personal;
       localStorage.setItem(STORAGE_PERSONAL, JSON.stringify(todas));
+    }
+
+    function cargarManuales() {
+      const todas = JSON.parse(localStorage.getItem(STORAGE_MANUALES) || '{}');
+      return todas[SETLIST_ID] || [];
+    }
+    function guardarManuales(manuales) {
+      const todas = JSON.parse(localStorage.getItem(STORAGE_MANUALES) || '{}');
+      todas[SETLIST_ID] = manuales;
+      localStorage.setItem(STORAGE_MANUALES, JSON.stringify(todas));
+    }
+
+    function obtenerTodasLasCanciones() {
+      const manuales = cargarManuales();
+      return [...CANCIONES_BASE, ...manuales.map(m => m.titulo)];
     }
 
     function toggleTocada(index) {
@@ -1187,38 +1342,49 @@
     function renderizar() {
       const tocadas = cargarTocadas();
       const personal = cargarPersonal();
-      const total = CANCIONES.length;
+      const manuales = cargarManuales();
+      const todasLasCanciones = obtenerTodasLasCanciones();
+      const total = todasLasCanciones.length;
       const totalTocadas = tocadas.length;
       const totalPersonal = personal.length;
       const porcentaje = total > 0 ? Math.round((totalTocadas / total) * 100) : 0;
 
       document.getElementById('tocadasNum').textContent = totalTocadas;
+      document.getElementById('totalNum').textContent = total;
       document.getElementById('porcentaje').textContent = porcentaje + '%';
       document.getElementById('progresoLleno').style.width = porcentaje + '%';
       document.getElementById('personalNum').textContent = totalPersonal;
+      document.getElementById('totalPersonal').textContent = total;
+      document.getElementById('contadorCanciones').textContent = total + ' canciones';
 
       const lista = document.getElementById('listaCanciones');
-      lista.innerHTML = CANCIONES.map((titulo, index) => {
+      lista.innerHTML = todasLasCanciones.map((titulo, index) => {
         const estaTocada = tocadas.includes(index);
         const estaPersonal = personal.includes(index);
+        const esManual = index >= CANCIONES_BASE.length;
         const claseTocada = estaTocada ? 'tocada' : '';
         const clasePersonal = estaPersonal ? 'practicada' : '';
+        const claseManual = esManual ? 'manual' : '';
         const claseCheckEnsayo = estaTocada ? 'checked' : '';
         const claseCheckPersonal = estaPersonal ? 'checked' : '';
 
+        const indicadorManual = esManual ? '<span class="indicador-manual">🔥 NUEVA</span>' : '';
+        const botonEliminar = esManual
+          ? `<button class="btn-eliminar-manual" onclick="eliminarManual(${index})" title="Eliminar canción">❌</button>`
+          : '';
+
         return `
-          <div class="cancion-item ${claseTocada} ${clasePersonal}">
+          <div class="cancion-item ${claseTocada} ${clasePersonal} ${claseManual}">
             <div class="cancion-numero">${index + 1}</div>
             <div class="cancion-check-setlist ${claseCheckEnsayo}" onclick="toggleTocada(${index})" title="Check del show"></div>
             <div class="cancion-check-personal ${claseCheckPersonal}" onclick="togglePersonal(${index})" title="Check personal"></div>
             <div class="cancion-info-setlist">
-              <div class="cancion-titulo">${titulo}</div>
+              <div class="cancion-titulo">${titulo}${indicadorManual}</div>
             </div>
+            ${botonEliminar}
             <div class="cancion-botones-setlist">
-              <span class="btn-mini-setlist">▶ YouTube</span>
-              ${titulo === 'LA FUERZA DEL DESTINO'
-                ? '<a class="btn-mini-setlist" href="../letras/la-fuerza-del-destino.html" target="_blank" style="text-decoration:none; border-color:#d4af37; color:#0d2818; background:#faf3e0; cursor:pointer;">📄 Letra</a>'
-                : '<span class="btn-mini-setlist">📄 Letra</span>'}
+              ${renderBotonYouTube(titulo)}
+              ${renderBotonLetra(titulo, '../')}
               <span class="btn-mini-setlist">🎸 Acordes</span>
               <span class="btn-mini-setlist">🎹 Piano</span>
               <span class="btn-mini-setlist">🎸 Bajo</span>
@@ -1230,6 +1396,86 @@
       aplicarColapsado();
     }
 
+    function abrirModalAgregar() {
+      document.getElementById('nuevaCancionTitulo').value = '';
+      document.getElementById('nuevaCancionArtista').value = '';
+      document.getElementById('modalAgregar').classList.add('visible');
+      setTimeout(() => document.getElementById('nuevaCancionTitulo').focus(), 100);
+    }
+
+    function cerrarModalAgregar() {
+      document.getElementById('modalAgregar').classList.remove('visible');
+    }
+
+    function guardarCancionManual() {
+      const titulo = document.getElementById('nuevaCancionTitulo').value.trim();
+      const artista = document.getElementById('nuevaCancionArtista').value.trim();
+
+      if (!titulo) {
+        alert('El nombre de la canción es obligatorio.');
+        return;
+      }
+
+      const manuales = cargarManuales();
+      manuales.push({ titulo, artista, fecha: new Date().toISOString() });
+      guardarManuales(manuales);
+
+      cerrarModalAgregar();
+      renderizar();
+      mostrarAviso('🔥 Canción agregada');
+    }
+
+    function eliminarManual(index) {
+      const manualIndex = index - CANCIONES_BASE.length;
+      if (manualIndex < 0) return;
+
+      const manuales = cargarManuales();
+      const cancion = manuales[manualIndex];
+
+      if (!confirm(`❌ ¿Eliminar "${cancion.titulo}"?\n\nTambién se borrarán sus checks.`)) return;
+
+      manuales.splice(manualIndex, 1);
+      guardarManuales(manuales);
+
+      const tocadas = cargarTocadas();
+      const personal = cargarPersonal();
+
+      const ajustarIndices = (arr) => arr.map(i => {
+        if (i === index) return -1;
+        if (i > index) return i - 1;
+        return i;
+      }).filter(i => i >= 0);
+
+      guardarTocadas(ajustarIndices(tocadas));
+      guardarPersonal(ajustarIndices(personal));
+
+      renderizar();
+      mostrarAviso('❌ Canción eliminada');
+    }
+
+    function cargarObservaciones() {
+      const todas = JSON.parse(localStorage.getItem(STORAGE_OBSERVACIONES) || '{}');
+      return todas[SETLIST_ID] || '';
+    }
+
+    function guardarObservaciones(texto) {
+      const todas = JSON.parse(localStorage.getItem(STORAGE_OBSERVACIONES) || '{}');
+      todas[SETLIST_ID] = texto;
+      localStorage.setItem(STORAGE_OBSERVACIONES, JSON.stringify(todas));
+    }
+
+    let timeoutObservaciones = null;
+    document.getElementById('observaciones').addEventListener('input', (e) => {
+      const texto = e.target.value;
+      clearTimeout(timeoutObservaciones);
+      timeoutObservaciones = setTimeout(() => {
+        guardarObservaciones(texto);
+        const estado = document.getElementById('estadoObservaciones');
+        estado.classList.add('visible');
+        setTimeout(() => estado.classList.remove('visible'), 1500);
+      }, 500);
+    });
+
     function formatearFechaReporte(fechaStr) {
       const fecha = new Date(fechaStr + 'T00:00:00');
       return fecha.toLocaleDateString('es-ES', {
@@ -1239,12 +1485,21 @@
 
     function generarTextoReporte() {
       const tocadas = cargarTocadas();
-      const total = CANCIONES.length;
+      const todasLasCanciones = obtenerTodasLasCanciones();
+      const total = todasLasCanciones.length;
       const totalTocadas = tocadas.length;
       const porcentaje = Math.round((totalTocadas / total) * 100);
+      const totalBase = CANCIONES_BASE.length;
 
-      const tocadasLista = CANCIONES.filter((_, i) => tocadas.includes(i));
-      const pendientesLista = CANCIONES.filter((_, i) => !tocadas.includes(i));
+      const tocadasLista = todasLasCanciones
+        .map((titulo, i) => ({ titulo, esManual: i >= totalBase, index: i }))
+        .filter(c => tocadas.includes(c.index));
+
+      const pendientesLista = todasLasCanciones
+        .map((titulo, i) => ({ titulo, esManual: i >= totalBase, index: i }))
+        .filter(c => !tocadas.includes(c.index));
+
+      const observaciones = cargarObservaciones();
 
       let texto = '';
       texto += `🎤 REPORTE DE ${TIPO_SETLIST.toUpperCase()}\n`;
@@ -1255,16 +1510,30 @@
       if (LUGAR_SETLIST) texto += `📍 ${LUGAR_SETLIST}\n`;
       texto += `\n───────────────────────\n`;
       texto += `✅ TOCADAS (${totalTocadas}/${total})\n`;
-      tocadasLista.forEach((c, i) => { texto += `${i + 1}. ${c}\n`; });
+      tocadasLista.forEach((c, i) => {
+        const emoji = c.esManual ? '🔥 ' : '';
+        texto += `${i + 1}. ${emoji}${c.titulo}\n`;
+      });
       texto += `\n───────────────────────\n`;
       texto += `⬜ PENDIENTES (${total - totalTocadas}/${total})\n`;
-      pendientesLista.forEach((c, i) => { texto += `${i + 1}. ${c}\n`; });
+      pendientesLista.forEach((c, i) => {
+        const emoji = c.esManual ? '🔥 ' : '';
+        texto += `${i + 1}. ${emoji}${c.titulo}\n`;
+      });
       texto += `\n───────────────────────\n`;
-      texto += `📊 Avance: ${porcentaje}%\n\n`;
+      texto += `📊 Avance: ${porcentaje}%\n`;
+
+      if (observaciones && observaciones.trim()) {
+        texto += `\n───────────────────────\n`;
+        texto += `📝 OBSERVACIONES\n`;
+        texto += observaciones.trim() + `\n`;
+      }
+
+      texto += `\n───────────────────────\n`;
       texto += `🎸 ¡Buen ${TIPO_SETLIST}!\n\n`;
       texto += `───────────────────────\n`;
       texto += `Uranthia y su Corazón Latino\n`;
-      texto += `📲 saoentertainment.github.io/URANTHIA`;
+      texto += `🔗 ${URL_SETLIST}`;
 
       return texto;
     }
@@ -1291,12 +1560,21 @@
 
     function generarTextoPersonal(nombre) {
       const personal = cargarPersonal();
-      const total = CANCIONES.length;
+      const todasLasCanciones = obtenerTodasLasCanciones();
+      const total = todasLasCanciones.length;
       const totalPersonal = personal.length;
       const porcentaje = Math.round((totalPersonal / total) * 100);
+      const totalBase = CANCIONES_BASE.length;
 
-      const practicadasLista = CANCIONES.filter((_, i) => personal.includes(i));
-      const pendientesLista = CANCIONES.filter((_, i) => !personal.includes(i));
+      const practicadasLista = todasLasCanciones
+        .map((titulo, i) => ({ titulo, esManual: i >= totalBase, index: i }))
+        .filter(c => personal.includes(c.index));
+
+      const pendientesLista = todasLasCanciones
+        .map((titulo, i) => ({ titulo, esManual: i >= totalBase, index: i }))
+        .filter(c => !personal.includes(c.index));
+
+      const observaciones = cargarObservaciones();
 
       let texto = '';
       texto += `🎸 REPORTE PERSONAL DE SHOW\n`;
@@ -1309,16 +1587,30 @@
       if (LUGAR_SETLIST) texto += `📍 ${LUGAR_SETLIST}\n`;
       texto += `\n───────────────────────\n`;
       texto += `✅ PRACTICADAS (${totalPersonal}/${total})\n`;
-      practicadasLista.forEach((c, i) => { texto += `${i + 1}. ${c}\n`; });
+      practicadasLista.forEach((c, i) => {
+        const emoji = c.esManual ? '🔥 ' : '';
+        texto += `${i + 1}. ${emoji}${c.titulo}\n`;
+      });
       texto += `\n───────────────────────\n`;
       texto += `⬜ PENDIENTES (${total - totalPersonal}/${total})\n`;
-      pendientesLista.forEach((c, i) => { texto += `${i + 1}. ${c}\n`; });
+      pendientesLista.forEach((c, i) => {
+        const emoji = c.esManual ? '🔥 ' : '';
+        texto += `${i + 1}. ${emoji}${c.titulo}\n`;
+      });
       texto += `\n───────────────────────\n`;
-      texto += `📊 Avance personal: ${porcentaje}%\n\n`;
-      texto += `🎸 ¡A practicar!\n\n`;
+      texto += `📊 Avance personal: ${porcentaje}%\n`;
+
+      if (observaciones && observaciones.trim()) {
+        texto += `\n───────────────────────\n`;
+        texto += `📝 OBSERVACIONES\n`;
+        texto += observaciones.trim() + `\n`;
+      }
+
+      texto += `\n───────────────────────\n`;
+      texto += `🎸 ¡A brillar en el escenario!\n\n`;
       texto += `───────────────────────\n`;
       texto += `Uranthia y su Corazón Latino\n`;
-      texto += `📲 saoentertainment.github.io/URANTHIA`;
+      texto += `🔗 ${URL_SETLIST}`;
 
       return texto;
     }
@@ -1386,7 +1678,10 @@
         .replace(/%F0%9F%93%8A/g, '📊')
         .replace(/%F0%9F%8E%B8/g, '🎸')
         .replace(/%F0%9F%93%B2/g, '📲')
-        .replace(/%F0%9F%91%A4/g, '👤');
+        .replace(/%F0%9F%91%A4/g, '👤')
+        .replace(/%F0%9F%93%9D/g, '📝')
+        .replace(/%F0%9F%94%A5/g, '🔥')
+        .replace(/%F0%9F%94%97/g, '🔗');
 
       const url = 'https://wa.me/?text=' + textoCodificado;
       window.open(url, '_blank');
@@ -1430,6 +1725,9 @@
       }
     }
 
+    document.getElementById('modalAgregar').addEventListener('click', (e) => {
+      if (e.target.id === 'modalAgregar') cerrarModalAgregar();
+    });
     document.getElementById('modalReporte').addEventListener('click', (e) => {
       if (e.target.id === 'modalReporte') cerrarReporte();
     });
@@ -1440,11 +1738,13 @@
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
+        cerrarModalAgregar();
         cerrarReporte();
         cerrarReportePersonal();
       }
     });
 
+    document.getElementById('observaciones').value = cargarObservaciones();
     renderizar();
   </script>
 

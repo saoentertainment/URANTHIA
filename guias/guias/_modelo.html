@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guía SAO · Bajo — [NOMBRE DE LA CANCIÓN]</title>
+
+  <link rel="icon" type="image/png" href="../logo-uranthia.png" />
+  <link rel="apple-touch-icon" href="../logo-uranthia.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Guía SAO · Bajo — [NOMBRE DE LA CANCIÓN] · Uranthia" />
+  <meta property="og:description" content="Guía de bajo de [NOMBRE DE LA CANCIÓN] — Apuntes personales de SAO." />
+  <meta property="og:image" content="https://saoentertainment.github.io/URANTHIA/preview-letras.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="Uranthia · Corazón Latino" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Guía SAO · Bajo — [NOMBRE DE LA CANCIÓN] · Uranthia" />
+  <meta name="twitter:description" content="Guía de bajo de [NOMBRE DE LA CANCIÓN] — Apuntes personales de SAO." />
+  <meta name="twitter:image" content="https://saoentertainment.github.io/URANTHIA/preview-letras.jpg" />
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #0d0d0d;
+      color: #000;
+      line-height: 1.7;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+      padding: 10px;
+    }
+
+    header a {
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    header img {
+      max-width: 220px;
+      width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+      filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.5));
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    header img:hover {
+      transform: scale(1.05);
+    }
+
+    header h1 {
+      color: #d4af37;
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+      margin-bottom: 5px;
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+    }
+
+    header p {
+      color: #aaa;
+      font-size: 0.95rem;
+      font-style: italic;
+    }
+
+    .tag {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 4px 14px;
+      background: linear-gradient(135deg, #d4af37, #b8860b);
+      color: #000;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .btn-volver {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      padding: 10px 22px;
+      background: linear-gradient(135deg, #0d2818, #1a3d2a);
+      color: #d4af37;
+      border: 2px solid #d4af37;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+    }
+
+    .btn-volver:hover {
+      background: linear-gradient(135deg, #d4af37, #f5d76e);
+      color: #0d2818;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.40);
+    }
+
+    .controles {
+      position: sticky;
+      top: 10px;
+      z-index: 100;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      background-color: rgba(26, 26, 26, 0.95);
+      padding: 12px 16px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .controles button {
+      background: linear-gradient(135deg, #d4af37, #b8860b);
+      color: #000;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+    }
+
+    .controles button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.5);
+    }
+
+    .controles button:active { transform: translateY(0); }
+
+    .controles .velocidad {
+      color: #fff;
+      font-weight: bold;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+    }
+
+    .contenedor {
+      width: 100%;
+      max-width: 800px;
+      background-color: #1a1a1a;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.1);
+    }
+
+    .seccion {
+      margin-bottom: 25px;
+      padding: 15px 20px;
+      border-radius: 8px;
+      page-break-inside: avoid;
+      position: relative;
+    }
+
+    .seccion p {
+      margin: 4px 0;
+      font-size: 1.15rem;
+      font-weight: 500;
+    }
+
+    .etiqueta {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      background-color: rgba(0, 0, 0, 0.3);
+      color: #000;
+    }
+
+    .intro { background-color: #d3d3d3; }
+    .estrofa { background-color: #add8e6; }
+    .precoro { background-color: #b19cd9; }
+    .coro { background-color: #ff6b6b; }
+    .coro-voz { background-color: #ff3b3b; border: 2px solid #8b0000; }
+    .puente { background-color: #ffd966; }
+    .outro { background-color: #f9a8d4; }
+
+    .musical {
+      background-color: #d3d3d3;
+      text-align: center;
+      font-style: italic;
+      color: #333;
+    }
+
+    .indicacion {
+      font-size: 0.85rem;
+      font-style: italic;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .coro-sobre-voz {
+      font-weight: bold;
+      color: #8b0000;
+      font-size: 0.9rem;
+    }
+
+    .seccion p strong {
+      font-weight: 800;
+      color: #000;
+    }
+
+    /* Estilo para apuntes tipo lista */
+    .seccion ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 4px 0;
+    }
+    .seccion ul li {
+      margin: 4px 0;
+      font-size: 1.1rem;
+      font-weight: 500;
+      padding-left: 18px;
+      position: relative;
+    }
+    .seccion ul li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      font-weight: 900;
+      color: #333;
+    }
+
+    .leyenda {
+      margin-top: 40px;
+      width: 100%;
+      max-width: 800px;
+      background-color: #1a1a1a;
+      border-radius: 12px;
+      padding: 25px;
+      color: #eee;
+    }
+
+    .leyenda h2 {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      color: #d4af37;
+      text-align: center;
+    }
+
+    .leyenda ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+    }
+
+    .leyenda li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      padding: 8px 12px;
+      background-color: #222;
+      border-radius: 6px;
+    }
+
+    .muestra {
+      width: 22px;
+      height: 22px;
+      border-radius: 4px;
+      border: 1px solid #555;
+      flex-shrink: 0;
+    }
+
+    .guia {
+      margin-top: 30px;
+      width: 100%;
+      max-width: 800px;
+      background-color: #1a1a1a;
+      border-radius: 12px;
+      padding: 25px;
+      color: #eee;
+    }
+
+    .guia h2 {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      color: #d4af37;
+      text-align: center;
+    }
+
+    .guia h3 {
+      font-size: 1rem;
+      margin: 18px 0 10px;
+      color: #d4af37;
+      border-bottom: 1px solid #333;
+      padding-bottom: 6px;
+    }
+
+    .guia ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .guia li {
+      font-size: 0.95rem;
+      padding: 8px 12px;
+      background-color: #222;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .guia li .icono {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      width: 26px;
+      text-align: center;
+    }
+
+    .guia .tecla {
+      display: inline-block;
+      background-color: #333;
+      border: 1px solid #555;
+      border-radius: 4px;
+      padding: 1px 8px;
+      font-family: monospace;
+      font-size: 0.85rem;
+      color: #d4af37;
+      margin: 0 2px;
+    }
+
+    footer {
+      margin-top: 30px;
+      color: #888;
+      font-size: 0.85rem;
+      text-align: center;
+      padding-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    footer strong { color: #d4af37; }
+
+    @media (max-width: 600px) {
+      body { padding: 10px; }
+      .contenedor { padding: 15px; }
+      .seccion p { font-size: 1rem; }
+      .seccion ul li { font-size: 1rem; }
+      header h1 { font-size: 1.4rem; }
+      header img { max-width: 160px; }
+      .controles button { padding: 8px 12px; font-size: 0.8rem; }
+    }
+
+    @media (min-width: 1200px) {
+      .seccion p { font-size: 1.3rem; }
+      .seccion ul li { font-size: 1.2rem; }
+      header h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="../index.html" title="Volver al portal">
+      <img src="../logo-uranthia.png" alt="Uranthia y su Corazón Latino">
+    </a>
+    <h1>[NOMBRE DE LA CANCIÓN]</h1>
+    <p>[Artista]</p>
+    <span class="tag">GUÍA SAO · BAJO</span>
+    <br>
+    <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:12px;">
+      <a class="btn-volver" href="../index.html">🏠 Volver al portal</a>
+      <a class="btn-volver" href="../repertorio.html">📚 Volver al repertorio</a>
+      <!-- Si existe la letra, descomentar y poner el slug correcto -->
+      <!-- <a class="btn-volver" href="letras/SLUG.html">🎵 Ver letra</a> -->
+    </div>
+  </header>
+
+  <!-- BARRA DE CONTROLES -->
+  <div class="controles">
+    <button onclick="toggleScroll()" id="btnPlay">▶ Iniciar</button>
+    <button onclick="cambiarVelocidad(-0.5)">➖➖ Más lento</button>
+    <button onclick="cambiarVelocidad(-0.1)">➖ Más lento</button>
+    <span class="velocidad" id="velDisplay">Vel: 1x</span>
+    <button onclick="cambiarVelocidad(0.1)">➕ Más rápido</button>
+    <button onclick="cambiarVelocidad(0.5)">➕➕ Más rápido</button>
+    <button onclick="resetScroll()">⟲ Reiniciar</button>
+    <button onclick="toggleFullscreen()">⛶ Pantalla completa</button>
+  </div>
+
+  <main class="contenedor" id="contenedor">
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- SECCIONES DE LA GUÍA                                    -->
+    <!--                                                         -->
+    <!-- Copiá, pegá y editá las secciones según necesites.      -->
+    <!-- Borrá las que no uses.                                  -->
+    <!--                                                         -->
+    <!-- Clases disponibles:                                     -->
+    <!--   .intro    (gris)      → Intro musical o entrada       -->
+    <!--   .estrofa  (celeste)   → Versos                        -->
+    <!--   .precoro  (violeta)   → Precoros / puentes cortos     -->
+    <!--   .coro     (rojo)      → Coros                         -->
+    <!--   .puente   (amarillo)  → Puentes / interludios         -->
+    <!--   .outro    (rosa)      → Final / outro                 -->
+    <!--   .musical  (gris centro) → Momentos instrumentales     -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
+    <!-- EJEMPLO DE SECCIÓN INTRO (borrar) -->
+    <section class="seccion intro">
+      <span class="etiqueta">Intro</span>
+      <p>• Apunte 1</p>
+      <p>• Apunte 2</p>
+      <p>• Apunte 3</p>
+    </section>
+
+    <!-- EJEMPLO DE SECCIÓN ESTROFA (borrar) -->
+    <section class="seccion estrofa">
+      <span class="etiqueta">Verso 1</span>
+      <ul>
+        <li>Apunte 1</li>
+        <li>Apunte 2</li>
+      </ul>
+    </section>
+
+    <!-- EJEMPLO DE SECCIÓN PRECORO (borrar) -->
+    <section class="seccion precoro">
+      <span class="etiqueta">Precoro</span>
+      <p>• Apunte 1</p>
+    </section>
+
+    <!-- EJEMPLO DE SECCIÓN CORO (borrar) -->
+    <section class="seccion coro">
+      <span class="etiqueta">Coro</span>
+      <p>• Apunte 1</p>
+      <p>• Apunte 2</p>
+    </section>
+
+    <!-- EJEMPLO DE SECCIÓN PUENTE (borrar) -->
+    <section class="seccion puente">
+      <span class="etiqueta">Puente</span>
+      <p>• Apunte 1</p>
+    </section>
+
+    <!-- EJEMPLO DE SECCIÓN OUTRO (borrar) -->
+    <section class="seccion outro">
+      <span class="etiqueta">Final (Outro)</span>
+      <p>• Apunte 1</p>
+    </section>
+
+  </main>
+
+  <!-- LEYENDA DE COLORES -->
+  <section class="leyenda">
+    <h2>🎨 Leyenda de secciones</h2>
+    <ul>
+      <li><span class="muestra" style="background-color:#d3d3d3;"></span> Intro / Musical</li>
+      <li><span class="muestra" style="background-color:#add8e6;"></span> Versos</li>
+      <li><span class="muestra" style="background-color:#b19cd9;"></span> Precoros</li>
+      <li><span class="muestra" style="background-color:#ff6b6b;"></span> Coros</li>
+      <li><span class="muestra" style="background-color:#ffd966;"></span> Puentes</li>
+      <li><span class="muestra" style="background-color:#f9a8d4;"></span> Final / Outro</li>
+    </ul>
+  </section>
+
+  <!-- GUÍA RÁPIDA -->
+  <section class="guia">
+    <h2>🎛️ GUÍA RÁPIDA — Cómo usar los controles</h2>
+
+    <h3>🖱️ Botones en pantalla</h3>
+    <ul>
+      <li><span class="icono">▶</span> <strong>Iniciar / Pausar</strong> — arranca o detiene el auto-scroll.</li>
+      <li><span class="icono">➖➖</span> <strong>Más lento (rápido)</strong> — baja la velocidad de 0.5 en 0.5.</li>
+      <li><span class="icono">➖</span> <strong>Más lento (fino)</strong> — baja la velocidad de 0.1 en 0.1.</li>
+      <li><span class="icono">➕</span> <strong>Más rápido (fino)</strong> — sube la velocidad de 0.1 en 0.1.</li>
+      <li><span class="icono">➕➕</span> <strong>Más rápido (rápido)</strong> — sube la velocidad de 0.5 en 0.5.</li>
+      <li><span class="icono">⟲</span> <strong>Reiniciar</strong> — vuelve al inicio de la página.</li>
+      <li><span class="icono">⛶</span> <strong>Pantalla completa</strong> — ideal para proyector o tablet.</li>
+    </ul>
+
+    <h3>⌨️ Atajos de teclado (PC)</h3>
+    <ul>
+      <li><span class="icono">␣</span> <span class="tecla">Espacio</span> = pausar / reanudar</li>
+      <li><span class="icono">↑</span> <span class="tecla">↑</span> = más rápido</li>
+      <li><span class="icono">↓</span> <span class="tecla">↓</span> = más lento</li>
+      <li><span class="icono">R</span> <span class="tecla">R</span> = reiniciar</li>
+      <li><span class="icono">F</span> <span class="tecla">F</span> = pantalla completa</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p><strong>Uranthia</strong> · Guía SAO de Bajo — "[NOMBRE DE LA CANCIÓN]" | Apuntes de SAO</p>
+    <p>Etiqueta: <strong>URANTHIA · GUÍA SAO</strong></p>
+  </footer>
+
+  <script>
+    let scrollActivo = false;
+    let velocidad = 1;
+    let intervaloScroll = null;
+    const btnPlay = document.getElementById('btnPlay');
+    const velDisplay = document.getElementById('velDisplay');
+
+    function toggleScroll() {
+      if (scrollActivo) { detenerScroll(); } else { iniciarScroll(); }
+    }
+
+    function iniciarScroll() {
+      scrollActivo = true;
+      btnPlay.textContent = '⏸ Pausar';
+      btnPlay.style.background = 'linear-gradient(135deg, #ff6b6b, #8b0000)';
+      btnPlay.style.color = '#fff';
+      intervaloScroll = setInterval(() => {
+        window.scrollBy(0, velocidad);
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 5) {
+          detenerScroll();
+        }
+      }, 50);
+    }
+
+    function detenerScroll() {
+      scrollActivo = false;
+      clearInterval(intervaloScroll);
+      btnPlay.textContent = '▶ Iniciar';
+      btnPlay.style.background = 'linear-gradient(135deg, #d4af37, #b8860b)';
+      btnPlay.style.color = '#000';
+    }
+
+    function cambiarVelocidad(delta) {
+      velocidad += delta;
+      if (velocidad < 0.1) velocidad = 0.1;
+      if (velocidad > 10) velocidad = 10;
+      velDisplay.textContent = 'Vel: ' + (velocidad < 1 ? velocidad.toFixed(1) : velocidad) + 'x';
+      if (scrollActivo) {
+        clearInterval(intervaloScroll);
+        intervaloScroll = setInterval(() => {
+          window.scrollBy(0, velocidad);
+          if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 5) {
+            detenerScroll();
+          }
+        }, 50);
+      }
+    }
+
+    function resetScroll() {
+      detenerScroll();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {
+          alert('No se pudo activar pantalla completa: ' + err.message);
+        });
+      } else {
+        document.exitFullscreen();
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.code === 'Space') { e.preventDefault(); toggleScroll(); }
+      if (e.code === 'ArrowUp') { e.preventDefault(); cambiarVelocidad(0.1); }
+      if (e.code === 'ArrowDown') { e.preventDefault(); cambiarVelocidad(-0.1); }
+      if (e.code === 'KeyR') { resetScroll(); }
+      if (e.code === 'KeyF') { toggleFullscreen(); }
+    });
+  </script>
+
+</body>
+</html>

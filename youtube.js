@@ -3,7 +3,7 @@
 // Actualizá acá y se refleja en repertorio, setlists y letras.
 
 const YOUTUBE_LINKS = {
-  "la-fuerza-del-destino": "",  // pendiente
+  "la-fuerza-del-destino": "https://www.youtube.com/watch?v=_mAmEKNqg1g",
   "mirala-miralo": "https://www.youtube.com/watch?v=9cjXTMLjaFw"
 };
 

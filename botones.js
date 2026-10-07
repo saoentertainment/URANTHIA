@@ -5,9 +5,9 @@
 // Depende de: MAPA_LETRAS (letras.js), YOUTUBE_LINKS (youtube.js), GUIAS (guias.js)
 // ══════════════════════════════════════════════════════
 
-// Detecta si estamos en un setlist o en el repertorio
+// Detecta si estamos en un setlist o en el repertorio (por URL)
 function _claseBotonMini() {
-  return document.querySelector('.cancion-botones-setlist') !== null
+  return window.location.pathname.includes('/setlists/')
     ? 'btn-mini-setlist'
     : 'btn-mini';
 }

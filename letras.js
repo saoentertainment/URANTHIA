@@ -6,7 +6,7 @@ const MAPA_LETRAS = {
   'MIRALA MIRALO': 'mirala-miralo',
   'TE BESE': 'te-bese',
   'TE QUIERO TANTO TANTO': 'te-quiero-tanto-tanto',
-  'VUELA VUELA': 'vuela-vuela',
+  // 'VUELA VUELA': 'vuela-vuela',  ← comentado o borrado
   // Acá vas agregando: 'TITULO EN MAYUSCULAS': 'slug-del-archivo'
 };
 

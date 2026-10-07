@@ -168,6 +168,20 @@
       line-height: 1.5;
     }
 
+    .slug {
+      font-family: 'Courier New', monospace;
+      font-size: 0.78rem;
+      background: #faf3e0;
+      color: #b8860b;
+      padding: 3px 8px;
+      border-radius: 5px;
+      font-weight: 700;
+      white-space: nowrap;
+      display: inline-block;
+      margin: 2px 0;
+      border: 1px solid rgba(212,175,55,0.40);
+    }
+
     .tag {
       display: inline-block;
       font-size: 0.7rem;
@@ -204,6 +218,32 @@
       color: #b8860b;
     }
 
+    .buscador {
+      width: 100%;
+      padding: 12px 18px;
+      border-radius: 30px;
+      border: 2px solid #d4af37;
+      background: #ffffff;
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: #0d2818;
+      outline: none;
+      margin-bottom: 16px;
+      transition: all 0.2s ease;
+    }
+    .buscador:focus {
+      border-color: #0d2818;
+      box-shadow: 0 0 0 4px rgba(212,175,55,0.20);
+    }
+
+    .contador-tabla {
+      font-size: 0.85rem;
+      color: #6b7a6b;
+      font-style: italic;
+      text-align: right;
+      margin-bottom: 10px;
+    }
+
     @media (max-width: 768px) {
       body { padding: 15px 10px; }
       .card { padding: 20px 14px; border-radius: 24px; }
@@ -226,6 +266,71 @@
     <div class="intro">
       <strong>🎯 Regla de oro:</strong> cada acción tiene sus pasos exactos. Seguí la tabla y no te vas a perder.<br>
       <strong>📌 Recordá:</strong> el <strong>slug</strong> es el nombre en minúsculas, sin acentos, con guiones. Ej: <em>TE BESE → te-bese</em>.
+    </div>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <h2><span class="icono">➕</span> Agregar una CANCIÓN al repertorio</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>¿Qué toco?</th>
+          <th>¿Dónde?</th>
+          <th>¿Qué agrego?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="num">1</td>
+          <td>Agregar la canción al array</td>
+          <td><span class="archivo">repertorio.html</span></td>
+          <td>
+            Buscar el estilo y subgrupo donde va. Agregar dentro de <strong>canciones</strong>:
+            <span class="codigo">{ titulo: 'TITULO EN MAYUSCULAS', artista: 'Artista' },</span>
+            <span class="tag tag-obligatorio">Obligatorio</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="num">2</td>
+          <td>(Opcional) Agregar link de YouTube</td>
+          <td><span class="archivo">youtube.js</span></td>
+          <td>
+            <span class="codigo">"slug-cancion": "https://youtu.be/XXXXX",</span>
+            <span class="tag tag-opcional">Opcional</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="num">3</td>
+          <td>(Opcional) Agregar letra</td>
+          <td><span class="archivo">letras.js</span> + <span class="archivo">letras/slug.html</span></td>
+          <td>
+            <span class="codigo">'TITULO EN MAYUSCULAS': 'slug-cancion',</span> + crear el HTML.
+            <span class="tag tag-opcional">Opcional</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="num">4</td>
+          <td>(Opcional) Agregar guía</td>
+          <td><span class="archivo">guias.js</span> + <span class="archivo">guias/slug-bajo.html</span></td>
+          <td>
+            <span class="codigo">"slug-cancion": ["bajo"],</span> + crear el HTML.
+            <span class="tag tag-opcional">Opcional</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="num">5</td>
+          <td>Guardar y subir a GitHub</td>
+          <td>—</td>
+          <td>Esperar 1-3 min. Ctrl + F5.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="intro">
+      <strong>✅ Resultado:</strong> la canción aparece en el repertorio. Los botones ▶, 📄 y 🎸 se activan solos si existen sus archivos.<br>
+      <strong>📝 Ejemplo:</strong> para agregar "TE BESE" al repertorio, dentro del subgrupo "Pop Hombres":<br>
+      <span class="codigo">{ titulo: 'TE BESE', artista: 'Ragazzi' },</span>
     </div>
 
     <!-- ══════════════════════════════════════════════ -->
@@ -499,8 +604,34 @@
         <tr>
           <td><span class="archivo">repertorio.html</span></td>
           <td>Lista maestra de canciones</td>
-          <td>Casi nunca (solo si agregás canción nueva)</td>
+          <td>Al agregar una canción nueva</td>
         </tr>
+      </tbody>
+    </table>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <h2><span class="icono">🎼</span> Lista de canciones del repertorio + slug</h2>
+
+    <div class="intro">
+      <strong>💡 Cómo usar esta lista:</strong> buscá el título en el buscador. El slug es el que va en <span class="archivo">youtube.js</span>, <span class="archivo">letras.js</span> y <span class="archivo">guias.js</span>. Si querés agregar un enlace, letra o guía, <strong>el slug siempre es el mismo</strong>.<br>
+      <strong>📌 Total:</strong> <span id="totalCanciones">—</span> canciones
+    </div>
+
+    <input type="text" class="buscador" id="buscadorTabla" placeholder="🔍 Buscar canción, artista o slug..." />
+
+    <div class="contador-tabla" id="contadorTabla"></div>
+
+    <table id="tablaCanciones">
+      <thead>
+        <tr>
+          <th>🎵 Canción</th>
+          <th>🎤 Artista</th>
+          <th>📁 Estilo</th>
+          <th>🏷️ Slug</th>
+        </tr>
+      </thead>
+      <tbody id="tbodyCanciones">
+        <!-- Acá se llena con JS -->
       </tbody>
     </table>
 
@@ -510,6 +641,277 @@
     </div>
 
   </div>
+
+  <script>
+    // ══════════════════════════════════════════════════════
+    // FUNCIÓN: generar slug desde el título
+    // ══════════════════════════════════════════════════════
+    function generarSlug(titulo) {
+      return titulo
+        .toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/[^a-z0-9-]/g, '');
+    }
+
+    // ══════════════════════════════════════════════════════
+    // DATOS DEL REPERTORIO (espejo del repertorio.html)
+    // ══════════════════════════════════════════════════════
+    const REPERTORIO = [
+      { id: 'grupero', icono: '🎺', nombre: 'Grupero', canciones: [
+        { titulo: 'MORENA', artista: 'Felinos' },
+        { titulo: 'COMO UNA NOVELA', artista: '' },
+        { titulo: 'TODO ME GUSTA DE TI', artista: '' },
+        { titulo: 'NO TE PERTENECE', artista: '' },
+        { titulo: 'AMOR PROHIBIDO', artista: '' }
+      ]},
+      { id: 'cumbia', icono: '🥁', nombre: 'Cumbia', canciones: [
+        { titulo: 'TUS JEFES NO ME QUIEREN', artista: '' },
+        { titulo: 'EL PASO DEL GIGANTE', artista: '' },
+        { titulo: 'OYE MUJER', artista: '' },
+        { titulo: 'BONITA MENTIROSA', artista: '' },
+        { titulo: 'SUAVECITO', artista: '' },
+        { titulo: 'CADENITA', artista: '' },
+        { titulo: 'NEGRA TOMASA', artista: '' },
+        { titulo: 'NUNCA ES SUFICIENTE', artista: '' },
+        { titulo: '17 AÑOS', artista: '' },
+        { titulo: 'BAILA ESTA CUMBIA', artista: '' },
+        { titulo: 'AMOR A PRIMERA VISTA', artista: '' },
+        { titulo: 'CARCACHA', artista: '' },
+        { titulo: 'MIL HORAS', artista: '' },
+        { titulo: 'QUE NADIE SEPA MI SUFRIR', artista: '' },
+        { titulo: 'QUE BELLO', artista: '' },
+        { titulo: 'OYE', artista: '' },
+        { titulo: 'DESVELADO', artista: '' },
+        { titulo: 'AMANDA BAILA CON LA BANDA', artista: '' },
+        { titulo: 'BANDIDO', artista: '' },
+        { titulo: 'CABALLO VIEJO', artista: '' },
+        { titulo: 'COMO LA FLOR', artista: '' },
+        { titulo: 'EL DIARIO DE UN BORRACHO', artista: '' },
+        { titulo: 'HE CREIDO', artista: 'Yairas' },
+        { titulo: 'LLORAR Y LLORAR', artista: 'Los Socios del Ritmo' },
+        { titulo: 'MOLIENDO CAFÉ', artista: '' },
+        { titulo: 'NEGRO JOSÉ', artista: '' },
+        { titulo: 'PAGARÁS', artista: 'Pastor López' },
+        { titulo: 'REGRESA AMOR', artista: 'Los Askis' },
+        { titulo: 'VIENES Y TE VAS', artista: '' }
+      ]},
+      { id: 'fiesta', icono: '🎉', nombre: 'Fiesta', canciones: [
+        { titulo: 'BULE BULE', artista: '' },
+        { titulo: 'BLUE SUEDE SHOES', artista: 'Carl Perkins' },
+        { titulo: 'LA PLAGA', artista: 'Los Teen Tops' },
+        { titulo: 'NO ROMPAS MAS', artista: '' },
+        { titulo: 'PAYASO DE RODEO', artista: '' },
+        { titulo: 'LA CHONA', artista: '' },
+        { titulo: 'SAPITO', artista: '' },
+        { titulo: 'EL FINAL', artista: 'Rostros Ocultos' },
+        { titulo: 'CUANDO SEAS GRANDE', artista: 'Miguel Mateos' },
+        { titulo: 'YO QUIERO CHUPAR', artista: '' }
+      ]},
+      { id: 'batucada', icono: '🥁', nombre: 'Batucada', canciones: [
+        { titulo: 'VIVIR MI VIDA', artista: '' },
+        { titulo: 'CARNAVAL', artista: '' },
+        { titulo: 'SPANISH GIRL', artista: '' },
+        { titulo: 'REINA DEL SWING', artista: '' }
+      ]},
+      { id: 'salsa', icono: '🎺', nombre: 'Salsa', canciones: [
+        { titulo: 'YO NO SE MAÑANA', artista: '' },
+        { titulo: 'LA CITA', artista: '' },
+        { titulo: 'IDILIO', artista: '' },
+        { titulo: 'ASI FUE', artista: '' }
+      ]},
+      { id: 'ska', icono: '🎷', nombre: 'Ska', canciones: [
+        { titulo: 'AMARGO ADIOS', artista: '' },
+        { titulo: 'LA DOSIS PERFECTA', artista: '' },
+        { titulo: 'ONE STEP BEYOND', artista: '' },
+        { titulo: 'ESQUELETO', artista: '' },
+        { titulo: 'POBRE DE TI (Desde Pte Rápida)', artista: '' },
+        { titulo: 'POR QUE TE VAS', artista: '' },
+        { titulo: 'CONTRABANDO Y TRAICION', artista: '' },
+        { titulo: 'ARREGLAME EL ALMA', artista: '' },
+        { titulo: 'PACHUCO', artista: '' },
+        { titulo: 'KUMBALA', artista: '' },
+        { titulo: 'PAQUITA DISCO', artista: '' },
+        { titulo: 'ASI FUE', artista: 'Dread Mar I' }
+      ]},
+      { id: 'rock-idioma', icono: '🎸', nombre: 'Rock en tu idioma', canciones: [
+        { titulo: 'VIENTO', artista: 'Caifanes' },
+        { titulo: 'CUANDO SEAS GRANDE', artista: 'Miguel Mateos' },
+        { titulo: 'GUITARRAS BLANCAS', artista: 'Enanitos Verdes' },
+        { titulo: 'SON DEL DOLOR', artista: '' },
+        { titulo: 'NI TU NI NADIE', artista: 'Alaska y Dinarama' },
+        { titulo: 'EL FINAL', artista: '' },
+        { titulo: 'KUMBALA', artista: '' },
+        { titulo: 'LAMENTO BOLIVIANO', artista: '' },
+        { titulo: 'ETERNA SOLEDAD', artista: '' },
+        { titulo: 'MARIA', artista: '' },
+        { titulo: 'AQUI NO ES ASI', artista: '' },
+        { titulo: 'AUN', artista: 'Coda' },
+        { titulo: 'ADO', artista: 'El Tri' },
+        { titulo: 'TRISTE CANCION DE AMOR', artista: 'El Tri' },
+        { titulo: 'LOCA', artista: 'Alejandra Guzmán' },
+        { titulo: 'HACER EL AMOR', artista: 'Alejandra Guzmán' },
+        { titulo: 'MIRALA MIRALO', artista: 'Alejandra Guzmán' },
+        { titulo: 'ETERNAMENTE BELLA', artista: 'Alejandra Guzmán' },
+        { titulo: 'MALA HIERBA', artista: 'Alejandra Guzmán' },
+        { titulo: 'LA FUERZA DEL DESTINO', artista: 'Matute' },
+        { titulo: 'CHICAS COCODRILO', artista: 'Matute' },
+        { titulo: 'NO VOY EN TREN', artista: 'Matute' },
+        { titulo: 'EN ALGUN LUGAR', artista: 'Matute' },
+        { titulo: 'VIVIENDO DE NOCHE', artista: 'Matute' },
+        { titulo: 'MURALLA', artista: 'Matute' },
+        { titulo: 'VISITA NUESTRO BAR', artista: 'Matute' },
+        { titulo: 'PERSIANA AMERICANA', artista: 'Matute' },
+        { titulo: 'NO HUYAS DE MI', artista: 'Matute' }
+      ]},
+      { id: 'disco-pop', icono: '🕺', nombre: 'Disco and Pop', canciones: [
+        { titulo: 'LADIE', artista: '' },
+        { titulo: 'SING IT BACK', artista: 'Moloko' },
+        { titulo: 'I FEEL LOVE', artista: 'Donna Summer' },
+        { titulo: 'FUNKY TOWN', artista: 'Lipps Inc.' },
+        { titulo: 'A LITTLE RESPECT', artista: 'Erasure' },
+        { titulo: 'SQUARE ROOMS', artista: '' },
+        { titulo: 'BEDS ARE BURNING', artista: '' },
+        { titulo: "IT'S MY LIFE", artista: 'Talk Talk' },
+        { titulo: 'ENJOY THE SILENCE', artista: 'Depeche Mode' },
+        { titulo: 'WHERE DO YOU GO', artista: 'No Mercy' }
+      ]},
+      { id: 'pop-espanol', icono: '🎤', nombre: 'Pop Español', canciones: [
+        { titulo: 'TE QUIERO TANTO TANTO', artista: '' },
+        { titulo: 'UN AÑO MAS', artista: 'Mecano' },
+        { titulo: 'TODOS ME MIRAN', artista: '' },
+        { titulo: 'CON LOS OJOS CERRADOS', artista: '' },
+        { titulo: 'EL ECO DE TU VOZ', artista: '' },
+        { titulo: 'PIERDEME EL RESPETO', artista: '' },
+        { titulo: 'LAS MIL Y UNA NOCHES', artista: '' },
+        { titulo: 'ENTRE TU Y MIL MARES', artista: '' },
+        { titulo: 'DR. PSIQUIATRA', artista: '' },
+        { titulo: 'PELIGRO', artista: '' },
+        { titulo: 'DONDE ESTAN', artista: '' },
+        { titulo: 'ESCRIBEME EN EL CIELO', artista: '' },
+        { titulo: 'ROSA PASTEL', artista: '' },
+        { titulo: 'ME CUESTA TANTO', artista: '' },
+        { titulo: 'EL SOL NO REGRESA', artista: 'La Quinta Estación' },
+        { titulo: 'TE BESE', artista: 'Ragazzi' },
+        { titulo: 'VUELA VUELA', artista: 'Magneto' },
+        { titulo: 'DUENDE', artista: '' },
+        { titulo: 'AMANTE BANDIDO', artista: '' },
+        { titulo: 'CHICA DE HUMO', artista: 'Emmanuel' },
+        { titulo: 'BELLA SEÑORA', artista: 'Emmanuel' },
+        { titulo: 'NO PUEDO ESTAR SIN TI', artista: 'Moenia' },
+        { titulo: 'SAN MIGUEL', artista: '' },
+        { titulo: 'A UN MINUTO DE TI', artista: '' },
+        { titulo: 'OTRA COMO TU', artista: '' },
+        { titulo: 'UN ANGEL COMO EL SOL TU ERES', artista: '' },
+        { titulo: 'IMBRANATO', artista: '' },
+        { titulo: 'NO PODRAS', artista: 'Cristian Castro' },
+        { titulo: 'DEJAME ENTRAR', artista: 'Moenia' },
+        { titulo: 'BAILA', artista: 'Ragazzi' },
+        { titulo: 'ES POR AMOR', artista: 'GIT' },
+        { titulo: 'NO SE SI ES AMOR', artista: 'Timbiriche' },
+        { titulo: 'SOY UN DESASTRE', artista: 'Timbiriche' },
+        { titulo: 'TU Y YO SOMOS UNO MISMO', artista: 'Timbiriche' },
+        { titulo: 'CORRO VUELO ME ACELERO', artista: 'Timbiriche' },
+        { titulo: 'SI NO ES AHORA', artista: 'Timbiriche' },
+        { titulo: 'BESOS DE CENIZA', artista: 'Timbiriche' },
+        { titulo: 'AMAME HASTA CON LOS DIENTES', artista: 'Timbiriche' },
+        { titulo: 'CON TODOS MENOS CONMIGO', artista: 'Timbiriche' },
+        { titulo: 'PRINCESA TIBETANA', artista: 'Timbiriche' },
+        { titulo: 'MURIENDO LENTO', artista: 'Timbiriche' }
+      ]},
+      { id: 'baladas', icono: '💔', nombre: 'Baladas clásicas atemporales', canciones: [
+        { titulo: 'LA CHICA DE LA BOUTIQUE', artista: 'Heleno' },
+        { titulo: 'JAMAS', artista: 'Camilo Sesto' },
+        { titulo: 'SI TU TE VAS', artista: 'Camilo Sesto' },
+        { titulo: 'ALGO DE MI', artista: 'Camilo Sesto' },
+        { titulo: 'VIVIR ASI ES MORIR DE AMOR', artista: 'Camilo Sesto' },
+        { titulo: 'SERE', artista: 'José José' },
+        { titulo: 'AMOR AMOR', artista: 'José José' },
+        { titulo: 'SI ME DEJAS AHORA', artista: 'José José' },
+        { titulo: 'LA NAVE DEL OLVIDO', artista: 'José José' },
+        { titulo: 'VOLCAN', artista: 'José José' },
+        { titulo: 'EL TRISTE', artista: 'José José' },
+        { titulo: 'ASI FUE', artista: 'Juan Gabriel' },
+        { titulo: 'COSTUMBRES', artista: 'Juan Gabriel' },
+        { titulo: 'ADIOS AMOR', artista: 'Alejandro Fernández' },
+        { titulo: 'LA DIFERENCIA', artista: 'Alejandro Fernández' }
+      ]},
+      { id: 'rock-ingles', icono: '🎸', nombre: 'Rock en Inglés', canciones: [
+        { titulo: 'NEW YEARS DAY', artista: 'U2' }
+      ]},
+      { id: 'pop-ingles', icono: '🎤', nombre: 'Pop Inglés', canciones: [
+        { titulo: 'EYES WITHOUT A FACE', artista: 'Billy Idol' },
+        { titulo: 'CARELESS WHISPER', artista: 'George Michael' }
+      ]},
+      { id: 'rock-roll', icono: '🕺', nombre: 'Rock and Roll 60s', canciones: [
+        { titulo: 'AGUJETAS DE COLOR DE ROSA', artista: '' },
+        { titulo: 'DESPEINADA', artista: '' },
+        { titulo: 'POPOTITOS', artista: '' },
+        { titulo: 'CHICA ALBOROTADA', artista: '' },
+        { titulo: 'STAND BY ME', artista: 'Ben E. King' },
+        { titulo: 'FUE EN UN CAFE', artista: '' },
+        { titulo: 'ROCK DE LA CARCEL', artista: '' },
+        { titulo: 'BLUE SUEDE SHOES', artista: 'Carl Perkins' },
+        { titulo: 'LA PLAGA', artista: 'Los Teen Tops' },
+        { titulo: 'BUEN ROCK', artista: '' },
+        { titulo: 'PRIMAVERA', artista: '' },
+        { titulo: 'CHICA YE YE', artista: '' }
+      ]},
+      { id: 'instrumentales', icono: '🎹', nombre: 'Instrumentales', canciones: [
+        { titulo: 'UNA MAÑANA', artista: '' },
+        { titulo: 'CHICA DE IPANEMA', artista: '' },
+        { titulo: 'BLUES BOSSA', artista: '' },
+        { titulo: 'SAMBA DE UNA SOLA NOTA', artista: '' },
+        { titulo: 'FLY ME TO THE MOON', artista: '' }
+      ]}
+    ];
+
+    // ══════════════════════════════════════════════════════
+    // GENERAR TABLA
+    // ══════════════════════════════════════════════════════
+    const tbody = document.getElementById('tbodyCanciones');
+    const buscador = document.getElementById('buscadorTabla');
+    const contadorTabla = document.getElementById('contadorTabla');
+    const totalCancionesEl = document.getElementById('totalCanciones');
+
+    let todasLasFilas = [];
+
+    REPERTORIO.forEach(estilo => {
+      estilo.canciones.forEach(cancion => {
+        const slug = generarSlug(cancion.titulo);
+        const fila = document.createElement('tr');
+        fila.innerHTML = `
+          <td><strong>${cancion.titulo}</strong></td>
+          <td>${cancion.artista || '—'}</td>
+          <td>${estilo.icono} ${estilo.nombre}</td>
+          <td><span class="slug">${slug}</span></td>
+        `;
+        fila.dataset.busqueda = `${cancion.titulo} ${cancion.artista} ${estilo.nombre} ${slug}`.toLowerCase();
+        tbody.appendChild(fila);
+        todasLasFilas.push(fila);
+      });
+    });
+
+    const total = todasLasFilas.length;
+    totalCancionesEl.textContent = total;
+    contadorTabla.textContent = `Mostrando ${total} de ${total} canciones`;
+
+    buscador.addEventListener('input', (e) => {
+      const texto = e.target.value.toLowerCase().trim();
+      let visibles = 0;
+
+      todasLasFilas.forEach(fila => {
+        if (fila.dataset.busqueda.includes(texto)) {
+          fila.style.display = '';
+          visibles++;
+        } else {
+          fila.style.display = 'none';
+        }
+      });
+
+      contadorTabla.textContent = `Mostrando ${visibles} de ${total} canciones`;
+    });
+  </script>
 
 </body>
 </html>

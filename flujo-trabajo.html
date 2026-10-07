@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flujo de Trabajo · Uranthia</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 50%, #0d2818 100%);
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      padding: 30px 20px;
+      color: #0d2818;
+    }
+
+    .card {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 36px;
+      padding: 38px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.55), 0 0 0 2px rgba(212,175,55,0.30);
+      border: 1px solid rgba(212,175,55,0.30);
+    }
+
+    .header {
+      background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
+      border-radius: 28px;
+      padding: 26px 32px;
+      text-align: center;
+      margin-bottom: 28px;
+      border: 1px solid rgba(212,175,55,0.25);
+    }
+    .header .band-name {
+      font-family: 'Georgia', serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #d4af37;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    .header .band-sub {
+      font-family: 'Georgia', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: #f5e6c8;
+      margin-top: 4px;
+    }
+    .header .tagline {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #0d2818;
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      padding: 5px 18px;
+      border-radius: 30px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-family: 'Georgia', serif;
+      font-size: 1.4rem;
+      color: #0d2818;
+      margin: 30px 0 16px 0;
+      padding-bottom: 8px;
+      border-bottom: 2px solid rgba(212,175,55,0.30);
+    }
+
+    h2 .icono {
+      font-size: 1.4rem;
+      margin-right: 8px;
+    }
+
+    .intro {
+      background: linear-gradient(135deg, #faf3e0 0%, #f5e6c8 100%);
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin-bottom: 24px;
+      border-left: 5px solid #d4af37;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .intro strong { color: #b8860b; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+      font-size: 0.9rem;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    thead {
+      background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
+      color: #d4af37;
+    }
+    thead th {
+      padding: 14px 16px;
+      text-align: left;
+      font-family: 'Georgia', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      font-weight: 800;
+      border-right: 1px solid rgba(212,175,55,0.20);
+    }
+    thead th:last-child { border-right: none; }
+
+    tbody tr {
+      background: #ffffff;
+      border-bottom: 1px solid rgba(212,175,55,0.15);
+      transition: background 0.15s ease;
+    }
+    tbody tr:nth-child(even) {
+      background: #fafaf5;
+    }
+    tbody tr:hover {
+      background: #faf3e0;
+    }
+    tbody td {
+      padding: 14px 16px;
+      vertical-align: top;
+      line-height: 1.5;
+      border-right: 1px solid rgba(212,175,55,0.10);
+    }
+    tbody td:last-child { border-right: none; }
+
+    .num {
+      font-family: 'Georgia', serif;
+      font-weight: 900;
+      color: #d4af37;
+      font-size: 1.1rem;
+      text-align: center;
+      width: 40px;
+    }
+
+    .archivo {
+      font-family: 'Courier New', monospace;
+      font-size: 0.8rem;
+      background: rgba(13,40,24,0.08);
+      color: #0d2818;
+      padding: 3px 8px;
+      border-radius: 5px;
+      font-weight: 700;
+      white-space: nowrap;
+      display: inline-block;
+      margin: 2px 0;
+    }
+
+    .codigo {
+      font-family: 'Courier New', monospace;
+      font-size: 0.78rem;
+      background: #0d2818;
+      color: #f5d76e;
+      padding: 6px 10px;
+      border-radius: 6px;
+      display: block;
+      margin: 4px 0;
+      white-space: pre-wrap;
+      word-break: break-all;
+      line-height: 1.5;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin: 2px 4px 2px 0;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .tag-obligatorio {
+      background: #ff6b6b;
+      color: #ffffff;
+    }
+    .tag-opcional {
+      background: #f5d76e;
+      color: #8b6914;
+    }
+    .tag-archivo {
+      background: #add8e6;
+      color: #0d3d52;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 2px solid rgba(212,175,55,0.30);
+      font-size: 0.85rem;
+      color: #6b7a6b;
+    }
+    .footer .names {
+      font-weight: 800;
+      color: #b8860b;
+    }
+
+    @media (max-width: 768px) {
+      body { padding: 15px 10px; }
+      .card { padding: 20px 14px; border-radius: 24px; }
+      table { font-size: 0.8rem; }
+      thead th, tbody td { padding: 10px 8px; }
+      h2 { font-size: 1.15rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+
+    <div class="header">
+      <div class="band-name">Uranthia</div>
+      <div class="band-sub">y su Corazón Latino</div>
+      <span class="tagline">📋 Flujo de Trabajo</span>
+    </div>
+
+    <div class="intro">
+      <strong>🎯 Regla de oro:</strong> cada acción tiene sus pasos exactos. Seguí la tabla y no te vas a perder.<br>
+      <strong>📌 Recordá:</strong> el <strong>slug</strong> es el nombre en minúsculas, sin acentos, con guiones. Ej: <em>TE BESE → te-bese</em>.
+    </div>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <h2><span class="icono">▶</span> Agregar un ENLACE de YouTube</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>¿Qué toco?</th>
+          <th>¿Dónde?</th>
+          <th>¿Qué agrego?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="num">1</td>
+          <td>Agregar una línea</td>
+          <td><span class="archivo">youtube.js</span></td>
+          <td>
+            <span class="codigo">"slug-cancion": "https://youtu.be/XXXXX",</span>
+            <span class="tag tag-obligatorio">Obligatorio</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="num">2</td>
+          <td>Verificar que la canción esté en el repertorio</td>
+          <td><span class="archivo">repertorio.html</span></td>
+          <td>
+            Buscar el título en el array <strong>REPERTORIO</strong>. Debe estar en MAYÚSCULAS SIN ACENTOS.
+            <span class="tag tag-obligatorio">Obligatorio</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="num">3</td>
+          <td>Guardar y subir a GitHub</td>
+          <td>—</td>
+          <td>Esperar 1-3 min. Ctrl + F5.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="intro">
+      <strong>✅ Resultado:</strong> el botón ▶ YouTube aparece en el repertorio y en todos los setlists donde esté la canción.<br>
+      <strong>📝 Ejemplo:</strong> <span class="codigo">"te-bese": "https://www.youtube.com/watch?v=h1r3GhIjjiA",</span>
+    </div>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <h2><span class="icono">📄</span> Agregar una LETRA</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>¿Qué toco?</th>
+          <th>¿Dónde?</th>
+          <th>¿Qué agrego?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="num">1</td>
+          <td>Crear el HTML de la letra</td>
+          <td><span class="archivo">letras/slug-cancion.html</span></td>
+          <td>Copiar el template de <span class="archivo">letras/la-fuerza-del-destino.html</span> y adaptarlo.
+            <span class="tag tag-obligatorio">Obligatorio</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="num">2</td>
+          <td>Agregar el slug al mapa</td>
+          <td><span class="archivo">letras.js</span></td>
+          <td>
+            <span class="codigo">'TITULO EN MAYUSCULAS': 'slug-cancion',</span>
+            <span class="tag tag-obligatorio">Obligatorio</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="num">3</td>
+          <td>Guardar y subir a GitHub</td>
+          <td>—</td>
+          <td>Esperar 1-3 min. Ctrl + F5.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="intro">
+      <strong>✅ Resultado:</strong> el botón 📄 Letra se activa en el repertorio y en los setlists.<br>
+      <strong>📝 Ejemplo:</strong> <span class="codigo">'TE BESE': 'te-bese',</span> en <span class="archivo">letras.js</span> + archivo <span class="archivo">letras/te-bese.html</span>
+    </div>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <h2><span class="icono">🎸</span> Agregar una GUÍA (Bajo / Guitarra / Piano...)</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>¿Qué toco?</th>
+          <th>¿Dónde?</th>
+          <th>¿Qué agrego?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="num">1</td>
+          <td>Crear el HTML de la guía</td>
+          <td><span class="archivo">guias/slug-cancion-bajo.html</span></td>
+          <td>Copiar el template de <span class="archivo">guias/te-bese-bajo.html</span> y adaptarlo.
+            <span class="tag tag-obligatorio">Obligatorio</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="num">2</td>
+          <td>Agregar el instrumento al mapa</td>
+          <td><span class="archivo">guias.js</span></td>
+          <td>
+            <span class="codigo">"slug-cancion": ["bajo"],</span>
+            <span class="tag tag-obligatorio">Obligatorio</span><br>
+            (podés poner varios: <em>["bajo", "guitarra"]</em>)
+          </td>
+        </tr>
+        <tr>
+          <td class="num">3</td>
+          <td>Guardar y subir a GitHub</td>
+          <td>—</td>
+          <td>Esperar 1-3 min. Ctrl + F5.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="intro">
+      <strong>✅ Resultado:</strong> el botón 🎸 Bajo se activa aunque la canción no tenga letra.<br>
+      <strong>📝 Ejemplo:</strong> <span class="codigo">"te-bese": ["bajo"],</span> en <span class="archivo">guias.js</span> + archivo <span class="archivo">guias/te-bese-bajo.html</span>
+    </div>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <h2><span class="icono">📋</span> Agregar otro SETLIST</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>¿Qué toco?</th>
+          <th>¿Dónde?</th>
+          <th>¿Qué agrego?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="num">1</td>
+          <td>Crear el HTML del setlist</td>
+          <td><span class="archivo">setlists/ensayo-AAAA-MM-DD.html</span></td>
+          <td>Copiar un setlist existente y adaptar: nombre, fecha, lista de canciones.
+            <span class="tag tag-obligatorio">Obligatorio</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="num">2</td>
+          <td>Verificar la línea de scripts</td>
+          <td>Dentro del setlist</td>
+          <td>
+            <span class="codigo">&lt;script src="../youtube.js"&gt;&lt;/script&gt;
+&lt;script src="../letras.js"&gt;&lt;/script&gt;
+&lt;script src="../guias.js"&gt;&lt;/script&gt;
+&lt;script src="../botones.js?v=3"&gt;&lt;/script&gt;</span>
+            <span class="tag tag-obligatorio">Obligatorio</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="num">3</td>
+          <td>Guardar y subir a GitHub</td>
+          <td>—</td>
+          <td>Esperar 1-3 min. Ctrl + F5.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="intro">
+      <strong>✅ Resultado:</strong> el setlist funciona con todos los botones (▶, 📄, 🎸) actualizados.<br>
+      <strong>💡 Tip:</strong> copiá el archivo de un setlist existente y cambiá solo lo necesario. <strong>NO toques la línea de scripts.</strong>
+    </div>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <h2><span class="icono">⚠️</span> Reglas de oro (no te olvides)</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Regla</th>
+          <th>Por qué</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="num">1</td>
+          <td>Los títulos SIEMPRE en <strong>MAYÚSCULAS SIN ACENTOS</strong>.</td>
+          <td>El slug se genera desde el título. Si tiene acentos, no coincide.</td>
+        </tr>
+        <tr>
+          <td class="num">2</td>
+          <td>El <strong>slug</strong> siempre en minúsculas, sin acentos, con guiones.</td>
+          <td>Ej: <em>TE BESE → te-bese</em>. Si no coincide con el archivo, no funciona.</td>
+        </tr>
+        <tr>
+          <td class="num">3</td>
+          <td><strong>Nunca</strong> toques <span class="archivo">botones.js</span> para agregar contenido.</td>
+          <td>Ese archivo es solo para las funciones. Se toca solo si mejorás el sistema.</td>
+        </tr>
+        <tr>
+          <td class="num">4</td>
+          <td>Cada vez que cambies <span class="archivo">botones.js</span>, subí el <strong>?v=N</strong> en los 4 HTML.</td>
+          <td>Evita caché. Ej: <em>?v=3 → ?v=4</em>.</td>
+        </tr>
+        <tr>
+          <td class="num">5</td>
+          <td>Después de subir a GitHub, esperá 1-3 min y hacé <strong>Ctrl + F5</strong>.</td>
+          <td>GitHub Pages tarda en actualizar. Sin Ctrl+F5 el navegador usa caché viejo.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <h2><span class="icono">📁</span> Mapa del repo (para ubicarte)</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Archivo / Carpeta</th>
+          <th>¿Qué contiene?</th>
+          <th>¿Cuándo lo toco?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="archivo">youtube.js</span></td>
+          <td>Links de YouTube por slug</td>
+          <td>Al agregar un enlace</td>
+        </tr>
+        <tr>
+          <td><span class="archivo">letras.js</span></td>
+          <td>Slugs de letras (solo las que tienen HTML)</td>
+          <td>Al agregar una letra</td>
+        </tr>
+        <tr>
+          <td><span class="archivo">guias.js</span></td>
+          <td>Instrumentos por slug</td>
+          <td>Al agregar una guía</td>
+        </tr>
+        <tr>
+          <td><span class="archivo">botones.js</span></td>
+          <td>Funciones compartidas (no se toca casi nunca)</td>
+          <td>Solo si mejorás el sistema</td>
+        </tr>
+        <tr>
+          <td><span class="archivo">letras/</span></td>
+          <td>HTMLs de las letras</td>
+          <td>Al agregar una letra</td>
+        </tr>
+        <tr>
+          <td><span class="archivo">guias/</span></td>
+          <td>HTMLs de las guías</td>
+          <td>Al agregar una guía</td>
+        </tr>
+        <tr>
+          <td><span class="archivo">setlists/</span></td>
+          <td>HTMLs de los setlists</td>
+          <td>Al agregar un setlist</td>
+        </tr>
+        <tr>
+          <td><span class="archivo">repertorio.html</span></td>
+          <td>Lista maestra de canciones</td>
+          <td>Casi nunca (solo si agregás canción nueva)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="footer">
+      <p>Creado por <span class="names">SAO &amp; DS</span> 🐋</p>
+      <p>Uranthia · Corazón Latino</p>
+    </div>
+
+  </div>
+
+</body>
+</html>

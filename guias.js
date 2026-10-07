@@ -20,7 +20,7 @@
 
 const GUIAS = {
   // Acá vas agregando las guías:
-  // "slug-cancion": ["bajo"],
+  "te-bese": ["bajo"],
 
   // Ejemplos (descomentá cuando tengas los archivos):
   // "mirala-miralo": ["bajo"],

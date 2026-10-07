@@ -4,7 +4,8 @@
 
 const YOUTUBE_LINKS = {
   "la-fuerza-del-destino": "https://www.youtube.com/watch?v=_mAmEKNqg1g",
-  "mirala-miralo": "https://www.youtube.com/watch?v=9cjXTMLjaFw"
+  "mirala-miralo": "https://www.youtube.com/watch?v=9cjXTMLjaFw",
+  "te-bese": "https://www.youtube.com/watch?v=h1r3GhIjjiA&list=PLliHa6XlDoITiNZdFFxBvPGxrmlzrdLLv&index=23"
 };
 
 // Función helper para armar el botón

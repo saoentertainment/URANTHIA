@@ -236,7 +236,7 @@
       flex-wrap: wrap;
       align-items: center;
       justify-content: flex-start;
-      gap: 22px;                /* ← separación entre acordes */
+      gap: 22px;
       margin: 6px 0;
       text-align: left;
     }
@@ -272,19 +272,22 @@
       font-size: 1.05rem;
     }
 
-    /* Recordatorio de letra común (apunte) */
-    .letra-recordatorio {
-      font-style: italic;
-      color: #444;
-      font-size: 1rem;
-      text-align: left;
-    }
-
-    /* Recordatorio de letra que se canta en CORO — verde oscuro */
+    /* ══════════════════════════════════════════════════════
+       LETRAS (recordatorios)
+       - .letra-coro → verde oscuro (se canta en coro)
+       - .letra-recordatorio → gris itálica (apunte normal)
+       ══════════════════════════════════════════════════════ */
     .letra-coro {
       font-style: italic;
       font-weight: 700;
       color: #0d5c2e;
+      font-size: 1rem;
+      text-align: left;
+    }
+
+    .letra-recordatorio {
+      font-style: italic;
+      color: #444;
       font-size: 1rem;
       text-align: left;
     }
@@ -474,10 +477,10 @@
 
   <main class="contenedor" id="contenedor">
 
-    <!-- INTRO Y ESTROFA 1 -->
-    <section class="seccion intro">
+    <!-- INTRO Y ESTROFA 1 (celeste: acá arranca la estrofa) -->
+    <section class="seccion estrofa">
       <span class="etiqueta">Intro y Estrofa 1</span>
-      <p class="indicacion">VOZ SYNTH //// DRUMS ////</p>
+      <p class="indicacion">🎹 VOZ SYNTH //// 🥁 DRUMS ////</p>
       <div class="linea-acordes">
         <span class="acorde">G</span>
         <span class="acorde-paso">F#</span>
@@ -512,8 +515,8 @@
         <span class="acorde">B</span>
         <span class="acorde">Am</span>
       </div>
-      <p class="letra-recordatorio"><strong>2</strong> Solo una vez y te llevo en el medio de un millón de sueños</p>
-      <p class="letra-recordatorio"><strong>3</strong> Solo una vez he tocado el paraíso con mis dedos y tbc, tbc, tbc-</p>
+      <p class="letra-coro"><strong>2</strong> Solo una vez y te llevo en el medio de un millón de sueños</p>
+      <p class="letra-coro"><strong>3</strong> Solo una vez he tocado el paraíso con mis dedos y tbc, tbc, tbc-</p>
     </section>
 
     <!-- PRECORO 1 -->
@@ -571,7 +574,7 @@
         <span class="acorde">Am</span>
         <span class="acorde">Am</span>
       </div>
-      <p class="letra-recordatorio">Solo una vez y no hay más que ese mágico momento</p>
+      <p class="letra-coro">Solo una vez y no hay más que ese mágico momento</p>
       <p class="letra-coro">en que te besé, te besé, te besé...</p>
     </section>
 

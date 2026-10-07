@@ -1475,57 +1475,6 @@
   <script src="botones.js?v=3"></script>
   <script>
     // ══════════════════════════════════════════════════════
-    // HELPERS: BOTONES (usando MAPA_LETRAS de letras.js)
-    // ══════════════════════════════════════════════════════
-
-    function renderBotonLetra(titulo) {
-      const slug = MAPA_LETRAS[titulo];
-      if (!slug) {
-        return '<span class="btn-mini">📄 Letra</span>';
-      }
-      return `<a class="btn-mini activo" href="letras/${slug}.html" target="_blank" rel="noopener" style="text-decoration:none; border-color:#d4af37; color:#0d2818; background:#faf3e0; cursor:pointer;">📄 Letra</a>`;
-    }
-
-function renderBotonYouTube(titulo) {
-  // 1) Intentar obtener slug desde MAPA_LETRAS (si ya tiene letra)
-  let slug = MAPA_LETRAS[titulo];
-
-  // 2) Si no está en MAPA_LETRAS, generar slug automáticamente
-  if (!slug) {
-    slug = titulo
-      .toLowerCase()
-      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')  // quita acentos
-      .replace(/\s+/g, '-')                              // espacios → guiones
-      .replace(/[^a-z0-9-]/g, '');                       // quita caracteres raros
-  }
-
-  // 3) Buscar link en YOUTUBE_LINKS
-  const url = (typeof YOUTUBE_LINKS !== 'undefined') ? YOUTUBE_LINKS[slug] : '';
-  if (!url) {
-    return '<span class="btn-mini">▶ YouTube</span>';
-  }
-
-  // 4) Botón rojo activo
-  return `<a class="btn-mini activo" href="${url}" target="_blank" rel="noopener" style="text-decoration:none; border-color:#ff0000; color:#fff; background:#ff0000; cursor:pointer;">▶ YouTube</a>`;
-}
-
-function renderBotonBajo(titulo) {
-  let slug = (typeof MAPA_LETRAS !== 'undefined') ? MAPA_LETRAS[titulo] : null;
-  if (!slug) {
-    slug = titulo
-      .toLowerCase()
-      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-      .replace(/\s+/g, '-')
-      .replace(/[^a-z0-9-]/g, '');
-  }
-  const guias = (typeof GUIAS !== 'undefined') ? GUIAS[slug] : null;
-  if (!guias || !guias.includes('bajo')) {
-    return '<span class="btn-mini">🎸 Bajo</span>';
-  }
-  return `<a class="btn-mini activo" href="guias/${slug}-bajo.html" target="_blank" rel="noopener" style="text-decoration:none; border-color:#d4af37; color:#b8860b; background:#faf3e0; cursor:pointer;">🎸 Bajo</a>`;
-}
-
-    // ══════════════════════════════════════════════════════
     // BIBLIOTECA DE ICONOS
     // ══════════════════════════════════════════════════════
     const BIBLIOTECA_ICONOS = [

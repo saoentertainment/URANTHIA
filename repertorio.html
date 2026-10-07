@@ -1509,17 +1509,21 @@ function renderBotonYouTube(titulo) {
   return `<a class="btn-mini activo" href="${url}" target="_blank" rel="noopener" style="text-decoration:none; border-color:#ff0000; color:#fff; background:#ff0000; cursor:pointer;">▶ YouTube</a>`;
 }
 
-    function renderBotonBajo(titulo) {
-      const slug = MAPA_LETRAS[titulo];
-      if (!slug) {
-        return '<span class="btn-mini">🎸 Bajo</span>';
-      }
-      const guias = (typeof GUIAS !== 'undefined') ? GUIAS[slug] : null;
-      if (!guias || !guias.includes('bajo')) {
-        return '<span class="btn-mini">🎸 Bajo</span>';
-      }
-      return `<a class="btn-mini activo" href="guias/${slug}-bajo.html" target="_blank" rel="noopener" style="text-decoration:none; border-color:#d4af37; color:#0d2818; background:#faf3e0; cursor:pointer;">🎸 Bajo</a>`;
-    }
+function renderBotonBajo(titulo) {
+  let slug = (typeof MAPA_LETRAS !== 'undefined') ? MAPA_LETRAS[titulo] : null;
+  if (!slug) {
+    slug = titulo
+      .toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/[^a-z0-9-]/g, '');
+  }
+  const guias = (typeof GUIAS !== 'undefined') ? GUIAS[slug] : null;
+  if (!guias || !guias.includes('bajo')) {
+    return '<span class="btn-mini">🎸 Bajo</span>';
+  }
+  return `<a class="btn-mini activo" href="guias/${slug}-bajo.html" target="_blank" rel="noopener" style="text-decoration:none; border-color:#d4af37; color:#b8860b; background:#faf3e0; cursor:pointer;">🎸 Bajo</a>`;
+}
 
     // ══════════════════════════════════════════════════════
     // BIBLIOTECA DE ICONOS

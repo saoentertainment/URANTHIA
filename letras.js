@@ -29,3 +29,19 @@ function renderBotonYouTube(titulo) {
   }
   return `<a class="btn-mini-setlist" href="${url}" target="_blank" rel="noopener" style="text-decoration:none; border-color:#ff0000; color:#fff; background:#ff0000; cursor:pointer;">▶ YouTube</a>`;
 }
+
+// ══════════════════════════════════════════════════════
+// 🆕 NUEVA FUNCIÓN: Botón Bajo (para setlists)
+// ══════════════════════════════════════════════════════
+function renderBotonBajo(titulo, prefijo) {
+  prefijo = prefijo || '';
+  const slug = MAPA_LETRAS[titulo];
+  if (!slug) {
+    return '<span class="btn-mini-setlist">🎸 Bajo</span>';
+  }
+  const guias = (typeof GUIAS !== 'undefined') ? GUIAS[slug] : null;
+  if (!guias || !guias.includes('bajo')) {
+    return '<span class="btn-mini-setlist">🎸 Bajo</span>';
+  }
+  return `<a class="btn-mini-setlist" href="${prefijo}guias/${slug}-bajo.html" target="_blank" rel="noopener" style="text-decoration:none; border-color:#d4af37; color:#0d2818; background:#faf3e0; cursor:pointer;">🎸 Bajo</a>`;
+}

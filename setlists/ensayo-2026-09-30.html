@@ -613,7 +613,6 @@
       font-size: 1rem;
     }
 
-    /* ── OBSERVACIONES ── */
     .observaciones {
       margin-top: 36px;
       padding: 24px 28px;
@@ -669,7 +668,6 @@
       opacity: 1;
     }
 
-    /* ── INSTRUCTIVO ── */
     .instructivo {
       margin-top: 40px;
       padding: 28px 24px;
@@ -726,7 +724,6 @@
       color: #b8860b;
     }
 
-    /* ── MODALES ── */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -900,7 +897,6 @@
     }
     .aviso-copiado.show { display: block; animation: fadeIn 0.3s ease; }
 
-    /* ── BOTONES FLOTANTES ── */
     .btn-flotante {
       position: fixed;
       width: 55px;
@@ -1032,14 +1028,12 @@
       <button class="btn-accion primary" onclick="limpiarChecks()">🧹 Limpiar checks</button>
     </div>
 
-    <!-- OBSERVACIONES -->
     <section class="observaciones">
       <h2>📝 Observaciones del ensayo <span class="estado" id="estadoObservaciones">✅ Guardado</span></h2>
       <textarea id="observaciones" placeholder="Escribí acá tus observaciones, ideas, recordatorios..."></textarea>
       <div class="ayuda">Se guarda automáticamente mientras escribís.</div>
     </section>
 
-    <!-- INSTRUCTIVO -->
     <section class="instructivo" id="instructivo">
       <h2>📖 ¿Cómo se usa esta página?</h2>
 
@@ -1105,11 +1099,9 @@
 
   </div>
 
-  <!-- BOTONES FLOTANTES -->
   <button class="btn-flotante btn-abajo" id="btnAbajo" onclick="irAbajo()" title="Ir al final">⬇</button>
   <button class="btn-flotante btn-top" id="btnTop" onclick="irArriba()" title="Volver arriba">⬆</button>
 
-  <!-- MODAL AGREGAR CANCIÓN -->
   <div class="modal-overlay" id="modalAgregar">
     <div class="modal">
       <div class="modal-header">
@@ -1134,7 +1126,6 @@
     </div>
   </div>
 
-  <!-- MODAL REPORTE ENSAYO -->
   <div class="modal-overlay" id="modalReporte">
     <div class="modal" style="max-width: 600px;">
       <div class="modal-header">
@@ -1155,7 +1146,6 @@
     </div>
   </div>
 
-  <!-- MODAL REPORTE PERSONAL -->
   <div class="modal-overlay" id="modalPersonal">
     <div class="modal" style="max-width: 600px;">
       <div class="modal-header">
@@ -1182,6 +1172,9 @@
     </div>
   </div>
 
+  <script src="../youtube.js"></script>
+  <script src="../letras.js"></script>
+  <script src="../guias.js"></script>
   <script>
     const SETLIST_ID = 'ensayo-2026-09-30-fijo';
     const CANCIONES_BASE = [
@@ -1395,13 +1388,11 @@
             </div>
             ${botonEliminar}
             <div class="cancion-botones-setlist">
-              <span class="btn-mini-setlist">▶ YouTube</span>
-              ${titulo === 'LA FUERZA DEL DESTINO'
-                ? '<a class="btn-mini-setlist" href="../letras/la-fuerza-del-destino.html" target="_blank" style="text-decoration:none; border-color:#d4af37; color:#0d2818; background:#faf3e0; cursor:pointer;">📄 Letra</a>'
-                : '<span class="btn-mini-setlist">📄 Letra</span>'}
+              ${renderBotonYouTube(titulo)}
+              ${renderBotonLetra(titulo, '../')}
+              ${renderBotonBajo(titulo, '../')}
               <span class="btn-mini-setlist">🎸 Acordes</span>
               <span class="btn-mini-setlist">🎹 Piano</span>
-              <span class="btn-mini-setlist">🎸 Bajo</span>
             </div>
           </div>
         `;

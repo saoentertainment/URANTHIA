@@ -5,6 +5,7 @@ const MAPA_LETRAS = {
   'LA FUERZA DEL DESTINO': 'la-fuerza-del-destino',
   'MIRALA MIRALO': 'mirala-miralo',
   'TE BESE': 'te-bese'
+  'TE QUIERO TANTO TANTO': 'te-quiero-tanto-tanto',
   // Acá vas agregando: 'TITULO EN MAYUSCULAS': 'slug-del-archivo'
 };
 

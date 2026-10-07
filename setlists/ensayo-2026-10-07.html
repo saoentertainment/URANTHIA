@@ -1174,6 +1174,7 @@
 
   <script src="../youtube.js"></script>
   <script src="../letras.js"></script>
+  <script src="../guias.js"></script>
   <script>
     const SETLIST_ID = 'ensayo-2026-10-07-fijo';
     const CANCIONES_BASE = [
@@ -1369,9 +1370,9 @@
             <div class="cancion-botones-setlist">
               ${renderBotonYouTube(titulo)}
               ${renderBotonLetra(titulo, '../')}
+              ${renderBotonBajo(titulo, '../')}
               <span class="btn-mini-setlist">🎸 Acordes</span>
               <span class="btn-mini-setlist">🎹 Piano</span>
-              <span class="btn-mini-setlist">🎸 Bajo</span>
             </div>
           </div>
         `;

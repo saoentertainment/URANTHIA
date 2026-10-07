@@ -9,6 +9,9 @@ const YOUTUBE_LINKS = {
   "te-quiero-tanto-tanto": "https://www.youtube.com/watch?v=Y4fm-ebvAOs&list=PLliHa6XlDoITiNZdFFxBvPGxrmlzrdLLv&index=25",
   "vuela-vuela": "https://www.youtube.com/watch?v=WVJGsY6CSHo&list=PLliHa6XlDoITiNZdFFxBvPGxrmlzrdLLv&index=52",
   "no-podras": "https://www.youtube.com/watch?v=yZ8mJgcsbw8",
+  "aun": "https://www.youtube.com/watch?v=sHjUUh-cQL4",
+  "bella-señora": "https://www.youtube.com/watch?v=v_e1Yr7f6B0",  
+  "chica-de-humo": "https://www.youtube.com/watch?v=mgkV9fUeVo8",    
 };
 
 // Función helper para armar el botón

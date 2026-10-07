@@ -272,6 +272,17 @@
       font-size: 1.05rem;
     }
 
+    /* Espaciador invisible para alinear filas de acordes
+       cuando arriba hay una nota-sao que ocupa lugar */
+    .espaciador-sao {
+      visibility: hidden;
+      font-weight: 800;
+      font-size: 1.05rem;
+      padding: 1px 7px;
+      border: 1.5px dashed transparent;
+      pointer-events: none;
+    }
+    
     /* ══════════════════════════════════════════════════════
        LETRAS (recordatorios)
        - .letra-coro → verde oscuro (se canta en coro)
@@ -651,6 +662,8 @@
         <span class="acorde">Am</span>
       </div>
       <div class="linea-acordes">
+        <span class="espaciador-sao"></span>
+        <span class="espaciador-sao"></span>
         <span class="acorde">C</span>
         <span class="acorde">Bm</span>
         <span class="acorde">Em</span>

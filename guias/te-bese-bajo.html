@@ -41,10 +41,7 @@
       padding: 10px;
     }
 
-    header a {
-      display: inline-block;
-      text-decoration: none;
-    }
+    header a { display: inline-block; text-decoration: none; }
 
     header img {
       max-width: 220px;
@@ -172,12 +169,14 @@
       border-radius: 8px;
       page-break-inside: avoid;
       position: relative;
+      text-align: left;
     }
 
     .seccion p {
       margin: 4px 0;
       font-size: 1.15rem;
       font-weight: 500;
+      text-align: left;
     }
 
     .etiqueta {
@@ -213,6 +212,7 @@
       font-style: italic;
       color: #333;
       font-weight: bold;
+      text-align: left;
     }
 
     .coro-sobre-voz {
@@ -226,10 +226,27 @@
       color: #000;
     }
 
+    /* ══════════════════════════════════════════════════════
+       LÍNEA DE ACORDES
+       - Alineada a la izquierda
+       - Separación amplia entre acordes (equivalente a ~4 espacios)
+       ══════════════════════════════════════════════════════ */
+    .linea-acordes {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 22px;                /* ← separación entre acordes */
+      margin: 6px 0;
+      text-align: left;
+    }
+
     /* Acordes en general */
     .acorde {
       font-weight: 800;
       color: #000;
+      font-size: 1.15rem;
+      letter-spacing: 0.5px;
     }
 
     /* Acorde de paso (remarcado verde oscuro) */
@@ -241,6 +258,7 @@
       border-radius: 5px;
       border: 1.5px solid #0d5c2e;
       letter-spacing: 0.5px;
+      font-size: 1.15rem;
     }
 
     /* Notas personales de SAO (Y T B C, etc.) */
@@ -251,13 +269,24 @@
       padding: 1px 7px;
       border-radius: 5px;
       border: 1.5px dashed #b8860b;
+      font-size: 1.05rem;
     }
 
-    /* Recordatorio de letra (apunte) */
+    /* Recordatorio de letra común (apunte) */
     .letra-recordatorio {
       font-style: italic;
       color: #444;
       font-size: 1rem;
+      text-align: left;
+    }
+
+    /* Recordatorio de letra que se canta en CORO — verde oscuro */
+    .letra-coro {
+      font-style: italic;
+      font-weight: 700;
+      color: #0d5c2e;
+      font-size: 1rem;
+      text-align: left;
     }
 
     /* Seccion con lista */
@@ -403,12 +432,15 @@
       header h1 { font-size: 1.4rem; }
       header img { max-width: 160px; }
       .controles button { padding: 8px 12px; font-size: 0.8rem; }
+      .linea-acordes { gap: 14px; }
+      .acorde, .acorde-paso { font-size: 1rem; }
     }
 
     @media (min-width: 1200px) {
       .seccion p { font-size: 1.3rem; }
       .seccion ul li { font-size: 1.2rem; }
       header h1 { font-size: 2.2rem; }
+      .acorde, .acorde-paso { font-size: 1.3rem; }
     }
   </style>
 </head>
@@ -446,7 +478,7 @@
     <section class="seccion intro">
       <span class="etiqueta">Intro y Estrofa 1</span>
       <p class="indicacion">VOZ SYNTH //// DRUMS ////</p>
-      <p>
+      <div class="linea-acordes">
         <span class="acorde">G</span>
         <span class="acorde-paso">F#</span>
         <span class="acorde">Em</span>
@@ -454,14 +486,13 @@
         <span class="acorde">C</span>
         <span class="acorde">B</span>
         <span class="acorde">Am</span>
-      </p>
+      </div>
     </section>
 
     <!-- ESTROFA 2 -->
     <section class="seccion estrofa">
       <span class="etiqueta">Estrofa 2</span>
-      <p>
-        <strong>1️⃣</strong>
+      <div class="linea-acordes">
         <span class="acorde">G</span>
         <span class="acorde-paso">F#</span>
         <span class="acorde">Em</span>
@@ -471,8 +502,8 @@
         <span class="acorde">Am</span>
         <span class="acorde">Am</span>
         <strong>//:3</strong>
-      </p>
-      <p>
+      </div>
+      <div class="linea-acordes">
         <span class="acorde">G</span>
         <span class="acorde-paso">F#</span>
         <span class="acorde">Em</span>
@@ -480,7 +511,7 @@
         <span class="acorde">C</span>
         <span class="acorde">B</span>
         <span class="acorde">Am</span>
-      </p>
+      </div>
       <p class="letra-recordatorio"><strong>2</strong> Solo una vez y te llevo en el medio de un millón de sueños</p>
       <p class="letra-recordatorio"><strong>3</strong> Solo una vez he tocado el paraíso con mis dedos y tbc, tbc, tbc-</p>
     </section>
@@ -488,19 +519,19 @@
     <!-- PRECORO 1 -->
     <section class="seccion precoro">
       <span class="etiqueta">Precoro 1</span>
-      <p>
+      <div class="linea-acordes">
         <span class="nota-sao">Y T B C➡️</span>
         <span class="acorde">C</span>
         <span class="acorde">Bm</span>
         <span class="acorde">Am</span>
         <strong>//:2</strong>
-      </p>
+      </div>
     </section>
 
     <!-- CORO 1 -->
     <section class="seccion coro">
       <span class="etiqueta">Coro 1</span>
-      <p>
+      <div class="linea-acordes">
         <span class="acorde">C</span>
         <span class="acorde">C</span>
         <span class="acorde">G</span>
@@ -509,8 +540,8 @@
         <span class="acorde">C</span>
         <span class="acorde">G</span>
         <span class="acorde-paso">(F#)</span>
-      </p>
-      <p>
+      </div>
+      <div class="linea-acordes">
         <span class="acorde">C</span>
         <span class="acorde">C</span>
         <span class="acorde">G</span>
@@ -519,19 +550,18 @@
         <span class="acorde">C</span>
         <span class="acorde">D</span>
         <span class="acorde">D</span>
-      </p>
-      <p class="letra-recordatorio"><strong>2</strong> Y te besé, te besé, te besé, con toda el alma y la piel te besé</p>
+      </div>
+      <p class="letra-coro"><strong>2</strong> Y te besé, te besé, te besé, con toda el alma y la piel te besé</p>
     </section>
 
     <!-- ESTROFA 3 -->
     <section class="seccion estrofa">
       <span class="etiqueta">Estrofa 3</span>
-      <p>
-        <strong>2️⃣</strong>
+      <div class="linea-acordes">
         <span class="acorde">Em</span>
         <strong>//: 🔄8</strong>
-      </p>
-      <p>
+      </div>
+      <div class="linea-acordes">
         <span class="acorde">Em</span>
         <span class="acorde">Bm</span>
         <span class="acorde">Em</span>
@@ -540,15 +570,15 @@
         <span class="acorde">B</span>
         <span class="acorde">Am</span>
         <span class="acorde">Am</span>
-      </p>
+      </div>
       <p class="letra-recordatorio">Solo una vez y no hay más que ese mágico momento</p>
-      <p class="letra-recordatorio">en que te besé, te besé, te besé...</p>
+      <p class="letra-coro">en que te besé, te besé, te besé...</p>
     </section>
 
     <!-- CORO 2 -->
     <section class="seccion coro">
       <span class="etiqueta">Coro 2</span>
-      <p>
+      <div class="linea-acordes">
         <span class="acorde">C</span>
         <span class="acorde">C</span>
         <span class="acorde">G</span>
@@ -557,8 +587,8 @@
         <span class="acorde">C</span>
         <span class="acorde">G</span>
         <span class="acorde-paso">(F#)</span>
-      </p>
-      <p>
+      </div>
+      <div class="linea-acordes">
         <span class="acorde">C</span>
         <span class="acorde">C</span>
         <span class="acorde">G</span>
@@ -567,25 +597,25 @@
         <span class="acorde">C</span>
         <span class="acorde">D</span>
         <span class="acorde">D</span>
-      </p>
+      </div>
     </section>
 
     <!-- PRECORO 2 -->
     <section class="seccion precoro">
       <span class="etiqueta">Precoro 2</span>
-      <p>
+      <div class="linea-acordes">
         <span class="nota-sao">Y T B C➡️</span>
         <span class="acorde">C</span>
         <span class="acorde">Bm</span>
         <span class="acorde">Am</span>
         <strong>//:2</strong>
-      </p>
+      </div>
     </section>
 
     <!-- CORO 3 -->
     <section class="seccion coro">
       <span class="etiqueta">Coro 3</span>
-      <p>
+      <div class="linea-acordes">
         <span class="acorde">C</span>
         <span class="acorde">C</span>
         <span class="acorde">G</span>
@@ -594,8 +624,8 @@
         <span class="acorde">C</span>
         <span class="acorde">G</span>
         <span class="acorde-paso">(F#)</span>
-      </p>
-      <p>
+      </div>
+      <div class="linea-acordes">
         <span class="acorde">C</span>
         <span class="acorde">C</span>
         <span class="acorde">G</span>
@@ -604,24 +634,24 @@
         <span class="acorde">C</span>
         <span class="acorde">D</span>
         <span class="acorde">D</span>
-      </p>
+      </div>
     </section>
 
     <!-- FINAL -->
     <section class="seccion outro">
       <span class="etiqueta">Final</span>
-      <p>
+      <div class="linea-acordes">
         <span class="nota-sao">Y T B C</span>
         <span class="acorde-paso">➡️</span>
         <span class="acorde">C</span>
         <span class="acorde">Bm</span>
         <span class="acorde">Am</span>
-      </p>
-      <p>
+      </div>
+      <div class="linea-acordes">
         <span class="acorde">C</span>
         <span class="acorde">Bm</span>
         <span class="acorde">Em</span>
-      </p>
+      </div>
     </section>
 
   </main>
@@ -638,7 +668,7 @@
       <li><span class="muestra" style="background-color:#f9a8d4;"></span> Final / Outro</li>
     </ul>
     <p style="margin-top:15px; font-size:0.9rem; color:#ddd; text-align:center; line-height:1.7;">
-      🟢 Los <strong style="color:#0d5c2e;">acordes de paso</strong> van remarcados en verde oscuro.<br>
+      🟢 Los <strong style="color:#0d5c2e;">acordes de paso</strong> y las <strong style="color:#0d5c2e;">letras de coro</strong> van remarcados en verde oscuro.<br>
       🟡 Las <strong style="color:#b8860b;">notas personales de SAO</strong> (ej: Y T B C) van con borde dorado punteado.
     </p>
   </section>

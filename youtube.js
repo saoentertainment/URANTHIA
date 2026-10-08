@@ -10,8 +10,17 @@ const YOUTUBE_LINKS = {
   "vuela-vuela": "https://www.youtube.com/watch?v=WVJGsY6CSHo&list=PLliHa6XlDoITiNZdFFxBvPGxrmlzrdLLv&index=52",
   "no-podras": "https://www.youtube.com/watch?v=yZ8mJgcsbw8",
   "aun": "https://www.youtube.com/watch?v=sHjUUh-cQL4",
-  "bella-señora": "https://www.youtube.com/watch?v=v_e1Yr7f6B0",  
+  "bella-senora": "https://www.youtube.com/watch?v=v_e1Yr7f6B0",  
   "chica-de-humo": "https://www.youtube.com/watch?v=mgkV9fUeVo8",    
+  "baila": "https://www.youtube.com/watch?v=YnHNiQjcM_4",    
+  "chicas-cocodrilo": "https://www.youtube.com/watch?v=uHd9r0LHli8",    
+  "no-voy-en-tren": "https://www.youtube.com/watch?v=uHd9r0LHli8&t=2m28s", 
+  "en-algun-lugar": "https://www.youtube.com/watch?v=uHd9r0LHli8&t=4m01s",    
+  "viviendo-de-noche": "https://www.youtube.com/watch?v=uHd9r0LHli8&t=5m38s", 
+  "muralla": "https://www.youtube.com/watch?v=uHd9r0LHli8&t=7m26s",   
+  "visita-nuestro-bar": "https://www.youtube.com/watch?v=uHd9r0LHli8&t=9m15s", 
+  "persiana-americana": "https://www.youtube.com/watch?v=uHd9r0LHli8&t=11m15s",   
+  "no-huyas-de-mi": "https://www.youtube.com/watch?v=uHd9r0LHli8&t=14m10s",   
 };
 
 // Función helper para armar el botón

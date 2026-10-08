@@ -21,6 +21,12 @@ const YOUTUBE_LINKS = {
   "visita-nuestro-bar": "https://www.youtube.com/watch?v=uHd9r0LHli8&t=9m15s", 
   "persiana-americana": "https://www.youtube.com/watch?v=uHd9r0LHli8&t=11m15s",   
   "no-huyas-de-mi": "https://www.youtube.com/watch?v=uHd9r0LHli8&t=14m10s",   
+  "ni-tu-ni-nadie": "https://www.youtube.com/watch?v=sH5ROBxWZyw",
+  "es-por-amor": "https://www.youtube.com/watch?v=xN9Ssf-1u8Q",
+  "cuando-seas-grande": "guitarras-blancas": "https://www.youtube.com/watch?v=YEhRTovQwm4",
+  "no-puedo-estar-sin-ti": "https://www.youtube.com/watch?v=lJe-5JXgQco",
+  "dejame-entrar": "https://www.youtube.com/watch?v=7gKV1h_gFp4",
+  "viento": "https://www.youtube.com/watch?v=T8TtE-enslA",
 };
 
 // Función helper para armar el botón

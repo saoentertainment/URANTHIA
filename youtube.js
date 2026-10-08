@@ -27,7 +27,10 @@ const YOUTUBE_LINKS = {
   "guitarras-blancas": "https://www.youtube.com/watch?v=YEhRTovQwm4",
   "no-puedo-estar-sin-ti": "https://www.youtube.com/watch?v=lJe-5JXgQco",
   "dejame-entrar": "https://www.youtube.com/watch?v=7gKV1h_gFp4",
-  "viento": "https://www.youtube.com/watch?v=T8TtE-enslA"
+  "viento": "https://www.youtube.com/watch?v=T8TtE-enslA",
+  "eternamente-bella": "https://www.youtube.com/watch?v=9Muiws78y5A",  
+  "ado": "https://www.youtube.com/watch?v=K4uZhFb4E4s",  
+  "triste-cancion-de-amor": "https://www.youtube.com/watch?v=KNeLqABYNFQ",    
 };
 
 // Función helper para armar el botón

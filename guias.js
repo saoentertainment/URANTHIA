@@ -22,6 +22,7 @@ const GUIAS = {
   // Acá vas agregando las guías:
   "te-bese": ["bajo"],
   "te-quiero-tanto-tanto": ["bajo"],
+  "vuela-vuela": ["bajo"],
 
   // Ejemplos (descomentá cuando tengas los archivos):
   // "mirala-miralo": ["bajo"],

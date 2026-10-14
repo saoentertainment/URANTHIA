@@ -23,6 +23,7 @@ const GUIAS = {
   "te-bese": ["bajo"],
   "te-quiero-tanto-tanto": ["bajo"],
   "vuela-vuela": ["bajo"],
+  "la-fuerza-del-destino": ["bajo"],
 
   // Ejemplos (descomentá cuando tengas los archivos):
   // "mirala-miralo": ["bajo"],

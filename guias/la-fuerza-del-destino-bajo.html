@@ -228,8 +228,6 @@
 
     /* ══════════════════════════════════════════════════════
        LÍNEA DE ACORDES
-       - Alineada a la izquierda
-       - Separación amplia entre acordes (equivalente a ~4 espacios)
        ══════════════════════════════════════════════════════ */
     .linea-acordes {
       display: flex;
@@ -294,6 +292,78 @@
       color: #333;
       font-weight: 700;
       font-size: 1rem;
+    }
+
+    /* ══════════════════════════════════════════════════════
+       MEDLEY — Títulos en naranja holandés
+       ══════════════════════════════════════════════════════ */
+    .etiqueta-medley {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+      background: #FF6600;
+      color: #ffffff;
+      border: 2px solid #CC5200;
+      box-shadow: 0 2px 8px rgba(255, 102, 0, 0.4);
+    }
+
+    /* Fondos suaves por canción del medley */
+    .medley-muralla   { background-color: #ececec; }   /* Gris clarito */
+    .medley-visita    { background-color: #ffe5cc; }   /* Durazno suave */
+    .medley-persiana  { background-color: #fff2cc; }   /* Crema suave */
+    .medley-nohuyas   { background-color: #e6d9f0; }   /* Lavanda suave */
+    .medley-chicas    { background-color: #ffd9e6; }   /* Rosa suave */
+    .medley-novoy     { background-color: #d9e6f2; }   /* Celeste suave */
+    .medley-enalgun   { background-color: #d9f2e6; }   /* Menta suave */
+    .medley-viviendo  { background-color: #ffd9cc; }   /* Coral suave */
+
+    /* Líneas especiales dentro de secciones del medley */
+    .linea-rosa {
+      background-color: rgba(255, 153, 187, 0.45);
+      border-radius: 6px;
+      padding: 6px 14px;
+      margin: 4px 0;
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .linea-amarilla {
+      background-color: rgba(255, 217, 102, 0.55);
+      border-radius: 6px;
+      padding: 6px 14px;
+      margin: 4px 0;
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .linea-celeste {
+      background-color: rgba(173, 216, 230, 0.55);
+      border-radius: 6px;
+      padding: 6px 14px;
+      margin: 4px 0;
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 22px;
+    }
+
+    /* Separador visual entre canciones del medley */
+    .separador-medley {
+      text-align: center;
+      margin: 30px 0 20px 0;
+      color: #d4af37;
+      font-size: 1.5rem;
+      letter-spacing: 8px;
+      opacity: 0.6;
     }
 
     /* Seccion con lista */
@@ -441,6 +511,7 @@
       .controles button { padding: 8px 12px; font-size: 0.8rem; }
       .linea-acordes { gap: 14px; }
       .acorde, .acorde-paso { font-size: 1rem; }
+      .linea-rosa, .linea-amarilla, .linea-celeste { gap: 14px; }
     }
 
     @media (min-width: 1200px) {
@@ -648,6 +719,126 @@
       </div>
     </section>
 
+    <!-- ══════════════════════════════════════════════════════ -->
+    <!-- MEDLEY — Continuación con otras canciones           -->
+    <!-- ══════════════════════════════════════════════════════ -->
+
+    <div class="separador-medley">✦ ✦ ✦</div>
+
+    <!-- MEDLEY 1: CHICAS COCODRILO -->
+    <section class="seccion medley-chicas">
+      <span class="etiqueta-medley">CHICAS COCODRILO</span>
+      <div class="linea-acordes">
+        <span class="acorde">A</span>
+        <span class="acorde">E</span>
+        <span class="acorde-paso">F#</span>
+        <span class="acorde">(D)</span>
+      </div>
+      <div class="linea-acordes">
+        <span class="acorde">B</span>
+        <span class="acorde">A</span>
+        <span class="acorde">B</span>
+        <span class="acorde">D</span>
+      </div>
+      <div class="linea-rosa">
+        <span class="acorde">A</span>
+        <span class="acorde">E</span>
+        <span class="acorde-paso">F#</span>
+        <span class="acorde">B</span>
+        <span class="acorde">~~</span>
+        <span class="acorde-paso">e</span>
+      </div>
+      <div class="linea-rosa">
+        <span class="acorde">A</span>
+        <span class="acorde">E</span>
+        <span class="acorde-paso">F#</span>
+        <span class="acorde">B</span>
+        <span class="acorde">D</span>
+        <span class="acorde-paso">e</span>
+      </div>
+      <div class="linea-amarilla">
+        <span class="acorde-paso">F#</span>
+        <span class="acorde">A</span>
+        <span class="acorde-paso">F#</span>
+        <span class="acorde-paso">C#</span>
+      </div>
+    </section>
+
+    <!-- MEDLEY 2: NO VOY EN TREN -->
+    <section class="seccion medley-novoy">
+      <span class="etiqueta-medley">NO VOY EN TREN</span>
+      <div class="linea-celeste">
+        <span class="acorde-paso">Am</span>
+        <span class="acorde">D</span>
+      </div>
+      <div class="linea-acordes">
+        <span class="acorde">F</span>
+        <span class="acorde-paso">G</span>
+        <span class="acorde">A</span>
+        <span class="acorde">D</span>
+        <span class="acorde">/</span>
+        <span class="acorde">F</span>
+        <span class="acorde-paso">G</span>
+        <span class="acorde">A</span>
+        <span class="acorde">E</span>
+      </div>
+    </section>
+
+    <!-- MEDLEY 3: EN ALGUN LUGAR -->
+    <section class="seccion medley-enalgun">
+      <span class="etiqueta-medley">EN ALGUN LUGAR</span>
+      <div class="linea-acordes">
+        <span class="acorde-paso">g</span>
+        <span class="acorde-paso">f#</span>
+        <span class="acorde-paso">e</span>
+        <span class="acorde">B</span>
+        <span class="acorde">C</span>
+        <span class="acorde">C</span>
+        <span class="acorde">C</span>
+      </div>
+      <div class="linea-acordes">
+        <span class="acorde-paso">G</span>
+        <span class="acorde">D</span>
+        <span class="acorde">A</span>
+        <span class="acorde">C</span>
+      </div>
+    </section>
+
+    <!-- MEDLEY 4: VIVIENDO DE NOCHE (solo título) -->
+    <section class="seccion medley-viviendo">
+      <span class="etiqueta-medley">VIVIENDO DE NOCHE</span>
+    </section>
+
+    <!-- MEDLEY 5: LA MURALLA (solo título) -->
+    <section class="seccion medley-muralla">
+      <span class="etiqueta-medley">LA MURALLA</span>
+    </section>
+
+    <!-- MEDLEY 6: VISITA NUESTRO BAR -->
+    <section class="seccion medley-visita">
+      <span class="etiqueta-medley">VISITA NUESTRO BAR</span>
+      <div class="linea-acordes">
+        <span class="acorde">A</span>
+        <span class="acorde">/</span>
+        <span class="acorde-paso">C#</span>
+        <span class="acorde-paso">f#</span>
+        <span class="acorde-paso">C#</span>
+        <span class="acorde-paso">f#</span>
+        <span class="acorde">B</span>
+        <span class="acorde-paso">e</span>
+      </div>
+    </section>
+
+    <!-- MEDLEY 7: PERSIANA AMERICANA (solo título) -->
+    <section class="seccion medley-persiana">
+      <span class="etiqueta-medley">PERSIANA AMERICANA</span>
+    </section>
+
+    <!-- MEDLEY 8: NO HUYAS DE MI (solo título) -->
+    <section class="seccion medley-nohuyas">
+      <span class="etiqueta-medley">NO HUYAS DE MI</span>
+    </section>
+
   </main>
 
   <!-- LEYENDA DE SECCIONES -->
@@ -662,8 +853,8 @@
       <li><span class="muestra" style="background-color:#f9a8d4;"></span> Final / Outro</li>
     </ul>
     <p style="margin-top:15px; font-size:0.9rem; color:#ddd; text-align:center; line-height:1.7;">
+      🟧 Las canciones del <strong style="color:#FF6600;">MEDLEY</strong> van con título naranja y fondo suave.<br>
       🟢 Los <strong style="color:#0d5c2e;">acordes de paso</strong> van remarcados en verde oscuro.<br>
-      🥁🎵🎤 Los emojis indican el <strong>instrumento</strong> de la sección.<br>
       🔴 La etiqueta <strong style="color:#ff0000;">🚫 STOP</strong> marca un corte seco.
     </p>
   </section>
@@ -694,7 +885,7 @@
   </section>
 
   <footer>
-    <p><strong>Uranthia</strong> · Guía SAO de Bajo — "LA FUERZA DEL DESTINO" | Apuntes de SAO</p>
+    <p><strong>Uranthia</strong> · Guía SAO de Bajo — "LA FUERZA DEL DESTINO" + MEDLEY | Apuntes de SAO</p>
     <p>Etiqueta: <strong>URANTHIA · GUÍA SAO</strong></p>
   </footer>
 

@@ -650,6 +650,13 @@
       <strong>💡 Recordá:</strong> los setlists armados desde <span class="archivo">repertorio.html</span> viven en el <strong>localStorage</strong> de tu navegador. Para que TODOS los vean, hay que pasarlos al HTML.
     </div>
 
+    <div class="novedad">
+      <strong>⌨️ ¿Cómo abrir la consola del navegador?</strong><br>
+      Presioná <strong>Ctrl + Shift + I</strong> (la tecla <strong>Shift</strong> es la que tiene la flecha <strong>⬆</strong> arriba) al mismo tiempo.<br>
+      También podés usar: <strong>F12</strong> · o <strong>clic derecho → Inspeccionar → pestaña "Console"</strong>.<br>
+      <span style="font-size: 0.85rem; opacity: 0.85;">⚠️ Solo funciona en navegadores de escritorio (Chrome, Edge, Firefox). En celular no se puede.</span>
+    </div>
+
     <table>
       <thead>
         <tr>
@@ -670,20 +677,80 @@
         </tr>
         <tr>
           <td class="num">2</td>
-          <td>Extraer los datos desde localStorage</td>
-          <td>Consola del navegador (F12)</td>
+          <td>Abrir la consola del navegador</td>
+          <td>Navegador de escritorio</td>
           <td>
-            Pegar este script (cambiando el ID):
-            <span class="codigo">const ID = 'ensayo-2026-XX-XX-XXXXXXXXX';
-const s = JSON.parse(localStorage.getItem('uranthia-setlists') || '[]').find(x => x.id === ID);
-console.log(JSON.stringify(s, null, 2));
-copy(JSON.stringify(s, null, 2));</span>
+            Presionar <strong>Ctrl + Shift + I</strong> (o <strong>F12</strong>) → ir a la pestaña <strong>"Console"</strong>.<br>
+            <span style="font-size: 0.78rem; color: #6b7a6b; font-style: italic;">La tecla Shift tiene la flecha ⬆ arriba. Sirve para mayúsculas también.</span>
             <span class="tag tag-obligatorio">Obligatorio</span>
-            <span class="tag tag-auto">Devuelve JSON</span>
           </td>
         </tr>
         <tr>
           <td class="num">3</td>
+          <td>Pegar el extractor universal</td>
+          <td>Consola del navegador</td>
+          <td>
+            Pegar este script (funciona para TODOS los setlists, no hay que cambiar el ID):
+            <span class="codigo">(function() {
+  const STORAGE_KEY = 'uranthia-setlists';
+  const setlists = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+  if (setlists.length === 0) {
+    console.error('❌ No hay setlists guardados.');
+    return;
+  }
+  console.table(setlists.map((s, i) => ({
+    '#': i + 1, 'ID': s.id, 'Nombre': s.nombre,
+    'Fecha': s.fecha, 'Canciones': s.canciones.length
+  })));
+  let setlist;
+  if (setlists.length === 1) {
+    setlist = setlists[0];
+  } else {
+    const opciones = setlists.map((s, i) =>
+      `${i + 1}. ${s.nombre} (${s.fecha})`).join('\n');
+    const eleccion = prompt(
+      `¿Cuál setlist extraer?\n\n${opciones}\n\nNúmero:`);
+    const idx = parseInt(eleccion, 10) - 1;
+    if (isNaN(idx) || idx < 0 || idx >= setlists.length) return;
+    setlist = setlists[idx];
+  }
+  const canciones = setlist.canciones.map(c => {
+    if (c.titulo) return c.titulo;
+    const partes = c.key.split('|');
+    return partes[partes.length - 1] || 'Sin título';
+  });
+  const objetoFijo = {
+    id: `setlists/${setlist.id}.html`,
+    tipo: setlist.tipo || 'ensayo',
+    nombre: setlist.nombre || `Ensayo del ${setlist.fecha}`,
+    fecha: setlist.fecha,
+    horario: setlist.horario || '',
+    lugar: setlist.lugar || '',
+    canciones: canciones.length,
+    esFijo: true,
+    _cancionesDetalle: canciones,
+    _notas: setlist.notas || '',
+    _creado: setlist.creado || ''
+  };
+  console.log(JSON.stringify(objetoFijo, null, 2));
+  copy(JSON.stringify(objetoFijo, null, 2));
+})();</span>
+            <span class="tag tag-obligatorio">Obligatorio</span>
+            <span class="tag tag-auto">Copia automática</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="num">4</td>
+          <td>Copiar el objeto JSON</td>
+          <td>Consola del navegador</td>
+          <td>
+            El script te muestra el objeto en pantalla y lo <strong>copia solo al portapapeles</strong>.<br>
+            Si tenés varios setlists, te va a preguntar cuál querés por número.<br>
+            <span style="font-size: 0.78rem; color: #6b7a6b; font-style: italic;">En la consola aparece un JSON con id, tipo, nombre, fecha, horario, lugar, canciones, etc.</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="num">5</td>
           <td>Crear el HTML del setlist fijo</td>
           <td><span class="archivo">setlists/nombre-del-setlist.html</span></td>
           <td>
@@ -692,11 +759,11 @@ copy(JSON.stringify(s, null, 2));</span>
           </td>
         </tr>
         <tr>
-          <td class="num">4</td>
+          <td class="num">6</td>
           <td>Agregar el objeto a los fijos</td>
           <td><span class="archivo">index.html</span></td>
           <td>
-            Buscar <span class="archivo">SETLISTS_FIJOS</span> y agregar un objeto nuevo antes del <strong>];</strong>:
+            Buscar <span class="archivo">SETLISTS_FIJOS</span> y pegar el objeto copiado antes del <strong>];</strong>:
             <span class="codigo">{
   id: 'setlists/ensayo-2026-XX-XX.html',
   tipo: 'ensayo',
@@ -704,14 +771,14 @@ copy(JSON.stringify(s, null, 2));</span>
   fecha: '2026-XX-XX',
   horario: '21:00',
   lugar: 'CASA ATZY-SANTI',
-  canciones: 26,
+  canciones: XX,
   esFijo: true
 },</span>
             <span class="tag tag-obligatorio">Obligatorio</span>
           </td>
         </tr>
         <tr>
-          <td class="num">5</td>
+          <td class="num">7</td>
           <td>Subir todo a GitHub</td>
           <td>—</td>
           <td>Subir el HTML nuevo (dentro de <span class="archivo">setlists/</span>) y el <span class="archivo">index.html</span> modificado. Esperar 1-3 min. Ctrl + F5.</td>
@@ -721,8 +788,9 @@ copy(JSON.stringify(s, null, 2));</span>
 
     <div class="novedad">
       <strong>✅ Resultado:</strong> el setlist aparece en el portal para <strong>todos los usuarios</strong>, no solo en tu navegador.<br>
-      <strong>📝 Ejemplo:</strong> <span class="codigo">id: 'setlists/ensayo-2026-10-14.html'</span> + archivo <span class="archivo">setlists/ensayo-2026-10-14.html</span><br>
-      <strong>⚠️ OJO:</strong> Si el <strong>id</strong> del objeto no coincide con el nombre del archivo → 404.
+      <strong>📝 Ejemplo:</strong> <span class="codigo">id: 'setlists/ensayo-2026-10-21.html'</span> + archivo <span class="archivo">setlists/ensayo-2026-10-21.html</span><br>
+      <strong>⚠️ OJO:</strong> Si el <strong>id</strong> del objeto no coincide con el nombre del archivo → 404.<br>
+      <strong>💡 Tip:</strong> ¿No aparece nada en la consola? Asegurate de estar en el <strong>mismo navegador</strong> donde armaste el setlist (el localStorage es por navegador).
     </div>
 
     <!-- ══════════════════════════════════════════════ -->

@@ -31,6 +31,7 @@ const YOUTUBE_LINKS = {
   "eternamente-bella": "https://www.youtube.com/watch?v=9Muiws78y5A",  
   "ado": "https://www.youtube.com/watch?v=K4uZhFb4E4s",  
   "triste-cancion-de-amor": "https://www.youtube.com/watch?v=KNeLqABYNFQ",    
+  "formas-de-amor": "https://youtu.be/AVy21XudwvI",      
 };
 
 // Función helper para armar el botón

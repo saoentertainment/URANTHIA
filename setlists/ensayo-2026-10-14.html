@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3er Ensayo · 14 Oct 2026 · Uranthia</title>
+
+  <link rel="icon" type="image/png" href="../logo-uranthia.png" />
+  <link rel="apple-touch-icon" href="../logo-uranthia.png" />
+  <meta name="description" content="3er Ensayo para el evento del 28 de noviembre 2026 — Uranthia y su Corazón Latino." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Uranthia · 3er Ensayo 14 Oct 2026" />
+  <meta property="og:description" content="Setlist del 3er ensayo para el evento del 28 de noviembre 2026." />
+  <meta property="og:image" content="https://saoentertainment.github.io/URANTHIA/preview-whatsapp.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://saoentertainment.github.io/URANTHIA/setlists/ensayo-2026-10-14-1792094574157.html" />
+  <meta property="og:site_name" content="Uranthia · Corazón Latino" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Uranthia · 3er Ensayo 14 Oct 2026" />
+  <meta name="twitter:description" content="Setlist del 3er ensayo para el evento del 28 de noviembre 2026." />
+  <meta name="twitter:image" content="https://saoentertainment.github.io/URANTHIA/preview-whatsapp.jpg" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --fondo: linear-gradient(135deg, #0d2818 0%, #1a3d2a 50%, #0d2818 100%);
+      --card-bg: #ffffff;
+      --card-texto: #0d2818;
+      --card-sub: #6b7a6b;
+      --borde: rgba(212, 175, 55, 0.30);
+      --dorado: #d4af37;
+      --dorado-suave: #f5d76e;
+      --verde-wa: #25D366;
+      --verde-wa-osc: #128C7E;
+      --rojo-manual: #e63946;
+      --sombra: rgba(0, 0, 0, 0.55);
+    }
+
+    body.modo-show {
+      --fondo: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%);
+      --card-bg: #0a0a0a;
+      --card-texto: #f5d76e;
+      --card-sub: #d4af37;
+      --borde: rgba(212, 175, 55, 0.55);
+      --sombra: rgba(212, 175, 55, 0.20);
+    }
+
+    body.modo-dia {
+      --fondo: linear-gradient(135deg, #e8f0e8 0%, #f0f5f0 50%, #e8f0e8 100%);
+      --card-bg: #ffffff;
+      --card-texto: #0d2818;
+      --card-sub: #6b7a6b;
+      --borde: rgba(212, 175, 55, 0.40);
+      --sombra: rgba(0, 0, 0, 0.15);
+    }
+
+    body {
+      background: var(--fondo);
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      padding: 30px 20px;
+      color: var(--card-texto);
+      transition: background 0.4s ease;
+    }
+
+    .card {
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border-radius: 36px;
+      padding: 38px 38px 32px;
+      box-shadow: 0 25px 60px var(--sombra), 0 0 0 2px var(--borde);
+      border: 1px solid var(--borde);
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
+      border-radius: 28px;
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 30px rgba(13, 40, 24, 0.40), inset 0 1px 0 rgba(212, 175, 55, 0.15);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .logo-img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #d4af37;
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35), 0 0 0 4px rgba(212, 175, 55, 0.10);
+      flex-shrink: 0;
+      background: #0d2818;
+      position: relative;
+      z-index: 1;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .logo-img:hover { transform: scale(1.05); }
+
+    .header-text { flex: 1; min-width: 200px; position: relative; z-index: 1; }
+    .header-text .band-name {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 1.7rem;
+      font-weight: 900;
+      color: #d4af37;
+      letter-spacing: 1.5px;
+      line-height: 1.1;
+      text-transform: uppercase;
+      text-shadow: 0 2px 8px rgba(212, 175, 55, 0.30);
+    }
+    .header-text .band-sub {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: #f5e6c8;
+      letter-spacing: 0.5px;
+    }
+    .header-text .tagline {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #0d2818;
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      padding: 4px 16px;
+      border-radius: 30px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ── MODO SELECTOR ── */
+    .modo-selector {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .modo-btn {
+      background: var(--card-bg);
+      border: 2px solid var(--borde);
+      color: var(--card-texto);
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 8px 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .modo-btn:hover { border-color: var(--dorado); background: #faf3e0; color: #0d2818; }
+    .modo-btn.active {
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      color: #0d2818;
+      border-color: #0d2818;
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.40);
+    }
+
+    /* ── INFO DEL SETLIST ── */
+    .info-setlist {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+    .info-setlist h1 {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 1.9rem;
+      font-weight: 900;
+      color: var(--card-texto);
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+    .info-setlist h1 .gold {
+      background: linear-gradient(135deg, #b8860b 0%, #d4af37 50%, #f5d76e 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .info-setlist .subtitulo {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      color: var(--card-sub);
+      font-style: italic;
+    }
+    .info-setlist .subtitulo span {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* ── BARRA DE PROGRESO DOBLE ── */
+    .progreso-container {
+      background: rgba(212, 175, 55, 0.08);
+      border-radius: 20px;
+      padding: 18px 22px;
+      margin-bottom: 22px;
+      border: 1px solid var(--borde);
+    }
+    .progreso-fila {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .progreso-fila:last-child { margin-bottom: 0; }
+    .progreso-label {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--card-texto);
+      min-width: 120px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .progreso-barra {
+      flex: 1;
+      height: 14px;
+      background: rgba(13, 40, 24, 0.10);
+      border-radius: 30px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid var(--borde);
+    }
+    .progreso-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 30px;
+      transition: width 0.4s ease;
+      position: relative;
+    }
+    .progreso-fill.dorado {
+      background: linear-gradient(90deg, #b8860b 0%, #d4af37 50%, #f5d76e 100%);
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.50);
+    }
+    .progreso-fill.verde {
+      background: linear-gradient(90deg, #128C7E 0%, #25D366 100%);
+      box-shadow: 0 0 12px rgba(37, 211, 102, 0.50);
+    }
+    .progreso-porcentaje {
+      font-size: 0.85rem;
+      font-weight: 900;
+      color: var(--card-texto);
+      min-width: 55px;
+      text-align: right;
+      font-family: 'Courier New', monospace;
+    }
+
+    /* ── STATS ── */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+    .stat {
+      background: var(--card-bg);
+      border: 2px solid var(--borde);
+      border-radius: 14px;
+      padding: 12px 10px;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+    .stat:hover { border-color: var(--dorado); }
+    .stat .num {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--dorado);
+      line-height: 1;
+    }
+    .stat .lbl {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--card-sub);
+      margin-top: 4px;
+    }
+
+    /* ── BOTONES DE ACCIÓN ── */
+    .acciones-top {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+    .btn-accion {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 800;
+      padding: 9px 16px;
+      border-radius: 30px;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+      transition: all 0.2s ease;
+      border: 2px solid transparent;
+      background: var(--card-bg);
+      color: var(--card-texto);
+      border-color: var(--borde);
+      text-decoration: none;
+    }
+    .btn-accion:hover { border-color: var(--dorado); transform: translateY(-2px); }
+    .btn-accion.dorado {
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      color: #0d2818;
+      border-color: #0d2818;
+    }
+    .btn-accion.dorado:hover { box-shadow: 0 6px 16px rgba(212, 175, 55, 0.45); }
+    .btn-accion.verde {
+      background: linear-gradient(135deg, #128C7E 0%, #25D366 100%);
+      color: #ffffff;
+      border-color: #128C7E;
+    }
+    .btn-accion.verde:hover { box-shadow: 0 6px 16px rgba(37, 211, 102, 0.45); }
+    .btn-accion.rojo {
+      background: linear-gradient(135deg, #8b0000 0%, #e63946 100%);
+      color: #ffffff;
+      border-color: #8b0000;
+    }
+    .btn-accion.rojo:hover { box-shadow: 0 6px 16px rgba(230, 57, 70, 0.45); }
+    .btn-accion.azul {
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      color: #ffffff;
+      border-color: #1e3a8a;
+    }
+    .btn-accion.azul:hover { box-shadow: 0 6px 16px rgba(59, 130, 246, 0.45); }
+
+    /* ── LISTA DE CANCIONES ── */
+    .canciones-lista {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+    .cancion-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--card-bg);
+      border-radius: 14px;
+      padding: 12px 16px;
+      border: 1px solid var(--borde);
+      border-left: 4px solid var(--dorado);
+      transition: all 0.2s ease;
+    }
+    .cancion-item:hover {
+      border-left-color: #0d2818;
+      box-shadow: 0 4px 12px rgba(13, 40, 24, 0.08);
+    }
+    .cancion-num {
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      font-weight: 900;
+      color: var(--card-sub);
+      min-width: 26px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .cancion-titulo {
+      flex: 1;
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--card-texto);
+      line-height: 1.3;
+      min-width: 0;
+      word-wrap: break-word;
+    }
+    .cancion-titulo .badge-nueva {
+      display: inline-block;
+      font-size: 0.6rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #e63946 0%, #ff6b6b 100%);
+      color: #ffffff;
+      padding: 2px 8px;
+      border-radius: 30px;
+      margin-left: 8px;
+      letter-spacing: 0.5px;
+      vertical-align: middle;
+      border: 1px solid #8b0000;
+    }
+    .cancion-checks {
+      display: flex;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .check-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      border: 2px solid var(--dorado);
+      background: var(--card-bg);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      font-size: 0.9rem;
+      font-weight: 900;
+      line-height: 1;
+      padding: 0;
+    }
+    .check-btn:hover { transform: scale(1.10); box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.20); }
+    .check-btn.dorado.checked {
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      border-color: #0d2818;
+      color: #0d2818;
+    }
+    .check-btn.verde { border-color: var(--verde-wa); }
+    .check-btn.verde.checked {
+      background: linear-gradient(135deg, #128C7E 0%, #25D366 100%);
+      border-color: #0d2818;
+      color: #ffffff;
+    }
+
+    /* ── OBSERVACIONES ── */
+    .observaciones {
+      margin-top: 22px;
+      padding: 20px 22px;
+      background: rgba(212, 175, 55, 0.06);
+      border-radius: 18px;
+      border: 1px solid var(--borde);
+    }
+    .observaciones h3 {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--card-texto);
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .observaciones textarea {
+      width: 100%;
+      min-height: 90px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 2px solid var(--borde);
+      background: var(--card-bg);
+      color: var(--card-texto);
+      font-family: inherit;
+      font-size: 0.9rem;
+      resize: vertical;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    .observaciones textarea:focus {
+      border-color: var(--dorado);
+      box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.20);
+    }
+    .observaciones .guardado {
+      margin-top: 8px;
+      font-size: 0.72rem;
+      color: var(--card-sub);
+      font-style: italic;
+      text-align: right;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .observaciones .guardado.visible { opacity: 1; }
+
+    /* ── FOOTER ── */
+    .footer {
+      margin-top: 26px;
+      padding-top: 20px;
+      border-top: 2px solid var(--borde);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      text-align: center;
+    }
+    .footer-credits {
+      font-size: 0.85rem;
+      color: #0d2818;
+      font-weight: 600;
+      background: linear-gradient(135deg, #f5e6c8 0%, #faf3e0 100%);
+      padding: 8px 22px;
+      border-radius: 30px;
+      border: 1px solid var(--borde);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .footer-credits .names { font-weight: 800; color: #b8860b; }
+    .footer-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #d4af37;
+      background: #0d2818;
+      padding: 5px 18px;
+      border-radius: 30px;
+      text-transform: uppercase;
+      border: 1px solid var(--borde);
+    }
+
+    .acciones-finales {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+
+    /* ── AVISO ── */
+    .aviso {
+      display: none;
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
+      color: #d4af37;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.50);
+      border: 2px solid #d4af37;
+      z-index: 3000;
+      max-width: 90%;
+      text-align: center;
+    }
+    .aviso.show { display: block; animation: fadeIn 0.3s ease; }
+
+    /* ── BOTONES FLOTANTES ── */
+    .btn-top, .btn-abajo {
+      position: fixed;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      font-size: 1.4rem;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      z-index: 999;
+      padding: 0;
+    }
+    .btn-top {
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      color: #0d2818;
+      border: 2px solid #0d2818;
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.50), 0 0 0 4px rgba(212, 175, 55, 0.15);
+    }
+    .btn-abajo {
+      bottom: 30px;
+      right: 100px;
+      background: linear-gradient(135deg, #0d2818 0%, #1a3d2a 100%);
+      color: #d4af37;
+      border: 2px solid #d4af37;
+      box-shadow: 0 6px 20px rgba(13, 40, 24, 0.50), 0 0 0 4px rgba(212, 175, 55, 0.15);
+    }
+    .btn-top.visible, .btn-abajo.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+    .btn-top:hover { background: #0d2818; color: #d4af37; transform: translateY(-4px) scale(1.08); }
+    .btn-abajo:hover { background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%); color: #0d2818; transform: translateY(-4px) scale(1.08); }
+
+    /* ── MODALES ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(6px);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.visible { display: flex; animation: fadeIn 0.25s ease; }
+
+    .modal {
+      background: var(--card-bg);
+      border-radius: 24px;
+      padding: 30px;
+      max-width: 560px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.60), 0 0 0 2px var(--dorado);
+      border: 1px solid var(--borde);
+      animation: slideUp 0.3s ease;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid var(--borde);
+    }
+    .modal-header h2 {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--card-texto);
+    }
+    .modal-close {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid var(--borde);
+      background: var(--card-bg);
+      color: var(--card-texto);
+      font-size: 1.1rem;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+    .modal-close:hover { background: #d4af37; color: #0d2818; }
+
+    .modal-campo { margin-bottom: 16px; }
+    .modal-campo label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--dorado);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .modal-campo input,
+    .modal-campo textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 2px solid var(--borde);
+      background: var(--card-bg);
+      color: var(--card-texto);
+      font-family: inherit;
+      font-size: 0.95rem;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    .modal-campo textarea { resize: vertical; min-height: 70px; }
+    .modal-campo input:focus,
+    .modal-campo textarea:focus {
+      border-color: var(--dorado);
+      box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.20);
+    }
+
+    .reporte-texto {
+      background: rgba(212, 175, 55, 0.08);
+      border-radius: 12px;
+      border: 1px solid var(--borde);
+      padding: 14px 16px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.78rem;
+      line-height: 1.55;
+      color: var(--card-texto);
+      white-space: pre-wrap;
+      max-height: 320px;
+      overflow-y: auto;
+      margin-top: 6px;
+    }
+
+    .modal-acciones {
+      display: flex;
+      gap: 10px;
+      margin-top: 22px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .modal-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 800;
+      padding: 11px 22px;
+      border-radius: 30px;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+      border: 2px solid transparent;
+    }
+    .modal-btn.primary {
+      background: linear-gradient(135deg, #d4af37 0%, #f5d76e 100%);
+      color: #0d2818;
+      border-color: #0d2818;
+    }
+    .modal-btn.primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(212, 175, 55, 0.40); }
+    .modal-btn.verde {
+      background: linear-gradient(135deg, #128C7E 0%, #25D366 100%);
+      color: #ffffff;
+      border-color: #128C7E;
+    }
+    .modal-btn.verde:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.40); }
+    .modal-btn.secondary {
+      background: var(--card-bg);
+      color: var(--card-sub);
+      border-color: var(--borde);
+    }
+    .modal-btn.secondary:hover { border-color: var(--dorado); color: #0d2818; background: #faf3e0; }
+
+    /* ── INSTRUCTIVO ── */
+    .instructivo-bloque {
+      margin-bottom: 18px;
+      padding: 14px 16px;
+      background: rgba(212, 175, 55, 0.06);
+      border-radius: 12px;
+      border-left: 4px solid var(--dorado);
+    }
+    .instructivo-bloque h3 {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--dorado);
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+    .instructivo-bloque p, .instructivo-bloque li {
+      font-size: 0.85rem;
+      color: var(--card-texto);
+      line-height: 1.55;
+    }
+    .instructivo-bloque ul { padding-left: 20px; margin-top: 4px; }
+    .instructivo-bloque strong { color: var(--dorado); }
+
+    @media (max-width: 650px) {
+      body { padding: 16px 10px; }
+      .card { padding: 20px 14px; border-radius: 24px; }
+      .header { flex-direction: column; text-align: center; padding: 18px; gap: 12px; }
+      .logo-img { width: 80px; height: 80px; }
+      .header-text .band-name { font-size: 1.35rem; }
+      .info-setlist h1 { font-size: 1.4rem; }
+      .progreso-label { font-size: 0.68rem; min-width: 95px; }
+      .stats { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+      .stat .num { font-size: 1.3rem; }
+      .stat .lbl { font-size: 0.58rem; }
+      .cancion-item { padding: 10px 12px; gap: 8px; }
+      .cancion-titulo { font-size: 0.85rem; }
+      .check-btn { width: 26px; height: 26px; font-size: 0.8rem; }
+      .btn-accion { font-size: 0.72rem; padding: 8px 13px; }
+      .btn-top { width: 48px; height: 48px; bottom: 20px; right: 20px; font-size: 1.2rem; }
+      .btn-abajo { width: 48px; height: 48px; bottom: 20px; right: 80px; font-size: 1.2rem; }
+      .modal { padding: 22px 18px; }
+      .reporte-texto { font-size: 0.72rem; }
+    }
+  </style>
+</head>
+<body class="modo-noche">
+
+  <div class="aviso" id="aviso">🚧</div>
+
+  <div class="card">
+
+    <!-- HEADER -->
+    <div class="header">
+      <img src="../logo-uranthia.png" alt="Uranthia" class="logo-img" onclick="window.location.href='../index.html'" />
+      <div class="header-text">
+        <div class="band-name">Uranthia</div>
+        <div class="band-sub">y su Corazón Latino</div>
+        <span class="tagline">🎤 3er Ensayo · Evento 28 Nov 2026</span>
+      </div>
+    </div>
+
+    <!-- MODO -->
+    <div class="modo-selector">
+      <button class="modo-btn" data-modo="dia" onclick="cambiarModo('dia')">☀️ Día</button>
+      <button class="modo-btn active" data-modo="noche" onclick="cambiarModo('noche')">🌙 Noche</button>
+      <button class="modo-btn" data-modo="show" onclick="cambiarModo('show')">🎤 Show</button>
+    </div>
+
+    <!-- INFO -->
+    <div class="info-setlist">
+      <h1>3er Ensayo <span class="gold">Evento Nov 28</span></h1>
+      <div class="subtitulo">
+        <span>📅 Miércoles 14 de Octubre 2026</span>
+        <span>🕐 21:00</span>
+        <span>📍 Casa Atzy-Santi</span>
+      </div>
+    </div>
+
+    <!-- PROGRESO DOBLE -->
+    <div class="progreso-container">
+      <div class="progreso-fila">
+        <div class="progreso-label">🎤 Ensayo</div>
+        <div class="progreso-barra">
+          <div class="progreso-fill dorado" id="fillEnsayo"></div>
+        </div>
+        <div class="progreso-porcentaje" id="pctEnsayo">0%</div>
+      </div>
+      <div class="progreso-fila">
+        <div class="progreso-label">🎸 Personal</div>
+        <div class="progreso-barra">
+          <div class="progreso-fill verde" id="fillPersonal"></div>
+        </div>
+        <div class="progreso-porcentaje" id="pctPersonal">0%</div>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats">
+      <div class="stat">
+        <div class="num" id="statTotal">26</div>
+        <div class="lbl">Total</div>
+      </div>
+      <div class="stat">
+        <div class="num" id="statEnsayo">0</div>
+        <div class="lbl">Ensayadas</div>
+      </div>
+      <div class="stat">
+        <div class="num" id="statPersonal">0</div>
+        <div class="lbl">Practicadas</div>
+      </div>
+    </div>
+
+    <!-- ACCIONES TOP -->
+    <div class="acciones-top">
+      <button class="btn-accion dorado" onclick="toggleColapsar()">
+        <span id="iconoColapsar">📖</span> <span id="textoColapsar">Colapsar</span>
+      </button>
+      <button class="btn-accion verde" onclick="abrirReporte('ensayo')">📤 Reporte ensayo</button>
+      <button class="btn-accion azul" onclick="abrirReporte('personal')">👤 Reporte personal</button>
+      <button class="btn-accion" onclick="abrirModalManual()">➕ Canción manual</button>
+      <button class="btn-accion rojo" onclick="limpiarChecks()">🧹 Limpiar checks</button>
+      <button class="btn-accion" onclick="abrirInstructivo()">📖 ¿Cómo se usa?</button>
+    </div>
+
+    <!-- LISTA -->
+    <div class="canciones-lista" id="cancionesLista"></div>
+
+    <!-- OBSERVACIONES -->
+    <div class="observaciones">
+      <h3>📝 Observaciones del ensayo</h3>
+      <textarea id="obsTextarea" placeholder="Escribí acá las observaciones del ensayo... (se guardan automáticamente)"></textarea>
+      <div class="guardado" id="obsGuardado">✅ Guardado</div>
+    </div>
+
+    <!-- ACCIONES FINALES -->
+    <div class="acciones-finales">
+      <a class="btn-accion" href="../index.html">🏠 Volver al portal</a>
+      <a class="btn-accion" href="../repertorio.html">📚 Ir al repertorio</a>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <div class="footer-credits">
+        <span>✨ Creado por</span>
+        <span class="names">SAO &amp; DS</span>
+        <span>🐋</span>
+      </div>
+      <span class="footer-tag">Uranthia · Corazón Latino</span>
+    </div>
+
+  </div>
+
+  <!-- BOTONES FLOTANTES -->
+  <button class="btn-abajo" id="btnAbajo" onclick="irAbajo()" title="Ir al final">⬇</button>
+  <button class="btn-top" id="btnTop" onclick="irArriba()" title="Volver arriba">⬆</button>
+
+  <!-- MODAL CANCIÓN MANUAL -->
+  <div class="modal-overlay" id="modalManual">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>➕ Agregar canción manual</h2>
+        <button class="modal-close" onclick="cerrarModalManual()">✕</button>
+      </div>
+      <div class="modal-campo">
+        <label>🎵 Nombre de la canción *</label>
+        <input type="text" id="manualTitulo" placeholder="Ej: Formas de Amor" />
+      </div>
+      <div class="modal-acciones">
+        <button class="modal-btn secondary" onclick="cerrarModalManual()">Cancelar</button>
+        <button class="modal-btn primary" onclick="guardarManual()">💾 Agregar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL REPORTE -->
+  <div class="modal-overlay" id="modalReporte">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="reporteTitulo">📤 Reporte</h2>
+        <button class="modal-close" onclick="cerrarReporte()">✕</button>
+      </div>
+
+      <div class="modal-campo" id="campoNombre" style="display:none;">
+        <label>👤 Tu nombre (opcional)</label>
+        <input type="text" id="reporteNombre" placeholder="Ej: Santi" />
+      </div>
+
+      <div class="modal-campo">
+        <label>📄 Reporte generado</label>
+        <div class="reporte-texto" id="reporteTexto"></div>
+      </div>
+
+      <div class="modal-acciones">
+        <button class="modal-btn secondary" onclick="cerrarReporte()">Cerrar</button>
+        <button class="modal-btn verde" onclick="copiarReporte()">📋 Copiar</button>
+        <button class="modal-btn primary" onclick="enviarWhatsApp()">📲 WhatsApp</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL INSTRUCTIVO -->
+  <div class="modal-overlay" id="modalInstructivo">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>📖 ¿Cómo se usa este setlist?</h2>
+        <button class="modal-close" onclick="cerrarInstructivo()">✕</button>
+      </div>
+
+      <div class="instructivo-bloque">
+        <h3>✅ Doble check</h3>
+        <ul>
+          <li><strong>Check dorado (izquierda):</strong> marcalo cuando ensayen la canción en grupo.</li>
+          <li><strong>Check verde (derecha):</strong> marcalo cuando la practiques vos solo en casa.</li>
+        </ul>
+      </div>
+
+      <div class="instructivo-bloque">
+        <h3>📊 Barras de progreso</h3>
+        <p>La barra <strong>dorada</strong> mide el ensayo grupal. La <strong>verde</strong> mide tu práctica personal.</p>
+      </div>
+
+      <div class="instructivo-bloque">
+        <h3>📤 Reportes</h3>
+        <p><strong>Reporte ensayo:</strong> resumen grupal de lo ensayado y lo pendiente.</p>
+        <p><strong>Reporte personal:</strong> tu resumen individual con tu nombre (opcional).</p>
+        <p>Ambos se pueden copiar o compartir por WhatsApp.</p>
+      </div>
+
+      <div class="instructivo-bloque">
+        <h3>➕ Canción manual</h3>
+        <p>Si aparece una canción nueva que no estaba en el setlist, agregala con el botón. Se marca con <span style="color:#e63946; font-weight:800;">🔥 NUEVA</span>.</p>
+      </div>
+
+      <div class="instructivo-bloque">
+        <h3>📝 Observaciones</h3>
+        <p>Todo lo que escribas se guarda automáticamente y aparece en el reporte.</p>
+      </div>
+
+      <div class="instructivo-bloque">
+        <h3>☀️🌙🎤 Modos</h3>
+        <p>Cambiá entre modo Día, Noche o Show según la luz donde estés.</p>
+      </div>
+
+      <div class="instructivo-bloque">
+        <h3>💾 ¿Dónde se guardan los datos?</h3>
+        <p>En tu navegador (localStorage). Cada dispositivo tiene lo suyo. Si querés que todos vean algo fijo, hay que pedirle a SAO que lo suba al HTML.</p>
+      </div>
+
+      <div class="modal-acciones">
+        <button class="modal-btn primary" onclick="cerrarInstructivo()">✅ Entendido</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ══════════════════════════════════════════════════════
+    // CONFIGURACIÓN DEL SETLIST
+    // ══════════════════════════════════════════════════════
+    const SETLIST_ID = 'ensayo-2026-10-14-1792094574157';
+    const SETLIST_TIPO = 'ensayo';
+    const SETLIST_NOMBRE = '3ER ENSAYO EVENTO NOVIEMBRE 28 2026';
+    const SETLIST_FECHA = '2026-10-14';
+    const SETLIST_HORARIO = '21:00';
+    const SETLIST_LUGAR = 'CASA ATZY-SANTI';
+    const SETLIST_URL = 'https://saoentertainment.github.io/URANTHIA/setlists/ensayo-2026-10-14.html';
+
+    // Storage keys (scoped por setlist)
+    const KEY_TOCADAS = `uranthia-tocadas-${SETLIST_ID}`;
+    const KEY_PERSONAL = `uranthia-personal-${SETLIST_ID}`;
+    const KEY_MANUALES = `uranthia-manuales-${SETLIST_ID}`;
+    const KEY_OBS = `uranthia-observaciones-${SETLIST_ID}`;
+    const KEY_COLAPSADO = `uranthia-colapsado-${SETLIST_ID}`;
+    const KEY_NOMBRE = 'uranthia-nombre-integrante';
+
+    // ══════════════════════════════════════════════════════
+    // CANCIONES DEL SETLIST
+    // ══════════════════════════════════════════════════════
+    const CANCIONES_BASE = [
+      'CUANDO SEAS GRANDE',
+      'GUITARRAS BLANCAS',
+      'NI TU NI NADIE',
+      'MIRALA MIRALO',
+      'ETERNAMENTE BELLA',
+      'LA FUERZA DEL DESTINO',
+      'CHICAS COCODRILO',
+      'NO VOY EN TREN',
+      'EN ALGUN LUGAR',
+      'VIVIENDO DE NOCHE',
+      'MURALLA',
+      'VISITA NUESTRO BAR',
+      'PERSIANA AMERICANA',
+      'NO HUYAS DE MI',
+      'CON LOS OJOS CERRADOS',
+      'VUELA VUELA',
+      'NO PUEDO ESTAR SIN TI',
+      'NO PODRAS',
+      'DEJAME ENTRAR',
+      'ES POR AMOR',
+      'NO SE SI ES AMOR',
+      'SI NO ES AHORA',
+      'BESOS DE CENIZA',
+      'AMAME HASTA CON LOS DIENTES',
+      'CON TODOS MENOS CONMIGO',
+      'FORMAS DE AMOR'
+    ];
+
+    // ══════════════════════════════════════════════════════
+    // ESTADO
+    // ══════════════════════════════════════════════════════
+    let tocadas = JSON.parse(localStorage.getItem(KEY_TOCADAS) || '[]');
+    let personales = JSON.parse(localStorage.getItem(KEY_PERSONAL) || '[]');
+    let manuales = JSON.parse(localStorage.getItem(KEY_MANUALES) || '[]');
+    let colapsado = localStorage.getItem(KEY_COLAPSADO) === 'true';
+
+    // ══════════════════════════════════════════════════════
+    // MODO
+    // ══════════════════════════════════════════════════════
+    function cambiarModo(modo) {
+      document.body.classList.remove('modo-dia', 'modo-noche', 'modo-show');
+      document.body.classList.add('modo-' + modo);
+      document.querySelectorAll('.modo-btn').forEach(b => b.classList.remove('active'));
+      document.querySelector(`.modo-btn[data-modo="${modo}"]`).classList.add('active');
+      localStorage.setItem('uranthia-modo', modo);
+    }
+    cambiarModo(localStorage.getItem('uranthia-modo') || 'noche');
+
+    // ══════════════════════════════════════════════════════
+    // RENDERIZAR LISTA
+    // ══════════════════════════════════════════════════════
+    function renderizar() {
+      const lista = document.getElementById('cancionesLista');
+      const todas = [...CANCIONES_BASE, ...manuales.map(m => m.titulo)];
+
+      lista.innerHTML = todas.map((titulo, i) => {
+        const esManual = i >= CANCIONES_BASE.length;
+        const idx = i;
+        const marcadaEnsayo = tocadas.includes(idx);
+        const marcadaPersonal = personales.includes(idx);
+
+        const claseEnsayo = marcadaEnsayo ? 'checked' : '';
+        const clasePersonal = marcadaPersonal ? 'checked' : '';
+
+        const badgeManual = esManual ? '<span class="badge-nueva">🔥 NUEVA</span>' : '';
+
+        if (colapsado) {
+          return `
+            <div class="cancion-item" style="padding: 8px 14px;">
+              <div class="cancion-num">${String(i + 1).padStart(2, '0')}</div>
+              <div class="cancion-titulo" style="font-size:0.85rem;">${titulo}${badgeManual}</div>
+              <div class="cancion-checks">
+                <button class="check-btn dorado ${claseEnsayo}" onclick="toggleEnsayo(${idx})" title="Marcar ensayo"></button>
+                <button class="check-btn verde ${clasePersonal}" onclick="togglePersonal(${idx})" title="Marcar personal"></button>
+              </div>
+            </div>
+          `;
+        }
+
+        return `
+          <div class="cancion-item">
+            <div class="cancion-num">${String(i + 1).padStart(2, '0')}</div>
+            <div class="cancion-titulo">${titulo}${badgeManual}</div>
+            <div class="cancion-checks">
+              <button class="check-btn dorado ${claseEnsayo}" onclick="toggleEnsayo(${idx})" title="Marcar ensayo">${marcadaEnsayo ? '✓' : ''}</button>
+              <button class="check-btn verde ${clasePersonal}" onclick="togglePersonal(${idx})" title="Marcar personal">${marcadaPersonal ? '✓' : ''}</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      actualizarProgreso();
+      actualizarColapsarUI();
+    }
+
+    // ══════════════════════════════════════════════════════
+    // TOGGLES
+    // ══════════════════════════════════════════════════════
+    function toggleEnsayo(idx) {
+      if (tocadas.includes(idx)) {
+        tocadas = tocadas.filter(i => i !== idx);
+      } else {
+        tocadas.push(idx);
+      }
+      localStorage.setItem(KEY_TOCADAS, JSON.stringify(tocadas));
+      renderizar();
+    }
+
+    function togglePersonal(idx) {
+      if (personales.includes(idx)) {
+        personales = personales.filter(i => i !== idx);
+      } else {
+        personales.push(idx);
+      }
+      localStorage.setItem(KEY_PERSONAL, JSON.stringify(personales));
+      renderizar();
+    }
+
+    // ══════════════════════════════════════════════════════
+    // PROGRESO
+    // ══════════════════════════════════════════════════════
+    function actualizarProgreso() {
+      const total = CANCIONES_BASE.length + manuales.length;
+
+      const cantEnsayo = tocadas.length;
+      const cantPersonal = personales.length;
+
+      const pctEnsayo = total > 0 ? Math.round((cantEnsayo / total) * 100) : 0;
+      const pctPersonal = total > 0 ? Math.round((cantPersonal / total) * 100) : 0;
+
+      document.getElementById('fillEnsayo').style.width = pctEnsayo + '%';
+      document.getElementById('fillPersonal').style.width = pctPersonal + '%';
+      document.getElementById('pctEnsayo').textContent = pctEnsayo + '%';
+      document.getElementById('pctPersonal').textContent = pctPersonal + '%';
+
+      document.getElementById('statTotal').textContent = total;
+      document.getElementById('statEnsayo').textContent = cantEnsayo;
+      document.getElementById('statPersonal').textContent = cantPersonal;
+    }
+
+    // ══════════════════════════════════════════════════════
+    // COLAPSAR
+    // ══════════════════════════════════════════════════════
+    function toggleColapsar() {
+      colapsado = !colapsado;
+      localStorage.setItem(KEY_COLAPSADO, colapsado);
+      renderizar();
+    }
+    function actualizarColapsarUI() {
+      document.getElementById('iconoColapsar').textContent = colapsado ? '📖' : '📕';
+      document.getElementById('textoColapsar').textContent = colapsado ? 'Expandir' : 'Colapsar';
+    }
+
+    // ══════════════════════════════════════════════════════
+    // CANCIÓN MANUAL
+    // ══════════════════════════════════════════════════════
+    function abrirModalManual() {
+      document.getElementById('modalManual').classList.add('visible');
+      setTimeout(() => document.getElementById('manualTitulo').focus(), 100);
+    }
+    function cerrarModalManual() {
+      document.getElementById('modalManual').classList.remove('visible');
+      document.getElementById('manualTitulo').value = '';
+    }
+    function guardarManual() {
+      const titulo = document.getElementById('manualTitulo').value.trim().toUpperCase();
+      if (!titulo) { alert('Escribí el nombre de la canción.'); return; }
+
+      manuales.push({ titulo, fecha: new Date().toISOString() });
+      localStorage.setItem(KEY_MANUALES, JSON.stringify(manuales));
+      cerrarModalManual();
+      renderizar();
+
+      const aviso = document.getElementById('aviso');
+      aviso.textContent = '🔥 Canción agregada';
+      aviso.classList.add('show');
+      setTimeout(() => aviso.classList.remove('show'), 2200);
+    }
+
+    // ══════════════════════════════════════════════════════
+    // LIMPIAR CHECKS
+    // ══════════════════════════════════════════════════════
+    function limpiarChecks() {
+      if (!confirm('¿Limpiar todos los checks (dorados y verdes)?')) return;
+      tocadas = [];
+      personales = [];
+      localStorage.setItem(KEY_TOCADAS, '[]');
+      localStorage.setItem(KEY_PERSONAL, '[]');
+      renderizar();
+
+      const aviso = document.getElementById('aviso');
+      aviso.textContent = '🧹 Checks limpiados';
+      aviso.classList.add('show');
+      setTimeout(() => aviso.classList.remove('show'), 2200);
+    }
+
+    // ══════════════════════════════════════════════════════
+    // OBSERVACIONES
+    // ══════════════════════════════════════════════════════
+    const obsTextarea = document.getElementById('obsTextarea');
+    obsTextarea.value = localStorage.getItem(KEY_OBS) || '';
+
+    let obsTimer;
+    obsTextarea.addEventListener('input', () => {
+      clearTimeout(obsTimer);
+      obsTimer = setTimeout(() => {
+        localStorage.setItem(KEY_OBS, obsTextarea.value);
+        const g = document.getElementById('obsGuardado');
+        g.classList.add('visible');
+        setTimeout(() => g.classList.remove('visible'), 1500);
+      }, 500);
+    });
+
+    // ══════════════════════════════════════════════════════
+    // REPORTES
+    // ══════════════════════════════════════════════════════
+    let tipoReporteActual = 'ensayo';
+
+    function abrirReporte(tipo) {
+      tipoReporteActual = tipo;
+      const esPersonal = tipo === 'personal';
+
+      document.getElementById('reporteTitulo').textContent = esPersonal
+        ? '👤 Reporte personal'
+        : '📤 Reporte de ensayo';
+
+      document.getElementById('campoNombre').style.display = esPersonal ? 'block' : 'none';
+
+      if (esPersonal) {
+        document.getElementById('reporteNombre').value = localStorage.getItem(KEY_NOMBRE) || '';
+      }
+
+      generarReporte();
+      document.getElementById('modalReporte').classList.add('visible');
+    }
+
+    function cerrarReporte() {
+      document.getElementById('modalReporte').classList.remove('visible');
+    }
+
+    function generarReporte() {
+      const todas = [...CANCIONES_BASE, ...manuales.map(m => m.titulo)];
+      const total = todas.length;
+      const esPersonal = tipoReporteActual === 'personal';
+      const checks = esPersonal ? personales : tocadas;
+      const nombre = document.getElementById('reporteNombre').value.trim();
+
+      const tocadasLista = todas.filter((_, i) => checks.includes(i));
+      const pendientesLista = todas.filter((_, i) => !checks.includes(i));
+      const pct = total > 0 ? Math.round((tocadasLista.length / total) * 100) : 0;
+
+      const linea = '───────────────────────';
+      const fechaFormateada = 'Miércoles 14 de Octubre 2026';
+
+      let reporte = '';
+      if (esPersonal) {
+        reporte += `🎸 REPORTE PERSONAL DE ENSAYO\n`;
+      } else {
+        reporte += `🎤 REPORTE DE ENSAYO\n`;
+      }
+      reporte += `Uranthia y su Corazón Latino\n\n`;
+      reporte += `📋 ${SETLIST_NOMBRE}\n`;
+      reporte += `📅 ${fechaFormateada}\n`;
+      reporte += `🕐 ${SETLIST_HORARIO}\n`;
+      reporte += `📍 ${SETLIST_LUGAR}\n`;
+      if (esPersonal && nombre) reporte += `👤 Integrante: ${nombre}\n`;
+      reporte += `\n${linea}\n`;
+
+      const labelTocadas = esPersonal ? 'PRACTICADAS' : 'TOCADAS';
+      reporte += `✅ ${labelTocadas} (${tocadasLista.length}/${total})\n\n`;
+      tocadasLista.forEach(t => { reporte += `${t}\n`; });
+      if (tocadasLista.length === 0) reporte += `(ninguna todavía)\n`;
+
+      reporte += `\n${linea}\n`;
+      reporte += `⬜ PENDIENTES (${pendientesLista.length}/${total})\n\n`;
+      pendientesLista.forEach(t => { reporte += `${t}\n`; });
+      if (pendientesLista.length === 0) reporte += `(ninguna — ¡todas! 🎉)\n`;
+
+      reporte += `\n${linea}\n`;
+      reporte += `📊 Avance: ${pct}%\n`;
+      reporte += `\n${linea}\n`;
+
+      const obs = obsTextarea.value.trim();
+      if (obs) {
+        reporte += `📝 OBSERVACIONES\n${obs}\n\n${linea}\n`;
+      }
+
+      reporte += `🎸 ¡Buen ensayo!\n\n${linea}\n`;
+      reporte += `Uranthia y su Corazón Latino\n`;
+      reporte += `🔗 ${SETLIST_URL}`;
+
+      document.getElementById('reporteTexto').textContent = reporte;
+    }
+
+    // Re-generar cuando se escribe el nombre
+    document.getElementById('reporteNombre').addEventListener('input', (e) => {
+      localStorage.setItem(KEY_NOMBRE, e.target.value.trim());
+      generarReporte();
+    });
+
+    function copiarReporte() {
+      const texto = document.getElementById('reporteTexto').textContent;
+      navigator.clipboard.writeText(texto).then(() => {
+        const aviso = document.getElementById('aviso');
+        aviso.textContent = '📋 Reporte copiado';
+        aviso.classList.add('show');
+        setTimeout(() => aviso.classList.remove('show'), 2200);
+      }).catch(() => {
+        // Fallback para navegadores viejos
+        const ta = document.createElement('textarea');
+        ta.value = texto;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        alert('✅ Reporte copiado');
+      });
+    }
+
+    function enviarWhatsApp() {
+      let texto = document.getElementById('reporteTexto').textContent;
+
+      // Reemplazos de emojis problemáticos en WhatsApp
+      texto = texto
+        .replace(/📋/g, '📋')
+        .replace(/✅/g, '✅')
+        .replace(/⬜/g, '⬜')
+        .replace(/📊/g, '📊')
+        .replace(/📝/g, '📝')
+        .replace(/🎤/g, '🎤')
+        .replace(/🎸/g, '🎸')
+        .replace(/📅/g, '📅')
+        .replace(/🕐/g, '🕐')
+        .replace(/📍/g, '📍')
+        .replace(/👤/g, '👤')
+        .replace(/🔗/g, '🔗');
+
+      const url = 'https://wa.me/?text=' + encodeURIComponent(texto);
+      window.open(url, '_blank');
+    }
+
+    // ══════════════════════════════════════════════════════
+    // INSTRUCTIVO
+    // ══════════════════════════════════════════════════════
+    function abrirInstructivo() {
+      document.getElementById('modalInstructivo').classList.add('visible');
+    }
+    function cerrarInstructivo() {
+      document.getElementById('modalInstructivo').classList.remove('visible');
+    }
+
+    // ══════════════════════════════════════════════════════
+    // BOTONES FLOTANTES
+    // ══════════════════════════════════════════════════════
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      const alturaTotal = document.body.scrollHeight - window.innerHeight;
+      document.getElementById('btnTop').classList.toggle('visible', y > 300);
+      document.getElementById('btnAbajo').classList.toggle('visible', y < alturaTotal - 300);
+    });
+    function irArriba() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    function irAbajo() { window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); }
+
+    // ══════════════════════════════════════════════════════
+    // CERRAR MODALES CON ESC / CLIC AFUERA
+    // ══════════════════════════════════════════════════════
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        cerrarModalManual();
+        cerrarReporte();
+        cerrarInstructivo();
+      }
+    });
+
+    ['modalManual', 'modalReporte', 'modalInstructivo'].forEach(id => {
+      document.getElementById(id).addEventListener('click', (e) => {
+        if (e.target.id === id) {
+          e.target.classList.remove('visible');
+        }
+      });
+    });
+
+    // ══════════════════════════════════════════════════════
+    // INICIALIZAR
+    // ══════════════════════════════════════════════════════
+    renderizar();
+  </script>
+
+</body>
+</html>

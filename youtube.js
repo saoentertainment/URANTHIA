@@ -31,7 +31,17 @@ const YOUTUBE_LINKS = {
   "eternamente-bella": "https://www.youtube.com/watch?v=9Muiws78y5A",  
   "ado": "https://www.youtube.com/watch?v=K4uZhFb4E4s",  
   "triste-cancion-de-amor": "https://www.youtube.com/watch?v=KNeLqABYNFQ",    
-  "formas-de-amor": "https://youtu.be/AVy21XudwvI",      
+  "formas-de-amor": "https://youtu.be/AVy21XudwvI",
+  "todos-me-miran": "https://www.youtube.com/watch?v=MsAAbvwsvK4", 
+  "con-los-ojos-cerrados": "https://www.youtube.com/watch?v=i8yxZZGrOVg",   
+  "dr-psiquiatra": "https://www.youtube.com/watch?v=olyyMCVJKmo",  
+  "rosa-pastel": "https://www.youtube.com/watch?v=bUkJLkoh3kA",    
+  "el-sol-no-regresa": "https://www.youtube.com/watch?v=0mSNnobHcYQ",     
+  "no-se-si-es-amor": "https://www.youtube.com/watch?v=RSIwoJ-y3AI",       
+  "besos-de-ceniza": "https://www.youtube.com/watch?v=tqiqkpjU7K4",    
+  "si-no-es-ahora": "https://www.youtube.com/watch?v=Oj0S5P9lOiQ",      
+  "tu-y-yo-somos-uno-mismo": "https://www.youtube.com/watch?v=1Cl3h9LVp_E",        
+  "corro-vuelo-me-acelero": "https://www.youtube.com/watch?v=uovZk7YUvYI",          
 };
 
 // Función helper para armar el botón
